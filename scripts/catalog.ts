@@ -195,7 +195,7 @@ export function buildRegistryJson(catalog: CatalogEntry[] = MARKETPLACE_CATALOG)
       tags: e.tags,
       tier: e.tier,
       ...(e.inspiredBy ? { inspiredBy: e.inspiredBy } : {}),
-      demoUrl: `https://${e.slug}-demo.getdune.org`,
+      demoUrl: `https://themes.getdune.org/${e.slug}`,
       screenshotUrl: `https://cdn.getdune.org/themes/${e.slug}/screenshot.png`,
       jsr: `jsr:@dune/theme-${e.slug}@${e.version}`,
       downloadUrl:

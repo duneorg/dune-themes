@@ -5,7 +5,7 @@
  * Requires Playwright: deno run -A npm:playwright install chromium
  *
  *   deno task screenshot papermod
- *   deno task screenshot papermod --url https://papermod-demo.getdune.org
+ *   deno task screenshot papermod --url https://themes.getdune.org/papermod
  *
  * Output: packages/theme-{slug}/screenshots/screenshot.png (local reference;
  * upload to cdn.getdune.org/themes/{slug}/screenshot.png separately).
