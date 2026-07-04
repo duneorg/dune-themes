@@ -9,7 +9,7 @@ Original Dune theme, design inspired by [AstroWind](https://github.com/onwidget/
 Sticky header with CTA pill, gradient hero on `/`, card blog grid, dark mode toggle.
 
 ```bash
-dune theme:install jsr:@dune/theme-gale@0.1.0 --activate
+dune theme:install jsr:@dune/theme-gale@1.0.0 --activate
 ```
 
 Not a port of AstroWind.

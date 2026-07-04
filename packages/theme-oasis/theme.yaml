@@ -1,7 +1,7 @@
 name: oasis
 description: "Oasis — a modern landing & academic résumé theme, inspired by Hugo Blox"
 author: "Dune Theme Library (design inspired by Hugo Blox by George Cushen)"
-version: "0.1.0"
+version: "1.0.0"
 config_schema:
   primary_color:
     type: color

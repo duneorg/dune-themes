@@ -1,7 +1,7 @@
 name: papermod
 description: "PaperMod for Dune — faithful port of the Hugo PaperMod theme"
 author: "Dune Theme Library port; original theme MIT © 2020 nanxiaobei and adityatelange"
-version: "0.1.0"
+version: "1.0.0"
 config_schema:
   default_theme:
     type: text

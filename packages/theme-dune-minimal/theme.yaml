@@ -1,7 +1,7 @@
 name: dune-minimal
 description: "Minimal, semantic base theme for Dune — usable standalone, designed to be inherited via `parent: dune-minimal`"
 author: "Dune Theme Library"
-version: "0.1.0"
+version: "1.0.0"
 config_schema:
   accent_color:
     type: color

@@ -29,7 +29,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Fast, clean minimalist blog inspired by Hugo PaperMod — Dune-native, not a port.",
     inspiredBy: "hugo-PaperMod",
     tags: ["blog", "minimal", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "caravan",
@@ -38,7 +38,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Sidebar documentation theme inspired by hugo-book — Dune-native, not a port.",
     inspiredBy: "hugo-book",
     tags: ["docs", "sidebar", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "fennec",
@@ -47,7 +47,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Personal portfolio and blog theme inspired by Astrofy — Dune-native, not a port.",
     inspiredBy: "Astrofy",
     tags: ["portfolio", "personal", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "nightfall",
@@ -56,7 +56,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Dark-first documentation theme inspired by Astro Starlight — Dune-native, not a port.",
     inspiredBy: "Starlight",
     tags: ["docs", "dark", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "oasis",
@@ -65,7 +65,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Landing and academic résumé theme inspired by Hugo Blox — Dune-native, not a port.",
     inspiredBy: "Hugo Blox",
     tags: ["landing", "academic", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "ink",
@@ -74,7 +74,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Long-form writing theme inspired by Ghost Attila — Dune-native, not a port.",
     inspiredBy: "Attila",
     tags: ["blog", "writing", "serif", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "gale",
@@ -83,7 +83,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Landing and blog theme inspired by AstroWind — Dune-native, not a port.",
     inspiredBy: "AstroWind",
     tags: ["landing", "business", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "salon",
@@ -92,7 +92,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Magazine-style blog inspired by Ghost Liebling — Dune-native, not a port.",
     inspiredBy: "Liebling",
     tags: ["blog", "magazine", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "syntax",
@@ -101,7 +101,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Technical blog theme inspired by Jekyll Chirpy — Dune-native, not a port.",
     inspiredBy: "jekyll-theme-chirpy",
     tags: ["blog", "tech", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "herald",
@@ -110,7 +110,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Publication-style blog inspired by Ghost Casper — Dune-native, not a port.",
     inspiredBy: "Casper",
     tags: ["blog", "publication", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "lucid",
@@ -119,7 +119,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Modern docs theme inspired by Hugo Hextra — Dune-native, not a port.",
     inspiredBy: "Hextra",
     tags: ["docs", "modern", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "manual",
@@ -128,7 +128,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Product documentation theme inspired by Just the Docs — Dune-native, not a port.",
     inspiredBy: "Just the Docs",
     tags: ["docs", "product", "inspired"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   // Faithful ports
   {
@@ -138,7 +138,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Faithful port of Hugo PaperMod for Dune.",
     inspiredBy: "hugo-PaperMod",
     tags: ["blog", "minimal", "faithful"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "book",
@@ -147,7 +147,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Faithful port of hugo-book for Dune.",
     inspiredBy: "hugo-book",
     tags: ["docs", "sidebar", "faithful"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "starlight",
@@ -156,7 +156,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Faithful port of Astro Starlight for Dune.",
     inspiredBy: "Starlight",
     tags: ["docs", "modern", "faithful"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
   {
     slug: "blox",
@@ -174,7 +174,7 @@ export const CATALOG: CatalogEntry[] = [
     tier: "base",
     description: "Minimal semantic base theme — inherit via parent: dune-minimal",
     tags: ["base"],
-    version: "0.1.0",
+    version: "1.0.0",
   },
 ];
 

@@ -233,7 +233,7 @@ export default function ErrorTemplate(props: TemplateProps & { Layout?: typeof S
 
 function themeYaml(def: ThemeDef): string {
   return `name: ${def.slug}
-version: 0.1.0
+version: 1.0.0
 description: "${def.description.replace(/"/g, '\\"')}"
 author: Dune Themes
 license: MIT
@@ -245,7 +245,7 @@ ${configSchemaYaml(def)}`;
 function denoJson(def: ThemeDef): string {
   return JSON.stringify({
     name: `@dune/theme-${def.slug}`,
-    version: "0.1.0",
+    version: "1.0.0",
     license: "MIT",
     exports: "./theme.yaml",
     imports: {

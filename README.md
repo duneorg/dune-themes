@@ -9,6 +9,8 @@ We ship two tiers:
 
 All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field is the logical slug used in site config and static URLs.
 
+**Versioning:** Every theme targets **`1.0.0`** for its first JSR and marketplace release. Versions stay at `1.0.0` in-tree until a theme meets our quality bar; nothing is published before then.
+
 ### Inspired themes
 
 | Package | Name | Use case | Inspired by |
@@ -44,7 +46,7 @@ All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-sirocco@0.1.0 --activate
+dune theme:install jsr:@dune/theme-sirocco@1.0.0 --activate
 dune theme:install ./packages/theme-caravan --name caravan --activate
 ```
 

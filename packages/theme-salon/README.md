@@ -9,7 +9,7 @@ Original Dune theme, design inspired by [Liebling](https://github.com/eddiesigne
 Featured lead post on the blog index, card grid for remaining posts, cover images and category tags. Post frontmatter: `cover`, `tags` or `taxonomy.tag`.
 
 ```bash
-dune theme:install jsr:@dune/theme-salon@0.1.0 --activate
+dune theme:install jsr:@dune/theme-salon@1.0.0 --activate
 ```
 
 Not a port of Liebling.

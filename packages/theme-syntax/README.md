@@ -9,7 +9,7 @@ Original Dune theme, design inspired by [jekyll-theme-chirpy](https://github.com
 GitHub-adjacent palette, tag chips, date-column blog index, header search link. Post frontmatter: `pinned: true` for pinned posts.
 
 ```bash
-dune theme:install jsr:@dune/theme-syntax@0.1.0 --activate
+dune theme:install jsr:@dune/theme-syntax@1.0.0 --activate
 ```
 
 Not a port of Chirpy.
