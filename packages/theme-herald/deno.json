@@ -1,6 +1,6 @@
 {
   "name": "@dune/theme-herald",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "exports": "./theme.yaml",
   "imports": {
@@ -17,7 +17,6 @@
   },
   "publish": {
     "exclude": [
-      "ATTRIBUTION.md",
       "screenshots/"
     ]
   }

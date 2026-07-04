@@ -17,16 +17,8 @@ export interface CatalogEntry {
   scaffold?: boolean;
 }
 
-/** Slugs managed by scripts/scaffold-themes.ts (THEME_DEFS). */
-export const SCAFFOLD_SLUGS = new Set([
-  "ink",
-  "gale",
-  "salon",
-  "syntax",
-  "herald",
-  "lucid",
-  "manual",
-]);
+/** Slugs managed by scripts/scaffold-themes.ts (THEME_DEFS). Empty when all themes are hand-maintained. */
+export const SCAFFOLD_SLUGS = new Set<string>([]);
 
 export const CATALOG: CatalogEntry[] = [
   // Inspired — hand-maintained
@@ -75,7 +67,6 @@ export const CATALOG: CatalogEntry[] = [
     tags: ["landing", "academic", "inspired"],
     version: "0.1.0",
   },
-  // Inspired — scaffold-managed (full Dune baseline)
   {
     slug: "ink",
     name: "Ink",
@@ -83,8 +74,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Long-form writing theme inspired by Ghost Attila — Dune-native, not a port.",
     inspiredBy: "Attila",
     tags: ["blog", "writing", "serif", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   {
     slug: "gale",
@@ -93,8 +83,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Landing and blog theme inspired by AstroWind — Dune-native, not a port.",
     inspiredBy: "AstroWind",
     tags: ["landing", "business", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   {
     slug: "salon",
@@ -103,8 +92,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Magazine-style blog inspired by Ghost Liebling — Dune-native, not a port.",
     inspiredBy: "Liebling",
     tags: ["blog", "magazine", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   {
     slug: "syntax",
@@ -113,8 +101,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Technical blog theme inspired by Jekyll Chirpy — Dune-native, not a port.",
     inspiredBy: "jekyll-theme-chirpy",
     tags: ["blog", "tech", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   {
     slug: "herald",
@@ -123,8 +110,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Publication-style blog inspired by Ghost Casper — Dune-native, not a port.",
     inspiredBy: "Casper",
     tags: ["blog", "publication", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   {
     slug: "lucid",
@@ -133,8 +119,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Modern docs theme inspired by Hugo Hextra — Dune-native, not a port.",
     inspiredBy: "Hextra",
     tags: ["docs", "modern", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   {
     slug: "manual",
@@ -143,8 +128,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Product documentation theme inspired by Just the Docs — Dune-native, not a port.",
     inspiredBy: "Just the Docs",
     tags: ["docs", "product", "inspired"],
-    version: "1.0.0",
-    scaffold: true,
+    version: "0.1.0",
   },
   // Faithful ports
   {

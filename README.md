@@ -51,8 +51,8 @@ dune theme:install ./packages/theme-caravan --name caravan --activate
 ## Development
 
 ```bash
-deno task scaffold   # regenerates scaffold-managed packages (ink, gale, …) + registry.json
+deno task scaffold   # refresh registry.json; regenerates packages in THEME_DEFS only
 deno task pack:all   # ZIPs every catalog theme with a package on disk
 ```
 
-Hand-maintained themes (`sirocco`, `caravan`, `fennec`, `nightfall`, `oasis`, faithful ports, …) are edited directly under `packages/theme-{slug}/`. Scaffold-managed themes (`ink`, `gale`, `salon`, `syntax`, `herald`, `lucid`, `manual`) live in `scripts/theme-customizations/`.
+All inspired themes are edited directly under `packages/theme-{slug}/`. **Sirocco** is the reference for inheriting from `@dune/theme-dune-minimal` via `parent: dune-minimal` in `theme.yaml`. To scaffold a new theme, add a definition to `scripts/theme-defs.ts` and run `deno task scaffold`.

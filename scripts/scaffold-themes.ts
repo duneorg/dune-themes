@@ -1,7 +1,7 @@
 #!/usr/bin/env -S deno run -A
 /**
- * Generate all theme packages under packages/theme-{slug}/.
- * Re-run after editing scripts/theme-defs.ts or layout/CSS generators here.
+ * Generate theme packages from THEME_DEFS and refresh registry.json.
+ * All catalog themes are hand-maintained; add entries to theme-defs.ts for new scaffolds.
  */
 
 import { join } from "@std/path";
@@ -18,7 +18,6 @@ import {
   sectionTemplate,
 } from "./scaffold-baseline.ts";
 import { THEME_DEFS, RETIRED_PACKAGE_SLUGS, type ThemeDef } from "./theme-defs.ts";
-import { getCustomization, isCustomized } from "./theme-customizations/index.ts";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 
@@ -154,8 +153,7 @@ body { background: var(--bg); color: var(--text); }
 `,
   };
 
-  return base + (archetypeExtra[def.archetype] ?? "") + baselineCssExtra(def) +
-    (getCustomization(def.slug)?.cssExtra?.(def) ?? "");
+  return base + (archetypeExtra[def.archetype] ?? "") + baselineCssExtra(def);
 }
 
 function defaultTemplate(): string {
@@ -234,22 +232,20 @@ export default function ErrorTemplate(props: TemplateProps & { Layout?: typeof S
 }
 
 function themeYaml(def: ThemeDef): string {
-  const custom = getCustomization(def.slug);
-  const schema = custom?.configSchemaYaml?.(def) ?? configSchemaYaml(def);
   return `name: ${def.slug}
-version: 1.0.0
+version: 0.1.0
 description: "${def.description.replace(/"/g, '\\"')}"
 author: Dune Themes
 license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-${def.slug}
 attribution: "Design inspired by ${def.upstream} (${def.upstreamLicense}) — Dune-native theme, not a port"
-${schema}`;
+${configSchemaYaml(def)}`;
 }
 
 function denoJson(def: ThemeDef): string {
   return JSON.stringify({
     name: `@dune/theme-${def.slug}`,
-    version: "1.0.0",
+    version: "0.1.0",
     license: "MIT",
     exports: "./theme.yaml",
     imports: {
@@ -262,40 +258,13 @@ function denoJson(def: ThemeDef): string {
       lib: ["deno.window", "dom"],
     },
     publish: {
-      exclude: ["ATTRIBUTION.md", "screenshots/"],
+      exclude: ["screenshots/"],
     },
   }, null, 2) + "\n";
 }
 
-function attribution(def: ThemeDef): string {
-  if (def.tier === "faithful") {
-    return `# Attribution
-
-Best-effort port of **${def.upstream}** for Dune CMS.
-- Upstream: ${def.upstreamUrl}
-- License: ${def.upstreamLicense}
-- Ported by Dune Themes
-
-Aims to be recognizably similar to the upstream theme within Dune's template model.
-`;
-  }
-  return `# Attribution
-
-**${def.name}** is a Dune-native theme inspired by **${def.upstream}**.
-It is not a port and does not aim for pixel-perfect parity.
-
-- Upstream reference: ${def.upstreamUrl}
-- Upstream license: ${def.upstreamLicense}
-- Created by Dune Themes
-
-For a near-identical upstream experience, see the faithful port catalog in THEMES.md
-(e.g. \`@dune/theme-papermod\` when available).
-`;
-}
-
 async function writeTheme(def: ThemeDef): Promise<void> {
   const dir = join(ROOT, "packages", `theme-${def.slug}`);
-  const custom = getCustomization(def.slug);
   await Deno.mkdir(join(dir, "templates"), { recursive: true });
   await Deno.mkdir(join(dir, "components"), { recursive: true });
   await Deno.mkdir(join(dir, "static"), { recursive: true });
@@ -303,48 +272,21 @@ async function writeTheme(def: ThemeDef): Promise<void> {
 
   await Deno.writeTextFile(join(dir, "theme.yaml"), themeYaml(def));
   await Deno.writeTextFile(join(dir, "deno.json"), denoJson(def));
-  await Deno.writeTextFile(join(dir, "ATTRIBUTION.md"), attribution(def));
-  await Deno.writeTextFile(
-    join(dir, "components", "layout.tsx"),
-    custom?.layoutTsx?.(def) ?? layoutTsx(def),
-  );
-  await Deno.writeTextFile(
-    join(dir, "templates", "default.tsx"),
-    custom?.defaultTemplate?.() ?? defaultTemplate(),
-  );
-  await Deno.writeTextFile(
-    join(dir, "templates", "post.tsx"),
-    custom?.postTemplate?.() ?? postTemplate(),
-  );
+  await Deno.writeTextFile(join(dir, "components", "layout.tsx"), layoutTsx(def));
+  await Deno.writeTextFile(join(dir, "templates", "default.tsx"), defaultTemplate());
+  await Deno.writeTextFile(join(dir, "templates", "post.tsx"), postTemplate());
   await Deno.writeTextFile(join(dir, "templates", "error.tsx"), errorTemplate());
   await Deno.writeTextFile(join(dir, "templates", "search.tsx"), searchTemplate());
   if (needsBlogTemplate(def)) {
-    await Deno.writeTextFile(
-      join(dir, "templates", "blog.tsx"),
-      custom?.blogTemplate?.() ?? blogTemplate(),
-    );
+    await Deno.writeTextFile(join(dir, "templates", "blog.tsx"), blogTemplate());
   }
   if (needsSectionTemplate(def)) {
-    await Deno.writeTextFile(
-      join(dir, "templates", "section.tsx"),
-      custom?.sectionTemplate?.() ?? sectionTemplate(),
-    );
+    await Deno.writeTextFile(join(dir, "templates", "section.tsx"), sectionTemplate());
   }
-  const locales = {
-    ...JSON.parse(localesEnJson()),
-    ...(custom?.localeStrings ?? {}),
-  };
-  await Deno.writeTextFile(join(dir, "locales", "en.json"), JSON.stringify(locales, null, 2) + "\n");
-  if (custom?.extraFiles) {
-    for (const [rel, content] of Object.entries(custom.extraFiles)) {
-      const abs = join(dir, rel);
-      await Deno.mkdir(join(abs, ".."), { recursive: true });
-      await Deno.writeTextFile(abs, content);
-    }
-  }
+  await Deno.writeTextFile(join(dir, "locales", "en.json"), localesEnJson());
   await Deno.writeTextFile(join(dir, "static", "style.css"), cssBlock(def).trim() + "\n");
 
-  console.log(`  ✓ packages/theme-${def.slug}${isCustomized(def.slug) ? " (polished)" : ""}`);
+  console.log(`  ✓ packages/theme-${def.slug}`);
 }
 
 async function writeRegistry(): Promise<void> {

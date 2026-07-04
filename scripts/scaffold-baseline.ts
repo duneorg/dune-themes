@@ -1,6 +1,6 @@
 /**
- * Full Dune baseline for scaffold-managed inspired themes.
- * Hand-maintained themes (Sirocco, Caravan, …) exceed this bar; scaffolds match it.
+ * Full Dune baseline for new themes added to THEME_DEFS.
+ * Graduated themes are hand-maintained under packages/theme-{slug}/.
  */
 
 import type { ThemeDef } from "./theme-defs.ts";
