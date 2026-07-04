@@ -1,0 +1,17 @@
+name: dune-minimal
+description: "Minimal, semantic base theme for Dune — usable standalone, designed to be inherited via `parent: dune-minimal`"
+author: "Dune Theme Library"
+version: "0.1.0"
+config_schema:
+  accent_color:
+    type: color
+    label: "Accent colour"
+    default: "#0969da"
+  default_dark:
+    type: toggle
+    label: "Default to dark mode"
+    default: false
+  footer_text:
+    type: text
+    label: "Footer text (replaces default copyright line)"
+    default: ""

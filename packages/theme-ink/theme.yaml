@@ -1,0 +1,48 @@
+name: ink
+version: 1.0.0
+description: "Long-form writing theme inspired by Ghost Attila — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-ink
+attribution: "Design inspired by Attila (MIT) — Dune-native theme, not a port"
+config_schema:
+  accent_color:
+    type: color
+    label: Accent colour
+    default: "#c0392b"
+  default_dark:
+    type: toggle
+    label: Default to dark mode
+    default: false
+  show_reading_time:
+    type: toggle
+    label: Show reading time on posts
+    default: true
+  home_subtitle:
+    type: text
+    label: Home page subtitle
+    default: ""
+  author_name:
+    type: text
+    label: Default author name
+    default: ""
+  author_bio:
+    type: textarea
+    label: Author bio (shown at end of posts)
+    default: ""
+  author_avatar:
+    type: text
+    label: Author avatar URL
+    default: ""
+  twitter_url:
+    type: text
+    label: Twitter / X profile URL
+    default: ""
+  github_url:
+    type: text
+    label: GitHub profile URL
+    default: ""
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

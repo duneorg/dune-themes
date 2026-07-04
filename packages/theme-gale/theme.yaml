@@ -1,0 +1,84 @@
+name: gale
+version: 1.0.0
+description: "Landing and blog theme inspired by AstroWind — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-gale
+attribution: "Design inspired by AstroWind (MIT) — Dune-native theme, not a port"
+config_schema:
+  accent_color:
+    type: color
+    label: Accent colour
+    default: "#6366f1"
+  default_dark:
+    type: toggle
+    label: Default to dark mode
+    default: false
+  hero_badge:
+    type: text
+    label: Hero badge text
+    default: "New"
+  hero_title:
+    type: text
+    label: Hero headline (empty = site title)
+    default: ""
+  hero_subtitle:
+    type: text
+    label: Hero subtitle
+    default: ""
+  hero_primary_label:
+    type: text
+    label: Primary CTA label
+    default: "Get started"
+  hero_primary_url:
+    type: text
+    label: Primary CTA URL
+    default: "/blog"
+  hero_secondary_label:
+    type: text
+    label: Secondary CTA label
+    default: "Learn more"
+  hero_secondary_url:
+    type: text
+    label: Secondary CTA URL
+    default: "/about"
+  header_cta_label:
+    type: text
+    label: Header CTA label
+    default: "Get started"
+  header_cta_url:
+    type: text
+    label: Header CTA URL
+    default: "/blog"
+  feature_1_title:
+    type: text
+    label: Feature 1 title
+    default: "Fast"
+  feature_1_text:
+    type: text
+    label: Feature 1 description
+    default: "Static-first pages that load instantly."
+  feature_2_title:
+    type: text
+    label: Feature 2 title
+    default: "Flexible"
+  feature_2_text:
+    type: text
+    label: Feature 2 description
+    default: "Customize colours and content from site admin."
+  feature_3_title:
+    type: text
+    label: Feature 3 title
+    default: "Responsive"
+  feature_3_text:
+    type: text
+    label: Feature 3 description
+    default: "Looks great on every screen size."
+  home_subtitle:
+    type: text
+    label: Blog section subtitle
+    default: ""
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

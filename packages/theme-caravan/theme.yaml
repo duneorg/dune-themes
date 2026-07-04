@@ -1,0 +1,17 @@
+name: caravan
+description: "Caravan — a clean documentation theme with book-style sidebar, inspired by hugo-book"
+author: "Dune Theme Library (design inspired by hugo-book by Alex Shpak)"
+version: "0.1.0"
+config_schema:
+  accent_color:
+    type: color
+    label: "Link / accent colour"
+    default: "#0055bb"
+  show_search:
+    type: toggle
+    label: "Show search box in sidebar"
+    default: true
+  footer_text:
+    type: text
+    label: "Footer text"
+    default: ""

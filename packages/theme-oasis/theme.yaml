@@ -1,0 +1,21 @@
+name: oasis
+description: "Oasis — a modern landing & academic résumé theme, inspired by Hugo Blox"
+author: "Dune Theme Library (design inspired by Hugo Blox by George Cushen)"
+version: "0.1.0"
+config_schema:
+  primary_color:
+    type: color
+    label: "Primary colour"
+    default: "#2563eb"
+  avatar_url:
+    type: text
+    label: "Avatar image URL (landing hero)"
+    default: ""
+  role:
+    type: text
+    label: "Role / job title (landing hero)"
+    default: ""
+  organization:
+    type: text
+    label: "Organisation (landing hero)"
+    default: ""

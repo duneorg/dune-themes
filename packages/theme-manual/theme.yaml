@@ -1,0 +1,24 @@
+name: manual
+version: 1.0.0
+description: "Product documentation theme inspired by Just the Docs — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-manual
+attribution: "Design inspired by Just the Docs (MIT) — Dune-native theme, not a port"
+config_schema:
+  accent_color:
+    type: color
+    label: Accent colour
+    default: "#7253ed"
+  default_dark:
+    type: toggle
+    label: Default to dark mode
+    default: false
+  site_tagline:
+    type: text
+    label: Sidebar tagline under site title
+    default: "Product documentation"
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

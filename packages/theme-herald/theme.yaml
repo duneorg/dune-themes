@@ -1,0 +1,40 @@
+name: herald
+version: 1.0.0
+description: "Publication-style blog inspired by Ghost Casper — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-herald
+attribution: "Design inspired by Casper (MIT) — Dune-native theme, not a port"
+config_schema:
+  accent_color:
+    type: color
+    label: Accent colour
+    default: "#3eb0ef"
+  default_dark:
+    type: toggle
+    label: Default to dark mode
+    default: false
+  hero_title:
+    type: text
+    label: Home hero headline (empty = site title)
+    default: ""
+  hero_subtitle:
+    type: text
+    label: Home hero subtitle
+    default: "Thoughts, stories and ideas."
+  hero_image:
+    type: text
+    label: Home hero background image URL
+    default: ""
+  default_author:
+    type: text
+    label: Default author name
+    default: ""
+  default_avatar:
+    type: text
+    label: Default author avatar URL
+    default: ""
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

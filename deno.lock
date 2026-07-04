@@ -1,0 +1,66 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@std/internal@^1.0.14": "1.0.14",
+    "jsr:@std/path@1": "1.1.5",
+    "jsr:@zip-js/zip-js@2": "2.8.26"
+  },
+  "jsr": {
+    "@std/internal@1.0.14": {
+      "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
+    },
+    "@std/path@1.1.5": {
+      "integrity": "ccea00982ea28c36becaf6e62f855406c76a8c32d462f66f415bbb7d83a271bc",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@zip-js/zip-js@2.8.26": {
+      "integrity": "2b78bfa2c5d43766c9a487fc0274981d45732de41bb5b82433d29d235be67191"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/path@1",
+      "jsr:@std/yaml@1",
+      "jsr:@zip-js/zip-js@2"
+    ],
+    "members": {
+      "packages/theme-gale": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      },
+      "packages/theme-herald": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      },
+      "packages/theme-ink": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      },
+      "packages/theme-lucid": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      },
+      "packages/theme-manual": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      },
+      "packages/theme-salon": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      },
+      "packages/theme-syntax": {
+        "dependencies": [
+          "jsr:@dune/core@0.26"
+        ]
+      }
+    }
+  }
+}

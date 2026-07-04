@@ -1,0 +1,59 @@
+name: papermod
+description: "PaperMod for Dune — faithful port of the Hugo PaperMod theme"
+author: "Dune Theme Library port; original theme MIT © 2020 nanxiaobei and adityatelange"
+version: "0.1.0"
+config_schema:
+  default_theme:
+    type: text
+    label: "Default theme (auto | light | dark)"
+    default: "auto"
+  show_reading_time:
+    type: toggle
+    label: "Show reading time"
+    default: true
+  show_word_count:
+    type: toggle
+    label: "Show word count"
+    default: false
+  show_breadcrumbs:
+    type: toggle
+    label: "Show breadcrumbs on posts"
+    default: false
+  show_toc:
+    type: toggle
+    label: "Show table of contents on posts"
+    default: false
+  toc_open:
+    type: toggle
+    label: "Table of contents open by default"
+    default: false
+  show_share_buttons:
+    type: toggle
+    label: "Show share buttons on posts"
+    default: false
+  show_code_copy_buttons:
+    type: toggle
+    label: "Show copy buttons on code blocks"
+    default: true
+  show_rss_in_section:
+    type: toggle
+    label: "Show RSS button on list pages"
+    default: false
+  home_title:
+    type: text
+    label: "Home info title"
+    default: ""
+  home_content:
+    type: text
+    label: "Home info text"
+    default: ""
+  footer_text:
+    type: text
+    label: "Footer text"
+    default: ""
+  language_labels:
+    type: select
+    label: Language switcher labels
+    options: [code, name]
+    default: code
+    help: "code shows language codes (en, de); name shows native names via Intl.DisplayNames (English, Deutsch). Locale strings keyed by language code override both."

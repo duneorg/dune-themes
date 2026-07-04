@@ -1,0 +1,47 @@
+name: blox
+title: Hugo Blox
+description: >
+  Faithful port of Hugo Blox (hugoblox.com), the Tailwind-based block
+  framework behind the Academic CV template. Block-based landing pages,
+  publication/citation views, resume timelines, dark mode, and modal search.
+version: 1.0.0
+author: Hugo Blox contributors (port by Dune)
+license: MIT
+
+config_schema:
+  - id: title
+    type: text
+    label: Site title (navbar brand)
+  - id: menu
+    type: textarea
+    label: Main menu (JSON array of {name, url})
+    placeholder: '[{"name": "Blog", "url": "/blog/"}]'
+  - id: theme_mode
+    type: select
+    label: Default theme mode
+    default: system
+    options: [system, light, dark]
+  - id: theme_toggle
+    type: checkbox
+    label: Show light/dark toggle
+    default: true
+  - id: search
+    type: checkbox
+    label: Show search (navbar button + Ctrl/Cmd+K modal)
+    default: true
+  - id: sticky_header
+    type: checkbox
+    label: Sticky navbar
+    default: true
+  - id: cta
+    type: textarea
+    label: Navbar call-to-action (JSON {text, url})
+    placeholder: '{"text": "Hire me", "url": "/contact/"}'
+  - id: language_labels
+    type: select
+    label: Language switcher labels
+    default: code
+    options: [code, name]
+  - id: footer_text
+    type: textarea
+    label: Footer text (HTML)

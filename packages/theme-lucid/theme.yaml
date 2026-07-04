@@ -1,0 +1,28 @@
+name: lucid
+version: 1.0.0
+description: "Modern docs theme inspired by Hugo Hextra — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-lucid
+attribution: "Design inspired by Hextra (MIT) — Dune-native theme, not a port"
+config_schema:
+  accent_color:
+    type: color
+    label: Accent colour
+    default: "#7c3aed"
+  default_dark:
+    type: toggle
+    label: Default to dark mode
+    default: false
+  sidebar_label:
+    type: text
+    label: Sidebar section label
+    default: "Documentation"
+  edit_url:
+    type: text
+    label: "Edit on GitHub" base URL (e.g. https://github.com/org/repo/edit/main/content)"
+    default: ""
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

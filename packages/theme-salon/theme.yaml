@@ -1,0 +1,24 @@
+name: salon
+version: 1.0.0
+description: "Magazine-style blog inspired by Ghost Liebling — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-salon
+attribution: "Design inspired by Liebling (MIT) — Dune-native theme, not a port"
+config_schema:
+  accent_color:
+    type: color
+    label: Accent colour
+    default: "#ff5722"
+  default_dark:
+    type: toggle
+    label: Default to dark mode
+    default: false
+  home_subtitle:
+    type: text
+    label: Magazine tagline
+    default: "Stories worth reading"
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

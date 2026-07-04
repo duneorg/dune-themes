@@ -1,0 +1,197 @@
+/* Caravan — a Dune docs theme in the visual language of hugo-book */
+
+:root {
+  --color-text: #101010;
+  --color-secondary: #555;
+  --color-link: #0055bb;
+  --color-visited-link: #8440f1;
+  --body-background: #fff;
+  --menu-background: #f8f9fa;
+  --border-color: #e9ecef;
+  --code-background: #f8f9fa;
+  --menu-width: 16rem;
+  --font-size: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #eaeaea;
+    --color-secondary: #a0a0a0;
+    --body-background: #1b1d1e;
+    --menu-background: #16181a;
+    --border-color: #2b2f31;
+    --code-background: #24272a;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--body-background);
+  letter-spacing: 0.2px;
+}
+
+a { color: var(--color-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+.hidden { display: none; }
+
+.book-container {
+  display: flex;
+  min-height: 100vh;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* ── Sidebar ─────────────────────────────────────────── */
+.book-menu {
+  flex: 0 0 var(--menu-width);
+  font-size: 0.875rem;
+  background: var(--menu-background);
+  border-right: 1px solid var(--border-color);
+}
+.book-menu nav {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+.book-brand { margin: 0 0 1rem; font-size: 1.1rem; }
+.book-brand a { color: var(--color-text); }
+
+.book-search { position: relative; margin-bottom: 1rem; }
+.book-search input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  background: var(--body-background);
+  color: var(--color-text);
+  font-size: 0.875rem;
+}
+.book-search input:focus { outline: 1px solid var(--color-link); }
+.book-search-results {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  margin: 2px 0 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  background: var(--body-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.book-search-results li { padding: 0; }
+.book-search-results a { display: block; padding: 0.35rem 0.75rem; color: var(--color-text); }
+.book-search-results a:hover { background: var(--menu-background); text-decoration: none; }
+.book-search-results .empty { padding: 0.35rem 0.75rem; color: var(--color-secondary); }
+
+.book-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.book-menu-list li { margin: 0.25rem 0; }
+.book-menu-list a {
+  display: block;
+  padding: 0.1rem 0;
+  color: var(--color-text);
+}
+.book-menu-list a:hover { opacity: 0.65; text-decoration: none; }
+.book-menu-list a.active { color: var(--color-link); }
+.book-menu-list a.in-section { font-weight: 500; }
+
+/* ── Page ────────────────────────────────────────────── */
+.book-page {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 1rem 3rem;
+}
+.book-header { display: none; align-items: center; gap: 0.75rem; padding: 0.5rem 0; }
+.book-header label { cursor: pointer; display: flex; }
+
+.markdown { line-height: 1.7; }
+.markdown h1, .markdown h2, .markdown h3, .markdown h4 {
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 2rem 0 1rem;
+}
+.markdown h1 { font-size: 2rem; margin-top: 1rem; }
+.markdown h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.markdown h3 { font-size: 1.2rem; }
+.markdown blockquote {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 0.25rem solid var(--border-color);
+  color: var(--color-secondary);
+}
+.markdown blockquote p { margin: 0; }
+.markdown code {
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+  background: var(--code-background);
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 0.875em;
+}
+.markdown pre {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background: var(--code-background);
+  overflow-x: auto;
+  line-height: 1.5;
+}
+.markdown pre code { padding: 0; background: none; }
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+.markdown th, .markdown td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+.markdown tr:nth-child(2n) { background: var(--menu-background); }
+.markdown hr { border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0; }
+
+/* Section child listing */
+.book-section-list { padding-left: 1.25rem; }
+.book-section-list li { margin: 0.5rem 0; }
+.book-section-list p { margin: 0.15rem 0 0; color: var(--color-secondary); font-size: 0.875rem; }
+
+.book-footer {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media (max-width: 56rem) {
+  .book-menu {
+    position: fixed;
+    z-index: 100;
+    inset: 0 auto 0 0;
+    width: var(--menu-width);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+  #menu-control:checked ~ .book-container .book-menu { transform: none; box-shadow: 0 0 20px rgba(0,0,0,0.3); }
+  .book-header { display: flex; }
+  .book-page { padding: 1rem 1.25rem; }
+}

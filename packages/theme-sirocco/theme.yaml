@@ -1,0 +1,22 @@
+name: sirocco
+parent: dune-minimal
+description: "Sirocco — a fast, clean, minimalist blog theme for Dune, inspired by Hugo PaperMod"
+author: "Dune Theme Library (design inspired by PaperMod by Aditya Telange)"
+version: "0.1.0"
+config_schema:
+  accent_color:
+    type: color
+    label: "Accent colour"
+    default: "#1e88e5"
+  default_dark:
+    type: toggle
+    label: "Default to dark mode"
+    default: false
+  show_reading_time:
+    type: toggle
+    label: "Show reading time on posts"
+    default: true
+  home_subtitle:
+    type: text
+    label: "Home page subtitle"
+    default: ""

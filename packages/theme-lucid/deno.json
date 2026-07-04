@@ -1,0 +1,24 @@
+{
+  "name": "@dune/theme-lucid",
+  "version": "1.0.0",
+  "license": "MIT",
+  "exports": "./theme.yaml",
+  "imports": {
+    "@dune/core/content/types": "jsr:@dune/core@^0.26/content/types",
+    "@dune/core/theme-helpers": "jsr:@dune/core@^0.26/theme-helpers"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "lib": [
+      "deno.window",
+      "dom"
+    ]
+  },
+  "publish": {
+    "exclude": [
+      "ATTRIBUTION.md",
+      "screenshots/"
+    ]
+  }
+}

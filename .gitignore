@@ -1,0 +1,4 @@
+.deno/
+dist/
+*.zip
+.DS_Store

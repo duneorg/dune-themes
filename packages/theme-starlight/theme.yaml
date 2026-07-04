@@ -1,0 +1,53 @@
+name: starlight
+title: Starlight for Dune
+description: >
+  Faithful port of Starlight (https://starlight.astro.build), Astro's
+  documentation theme — sidebar navigation, scroll-spy table of contents,
+  dark/light/auto theme picker, search modal and the full set of doc
+  components (asides, cards, tabs, steps, file tree). MIT © Astro
+  contributors.
+version: 0.1.0
+author: Astro contributors (upstream), ported for Dune
+
+config_schema:
+  logo:
+    type: text
+    label: Logo path
+    default: ""
+    help: Optional logo image URL shown before the site title in the header
+  sidebar_section:
+    type: text
+    label: Sidebar root section
+    default: "*"
+    help: "Route of the section rendered in the sidebar; * shows all top-level sections"
+  search:
+    type: toggle
+    label: Enable search
+    default: true
+    help: Show the search button in the header (Ctrl+K modal, backed by /api/search)
+  pagination:
+    type: toggle
+    label: Previous/next links
+    default: true
+    help: Show the previous/next page cards under the content (upstream `pagination`)
+  social:
+    type: textarea
+    label: Social links (JSON)
+    default: ""
+    help: 'JSON array like [{"icon":"github","label":"GitHub","href":"https://github.com/…"}] — icon names from Starlight''s icon set'
+  edit_link_base:
+    type: text
+    label: Edit link base URL
+    default: ""
+    help: "When set, an \"Edit page\" link points at this URL + the page's content path (upstream editLink.baseUrl)"
+  language_labels:
+    type: select
+    label: Language switcher labels
+    options: [code, name]
+    default: code
+    help: "code shows language codes (en, de); name shows native names via Intl.DisplayNames (English, Deutsch). Locale strings keyed by language code override both."
+  credits:
+    type: toggle
+    label: "\"Built with Starlight\" credit"
+    default: false
+    help: Show the upstream credits link in the page footer

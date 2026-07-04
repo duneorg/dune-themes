@@ -1,0 +1,285 @@
+/* Sirocco — a Dune blog theme in the visual language of hugo-PaperMod */
+
+:root {
+  --gap: 24px;
+  --content-gap: 20px;
+  --nav-width: 1024px;
+  --main-width: 720px;
+  --header-height: 60px;
+  --footer-height: 60px;
+  --radius: 8px;
+  --theme: #fff;
+  --entry: #f2f2f2;
+  --primary: rgba(0, 0, 0, 0.88);
+  --secondary: rgba(0, 0, 0, 0.56);
+  --tertiary: rgba(0, 0, 0, 0.16);
+  --content: rgba(0, 0, 0, 0.88);
+  --code-bg: #f5f5f5;
+  --border: #eee;
+}
+
+.dark {
+  --theme: #1d1e20;
+  --entry: #2e2e33;
+  --primary: rgba(255, 255, 255, 0.84);
+  --secondary: rgba(255, 255, 255, 0.56);
+  --tertiary: rgba(255, 255, 255, 0.18);
+  --content: rgba(255, 255, 255, 0.74);
+  --code-bg: #2e2e33;
+  --border: #333;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--theme);
+  color: var(--primary);
+  word-break: break-word;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; }
+
+/* ── Header ─────────────────────────────────────────── */
+.header { background: var(--theme); }
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: calc(var(--nav-width) + var(--gap) * 2);
+  margin: 0 auto;
+  height: var(--header-height);
+  padding: 0 var(--gap);
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo a { font-size: 24px; font-weight: 700; }
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  padding: 0;
+}
+#theme-toggle .moon { display: block; }
+#theme-toggle .sun { display: none; }
+.dark #theme-toggle .moon { display: none; }
+.dark #theme-toggle .sun { display: block; }
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+}
+.menu a { font-size: 16px; color: var(--secondary); display: block; padding: 4px 0; }
+.menu a:hover { color: var(--primary); }
+.menu a.active {
+  color: var(--primary);
+  font-weight: 500;
+  box-shadow: 0 2px 0 var(--primary);
+}
+
+/* ── Main ───────────────────────────────────────────── */
+.main {
+  position: relative;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  max-width: calc(var(--main-width) + var(--gap) * 2);
+  margin: 0 auto;
+  padding: var(--gap);
+}
+
+/* Home intro */
+.home-info { padding-top: 12px; }
+.home-info h1 { margin: 0 0 8px; font-size: 32px; }
+.home-info p { color: var(--secondary); margin: 0 0 var(--gap); }
+
+/* ── Post entries (list) ────────────────────────────── */
+.post-entries { display: flex; flex-direction: column; gap: var(--content-gap); }
+.post-entry {
+  position: relative;
+  background: var(--entry);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  transition: transform 0.1s;
+}
+.post-entry:active { transform: scale(0.96); }
+.entry-header h2 { margin: 0; font-size: 24px; line-height: 1.3; }
+.entry-content {
+  margin: 8px 0;
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.entry-content p { margin: 0; }
+.entry-footer { color: var(--secondary); font-size: 13px; }
+.entry-link { position: absolute; inset: 0; }
+
+/* ── Single post ────────────────────────────────────── */
+.post-header { margin: 24px 0; }
+.post-title { margin: 0 0 2px; font-size: 40px; line-height: 1.2; }
+.post-description { margin-top: 10px; color: var(--secondary); }
+.post-meta { margin-top: 10px; color: var(--secondary); font-size: 14px; }
+
+.post-content {
+  color: var(--content);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.post-content h1, .post-content h2, .post-content h3,
+.post-content h4, .post-content h5, .post-content h6 {
+  margin: 24px 0 16px;
+  line-height: 1.3;
+}
+.post-content h2 { font-size: 28px; }
+.post-content h3 { font-size: 24px; }
+.post-content a { color: var(--accent, #1e88e5); box-shadow: 0 1px 0; }
+.post-content a:hover { box-shadow: 0 2px 0; }
+.post-content blockquote {
+  margin: 20px 0;
+  padding: 0 14px;
+  border-left: 3px solid var(--primary);
+  color: var(--secondary);
+}
+.post-content code {
+  background: var(--code-bg);
+  border-radius: 2px;
+  padding: 3px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+}
+.post-content pre {
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+.post-content pre code { background: none; padding: 0; }
+.post-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+.post-content th, .post-content td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+.post-content hr { border: 0; border-top: 1px solid var(--border); margin: 30px 0; }
+
+/* Tags */
+.post-footer { margin-top: 40px; }
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.post-tags a {
+  display: block;
+  background: var(--entry);
+  border-radius: var(--radius);
+  padding: 3px 12px;
+  color: var(--secondary);
+  font-size: 14px;
+}
+.post-tags a:hover { color: var(--primary); }
+
+/* ── Pagination ─────────────────────────────────────── */
+.pagination { display: flex; justify-content: space-between; margin-top: var(--gap); }
+.pagination a {
+  background: var(--entry);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  color: var(--secondary);
+  font-size: 14px;
+}
+.pagination a:hover { color: var(--primary); }
+.pagination .next { margin-left: auto; }
+
+/* ── Footer & top link ──────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  max-width: calc(var(--main-width) + var(--gap) * 2);
+  margin: 0 auto;
+  padding: calc(var(--footer-height) - var(--gap)) var(--gap);
+  color: var(--secondary);
+  font-size: 12px;
+  text-align: center;
+}
+.footer a { color: inherit; box-shadow: 0 1px 0; }
+
+#top-link {
+  visibility: hidden;
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: var(--tertiary);
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .post-title { font-size: 32px; }
+  .nav { padding: 0 16px; }
+  .main { padding: 16px; }
+}
+
+/* ── Inherited templates from dune-minimal ─────────────
+   search.tsx / error.tsx / section.tsx come from the parent theme and
+   render inside Sirocco's layout — style their semantic hooks here. */
+form[role="search"] { display: flex; gap: 8px; margin: var(--gap) 0; }
+form[role="search"] input {
+  flex: 1 1 auto;
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--entry);
+  color: var(--primary);
+  font-size: 16px;
+}
+form[role="search"] input:focus { outline: 1px solid var(--tertiary); }
+form[role="search"] button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--entry);
+  color: var(--primary);
+  font-size: 15px;
+  cursor: pointer;
+}
+.search-results ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--content-gap); }
+.search-results li { background: var(--entry); border-radius: var(--radius); padding: var(--gap); }
+.search-results li a { font-size: 20px; font-weight: 600; color: var(--primary); }
+.search-results li p { margin: 6px 0 0; color: var(--secondary); font-size: 14px; }
+
+.error-page { text-align: center; padding: 60px 0; }
+.error-page h1 { font-size: 96px; margin: 0; color: var(--secondary); }
+.error-page p { color: var(--secondary); }
+
+.section-list { list-style: none; margin: var(--gap) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--content-gap); }
+.section-list li { background: var(--entry); border-radius: var(--radius); padding: var(--gap); }
+.section-list li a { font-size: 20px; font-weight: 600; color: var(--primary); }
+.section-list li p { margin: 6px 0 0; color: var(--secondary); font-size: 14px; }

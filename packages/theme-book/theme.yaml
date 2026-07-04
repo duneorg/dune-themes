@@ -1,0 +1,47 @@
+name: book
+title: Book for Dune
+description: >
+  Faithful port of hugo-book (https://github.com/alex-shpak/hugo-book) —
+  a clean documentation theme with sidebar filetree menu, table of contents
+  and live search. MIT © Alex Shpak.
+version: 0.1.0
+author: Alex Shpak (upstream), ported for Dune
+
+config_schema:
+  book_theme:
+    type: select
+    label: Color theme
+    options: [auto, light, dark]
+    default: auto
+    help: "Upstream BookTheme param: light, dark or auto (follows OS preference)"
+  book_search:
+    type: toggle
+    label: Enable search
+    default: true
+    help: Show the live search box at the top of the sidebar menu
+  book_toc:
+    type: toggle
+    label: Table of contents
+    default: true
+    help: "Show the right-hand ToC (per-page override: bookToC frontmatter)"
+  book_logo:
+    type: text
+    label: Logo path
+    default: ""
+    help: "Optional logo image URL shown next to the site title (upstream BookLogo)"
+  book_section:
+    type: text
+    label: Menu root section
+    default: "docs"
+    help: "Route of the section rendered as the sidebar filetree (upstream BookSection); use * for all top-level sections"
+  language_labels:
+    type: select
+    label: Language switcher labels
+    options: [code, name]
+    default: code
+    help: "code shows language codes (en, de); name shows native names via Intl.DisplayNames (English, Deutsch). Locale strings keyed by language code override both."
+  copyright:
+    type: text
+    label: Copyright line
+    default: ""
+    help: Shown centred under the page footer when set

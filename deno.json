@@ -1,0 +1,17 @@
+{
+  "workspace": ["./packages/theme-*"],
+  "tasks": {
+    "scaffold": "deno run -A scripts/scaffold-themes.ts",
+    "pack": "deno run -A scripts/pack-theme.ts",
+    "pack:all": "deno run -A scripts/pack-theme.ts --all",
+    "check": "deno check scripts/*.ts packages/theme-*/templates/*.tsx packages/theme-*/components/*.tsx"
+  },
+  "imports": {
+    "@std/path": "jsr:@std/path@^1",
+    "@std/yaml": "jsr:@std/yaml@^1",
+    "@zip-js/zip-js": "jsr:@zip-js/zip-js@^2"
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}

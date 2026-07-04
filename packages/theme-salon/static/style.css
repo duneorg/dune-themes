@@ -1,0 +1,208 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff;
+  --bg-alt: #fafafa;
+  --text: #151515;
+  --muted: #757575;
+  --accent: #ff5722;
+  --border: #eeeeee;
+  --font: 'Helvetica Neue', Arial, sans-serif;
+  --radius: 8px;
+  --header-h: 56px;
+}
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+.site-header {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 0 1.5rem; min-height: var(--header-h);
+  border-bottom: 1px solid var(--border);
+  background: var(--header-bg, var(--bg));
+  position: sticky; top: 0; z-index: 40;
+}
+.site-logo { font-weight: 700; color: var(--text); text-decoration: none; font-size: 1.1rem; }
+.site-logo:hover { text-decoration: none; color: var(--accent); }
+.site-nav { display: flex; gap: 1rem; margin-left: auto; flex-wrap: wrap; }
+.site-nav a { color: var(--muted); font-size: 0.9rem; text-decoration: none; }
+.site-nav a:hover, .site-nav a.active { color: var(--accent); }
+.site-footer {
+  padding: 2rem 1.5rem; text-align: center;
+  color: var(--muted); font-size: 0.85rem;
+  border-top: 1px solid var(--border); margin-top: 3rem;
+}
+.prose { max-width: var(--max-width, 720px); margin: 0 auto; padding: 2rem 1.25rem; }
+.prose h1 { font-size: 2rem; margin: 0 0 1rem; line-height: 1.2; }
+.prose h2 { font-size: 1.4rem; margin: 2rem 0 0.75rem; }
+.prose h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+.prose p, .prose ul, .prose ol { margin-bottom: 1rem; }
+.prose pre { background: var(--bg-alt); padding: 1rem; overflow-x: auto; border-radius: var(--radius); font-family: var(--font-mono, monospace); font-size: 0.875rem; }
+.prose code { font-family: var(--font-mono, monospace); font-size: 0.9em; background: var(--bg-alt); padding: 0.1em 0.35em; border-radius: 4px; }
+.prose blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--muted); margin: 1rem 0; }
+.post-meta { color: var(--muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
+.post-cover { width: 100%; max-height: 420px; object-fit: cover; border-radius: var(--radius); margin-bottom: 1.5rem; }
+.error-page { text-align: center; padding: 4rem 1.5rem; }
+.error-page h1 { font-size: 4rem; color: var(--accent); }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; padding: 2rem 1.25rem; max-width: 1100px; margin: 0 auto; }
+.post-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: box-shadow 0.2s; }
+.post-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.post-card img { width: 100%; height: 180px; object-fit: cover; }
+.post-card-body { padding: 1.25rem; }
+.post-card h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.post-card p { color: var(--muted); font-size: 0.875rem; }
+
+html.dark {
+  --bg: var(--bg-dark, #0f1117);
+  --bg-alt: var(--bg-alt-dark, #1a1d27);
+  --text: var(--text-dark, #e6edf3);
+  --muted: var(--muted-dark, #8b949e);
+  --border: var(--border-dark, #30363d);
+  --header-bg: var(--header-bg-dark, var(--bg-alt-dark, #1a1d27));
+  --sidebar-bg: var(--sidebar-bg-dark, var(--bg-alt-dark, #1a1d27));
+}
+.theme-toggle {
+  background: none; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.35rem 0.5rem; cursor: pointer; color: var(--muted); margin-left: 0.5rem;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.nav-toggle {
+  display: none; background: none; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.35rem 0.6rem; cursor: pointer; color: var(--text); margin-left: auto;
+}
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .site-nav { display: none; width: 100%; flex-direction: column; gap: 0.25rem; padding: 0.75rem 0; }
+  .site-nav.is-open { display: flex; }
+  .site-header { flex-wrap: wrap; }
+}
+.search-results ol { list-style: none; padding: 0; }
+.search-results li { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.search-results li p { color: var(--muted); font-size: 0.875rem; margin-top: 0.25rem; }
+.search-form { display: flex; gap: 0.5rem; margin: 1rem 0 1.5rem; flex-wrap: wrap; }
+.search-form input[type="search"] {
+  flex: 1; min-width: 200px; padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--text);
+}
+.search-form button {
+  padding: 0.5rem 1rem; border: none; border-radius: var(--radius);
+  background: var(--accent); color: #fff; cursor: pointer; font-weight: 600;
+}
+.entry-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 1.5rem; }
+.entry h2 { font-size: 1.25rem; margin-bottom: 0.35rem; }
+.entry h2 a { color: var(--text); text-decoration: none; }
+.entry h2 a:hover { color: var(--accent); }
+.pagination { display: flex; gap: 1rem; margin-top: 2rem; font-size: 0.9rem; }
+.pagination a { color: var(--accent); }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+html.dark {
+  --bg-dark: #121212;
+  --bg-alt-dark: #1c1c1c;
+  --text-dark: #f5f5f5;
+  --muted-dark: #a3a3a3;
+  --border-dark: #2e2e2e;
+}
+
+body { font-family: 'Source Sans 3', system-ui, sans-serif; }
+.site-header.salon-header {
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--bg);
+}
+.salon-header-inner {
+  display: flex; align-items: center; gap: 1rem; max-width: 1140px; margin: 0 auto; width: 100%;
+}
+.site-logo.salon-logo {
+  font-family: 'Playfair Display', Georgia, serif; font-weight: 800; font-size: 1.5rem;
+}
+.site-nav.salon-nav { margin-left: auto; }
+.site-nav.salon-nav a { font-weight: 600; font-size: 0.9rem; text-transform: capitalize; }
+
+.salon-masthead {
+  text-align: center; padding: 2.5rem 1.5rem 1.5rem; max-width: 720px; margin: 0 auto;
+}
+.salon-masthead h1 {
+  font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800; margin-bottom: 0.5rem;
+}
+.salon-masthead p { color: var(--muted); font-size: 1.05rem; }
+
+.salon-featured {
+  max-width: 1140px; margin: 0 auto 2.5rem; padding: 0 1.5rem;
+}
+.salon-featured-link {
+  display: block; position: relative; border-radius: 12px; overflow: hidden;
+  color: #fff; text-decoration: none !important; min-height: 420px;
+}
+.salon-featured-link img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.salon-featured-link::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 55%, transparent 100%);
+}
+.salon-featured-body {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 2rem; z-index: 1;
+}
+.salon-featured-body .tag { display: inline-block; margin-bottom: 0.75rem; }
+.salon-featured-body h2 {
+  font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800; line-height: 1.15; margin-bottom: 0.75rem;
+}
+.salon-featured-body p { opacity: 0.9; max-width: 640px; line-height: 1.6; }
+.salon-featured-meta { font-size: 0.85rem; opacity: 0.85; margin-top: 0.75rem; }
+
+.salon-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem; max-width: 1140px; margin: 0 auto; padding: 0 1.5rem 3rem;
+}
+.salon-card {
+  border-radius: 12px; overflow: hidden; background: var(--bg);
+  border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s;
+}
+.salon-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.salon-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.salon-card-body { padding: 1.25rem; }
+.salon-card h3 {
+  font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; font-weight: 700;
+  line-height: 1.3; margin-bottom: 0.5rem;
+}
+.salon-card h3 a { color: var(--text); text-decoration: none; }
+.salon-card h3 a:hover { color: var(--accent); }
+.salon-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.75rem; }
+.salon-card-meta { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+
+.tag {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.2rem 0.65rem; border-radius: 999px; font-size: 0.7rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none;
+}
+.salon-card .tag { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+
+.salon-post-header {
+  max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 0; text-align: center;
+}
+.salon-post-header h1 {
+  font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800; line-height: 1.15; margin: 0.75rem 0 1rem;
+}
+.salon-post-meta { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+.salon-post-cover {
+  max-width: 960px; margin: 2rem auto; padding: 0 1.5rem;
+}
+.salon-post-cover img { width: 100%; border-radius: 12px; max-height: 480px; object-fit: cover; }
+.salon-post-content {
+  max-width: 680px; margin: 0 auto; padding: 0 1.5rem 3rem;
+  font-size: 1.0625rem; line-height: 1.75;
+}
+.salon-post-content h2 { font-family: 'Playfair Display', Georgia, serif; margin: 2rem 0 0.75rem; }
+.salon-post-tags { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+
+.site-footer.salon-footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; }
