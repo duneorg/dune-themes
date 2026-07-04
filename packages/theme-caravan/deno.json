@@ -1,5 +1,5 @@
 {
-  "name": "@dune/theme-lucid",
+  "name": "@dune/theme-caravan",
   "version": "1.0.0",
   "license": "MIT",
   "exports": "./mod.ts",

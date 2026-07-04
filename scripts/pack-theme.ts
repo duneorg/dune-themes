@@ -35,7 +35,7 @@ async function collectFiles(dir: string, base = dir): Promise<{ path: string; by
       out.push(...await collectFiles(abs, base));
     } else if (entry.isFile) {
       const rel = relative(base, abs);
-      if (rel === "deno.json") continue; // not needed in ZIP extract target
+      if (rel === "deno.json" || rel === "mod.ts") continue; // JSR-only; not needed in ZIP extract target
       out.push({ path: rel, bytes: await Deno.readFile(abs) });
     }
   }

@@ -1,5 +1,5 @@
 {
-  "name": "@dune/theme-lucid",
+  "name": "@dune/theme-oasis",
   "version": "1.0.0",
   "license": "MIT",
   "exports": "./mod.ts",

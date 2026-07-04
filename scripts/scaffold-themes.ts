@@ -242,26 +242,7 @@ attribution: "Design inspired by ${def.upstream} (${def.upstreamLicense}) — Du
 ${configSchemaYaml(def)}`;
 }
 
-function denoJson(def: ThemeDef): string {
-  return JSON.stringify({
-    name: `@dune/theme-${def.slug}`,
-    version: "1.0.0",
-    license: "MIT",
-    exports: "./theme.yaml",
-    imports: {
-      "@dune/core/content/types": "jsr:@dune/core@^0.26/content/types",
-      "@dune/core/theme-helpers": "jsr:@dune/core@^0.26/theme-helpers",
-    },
-    compilerOptions: {
-      jsx: "react-jsx",
-      jsxImportSource: "preact",
-      lib: ["deno.window", "dom"],
-    },
-    publish: {
-      exclude: ["screenshots/"],
-    },
-  }, null, 2) + "\n";
-}
+import { THEME_PACKAGE_MOD_TS, themeDenoJson } from "./theme-package.ts";
 
 async function writeTheme(def: ThemeDef): Promise<void> {
   const dir = join(ROOT, "packages", `theme-${def.slug}`);
@@ -271,7 +252,8 @@ async function writeTheme(def: ThemeDef): Promise<void> {
   await Deno.mkdir(join(dir, "locales"), { recursive: true });
 
   await Deno.writeTextFile(join(dir, "theme.yaml"), themeYaml(def));
-  await Deno.writeTextFile(join(dir, "deno.json"), denoJson(def));
+  await Deno.writeTextFile(join(dir, "mod.ts"), THEME_PACKAGE_MOD_TS);
+  await Deno.writeTextFile(join(dir, "deno.json"), themeDenoJson({ slug: def.slug }));
   await Deno.writeTextFile(join(dir, "components", "layout.tsx"), layoutTsx(def));
   await Deno.writeTextFile(join(dir, "templates", "default.tsx"), defaultTemplate());
   await Deno.writeTextFile(join(dir, "templates", "post.tsx"), postTemplate());

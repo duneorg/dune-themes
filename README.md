@@ -53,8 +53,17 @@ dune theme:install ./packages/theme-caravan --name caravan --activate
 ## Development
 
 ```bash
-deno task scaffold   # refresh registry.json; regenerates packages in THEME_DEFS only
-deno task pack:all   # ZIPs every catalog theme with a package on disk
+deno task scaffold        # refresh registry.json; regenerates packages in THEME_DEFS only
+deno task sync:manifests  # write mod.ts + deno.json to every catalog package
+deno task pack:all        # ZIPs every catalog theme with a package on disk
+deno task dry-run:all     # JSR publish dry-run for every catalog package
 ```
+
+### Smoke test (before tagging a release)
+
+1. **Pack** — `deno task pack:all` and confirm ZIPs under `dist/`.
+2. **JSR** — `deno task dry-run:all` (or `deno publish --dry-run` inside one package).
+3. **Install ZIP** — extract a ZIP into a test site's `themes/{slug}/`, set `theme.name` in `site.yaml`, run `dune validate` and `dune dev`.
+4. **Install JSR** — `dune theme:install jsr:@dune/theme-{slug}@1.0.0`, `dune lockfile:sync`, restart dev server.
 
 All inspired themes are edited directly under `packages/theme-{slug}/`. **Sirocco** is the reference for inheriting from `@dune/theme-dune-minimal` via `parent: dune-minimal` in `theme.yaml`. To scaffold a new theme, add a definition to `scripts/theme-defs.ts` and run `deno task scaffold`.

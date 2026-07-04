@@ -2,10 +2,14 @@
   "name": "@dune/theme-ink",
   "version": "1.0.0",
   "license": "MIT",
-  "exports": "./theme.yaml",
+  "exports": "./mod.ts",
   "imports": {
     "@dune/core/content/types": "jsr:@dune/core@^0.26/content/types",
-    "@dune/core/theme-helpers": "jsr:@dune/core@^0.26/theme-helpers"
+    "@dune/core/theme-helpers": "jsr:@dune/core@^0.26/theme-helpers",
+    "preact": "npm:preact@^10",
+    "preact/hooks": "npm:preact@^10/hooks",
+    "preact/jsx-runtime": "npm:preact@^10/jsx-runtime",
+    "preact/jsx-dev-runtime": "npm:preact@^10/jsx-dev-runtime"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
