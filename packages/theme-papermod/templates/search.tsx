@@ -9,11 +9,16 @@ import StaticLayout from "../components/layout.tsx";
 import { SearchIcon } from "../components/icons.tsx";
 
 export default function SearchTemplate(props: any) {
-  const { page, children, Layout, searchQuery, searchResults, t } = props;
+  const { page, children, Layout, searchQuery, searchResults, t, site } = props;
   const LayoutComponent = Layout ?? StaticLayout;
   const tr = t ?? ((k: string) => k);
   const fm = page?.frontmatter ?? {};
   const title = fm.title ?? tr("search.title");
+  // Multisite path_prefix routing: root-relative hrefs rendered server-side
+  // get basePath injected by Dune's response middleware, but this template's
+  // own inline live-search JS builds hrefs/fetch URLs client-side after that
+  // middleware has already run — bake basePath in here too.
+  const basePath = site?.basePath ?? "";
 
   return (
     <LayoutComponent {...props} bodyClass="list">
@@ -47,6 +52,7 @@ export default function SearchTemplate(props: any) {
       </div>
       <script dangerouslySetInnerHTML={{ __html: `
     (function () {
+        const BASE = ${JSON.stringify(basePath)};
         const resList = document.getElementById('searchResults');
         const sInput = document.getElementById('searchInput');
         let first, last, current = null;
@@ -67,13 +73,13 @@ export default function SearchTemplate(props: any) {
             const query = this.value.trim();
             if (!query) { resList.innerHTML = ''; return; }
             timer = setTimeout(() => {
-                fetch('/api/search?q=' + encodeURIComponent(query) + '&limit=10')
+                fetch(BASE + '/api/search?q=' + encodeURIComponent(query) + '&limit=10')
                     .then(res => res.json())
                     .then(data => {
                         const hits = data.items || [];
                         let resultSet = '';
                         for (const item of hits) {
-                            resultSet += \`<li class="post-entry"><header class="entry-header">\${esc(item.title)}&nbsp;»</header><a href="\${item.route}" aria-label="\${esc(item.title)}"></a></li>\`;
+                            resultSet += \`<li class="post-entry"><header class="entry-header">\${esc(item.title)}&nbsp;»</header><a href="\${BASE + item.route}" aria-label="\${esc(item.title)}"></a></li>\`;
                         }
                         resList.innerHTML = resultSet;
                         first = resList.firstChild;
