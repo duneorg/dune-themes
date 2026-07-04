@@ -17,3 +17,5 @@ jobs:
       - run: deno task sync:manifests
       - run: deno task dry-run:all
       - run: deno task pack:all
+      - run: deno task demo:link --all
+      - run: deno task demo:validate --all

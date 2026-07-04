@@ -1,11 +1,15 @@
 {
-  "workspace": ["./packages/theme-*"],
+  "workspace": ["./packages/theme-*", "./demos/*"],
   "tasks": {
     "scaffold": "deno run -A scripts/scaffold-themes.ts",
     "sync:manifests": "deno run -A scripts/sync-package-manifests.ts",
     "pack": "deno run -A scripts/pack-theme.ts",
     "pack:all": "deno run -A scripts/pack-theme.ts --all",
     "dry-run:all": "deno run -A scripts/dry-run-publish.ts --all",
+    "demo": "deno run -A scripts/demo.ts",
+    "demo:link": "deno run -A scripts/link-demo.ts",
+    "demo:validate": "deno run -A scripts/demo-validate.ts",
+    "screenshot": "deno run -A scripts/capture-screenshot.ts",
     "check": "deno check scripts/*.ts packages/theme-*/templates/*.tsx packages/theme-*/components/*.tsx"
   },
   "imports": {

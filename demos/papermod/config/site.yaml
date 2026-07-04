@@ -1,0 +1,7 @@
+title: PaperMod Demo
+description: Live demo of PaperMod for Dune — faithful Hugo PaperMod port
+url: https://papermod-demo.getdune.org
+theme:
+  name: papermod
+taxonomies:
+  - tag

@@ -57,6 +57,8 @@ deno task scaffold        # refresh registry.json; regenerates packages in THEME
 deno task sync:manifests  # write mod.ts + deno.json to every catalog package
 deno task pack:all        # ZIPs every catalog theme with a package on disk
 deno task dry-run:all     # JSR publish dry-run for every catalog package
+deno task demo papermod   # local demo server (http://localhost:8765)
+deno task demo:validate --all
 ```
 
 ### Smoke test (before tagging a release)

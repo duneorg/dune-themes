@@ -6,15 +6,53 @@ on:
       - "*-v*"
 
 jobs:
-  pack:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write  # JSR OIDC
     steps:
       - uses: actions/checkout@v4
+
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - run: deno task scaffold   # regenerates scaffold-managed themes + registry.json only
-      - run: deno task pack:all  # packs every catalog theme with a package on disk
+
+      - name: Parse release tag
+        id: tag
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [[ ! "$TAG" =~ ^(.+)-v([0-9]+\.[0-9]+\.[0-9]+([-+][^ ]+)?)$ ]]; then
+            echo "Tag must match {slug}-v{semver}, got: $TAG"
+            exit 1
+          fi
+          echo "slug=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
+          echo "version=${BASH_REMATCH[2]}" >> "$GITHUB_OUTPUT"
+
+      - run: deno task sync:manifests
+
+      - name: Validate demo (if present)
+        run: deno task demo:validate ${{ steps.tag.outputs.slug }}
+
+      - run: deno task pack ${{ steps.tag.outputs.slug }}
+
+      - name: Update registry sha256
+        run: deno run -A scripts/update-registry-sha256.ts ${{ steps.tag.outputs.slug }}
+
+      - name: Publish to JSR
+        working-directory: packages/theme-${{ steps.tag.outputs.slug }}
+        run: deno publish
+
       - uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.zip
+          tag_name: ${{ github.ref_name }}
+          name: ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}
+          files: dist/${{ steps.tag.outputs.slug }}-${{ steps.tag.outputs.version }}.zip
+
+      - name: Commit registry sha256
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add registry.json
+          git diff --staged --quiet || git commit -m "Update registry sha256 for ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}"
+          git push || true
