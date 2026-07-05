@@ -8,7 +8,7 @@ import { CATALOG } from "./catalog.ts";
 export const ROOT = new URL("..", import.meta.url).pathname;
 
 /** Slugs with a demo site under demos/{slug}/ */
-export const DEMO_SLUGS = ["papermod"] as const;
+export const DEMO_SLUGS = ["papermod", "striped"] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
 

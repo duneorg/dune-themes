@@ -8,13 +8,15 @@ export type ThemeArchetype =
   | "landing"
   | "portfolio";
 
-export type ThemeTier = "inspired" | "faithful";
+export type ThemeTier = "inspired" | "faithful" | "html5up";
 
 export interface ThemeDef {
   slug: string;
   /** Marketplace / UI display name */
   name: string;
   tier: ThemeTier;
+  /** Theme family — drives scaffold behaviour (e.g. HTML5 UP attribution). */
+  family?: "html5up";
   description: string;
   /** Upstream project this theme references (inspired-by or port source) */
   upstream: string;

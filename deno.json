@@ -2,6 +2,7 @@
   "workspace": ["./packages/theme-*", "./demos/*"],
   "tasks": {
     "scaffold": "deno run -A scripts/scaffold-themes.ts",
+    "scaffold:html5up": "deno run -A scripts/scaffold-html5up-themes.ts",
     "sync:manifests": "deno run -A scripts/sync-package-manifests.ts",
     "pack": "deno run -A scripts/pack-theme.ts",
     "pack:all": "deno run -A scripts/pack-theme.ts --all",

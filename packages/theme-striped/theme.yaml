@@ -1,0 +1,20 @@
+name: striped
+version: 1.0.0
+description: "Striped — responsive sidebar blog theme adapted from HTML5 UP for Dune."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-striped
+attribution: "HTML5 UP Striped (CC BY 3.0) — https://html5up.net/striped"
+config_schema:
+  show_html5up_credit:
+    type: toggle
+    label: Show HTML5 UP design credit in sidebar
+    default: true
+  sidebar_tagline:
+    type: text
+    label: Sidebar tagline under site title
+    default: "A Dune site"
+  footer_text:
+    type: text
+    label: Copyright name (empty = site title)
+    default: ""

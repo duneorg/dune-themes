@@ -2,10 +2,11 @@
 
 Official theme packages for [Dune CMS](https://getdune.org).
 
-We ship two tiers:
+We ship three tiers:
 
 - **Inspired** — Dune-native themes (`sirocco`, `caravan`, …) — *inspired by* upstream work, not ports
 - **Faithful** — `{Upstream} for Dune` (`papermod`, `book`, `starlight`, `blox`)
+- **HTML5 UP** — all [HTML5 UP](https://html5up.net) free templates (CC BY 3.0), adapted for Dune (`striped`, … — 44 total)
 
 All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field is the logical slug used in site config and static URLs.
 
@@ -36,6 +37,17 @@ All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field
 | `@dune/theme-book` | Hugo Book for Dune | Sidebar docs | hugo-book |
 | `@dune/theme-starlight` | Starlight for Dune | Modern docs | Astro Starlight |
 | `@dune/theme-blox` | Hugo Blox for Dune | Academic / portfolio | Hugo Blox |
+
+### HTML5 UP themes (CC BY 3.0)
+
+All 44 free [HTML5 UP](https://html5up.net) templates — `deno task scaffold:html5up` bootstraps skeleton packages; each is graduated to 1.0.0 individually.
+
+| Package | Name | Status |
+|---------|------|--------|
+| `@dune/theme-striped` | Striped | **1.0.0** — pilot (sidebar blog) |
+| `@dune/theme-*` | *(43 others)* | scaffold skeleton — not yet 1.0 |
+
+Run `deno task scaffold:html5up` to generate or refresh skeleton packages for non-graduated HTML5 UP themes.
 
 ### Base theme
 

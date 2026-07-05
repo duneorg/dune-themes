@@ -1,0 +1,37 @@
+@import url("./html5up/main.css");
+@import url("./html5up/fontawesome-all.min.css");
+
+/* Dune content hooks — minimal overrides; upstream CSS does the heavy lifting. */
+#content .inner .prose-search h1 {
+  margin-bottom: 1rem;
+}
+
+#content .inner .search-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#content .inner .search-form input[type="search"] {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+}
+
+#content .inner .search-results ol {
+  list-style: none;
+  padding: 0;
+}
+
+#content .inner .search-results li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#content .inner .error-page {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+#content .inner .error-page h1 {
+  font-size: 4rem;
+}

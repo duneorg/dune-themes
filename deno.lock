@@ -1553,6 +1553,43 @@
           "npm:preact@10"
         ]
       },
+      "demos/striped": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-aerial": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-alpha": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-arcana": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-astral": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-big-picture": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-blox": {
         "dependencies": [
           "jsr:@dune/core@0.26",
@@ -1571,7 +1608,49 @@
           "npm:preact@10"
         ]
       },
+      "packages/theme-dimension": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-directive": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-dopetrope": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-dune-minimal": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-editorial": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-escape-velocity": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-ethereal": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-eventually": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact@10"
@@ -1583,7 +1662,37 @@
           "npm:preact@10"
         ]
       },
+      "packages/theme-forty": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-fractal": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-future-imperfect": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-gale": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-halcyonic": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-helios": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact@10"
@@ -1595,7 +1704,31 @@
           "npm:preact@10"
         ]
       },
+      "packages/theme-highlights": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-hyperspace": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-ink": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-landed": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-lens": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact@10"
@@ -1608,6 +1741,30 @@
         ]
       },
       "packages/theme-manual": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-massively": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-minimaxing": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-miniport": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-multiverse": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact@10"
@@ -1631,6 +1788,42 @@
           "npm:preact@10"
         ]
       },
+      "packages/theme-paradigm-shift": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-parallelism": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-phantom": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-photon": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-prologue": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-read-only": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-salon": {
         "dependencies": [
           "jsr:@dune/core@0.26",
@@ -1643,13 +1836,91 @@
           "npm:preact@10"
         ]
       },
+      "packages/theme-solid-state": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-spectral": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-starlight": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact@10"
         ]
       },
+      "packages/theme-stellar": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-story": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-strata": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-striped": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-strongly-typed": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
       "packages/theme-syntax": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-telephasic": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-tessellate": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-twenty": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-txt": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-verti": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact@10"
+        ]
+      },
+      "packages/theme-zerofour": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact@10"

@@ -1,0 +1,7 @@
+title: Striped Demo
+description: Live demo of Striped for Dune — HTML5 UP sidebar blog theme
+url: https://themes.getdune.org/striped
+theme:
+  name: striped
+taxonomies:
+  - tag
