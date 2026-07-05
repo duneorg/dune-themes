@@ -1,6 +1,7 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatMassivelyDate } from "../utils/content.ts";
 
 export default function ArchivesTemplate(props: TemplateProps & {
   children?: unknown;
@@ -10,6 +11,7 @@ export default function ArchivesTemplate(props: TemplateProps & {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, collection } = props;
   const items = collection?.items ?? [];
+
   const byYear = new Map<number, typeof items>();
   for (const post of items) {
     const raw = post.frontmatter.date;
@@ -21,23 +23,28 @@ export default function ArchivesTemplate(props: TemplateProps & {
   const years = [...byYear.keys()].sort((a, b) => b - a);
 
   return (
-    <LayoutComponent {...props}>
-      <article class="post">
-        <header><h2>{page.frontmatter.title}</h2></header>
+    <LayoutComponent {...props} hideIntro>
+      <section class="post">
+        <header class="major">
+          <h1>{page.frontmatter.title}</h1>
+        </header>
         {children}
         {years.map((year) => (
           <section key={year}>
-            <h3>{year}</h3>
-            <ul>
+            <h2>{year}</h2>
+            <ul class="alt">
               {byYear.get(year)!.map((post) => (
                 <li key={post.route}>
                   <a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a>
+                  {post.frontmatter.date && (
+                    <span> — {formatMassivelyDate(String(post.frontmatter.date))}</span>
+                  )}
                 </li>
               ))}
             </ul>
           </section>
         ))}
-      </article>
+      </section>
     </LayoutComponent>
   );
 }

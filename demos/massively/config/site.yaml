@@ -1,0 +1,7 @@
+title: Massively Demo
+description: Live demo of Massively for Dune — HTML5 UP hero blog theme
+url: https://themes.getdune.org/massively
+theme:
+  name: massively
+taxonomies:
+  - tag
