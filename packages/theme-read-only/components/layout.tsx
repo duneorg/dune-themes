@@ -1,15 +1,21 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "read-only";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +25,17 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const navItems = (nav ?? []).slice(0, 8);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const tagline = (themeConfig?.sidebar_tagline as string) || site?.description || "";
+  const avatarUrl = (themeConfig?.avatar_url as string) ||
+    `/themes/${themeName}/static/html5up/images/avatar.jpg`;
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -40,30 +49,69 @@ export default function Layout({
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
       <body class="is-preload">
-        <div id="wrapper">
-          <header id="header">
-            <h1><a href="/">{site?.title ?? "Read Only"}</a></h1>
-            <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
-            </nav>
+        <section id="header">
+          <header>
+            <span class="image avatar">
+              <img src={avatarUrl} alt="" />
+            </span>
+            <h1 id="logo">
+              <a href="/">{site?.title ?? "Read Only"}</a>
+            </h1>
+            {tagline && <p>{tagline}</p>}
           </header>
-          <div id="main">{children}</div>
+          <nav id="nav">
+            <ul>
+              {navItems.map((item) => (
+                <li key={item.route}>
+                  <a href={item.route} class={isActive(item.route) ? "active" : undefined}>
+                    {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           {showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Read Only"}.</li>
-            <li>Design: <a href="https://html5up.net/read-only">Read Only by HTML5 UP</a></li>
-          </ul>
-        )}
+            <footer>
+              <p class="copyright">
+                &copy; {new Date().getFullYear()} {copyrightName}. Design:{" "}
+                <a href="https://html5up.net/read-only">HTML5 UP</a>
+              </p>
+            </footer>
+          )}
+        </section>
+
+        <div id="wrapper">
+          <div id="main">{children}</div>
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <div id="titleBar">
+          <a href="#header" class="toggle" aria-label="Toggle sidebar"></a>
+          <span class="title">{site?.title ?? "Read Only"}</span>
+        </div>
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            window.addEventListener('load',function(){
+              setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+            });
+            var toggle=document.querySelector('#titleBar .toggle');
+            if(toggle){
+              toggle.addEventListener('click',function(e){
+                e.preventDefault();
+                document.body.classList.toggle('header-visible');
+              });
+            }
+            document.addEventListener('click',function(e){
+              if(!document.body.classList.contains('header-visible'))return;
+              var header=document.getElementById('header');
+              var titleBar=document.getElementById('titleBar');
+              if(header&&titleBar&&!header.contains(e.target)&&!titleBar.contains(e.target)){
+                document.body.classList.remove('header-visible');
+              }
+            });
+          })();
+        ` }} />
       </body>
     </html>
   );
+}

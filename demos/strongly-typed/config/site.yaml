@@ -1,0 +1,7 @@
+title: Strongly Typed Demo
+description: Live demo of Strongly Typed for Dune — HTML5 UP typography blog theme
+url: https://themes.getdune.org/strongly-typed
+theme:
+  name: strongly-typed
+taxonomies:
+  - tag

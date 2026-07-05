@@ -1,28 +1,28 @@
 name: strongly-typed
 version: 1.0.0
-description: "Strongly Typed — responsive site theme adapted from HTML5 UP for Dune. Typography blog."
+description: "Strongly Typed — typography blog theme adapted from HTML5 UP for Dune."
 author: Dune Themes
 license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-strongly-typed
-attribution: "HTML5 UP Strongly Typed by HTML5 UP (CC BY 3.0) — https://html5up.net/license"
+attribution: "HTML5 UP Strongly Typed (CC BY 3.0) — https://html5up.net/strongly-typed"
 config_schema:
-  accent_color:
-    type: color
-    label: Accent colour
-    default: "#e89980"
-  default_dark:
-    type: toggle
-    label: Default to dark mode
-    default: false
-  footer_text:
+  header_tagline:
     type: text
-    label: Footer text (leave empty for default)
+    label: Header tagline (empty = site description)
+    default: ""
+  show_banner:
+    type: toggle
+    label: Show banner strip on home page
+    default: true
+  banner_text:
+    type: text
+    label: Home banner text
     default: ""
   show_html5up_credit:
     type: toggle
-    label: Show HTML5 UP design credit in footer
+    label: Show HTML5 UP design credit
     default: true
-  home_subtitle:
+  footer_text:
     type: text
-    label: Home page subtitle
+    label: Copyright name (empty = site title)
     default: ""

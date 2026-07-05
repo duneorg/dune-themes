@@ -1,0 +1,7 @@
+title: Read Only Demo
+description: Live demo of Read Only for Dune — HTML5 UP profile sidebar blog theme
+url: https://themes.getdune.org/read-only
+theme:
+  name: read-only
+taxonomies:
+  - tag

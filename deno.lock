@@ -1602,7 +1602,21 @@
           "npm:preact@10"
         ]
       },
+      "demos/read-only": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/striped": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/strongly-typed": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",

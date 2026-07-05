@@ -18,6 +18,8 @@ export const DEMO_SLUGS = [
   "dopetrope",
   "phantom",
   "hyperspace",
+  "read-only",
+  "strongly-typed",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
