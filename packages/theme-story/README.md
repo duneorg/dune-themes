@@ -2,9 +2,9 @@
 
 Dune theme adapted from [HTML5 UP Story](https://html5up.net/story) by [HTML5 UP](https://html5up.net).
 
-**License:** Design by [HTML5 UP](https://html5up.net) — [HTML5 UP Story](https://html5up.net/story) (CC BY 3.0). Sites using this theme must keep visible design credit per the [Creative Commons Attribution 3.0 License](https://html5up.net/license).
+**License:** Design by HTML5 UP (CC BY 3.0). Keep visible design credit on live sites.
 
-**Templates:** see `templates/` — layout preserves HTML5 UP markup classes where possible so upstream CSS applies.
+**Templates:** `default` · `post` · `blog` · `search` · `error` · `archives` — divided scroll narrative homepage with banner, spotlight, and gallery sections; banner + wrapper inner pages.
 
 ```bash
 dune theme:install jsr:@dune/theme-story@1.0.0 --activate
@@ -19,8 +19,3 @@ dune theme:install jsr:@dune/theme-story@1.0.0 --activate
 
 Themes we implement from Pixelarity are **bespoke client projects only** (agency-licensed;
 not part of the public Dune theme catalog). [Contact us →](https://getdune.org/services)
-
-## Attribution on live sites
-
-Include a visible link to HTML5 UP in your site footer (the theme footer includes this by default).
-Do not remove upstream design credit unless you hold a separate [Pixelarity](https://pixelarity.com) license.

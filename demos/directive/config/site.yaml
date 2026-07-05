@@ -1,0 +1,7 @@
+title: Directive Demo
+description: Live demo of Directive for Dune — HTML5 UP landing theme
+url: https://themes.getdune.org/directive
+theme:
+  name: directive
+taxonomies:
+  - tag

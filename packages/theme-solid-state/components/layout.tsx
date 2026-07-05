@@ -1,15 +1,40 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
+  landing?: boolean;
 }
 
+const MENU_SCRIPT = `
+window.addEventListener('load',function(){
+  setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+});
+document.querySelectorAll('a[href="#menu"]').forEach(function(a){
+  a.addEventListener('click',function(e){ e.preventDefault(); document.body.classList.add('is-menu-visible'); });
+});
+document.querySelectorAll('#menu .close').forEach(function(a){
+  a.addEventListener('click',function(e){ e.preventDefault(); document.body.classList.remove('is-menu-visible'); });
+});
+document.querySelector('#page-wrapper')?.addEventListener('click',function(e){
+  if(document.body.classList.contains('is-menu-visible')&&!e.target.closest('#menu')&&!e.target.closest('a[href="#menu"]')){
+    document.body.classList.remove('is-menu-visible');
+  }
+});
+`;
+
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
+  landing,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "solid-state";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +44,16 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const navItems = (nav ?? []).slice(0, 8);
+  const isHome = currentPath === "/";
+  const isLanding = landing ?? isHome;
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -38,32 +65,49 @@ export default function Layout({
         {siteUrl && <meta property="og:url" content={canonicalUrl} />}
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
+        <noscript>
+          <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
+        </noscript>
       </head>
       <body class="is-preload">
-        <div id="wrapper">
-          <header id="header">
+        <div id="page-wrapper">
+          <header id="header" class={isLanding ? "alt" : undefined}>
             <h1><a href="/">{site?.title ?? "Solid State"}</a></h1>
-            <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
-            </nav>
+            <nav><a href="#menu">Menu</a></nav>
           </header>
-          <div id="main">{children}</div>
-          {showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Solid State"}.</li>
-            <li>Design: <a href="https://html5up.net/solid-state">Solid State by HTML5 UP</a></li>
-          </ul>
-        )}
+
+          <nav id="menu">
+            <div class="inner">
+              <h2>Menu</h2>
+              <ul class="links">
+                {navItems.map((item) => (
+                  <li key={item.route}>
+                    <a href={item.route} class={isActive(item.route) ? "active" : undefined}>
+                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a href="#" class="close">Close</a>
+            </div>
+          </nav>
+
+          {children}
+
+          {showCredit && !isLanding && (
+            <section id="footer">
+              <div class="inner">
+                <ul class="copyright">
+                  <li>&copy; {new Date().getFullYear()} {copyrightName}. All rights reserved.</li>
+                  <li>Design: <a href="https://html5up.net/solid-state">HTML5 UP</a></li>
+                </ul>
+              </div>
+            </section>
+          )}
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <script dangerouslySetInnerHTML={{ __html: MENU_SCRIPT }} />
       </body>
     </html>
   );
+}

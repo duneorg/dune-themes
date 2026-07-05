@@ -1,28 +1,24 @@
 name: twenty
 version: 1.0.0
-description: "Twenty — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing."
+description: "Twenty — multipurpose landing theme adapted from HTML5 UP for Dune."
 author: Dune Themes
 license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-twenty
-attribution: "HTML5 UP Twenty by HTML5 UP (CC BY 3.0) — https://html5up.net/license"
+attribution: "HTML5 UP Twenty (CC BY 3.0) — https://html5up.net/twenty"
 config_schema:
-  accent_color:
-    type: color
-    label: Accent colour
-    default: "#e89980"
-  default_dark:
-    type: toggle
-    label: Default to dark mode
-    default: false
-  footer_text:
+  banner_title:
     type: text
-    label: Footer text (leave empty for default)
+    label: Banner headline (empty = site title uppercase)
     default: ""
+  tagline:
+    type: text
+    label: Logo tagline after site title
+    default: "by HTML5 UP"
   show_html5up_credit:
     type: toggle
-    label: Show HTML5 UP design credit in footer
+    label: Show HTML5 UP design credit
     default: true
-  home_subtitle:
+  footer_text:
     type: text
-    label: Home page subtitle
+    label: Copyright name (empty = site title)
     default: ""

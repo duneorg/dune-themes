@@ -1,15 +1,23 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
+  landing?: boolean;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
+  landing,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "minimaxing";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +27,19 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const navItems = (nav ?? []).slice(0, 8);
+  const isHome = currentPath === "/";
+  const isLanding = landing ?? isHome;
+  const bannerTitle = (themeConfig?.banner_title as string) || "Put something cool here!";
+  const bannerSubtitle = (themeConfig?.tagline as string) || site?.description ||
+    "And put something almost as cool here, but a bit longer …";
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -39,31 +52,60 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body class="is-preload">
-        <div id="wrapper">
-          <header id="header">
-            <h1><a href="/">{site?.title ?? "Minimaxing"}</a></h1>
-            <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
-            </nav>
-          </header>
-          <div id="main">{children}</div>
+      <body>
+        <div id="page-wrapper">
+          <div id="header-wrapper">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <header id="header">
+                    <h1><a href="/" id="logo">{site?.title ?? "Minimaxing"}</a></h1>
+                    <nav id="nav">
+                      {navItems.map((item) => (
+                        <a
+                          key={item.route}
+                          href={item.route}
+                          class={isActive(item.route) ? "current-page-item" : undefined}
+                        >
+                          {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                        </a>
+                      ))}
+                    </nav>
+                  </header>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {isLanding && (
+            <div id="banner-wrapper">
+              <div class="container">
+                <div id="banner">
+                  <h2>{bannerTitle}</h2>
+                  <span>{bannerSubtitle}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {children}
+
           {showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Minimaxing"}.</li>
-            <li>Design: <a href="https://html5up.net/minimaxing">Minimaxing by HTML5 UP</a></li>
-          </ul>
-        )}
+            <div id="footer-wrapper">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <div id="copyright">
+                      &copy; {new Date().getFullYear()} {copyrightName}. All rights reserved. |
+                      Design: <a href="https://html5up.net/minimaxing">HTML5 UP</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
       </body>
     </html>
   );
+}

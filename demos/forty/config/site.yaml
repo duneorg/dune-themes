@@ -1,0 +1,7 @@
+title: Forty Demo
+description: Live demo of Forty for Dune — HTML5 UP landing theme
+url: https://themes.getdune.org/forty
+theme:
+  name: forty
+taxonomies:
+  - tag

@@ -1,10 +1,7 @@
 @import url("./html5up/css/main.css");
 @import url("./html5up/css/fontawesome-all.min.css");
 
-/* Dune content hooks */
-.search-form { display: flex; gap: 0.5rem; margin: 1rem 0 1.5rem; flex-wrap: wrap; }
-.search-form input[type="search"], .search-form input.text { flex: 1; min-width: 200px; }
-.search-results ol { list-style: none; padding: 0; }
-.search-results li { padding: 0.75rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
-.error-page { text-align: center; padding: 2rem 0; }
+.search-form input[type="search"] { width: 100%; max-width: 24rem; margin-bottom: 0.5rem; }
+.search-results ul.style2 { list-style: none; padding: 0; }
+.search-results li { padding: 0.5rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
 .pagination { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 2rem; }

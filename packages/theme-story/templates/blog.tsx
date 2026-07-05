@@ -1,42 +1,70 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatStoryDate, postExcerpt, themeImage } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
+  pathname?: string;
+  config?: { theme?: { name?: string } };
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  themeConfig?: Record<string, unknown>;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination } = props;
+  const { page, children, collection, pagination, pathname, config, themeConfig } = props;
+  const isHome = (pathname ?? page?.route ?? "/") === "/";
   const items = collection?.items ?? [];
+  const themeName = config?.theme?.name ?? "story";
+  const img = (file: string) => themeImage(themeName, file);
+  const showCredit = themeConfig?.show_html5up_credit !== false;
+
+  if (isHome) {
+    return <LayoutComponent {...props} landing />;
+  }
 
   return (
-    <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{page.frontmatter.title}</h1>
-        {children}
-        <div class="entry-list">
-          {items.map((post) => (
-            <article class="entry" key={post.route}>
-              <h2><a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a></h2>
-              {post.frontmatter.date && (
-                <div class="post-meta"><time>{String(post.frontmatter.date)}</time></div>
-              )}
-              {post.frontmatter.metadata?.description && (
-                <p>{String((post.frontmatter.metadata as Record<string, unknown>).description)}</p>
-              )}
-            </article>
-          ))}
+    <LayoutComponent {...props} landing={false}>
+      <section class="banner style1 orient-left content-align-left image-position-right">
+        <div class="content">
+          <h1>{page.frontmatter.title ?? "Blog"}</h1>
         </div>
-        {(pagination?.newer || pagination?.older) && (
-          <nav class="pagination" aria-label="Pagination">
-            {pagination.newer && <a href={pagination.newer}>← Newer</a>}
-            {pagination.older && <a href={pagination.older}>Older →</a>}
-          </nav>
-        )}
-      </article>
+        <div class="image"><img src={img("spotlight01.jpg")} alt="" /></div>
+      </section>
+      <section class="wrapper style1 align-center">
+        <div class="inner">
+          {children}
+          <div class="items style1 medium">
+            {items.map((post) => {
+              const fm = post.frontmatter;
+              const date = fm.date ? String(fm.date) : "";
+              const excerpt = postExcerpt(fm);
+              return (
+                <section key={post.route}>
+                  <h3><a href={post.route}>{String(fm.title ?? post.route)}</a></h3>
+                  {date && <p><time datetime={date}>{formatStoryDate(date)}</time></p>}
+                  {excerpt && <p>{excerpt}</p>}
+                  <ul class="actions"><li><a href={post.route} class="button">Learn More</a></li></ul>
+                </section>
+              );
+            })}
+          </div>
+          {(pagination?.newer || pagination?.older) && (
+            <ul class="actions stacked">
+              {pagination.older && <li><a href={pagination.older} class="button">← Older</a></li>}
+              {pagination.newer && <li><a href={pagination.newer} class="button">Newer →</a></li>}
+            </ul>
+          )}
+        </div>
+      </section>
+      {showCredit && (
+        <footer class="wrapper style1 align-center">
+          <div class="inner">
+            <p>Design: <a href="https://html5up.net/story">HTML5 UP</a></p>
+          </div>
+        </footer>
+      )}
     </LayoutComponent>
   );
 }

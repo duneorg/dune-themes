@@ -1,0 +1,7 @@
+title: Helios Demo
+description: Live demo of Helios for Dune — HTML5 UP landing theme
+url: https://themes.getdune.org/helios
+theme:
+  name: helios
+taxonomies:
+  - tag

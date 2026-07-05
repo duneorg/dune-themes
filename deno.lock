@@ -1574,7 +1574,21 @@
           "npm:preact@10"
         ]
       },
+      "demos/big-picture": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/dimension": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/directive": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",
@@ -1602,7 +1616,21 @@
           "npm:preact@10"
         ]
       },
+      "demos/ethereal": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/eventually": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/forty": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",
@@ -1630,7 +1658,28 @@
           "npm:preact@10"
         ]
       },
+      "demos/helios": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/highlights": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/hyperspace": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/landed": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",
@@ -1651,6 +1700,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/minimaxing": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/miniport": {
         "dependencies": [
           "jsr:@dune/core@0.26",
@@ -1658,7 +1714,21 @@
           "npm:preact@10"
         ]
       },
+      "demos/multiverse": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/papermod": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/paradigm-shift": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",
@@ -1686,7 +1756,42 @@
           "npm:preact@10"
         ]
       },
+      "demos/prologue": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/read-only": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/solid-state": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/spectral": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/stellar": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/story": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",
@@ -1714,7 +1819,49 @@
           "npm:preact@10"
         ]
       },
+      "demos/telephasic": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/telephasic%208806%20Telephasic": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/tessellate": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/twenty": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/txt": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/verti": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/verti%208809%20Verti": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",

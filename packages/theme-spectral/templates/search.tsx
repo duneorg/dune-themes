@@ -10,29 +10,38 @@ export default function SearchTemplate(props: TemplateProps & {
   t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { searchQuery, searchResults, t } = props;
+  const { page, searchQuery, searchResults, t } = props;
   const tr = t ?? ((k: string) => k);
   const action = getSearchUrl("").split("?")[0];
 
   return (
-    <LayoutComponent {...props}>
-      <article class="post prose-search">
-        <header><h2>{tr("search.title")}</h2></header>
-        <form class="search-form" action={action} method="get" role="search">
-          <input type="search" name="q" class="text" value={searchQuery ?? ""} placeholder={tr("search.placeholder")} />
-          <button type="submit" class="button">{tr("search.submit")}</button>
-        </form>
-        {searchQuery && (
-          <section class="search-results" aria-live="polite">
-            {(searchResults ?? []).length === 0 ? <p>{tr("search.empty")}</p> : (
-              <ol>
-                {searchResults!.map((r) => (
-                  <li key={r.route}><a href={r.route}>{r.title}</a>{r.excerpt && <p>{r.excerpt}</p>}</li>
-                ))}
-              </ol>
+    <LayoutComponent {...props} landing={false}>
+      <article id="main">
+        <header><h2>{page.frontmatter.title ?? tr("search.title")}</h2></header>
+        <section class="wrapper style5">
+          <div class="inner">
+            <form class="search-form" action={action} method="get" role="search">
+              <input type="search" name="q" value={searchQuery ?? ""} placeholder={tr("search.placeholder")} />
+              <ul class="actions"><li><input type="submit" class="button primary" value={tr("search.submit")} /></li></ul>
+            </form>
+            {searchQuery && (
+              <section class="search-results" aria-live="polite">
+                {(searchResults ?? []).length === 0
+                  ? <p>{tr("search.empty")}</p>
+                  : (
+                    <ul>
+                      {searchResults!.map((r) => (
+                        <li key={r.route}>
+                          <a href={r.route}>{r.title}</a>
+                          {r.excerpt && <p>{r.excerpt}</p>}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+              </section>
             )}
-          </section>
-        )}
+          </div>
+        </section>
       </article>
     </LayoutComponent>
   );

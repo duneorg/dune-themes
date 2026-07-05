@@ -1,0 +1,7 @@
+title: Tessellate Demo
+description: Tessellate landing theme adapted from HTML5 UP for Dune
+url: https://themes.getdune.org/tessellate
+theme:
+  name: tessellate
+taxonomies:
+  - tag

@@ -1,0 +1,7 @@
+title: Landed Demo
+description: Landing theme adapted from HTML5 UP for Dune
+url: https://themes.getdune.org/landed
+theme:
+  name: landed
+taxonomies:
+  - tag

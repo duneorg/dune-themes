@@ -1,15 +1,23 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
+  landing?: boolean;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
+  landing,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "multiverse";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +27,19 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const navItems = (nav ?? []).slice(0, 8);
+  const isHome = currentPath === "/";
+  const isLanding = landing ?? isHome;
+  const siteTitle = site?.title ?? "Multiverse";
+  const blogRoute = nav?.find((item) => item.route !== "/" && item.route.endsWith("/blog"))?.route ??
+    nav?.find((item) => item.route.includes("blog"))?.route ?? "/blog";
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -38,32 +51,52 @@ export default function Layout({
         {siteUrl && <meta property="og:url" content={canonicalUrl} />}
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
+        <noscript>
+          <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
+        </noscript>
       </head>
       <body class="is-preload">
         <div id="wrapper">
           <header id="header">
-            <h1><a href="/">{site?.title ?? "Multiverse"}</a></h1>
+            <h1><a href="/"><strong>{siteTitle}</strong> for Dune</a></h1>
             <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
+              <ul>
+                {navItems.map((item) => (
+                  <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
+                    <a href={item.route}>
+                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    </a>
+                  </li>
+                ))}
+                {!navItems.some((i) => i.route === blogRoute) && (
+                  <li><a href={blogRoute} class="icon solid fa-info-circle">Blog</a></li>
+                )}
+              </ul>
             </nav>
           </header>
-          <div id="main">{children}</div>
-          {showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Multiverse"}.</li>
-            <li>Design: <a href="https://html5up.net/multiverse">Multiverse by HTML5 UP</a></li>
-          </ul>
-        )}
+
+          {isLanding ? children : (
+            <div id="main" class="dune-inner">
+              <article class="thumb">{children}</article>
+            </div>
+          )}
+
+          {showCredit && !isLanding && (
+            <footer id="footer" class="panel dune-footer-compact">
+              <p class="copyright">
+                &copy; {new Date().getFullYear()} {copyrightName}. Design:{" "}
+                <a href="https://html5up.net/multiverse">HTML5 UP</a>
+              </p>
+            </footer>
+          )}
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('load',function(){
+            setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+          });
+        ` }} />
       </body>
     </html>
   );
+}

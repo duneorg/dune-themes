@@ -15,25 +15,38 @@ export default function SearchTemplate(props: TemplateProps & {
   const action = getSearchUrl("").split("?")[0];
 
   return (
-    <LayoutComponent {...props}>
-      <article class="post prose-search">
-        <header><h2>{tr("search.title")}</h2></header>
-        <form class="search-form" action={action} method="get" role="search">
-          <input type="search" name="q" class="text" value={searchQuery ?? ""} placeholder={tr("search.placeholder")} />
-          <button type="submit" class="button">{tr("search.submit")}</button>
-        </form>
-        {searchQuery && (
-          <section class="search-results" aria-live="polite">
-            {(searchResults ?? []).length === 0 ? <p>{tr("search.empty")}</p> : (
-              <ol>
+    <LayoutComponent {...props} landing={false}>
+      <header class="major">
+        <h2>{tr("search.title")}</h2>
+      </header>
+      <form action={action} method="get" role="search" class="search-form">
+        <input
+          type="search"
+          name="q"
+          value={searchQuery ?? ""}
+          placeholder={tr("search.placeholder")}
+          aria-label={tr("search.placeholder")}
+        />
+        <ul class="actions">
+          <li><input type="submit" value={tr("search.submit")} class="primary" /></li>
+        </ul>
+      </form>
+      {searchQuery && (
+        <section class="search-results" aria-live="polite">
+          {(searchResults ?? []).length === 0
+            ? <p>{tr("search.empty")}</p>
+            : (
+              <ul class="alt">
                 {searchResults!.map((r) => (
-                  <li key={r.route}><a href={r.route}>{r.title}</a>{r.excerpt && <p>{r.excerpt}</p>}</li>
+                  <li key={r.route}>
+                    <a href={r.route}>{r.title}</a>
+                    {r.excerpt && <p>{r.excerpt}</p>}
+                  </li>
                 ))}
-              </ol>
+              </ul>
             )}
-          </section>
-        )}
-      </article>
+        </section>
+      )}
     </LayoutComponent>
   );
 }

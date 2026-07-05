@@ -1,42 +1,69 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatFortyDate, postExcerpt } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
+  pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination } = props;
+  const { page, children, collection, pagination, pathname } = props;
+  const isHome = (pathname ?? page?.route ?? "/") === "/";
   const items = collection?.items ?? [];
 
+  if (isHome) {
+    return <LayoutComponent {...props} landing />;
+  }
+
   return (
-    <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{page.frontmatter.title}</h1>
-        {children}
-        <div class="entry-list">
-          {items.map((post) => (
-            <article class="entry" key={post.route}>
-              <h2><a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a></h2>
-              {post.frontmatter.date && (
-                <div class="post-meta"><time>{String(post.frontmatter.date)}</time></div>
+    <LayoutComponent {...props} landing={false}>
+      <section id="one">
+        <div class="inner">
+          <header class="major">
+            <h1>{page.frontmatter.title ?? "Blog"}</h1>
+          </header>
+          {children}
+          <div class="post-list">
+            {items.map((post) => {
+              const fm = post.frontmatter;
+              const date = fm.date ? String(fm.date) : "";
+              const excerpt = postExcerpt(fm);
+              const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+              return (
+                <article key={post.route}>
+                  {cover && (
+                    <a href={post.route} class="image">
+                      <img src={cover} alt="" />
+                    </a>
+                  )}
+                  <header class="major">
+                    <h3><a href={post.route}>{String(fm.title ?? post.route)}</a></h3>
+                    {date && <p><time datetime={date}>{formatFortyDate(date)}</time></p>}
+                  </header>
+                  {excerpt && <p>{excerpt}</p>}
+                  <ul class="actions">
+                    <li><a href={post.route} class="button">Read More</a></li>
+                  </ul>
+                </article>
+              );
+            })}
+          </div>
+          {(pagination?.newer || pagination?.older) && (
+            <ul class="actions pagination">
+              {pagination.older && (
+                <li><a href={pagination.older} class="button">← Older</a></li>
               )}
-              {post.frontmatter.metadata?.description && (
-                <p>{String((post.frontmatter.metadata as Record<string, unknown>).description)}</p>
+              {pagination.newer && (
+                <li><a href={pagination.newer} class="button">Newer →</a></li>
               )}
-            </article>
-          ))}
+            </ul>
+          )}
         </div>
-        {(pagination?.newer || pagination?.older) && (
-          <nav class="pagination" aria-label="Pagination">
-            {pagination.newer && <a href={pagination.newer}>← Newer</a>}
-            {pagination.older && <a href={pagination.older}>Older →</a>}
-          </nav>
-        )}
-      </article>
+      </section>
     </LayoutComponent>
   );
 }

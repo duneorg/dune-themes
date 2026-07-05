@@ -40,7 +40,7 @@ All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field
 
 ### HTML5 UP themes (CC BY 3.0)
 
-All 44 free [HTML5 UP](https://html5up.net) templates — vendored CSS + Dune layouts via `deno task graduate:html5up`.
+All 44 free [HTML5 UP](https://html5up.net) templates — hand-polished with upstream-faithful layouts and vendored CSS. `deno task graduate:html5up` still vendors assets for new work but skips hand-maintained slugs.
 
 | Status | Notes |
 |--------|-------|
@@ -69,10 +69,28 @@ All 44 free [HTML5 UP](https://html5up.net) templates — vendored CSS + Dune la
 | **Escape Velocity** | Hand-polished marketing site landing |
 | **Eventually** | Hand-polished coming-soon landing |
 | **ZeroFour** | Hand-polished minimal page shell |
-| **Other 19** | Graduated via layout-family pipeline + upstream assets |
+| **Big Picture** | Hand-polished scroll-driven gallery landing |
+| **Directive** | Hand-polished simple landing |
+| **Ethereal** | Hand-polished panel grid landing |
+| **Forty** | Hand-polished tile multipurpose landing |
+| **Helios** | Hand-polished carousel landing |
+| **Highlights** | Hand-polished photo scroll landing |
+| **Landed** | Hand-polished product landing |
+| **Minimaxing** | Hand-polished compact landing |
+| **Multiverse** | Hand-polished thumb gallery landing |
+| **Paradigm Shift** | Hand-polished split scroll landing |
+| **Prologue** | Hand-polished sidebar intro landing |
+| **Solid State** | Hand-polished business landing |
+| **Spectral** | Hand-polished event landing |
+| **Stellar** | Hand-polished multipurpose landing |
+| **Story** | Hand-polished scroll narrative landing |
+| **Telephasic** | Hand-polished business site landing |
+| **Tessellate** | Hand-polished grid landing |
+| **Twenty** | Hand-polished multipurpose landing |
+| **Verti** | Hand-polished business landing |
 
 ```bash
-deno task graduate:html5up           # vendor assets + write layouts (skips striped)
+deno task graduate:html5up           # vendor assets (skips hand-maintained slugs)
 deno task graduate:html5up alpha     # single theme
 ```
 

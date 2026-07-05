@@ -1,0 +1,7 @@
+title: Verti Demo
+description: Verti landing theme adapted from HTML5 UP for Dune
+url: https://themes.getdune.org/verti
+theme:
+  name: verti
+taxonomies:
+  - tag

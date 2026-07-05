@@ -1,6 +1,8 @@
 @import url("./html5up/css/main.css");
 @import url("./html5up/css/fontawesome-all.min.css");
 
+/* Prologue has no noscript.css in upstream */
+
 /* Dune content hooks */
 .search-form { display: flex; gap: 0.5rem; margin: 1rem 0 1.5rem; flex-wrap: wrap; }
 .search-form input[type="search"], .search-form input.text { flex: 1; min-width: 200px; }
