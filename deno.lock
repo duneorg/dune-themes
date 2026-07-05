@@ -1553,6 +1553,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/dopetrope": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/editorial": {
         "dependencies": [
           "jsr:@dune/core@0.26",
@@ -1567,6 +1574,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/hyperspace": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/massively": {
         "dependencies": [
           "jsr:@dune/core@0.26",
@@ -1575,6 +1589,13 @@
         ]
       },
       "demos/papermod": {
+        "dependencies": [
+          "jsr:@dune/core@0.26",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/phantom": {
         "dependencies": [
           "jsr:@dune/core@0.26",
           "npm:preact-render-to-string@6",

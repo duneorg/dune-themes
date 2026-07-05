@@ -1,15 +1,21 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "hyperspace";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +25,19 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const navItems = (nav ?? []).slice(0, 8);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const isHome = currentPath === "/";
+  const showIntro = isHome && themeConfig?.show_intro !== false;
+  const introTitle = (themeConfig?.intro_title as string) || site?.title || "Hyperspace";
+  const introSubtitle = (themeConfig?.intro_subtitle as string) || site?.description ||
+    "A responsive site template for Dune CMS";
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -38,41 +49,74 @@ export default function Layout({
         {siteUrl && <meta property="og:url" content={canonicalUrl} />}
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
+        <noscript>
+          <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
+        </noscript>
       </head>
       <body class="is-preload">
         <section id="sidebar">
           <div class="inner">
             <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
+              <ul>
+                {navItems.map((item) => (
+                  <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
+                    <a href={item.route}>
+                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </div>
         </section>
+
         <div id="wrapper">
-          <section id="intro" class="wrapper style1 fullscreen fade-up">
-            <div class="inner">
-              <h1>{site?.title ?? "Hyperspace"}</h1>
-              <p>{site?.description ?? "Built with Dune CMS"}</p>
-            </div>
+          {showIntro && (
+            <section id="intro" class="wrapper style1 fullscreen fade-up">
+              <div class="inner">
+                <h1>{introTitle}</h1>
+                <p>{introSubtitle}</p>
+                <ul class="actions">
+                  <li><a href="#content" class="button scrolly">Learn more</a></li>
+                </ul>
+              </div>
+            </section>
+          )}
+
+          <section id="content" class="wrapper style3 fade-up">
+            <div class="inner">{children}</div>
           </section>
-          <div class="inner">{children}</div>
-          <footer id="footer" class="wrapper style1">
-            <div class="inner">{showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Hyperspace"}.</li>
-            <li>Design: <a href="https://html5up.net/hyperspace">Hyperspace by HTML5 UP</a></li>
-          </ul>
-        )}</div>
-          </footer>
+
+          {showCredit && (
+            <footer id="footer" class="wrapper style1-alt">
+              <div class="inner">
+                <ul class="menu">
+                  <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+                  <li>Design: <a href="https://html5up.net/hyperspace">HTML5 UP</a></li>
+                </ul>
+              </div>
+            </footer>
+          )}
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            window.addEventListener('load',function(){
+              setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+            });
+            document.querySelectorAll('a.scrolly[href^="#"]').forEach(function(a){
+              a.addEventListener('click',function(e){
+                var id=a.getAttribute('href');
+                if(!id||id==='#')return;
+                var el=document.querySelector(id);
+                if(!el)return;
+                e.preventDefault();
+                el.scrollIntoView({behavior:'smooth'});
+              });
+            });
+          })();
+        ` }} />
       </body>
     </html>
   );
+}

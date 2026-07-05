@@ -1,0 +1,7 @@
+title: Phantom Demo
+description: Live demo of Phantom for Dune — HTML5 UP tile grid blog theme
+url: https://themes.getdune.org/phantom
+theme:
+  name: phantom
+taxonomies:
+  - tag

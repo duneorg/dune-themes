@@ -1,0 +1,7 @@
+title: Dopetrope Demo
+description: Live demo of Dopetrope for Dune — HTML5 UP magazine blog theme
+url: https://themes.getdune.org/dopetrope
+theme:
+  name: dopetrope
+taxonomies:
+  - tag

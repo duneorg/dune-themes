@@ -110,6 +110,9 @@ export const HAND_MAINTAINED_HTML5UP_SLUGS = new Set<string>([
   "editorial",
   "future-imperfect",
   "dimension",
+  "dopetrope",
+  "phantom",
+  "hyperspace",
 ]);
 
 /** All HTML5 UP slugs — scaffold must not overwrite graduated packages. */

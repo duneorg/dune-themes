@@ -15,6 +15,9 @@ export const DEMO_SLUGS = [
   "editorial",
   "future-imperfect",
   "dimension",
+  "dopetrope",
+  "phantom",
+  "hyperspace",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];

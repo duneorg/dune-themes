@@ -1,7 +1,7 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
-
+import { postExcerpt, tileStyleClass } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
@@ -14,42 +14,42 @@ export default function BlogTemplate(props: TemplateProps & {
   const items = collection?.items ?? [];
 
   return (
-    <LayoutComponent
-      {...props}
-      recentPosts={items.slice(0, 5).map((post) => ({
-        route: post.route,
-        title: String(post.frontmatter.title ?? post.route),
-      }))}
-    >
-      {page.frontmatter.title && <header><h2>{page.frontmatter.title}</h2></header>}
+    <LayoutComponent {...props}>
+      {page.frontmatter.title && <h1>{page.frontmatter.title}</h1>}
       {children}
-      <section class="posts">
-        {items.map((post) => {
+      <section class="tiles">
+        {items.map((post, index) => {
           const fm = post.frontmatter;
-          const date = fm.date ? String(fm.date) : "";
           const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-          const excerpt = (fm.metadata as Record<string, unknown> | undefined)?.description;
+          const excerpt = postExcerpt(fm);
           return (
-            <article key={post.route} class="post">
-              <header>
-                
-                <h2><a href={post.route}>{String(fm.title ?? post.route)}</a></h2>
-                {excerpt && <p>{String(excerpt)}</p>}
-              </header>
+            <article class={tileStyleClass(index)} key={post.route}>
               {cover && (
-                <a href={post.route} class="image featured">
+                <span class="image">
                   <img src={cover} alt="" />
-                </a>
+                </span>
               )}
+              <a href={post.route}>
+                <h2>{String(fm.title ?? post.route)}</h2>
+                {excerpt && (
+                  <div class="content">
+                    <p>{excerpt}</p>
+                  </div>
+                )}
+              </a>
             </article>
           );
         })}
       </section>
       {(pagination?.newer || pagination?.older) && (
-        <div class="pagination">
-          {pagination.older && <a href={pagination.older} class="button">← Older</a>}
-          {pagination.newer && <a href={pagination.newer} class="button">Newer →</a>}
-        </div>
+        <ul class="actions">
+          {pagination.older && (
+            <li><a href={pagination.older} class="button">← Older</a></li>
+          )}
+          {pagination.newer && (
+            <li><a href={pagination.newer} class="button">Newer →</a></li>
+          )}
+        </ul>
       )}
     </LayoutComponent>
   );
