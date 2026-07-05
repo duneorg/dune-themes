@@ -20,6 +20,14 @@ export const DEMO_SLUGS = [
   "hyperspace",
   "read-only",
   "strongly-typed",
+  "strata",
+  "photon",
+  "txt",
+  "parallelism",
+  "astral",
+  "fractal",
+  "lens",
+  "miniport",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];

@@ -2,16 +2,27 @@
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 
-export default function ErrorTemplate(props: TemplateProps & { Layout?: typeof StaticLayout; t?: (key: string) => string }) {
+export default function ErrorTemplate(props: TemplateProps & {
+  Layout?: typeof StaticLayout;
+  t?: (key: string) => string;
+}) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const tr = props.t ?? ((k: string) => k);
   const code = (props.page?.frontmatter as Record<string, unknown>)?.errorCode ?? 404;
+
   return (
     <LayoutComponent {...props}>
-      <article class="post error-page">
-        <header><h2>{String(code)}</h2><p>{tr("error.notfound")}</p></header>
-        <p><a href="/">{tr("error.home")}</a></p>
-      </article>
+      <div class="items">
+        <div class="item intro span-2">
+          <h1>{String(code)}</h1>
+          <p>{tr("error.notfound")}</p>
+        </div>
+        <article class="item prose span-1">
+          <ul class="actions">
+            <li><a href="/" class="button">{tr("error.home")}</a></li>
+          </ul>
+        </article>
+      </div>
     </LayoutComponent>
   );
 }

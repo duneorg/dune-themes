@@ -54,7 +54,15 @@ All 44 free [HTML5 UP](https://html5up.net) templates — vendored CSS + Dune la
 | **Hyperspace** | Hand-polished sidebar landing |
 | **Read Only** | Hand-polished profile sidebar blog |
 | **Strongly Typed** | Hand-polished typography blog |
-| **Other 33** | Graduated via layout-family pipeline + upstream assets |
+| **Astral** | Hand-polished icon-nav portfolio panels |
+| **Fractal** | Hand-polished spotlight portfolio |
+| **Lens** | Hand-polished fullscreen gallery portfolio |
+| **Miniport** | Hand-polished compact portfolio |
+| **Parallelism** | Hand-polished masonry portfolio grid |
+| **Photon** | Hand-polished hero portfolio |
+| **Strata** | Hand-polished avatar portfolio |
+| **TXT** | Hand-polished page-wrapper portfolio |
+| **Other 26** | Graduated via layout-family pipeline + upstream assets |
 
 ```bash
 deno task graduate:html5up           # vendor assets + write layouts (skips striped)

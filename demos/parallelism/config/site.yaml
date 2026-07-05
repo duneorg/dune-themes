@@ -1,0 +1,7 @@
+title: Parallelism Demo
+description: Live demo of Parallelism for Dune — HTML5 UP horizontal masonry portfolio theme
+url: https://themes.getdune.org/parallelism
+theme:
+  name: parallelism
+taxonomies:
+  - tag

@@ -1,0 +1,7 @@
+title: Strata Demo
+description: Live demo of Strata for Dune — HTML5 UP portfolio theme
+url: https://themes.getdune.org/strata
+theme:
+  name: strata
+taxonomies:
+  - tag

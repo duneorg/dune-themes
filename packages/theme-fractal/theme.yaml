@@ -1,28 +1,28 @@
 name: fractal
 version: 1.0.0
-description: "Fractal — responsive site theme adapted from HTML5 UP for Dune. Portfolio showcase."
+description: "Fractal — phone hero portfolio theme adapted from HTML5 UP for Dune."
 author: Dune Themes
 license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-fractal
-attribution: "HTML5 UP Fractal by HTML5 UP (CC BY 3.0) — https://html5up.net/license"
+attribution: "HTML5 UP Fractal (CC BY 3.0) — https://html5up.net/fractal"
 config_schema:
-  accent_color:
-    type: color
-    label: Accent colour
-    default: "#e89980"
-  default_dark:
-    type: toggle
-    label: Default to dark mode
-    default: false
-  footer_text:
+  header_title:
     type: text
-    label: Footer text (leave empty for default)
+    label: Header title (empty = site title)
+    default: ""
+  header_subtitle:
+    type: text
+    label: Header subtitle (empty = site description)
+    default: ""
+  phone_image:
+    type: text
+    label: Phone mockup image URL (empty = theme default)
     default: ""
   show_html5up_credit:
     type: toggle
-    label: Show HTML5 UP design credit in footer
+    label: Show HTML5 UP design credit
     default: true
-  home_subtitle:
+  footer_text:
     type: text
-    label: Home page subtitle
+    label: Copyright name (empty = site title)
     default: ""

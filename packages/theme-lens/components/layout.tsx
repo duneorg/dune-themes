@@ -1,15 +1,22 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
+import { navIconClass } from "../utils/content.ts";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "lens";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +26,17 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const navItems = (nav ?? []).slice(0, 8);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const siteTitle = site?.title ?? "Lens";
+  const homeSubtitle = (themeConfig?.home_subtitle as string) || site?.description ||
+    "A responsive gallery theme for Dune CMS";
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -38,32 +48,51 @@ export default function Layout({
         {siteUrl && <meta property="og:url" content={canonicalUrl} />}
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
+        <noscript>
+          <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
+        </noscript>
       </head>
-      <body class="is-preload">
-        <div id="wrapper">
+      <body class="is-preload-0 is-preload-1 is-preload-2">
+        <div id="main">
           <header id="header">
-            <h1><a href="/">{site?.title ?? "Lens"}</a></h1>
-            <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
-            </nav>
+            <h1>{siteTitle}</h1>
+            <p>{homeSubtitle}</p>
+            {navItems.length > 0 && (
+              <ul class="icons">
+                {navItems.map((item) => (
+                  <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
+                    <a href={item.route} class={navIconClass(item.route)}>
+                      <span class="label">
+                        {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </header>
-          <div id="main">{children}</div>
+
+          {children}
+
           {showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Lens"}.</li>
-            <li>Design: <a href="https://html5up.net/lens">Lens by HTML5 UP</a></li>
-          </ul>
-        )}
+            <footer id="footer">
+              <ul class="copyright">
+                <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+                <li>Design: <a href="https://html5up.net/lens">HTML5 UP</a></li>
+              </ul>
+            </footer>
+          )}
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('load',function(){
+            var body=document.body;
+            setTimeout(function(){
+              body.classList.remove('is-preload-0','is-preload-1','is-preload-2');
+            }, 100);
+          });
+        ` }} />
       </body>
     </html>
   );
+}

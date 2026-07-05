@@ -1,0 +1,7 @@
+title: TXT Demo
+description: Live demo of TXT for Dune — HTML5 UP text-forward portfolio theme
+url: https://themes.getdune.org/txt
+theme:
+  name: txt
+taxonomies:
+  - tag

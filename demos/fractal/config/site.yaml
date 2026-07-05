@@ -1,0 +1,7 @@
+title: Fractal Demo
+description: Live demo of Fractal for Dune — HTML5 UP phone hero portfolio theme
+url: https://themes.getdune.org/fractal
+theme:
+  name: fractal
+taxonomies:
+  - tag

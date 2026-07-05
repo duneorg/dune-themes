@@ -1,9 +1,12 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatParallelismDate } from "../utils/content.ts";
 
-
-export default function PostTemplate(props: TemplateProps & { children?: unknown; Layout?: typeof StaticLayout }) {
+export default function PostTemplate(props: TemplateProps & {
+  children?: unknown;
+  Layout?: typeof StaticLayout;
+}) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
   const fm = page.frontmatter as Record<string, unknown>;
@@ -12,15 +15,25 @@ export default function PostTemplate(props: TemplateProps & { children?: unknown
 
   return (
     <LayoutComponent {...props}>
-      <article class="post">
-        <header>
-          
-          <h2>{page.frontmatter.title}</h2>
-        </header>
-        {date && <p class="meta"><time>{date}</time></p>}
-        {cover && <a href={page.route} class="image featured"><img src={cover} alt="" /></a>}
-        <div data-dune-body>{children}</div>
-      </article>
+      <div class="items">
+        <div class="item intro span-2">
+          <h1>{page.frontmatter.title}</h1>
+          {date && (
+            <p><time datetime={date}>{formatParallelismDate(date)}</time></p>
+          )}
+        </div>
+        {cover && (
+          <article class="item thumb span-3">
+            <h2>{page.frontmatter.title}</h2>
+            <span class="image">
+              <img src={cover} alt="" />
+            </span>
+          </article>
+        )}
+        <article class="item prose span-3">
+          <div data-dune-body>{children}</div>
+        </article>
+      </div>
     </LayoutComponent>
   );
 }

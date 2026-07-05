@@ -1,15 +1,20 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  pathname,
+  dir,
+  children,
+  themeConfig,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "strata";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +24,15 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const tagline = (themeConfig?.tagline as string) || site?.description ||
+    "A responsive portfolio theme for Dune CMS";
+  const avatarUrl = (themeConfig?.avatar as string) ||
+    `/themes/${themeName}/static/html5up/images/avatar.jpg`;
+  const siteTitle = site?.title ?? "Strata";
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -40,30 +46,41 @@ export default function Layout({
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
       <body class="is-preload">
-        <div id="wrapper">
-          <header id="header">
-            <h1><a href="/">{site?.title ?? "Strata"}</a></h1>
-            <nav>
-              <ul>{navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}</ul>
-            </nav>
-          </header>
-          <div id="main">{children}</div>
-          {showCredit && (
-          <ul id="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Strata"}.</li>
-            <li>Design: <a href="https://html5up.net/strata">Strata by HTML5 UP</a></li>
-          </ul>
+        <header id="header">
+          <div class="inner">
+            <a href="/" class="image avatar">
+              <img src={avatarUrl} alt="" />
+            </a>
+            <h1>
+              <strong>{siteTitle}</strong>
+              {tagline && (
+                <>
+                  , {tagline}
+                </>
+              )}
+            </h1>
+          </div>
+        </header>
+
+        <div id="main">{children}</div>
+
+        {showCredit && (
+          <footer id="footer">
+            <div class="inner">
+              <ul class="copyright">
+                <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+                <li>Design: <a href="https://html5up.net/strata">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </footer>
         )}
-        </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('load',function(){
+            setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+          });
+        ` }} />
       </body>
     </html>
   );
+}

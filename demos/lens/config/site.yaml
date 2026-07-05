@@ -1,0 +1,7 @@
+title: Lens Demo
+description: Live demo of Lens for Dune — HTML5 UP fullscreen gallery theme
+url: https://themes.getdune.org/lens
+theme:
+  name: lens
+taxonomies:
+  - tag

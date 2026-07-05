@@ -1,0 +1,7 @@
+title: Photon Demo
+description: Live demo of Photon for Dune — HTML5 UP single-page portfolio theme
+url: https://themes.getdune.org/photon
+theme:
+  name: photon
+taxonomies:
+  - tag

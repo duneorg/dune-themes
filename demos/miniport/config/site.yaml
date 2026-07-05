@@ -1,0 +1,7 @@
+title: Miniport Demo
+description: Live demo of Miniport for Dune — HTML5 UP minimal portfolio theme
+url: https://themes.getdune.org/miniport
+theme:
+  name: miniport
+taxonomies:
+  - tag

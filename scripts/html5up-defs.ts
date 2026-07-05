@@ -115,6 +115,14 @@ export const HAND_MAINTAINED_HTML5UP_SLUGS = new Set<string>([
   "hyperspace",
   "read-only",
   "strongly-typed",
+  "strata",
+  "photon",
+  "txt",
+  "parallelism",
+  "astral",
+  "fractal",
+  "lens",
+  "miniport",
 ]);
 
 /** All HTML5 UP slugs — scaffold must not overwrite graduated packages. */
