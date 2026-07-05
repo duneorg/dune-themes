@@ -1,15 +1,21 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
-import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  recentPosts?: Array<{ route: string; title: string }>;
 }
 
 export default function Layout({
-  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+  page,
+  pageTitle,
+  site,
+  config,
+  nav,
+  pathname,
+  dir,
+  children,
+  themeConfig,
 }: LayoutProps) {
   const themeName = config?.theme?.name ?? "arcana";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
@@ -19,14 +25,21 @@ export default function Layout({
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const searchAction = getSearchUrl("").split("?")[0];
-  const navItems = (nav ?? []).slice(0, 12);
+  const navItems = (nav ?? []).slice(0, 8);
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const isHome = currentPath === "/";
+  const showBanner = isHome && themeConfig?.show_banner !== false;
+  const bannerTitle = (themeConfig?.banner_title as string) || site?.title || "Arcana";
+  const tagline = (themeConfig?.tagline as string) || site?.description ||
+    "A responsive site template for Dune CMS";
+  const blogRoute = nav?.find((item) => item.route !== "/" && item.route.endsWith("/blog"))?.route ??
+    nav?.find((item) => item.route.includes("blog"))?.route;
+
   const isActive = (route: string) =>
     currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
-  
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -39,37 +52,57 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body class="landing is-preload">
+      <body class="is-preload">
         <div id="page-wrapper">
-          <header id="header">
-            <h1><a href="/">{site?.title ?? "Arcana"}</a></h1>
+          <div id="header">
+            <h1>
+              <a href="/" id="logo">{site?.title ?? "Arcana"}</a>
+            </h1>
             <nav id="nav">
               <ul>
                 {navItems.map((item) => (
-              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
-                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
-              </li>
-            ))}
+                  <li key={item.route} class={isActive(item.route) ? "current" : undefined}>
+                    <a href={item.route}>
+                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
-          </header>
-          <section id="main" class="wrapper">
-            <div class="inner">{children}</div>
-          </section>
-          <footer id="footer">
+          </div>
+
+          {showBanner && (
+            <section id="banner">
+              <header>
+                <h2>
+                  {bannerTitle}
+                  {tagline && <>: <em>{tagline}</em></>}
+                </h2>
+                {blogRoute && <a href={blogRoute} class="button">Learn More</a>}
+              </header>
+            </section>
+          )}
+
+          {children}
+
+          <div id="footer">
             {showCredit && (
-          <ul id="copyright" class="copyright">
-            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Arcana"}.</li>
-            <li>Design: <a href="https://html5up.net/arcana">Arcana by HTML5 UP</a></li>
-          </ul>
-        )}
-          </footer>
+              <div class="copyright">
+                <ul class="menu">
+                  <li>&copy; {new Date().getFullYear()} {copyrightName}. All rights reserved.</li>
+                  <li>Design: <a href="https://html5up.net/arcana">HTML5 UP</a></li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
-            <script dangerouslySetInnerHTML={{ __html: `(function(){
-  window.addEventListener('load',function(){
-    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-  });
-})();` }} />
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('load',function(){
+            setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+          });
+        ` }} />
       </body>
     </html>
   );
+}

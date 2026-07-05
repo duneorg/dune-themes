@@ -1,0 +1,7 @@
+title: ZeroFour Demo
+description: A minimal page shell built on HTML5 UP ZeroFour for Dune
+url: https://themes.getdune.org/zerofour
+theme:
+  name: zerofour
+taxonomies:
+  - tag

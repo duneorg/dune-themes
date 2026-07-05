@@ -1,39 +1,55 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatZerofourDate, postExcerpt } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
+  pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination } = props;
+  const { page, children, collection, pagination, pathname } = props;
+  const isHome = (pathname ?? page?.route ?? "/") === "/";
   const items = collection?.items ?? [];
 
+  if (isHome) {
+    return <LayoutComponent {...props} landing />;
+  }
+
   return (
-    <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{page.frontmatter.title}</h1>
+    <LayoutComponent {...props} landing={false}>
+      <article>
+        <header class="major">
+          <h2>{page.frontmatter.title}</h2>
+        </header>
         {children}
-        <div class="entry-list">
-          {items.map((post) => (
-            <article class="entry" key={post.route}>
-              <h2><a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a></h2>
-              {post.frontmatter.date && (
-                <div class="post-meta"><time>{String(post.frontmatter.date)}</time></div>
-              )}
-              {post.frontmatter.metadata?.description && (
-                <p>{String((post.frontmatter.metadata as Record<string, unknown>).description)}</p>
-              )}
-            </article>
-          ))}
-        </div>
+        <section class="box article-list">
+          <ul class="post-list">
+            {items.map((post) => {
+              const fm = post.frontmatter;
+              const excerpt = postExcerpt(fm);
+              const date = fm.date ? String(fm.date) : "";
+              return (
+                <li key={post.route}>
+                  <article class="box excerpt">
+                    <header>
+                      {date && <span class="date">{formatZerofourDate(date)}</span>}
+                      <h3><a href={post.route}>{String(fm.title ?? post.route)}</a></h3>
+                    </header>
+                    {excerpt && <p>{excerpt}</p>}
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
         {(pagination?.newer || pagination?.older) && (
           <nav class="pagination" aria-label="Pagination">
-            {pagination.newer && <a href={pagination.newer}>← Newer</a>}
-            {pagination.older && <a href={pagination.older}>Older →</a>}
+            {pagination.newer && <a href={pagination.newer} class="button medium">← Newer</a>}
+            {pagination.older && <a href={pagination.older} class="button medium alt">Older →</a>}
           </nav>
         )}
       </article>

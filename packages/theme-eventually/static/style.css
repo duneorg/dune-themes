@@ -1,10 +1,68 @@
 @import url("./html5up/css/main.css");
 @import url("./html5up/css/fontawesome-all.min.css");
 
-/* Dune content hooks */
-.search-form { display: flex; gap: 0.5rem; margin: 1rem 0 1.5rem; flex-wrap: wrap; }
-.search-form input[type="search"], .search-form input.text { flex: 1; min-width: 200px; }
-.search-results ol { list-style: none; padding: 0; }
-.search-results li { padding: 0.75rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
-.error-page { text-align: center; padding: 2rem 0; }
-.pagination { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 2rem; }
+/* Dune — scrollable content on inner pages */
+body.is-content {
+  display: block;
+  overflow-y: auto;
+  min-height: 100%;
+  padding-bottom: 6em;
+}
+
+body.is-content .dune-content {
+  max-width: 42em;
+  margin: 0 auto 2em;
+  padding: 0 1.5em;
+  text-align: left;
+}
+
+body.is-content .dune-content h1,
+body.is-content .dune-content h2,
+body.is-content .dune-content h3 {
+  text-align: center;
+}
+
+body.is-content .dune-content a {
+  border-bottom: dotted 1px;
+  text-decoration: none;
+}
+
+body.is-content .dune-content ul.post-list,
+body.is-content .dune-content ul.alt {
+  list-style: none;
+  padding: 0;
+}
+
+body.is-content .dune-content ul.post-list li,
+body.is-content .dune-content ul.alt li {
+  border-top: solid 1px rgba(255, 255, 255, 0.15);
+  padding: 0.75em 0;
+}
+
+body.is-content .dune-content .post-meta {
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.search-form input[type="search"] {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.error-page {
+  text-align: center;
+}

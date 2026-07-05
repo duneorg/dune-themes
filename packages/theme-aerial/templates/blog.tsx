@@ -1,42 +1,52 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatAerialDate, postExcerpt } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
+  pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination } = props;
+  const { page, children, collection, pagination, pathname } = props;
+  const isHome = (pathname ?? page?.route ?? "/") === "/";
   const items = collection?.items ?? [];
 
+  if (isHome) {
+    return <LayoutComponent {...props} landing />;
+  }
+
   return (
-    <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{page.frontmatter.title}</h1>
-        {children}
-        <div class="entry-list">
-          {items.map((post) => (
-            <article class="entry" key={post.route}>
-              <h2><a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a></h2>
-              {post.frontmatter.date && (
-                <div class="post-meta"><time>{String(post.frontmatter.date)}</time></div>
+    <LayoutComponent {...props} landing={false}>
+      {page.frontmatter.title && <h2>{page.frontmatter.title}</h2>}
+      {children}
+      <ul class="post-list">
+        {items.map((post) => {
+          const fm = post.frontmatter;
+          const excerpt = postExcerpt(fm);
+          const date = fm.date ? String(fm.date) : "";
+          return (
+            <li key={post.route}>
+              <h3><a href={post.route}>{String(fm.title ?? post.route)}</a></h3>
+              {date && (
+                <div class="post-meta">
+                  <time datetime={date}>{formatAerialDate(date)}</time>
+                </div>
               )}
-              {post.frontmatter.metadata?.description && (
-                <p>{String((post.frontmatter.metadata as Record<string, unknown>).description)}</p>
-              )}
-            </article>
-          ))}
-        </div>
-        {(pagination?.newer || pagination?.older) && (
-          <nav class="pagination" aria-label="Pagination">
-            {pagination.newer && <a href={pagination.newer}>← Newer</a>}
-            {pagination.older && <a href={pagination.older}>Older →</a>}
-          </nav>
-        )}
-      </article>
+              {excerpt && <p>{excerpt}</p>}
+            </li>
+          );
+        })}
+      </ul>
+      {(pagination?.newer || pagination?.older) && (
+        <nav class="pagination" aria-label="Pagination">
+          {pagination.newer && <a href={pagination.newer}>← Newer</a>}
+          {pagination.older && <a href={pagination.older}>Older →</a>}
+        </nav>
+      )}
     </LayoutComponent>
   );
 }

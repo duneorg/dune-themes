@@ -28,6 +28,13 @@ export const DEMO_SLUGS = [
   "fractal",
   "lens",
   "miniport",
+  "aerial",
+  "alpha",
+  "arcana",
+  "halcyonic",
+  "escape-velocity",
+  "eventually",
+  "zerofour",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];

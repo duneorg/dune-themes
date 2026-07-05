@@ -1,0 +1,7 @@
+title: Eventually Demo
+description: A simple template for telling the world when you'll launch your next big thing
+url: https://themes.getdune.org/eventually
+theme:
+  name: eventually
+taxonomies:
+  - tag
