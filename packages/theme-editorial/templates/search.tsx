@@ -16,24 +16,43 @@ export default function SearchTemplate(props: TemplateProps & {
 
   return (
     <LayoutComponent {...props}>
-      <article class="post prose-search">
-        <header><h2>{tr("search.title")}</h2></header>
+      <section>
+        <header class="main">
+          <h1>{tr("search.title")}</h1>
+        </header>
         <form class="search-form" action={action} method="get" role="search">
-          <input type="search" name="q" class="text" value={searchQuery ?? ""} placeholder={tr("search.placeholder")} />
-          <button type="submit" class="button">{tr("search.submit")}</button>
+          <div class="row gtr-uniform">
+            <div class="col-8 col-12-small">
+              <input
+                type="search"
+                name="q"
+                value={searchQuery ?? ""}
+                placeholder={tr("search.placeholder")}
+                aria-label={tr("search.placeholder")}
+              />
+            </div>
+            <div class="col-4 col-12-small">
+              <button type="submit" class="button fit">{tr("search.submit")}</button>
+            </div>
+          </div>
         </form>
         {searchQuery && (
           <section class="search-results" aria-live="polite">
-            {(searchResults ?? []).length === 0 ? <p>{tr("search.empty")}</p> : (
-              <ol>
-                {searchResults!.map((r) => (
-                  <li key={r.route}><a href={r.route}>{r.title}</a>{r.excerpt && <p>{r.excerpt}</p>}</li>
-                ))}
-              </ol>
-            )}
+            {(searchResults ?? []).length === 0
+              ? <p>{tr("search.empty")}</p>
+              : (
+                <ul class="alt">
+                  {searchResults!.map((r) => (
+                    <li key={r.route}>
+                      <a href={r.route}>{r.title}</a>
+                      {r.excerpt && <p>{r.excerpt}</p>}
+                    </li>
+                  ))}
+                </ul>
+              )}
           </section>
         )}
-      </article>
+      </section>
     </LayoutComponent>
   );
 }

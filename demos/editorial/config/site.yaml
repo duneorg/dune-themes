@@ -1,0 +1,7 @@
+title: Editorial Demo
+description: Live demo of Editorial for Dune — HTML5 UP magazine theme with sidebar
+url: https://themes.getdune.org/editorial
+theme:
+  name: editorial
+taxonomies:
+  - tag

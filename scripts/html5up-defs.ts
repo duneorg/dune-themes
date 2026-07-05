@@ -104,7 +104,13 @@ export function html5UpThemeDef(t: Html5UpTemplate): ThemeDef {
 }
 
 /** Hand-finished ports — graduate script skips these. */
-export const HAND_MAINTAINED_HTML5UP_SLUGS = new Set<string>(["striped", "massively"]);
+export const HAND_MAINTAINED_HTML5UP_SLUGS = new Set<string>([
+  "striped",
+  "massively",
+  "editorial",
+  "future-imperfect",
+  "dimension",
+]);
 
 /** All HTML5 UP slugs — scaffold must not overwrite graduated packages. */
 export const GRADUATED_HTML5UP_SLUGS = new Set<string>(HTML5UP_TEMPLATES.map((t) => t.slug));

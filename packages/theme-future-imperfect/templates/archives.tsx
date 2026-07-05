@@ -1,6 +1,7 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatFiDate } from "../utils/content.ts";
 
 export default function ArchivesTemplate(props: TemplateProps & {
   children?: unknown;
@@ -23,17 +24,25 @@ export default function ArchivesTemplate(props: TemplateProps & {
   return (
     <LayoutComponent {...props}>
       <article class="post">
-        <header><h2>{page.frontmatter.title}</h2></header>
+        <header>
+          <div class="title">
+            <h2>{page.frontmatter.title}</h2>
+          </div>
+        </header>
         {children}
         {years.map((year) => (
           <section key={year}>
             <h3>{year}</h3>
-            <ul>
-              {byYear.get(year)!.map((post) => (
-                <li key={post.route}>
-                  <a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a>
-                </li>
-              ))}
+            <ul class="alt">
+              {byYear.get(year)!.map((post) => {
+                const date = post.frontmatter.date ? String(post.frontmatter.date) : "";
+                return (
+                  <li key={post.route}>
+                    <a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a>
+                    {date && <> — <time datetime={date}>{formatFiDate(date)}</time></>}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         ))}

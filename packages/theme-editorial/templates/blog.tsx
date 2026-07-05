@@ -1,7 +1,7 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
-
+import { postExcerpt } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
@@ -16,41 +16,52 @@ export default function BlogTemplate(props: TemplateProps & {
   return (
     <LayoutComponent
       {...props}
-      recentPosts={items.slice(0, 5).map((post) => ({
+      recentPosts={items.slice(0, 3).map((post) => ({
         route: post.route,
         title: String(post.frontmatter.title ?? post.route),
+        excerpt: postExcerpt(post.frontmatter),
+        cover: typeof post.frontmatter.cover === "string" ? post.frontmatter.cover : undefined,
       }))}
     >
-      {page.frontmatter.title && <header><h2>{page.frontmatter.title}</h2></header>}
-      {children}
-      <section class="posts">
-        {items.map((post) => {
-          const fm = post.frontmatter;
-          const date = fm.date ? String(fm.date) : "";
-          const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-          const excerpt = (fm.metadata as Record<string, unknown> | undefined)?.description;
-          return (
-            <article key={post.route} class="post">
-              <header>
-                
-                <h2><a href={post.route}>{String(fm.title ?? post.route)}</a></h2>
-                {excerpt && <p>{String(excerpt)}</p>}
-              </header>
-              {cover && (
-                <a href={post.route} class="image featured">
-                  <img src={cover} alt="" />
-                </a>
-              )}
-            </article>
-          );
-        })}
-      </section>
-      {(pagination?.newer || pagination?.older) && (
-        <div class="pagination">
-          {pagination.older && <a href={pagination.older} class="button">← Older</a>}
-          {pagination.newer && <a href={pagination.newer} class="button">Newer →</a>}
+      <section>
+        {page.frontmatter.title && (
+          <header class="major">
+            <h2>{page.frontmatter.title}</h2>
+          </header>
+        )}
+        {children}
+        <div class="posts">
+          {items.map((post) => {
+            const fm = post.frontmatter;
+            const excerpt = postExcerpt(fm);
+            const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+            return (
+              <article key={post.route}>
+                {cover && (
+                  <a href={post.route} class="image">
+                    <img src={cover} alt="" />
+                  </a>
+                )}
+                <h3><a href={post.route}>{String(fm.title ?? post.route)}</a></h3>
+                {excerpt && <p>{excerpt}</p>}
+                <ul class="actions">
+                  <li><a href={post.route} class="button">More</a></li>
+                </ul>
+              </article>
+            );
+          })}
         </div>
-      )}
+        {(pagination?.newer || pagination?.older) && (
+          <ul class="actions">
+            {pagination.older && (
+              <li><a href={pagination.older} class="button">← Older</a></li>
+            )}
+            {pagination.newer && (
+              <li><a href={pagination.newer} class="button">Newer →</a></li>
+            )}
+          </ul>
+        )}
+      </section>
     </LayoutComponent>
   );
 }

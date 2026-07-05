@@ -1,6 +1,7 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { formatEditorialDate } from "../utils/content.ts";
 
 export default function ArchivesTemplate(props: TemplateProps & {
   children?: unknown;
@@ -22,22 +23,30 @@ export default function ArchivesTemplate(props: TemplateProps & {
 
   return (
     <LayoutComponent {...props}>
-      <article class="post">
-        <header><h2>{page.frontmatter.title}</h2></header>
+      <section>
+        <header class="main">
+          <h1>{page.frontmatter.title}</h1>
+        </header>
         {children}
         {years.map((year) => (
           <section key={year}>
-            <h3>{year}</h3>
-            <ul>
-              {byYear.get(year)!.map((post) => (
-                <li key={post.route}>
-                  <a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a>
-                </li>
-              ))}
+            <header class="major">
+              <h2>{year}</h2>
+            </header>
+            <ul class="alt">
+              {byYear.get(year)!.map((post) => {
+                const date = post.frontmatter.date ? String(post.frontmatter.date) : "";
+                return (
+                  <li key={post.route}>
+                    <a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a>
+                    {date && <> — <time datetime={date}>{formatEditorialDate(date)}</time></>}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         ))}
-      </article>
+      </section>
     </LayoutComponent>
   );
 }

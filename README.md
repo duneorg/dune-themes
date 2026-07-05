@@ -46,7 +46,10 @@ All 44 free [HTML5 UP](https://html5up.net) templates — vendored CSS + Dune la
 |--------|-------|
 | **Striped** | Hand-polished sidebar blog (reference port) |
 | **Massively** | Hand-polished hero blog |
-| **Other 41** | Graduated via layout-family pipeline + upstream assets |
+| **Editorial** | Hand-polished main + sidebar magazine |
+| **Future Imperfect** | Hand-polished magazine blog |
+| **Dimension** | Hand-polished modal panel landing |
+| **Other 38** | Graduated via layout-family pipeline + upstream assets |
 
 ```bash
 deno task graduate:html5up           # vendor assets + write layouts (skips striped)
