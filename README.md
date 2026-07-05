@@ -40,14 +40,17 @@ All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field
 
 ### HTML5 UP themes (CC BY 3.0)
 
-All 44 free [HTML5 UP](https://html5up.net) templates — `deno task scaffold:html5up` bootstraps skeleton packages; each is graduated to 1.0.0 individually.
+All 44 free [HTML5 UP](https://html5up.net) templates — vendored CSS + Dune layouts via `deno task graduate:html5up`.
 
-| Package | Name | Status |
-|---------|------|--------|
-| `@dune/theme-striped` | Striped | **1.0.0** — pilot (sidebar blog) |
-| `@dune/theme-*` | *(43 others)* | scaffold skeleton — not yet 1.0 |
+| Status | Notes |
+|--------|-------|
+| **Striped** | Hand-finished sidebar blog (reference port) |
+| **Other 43** | Graduated via layout-family pipeline + upstream assets |
 
-Run `deno task scaffold:html5up` to generate or refresh skeleton packages for non-graduated HTML5 UP themes.
+```bash
+deno task graduate:html5up           # vendor assets + write layouts (skips striped)
+deno task graduate:html5up alpha     # single theme
+```
 
 ### Base theme
 

@@ -1,12 +1,16 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
+import { getSearchUrl } from "@dune/core/theme-helpers";
 
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
+  recentPosts?: Array<{ route: string; title: string }>;
 }
 
-export default function Layout({ page, pageTitle, site, config, nav, pathname, dir, children, themeConfig }: LayoutProps) {
+export default function Layout({
+  page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, recentPosts,
+}: LayoutProps) {
   const themeName = config?.theme?.name ?? "massively";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const currentPath = pathname ?? page?.route ?? "/";
@@ -14,15 +18,18 @@ export default function Layout({ page, pageTitle, site, config, nav, pathname, d
   const title = pageTitle || site?.title || "Massively";
   const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
     (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
-  const accent = (themeConfig?.accent_color as string) ?? "#2e3842";
-  const defaultDark = themeConfig?.default_dark === true;
-  const footerText = (themeConfig?.footer_text as string) ?? "";
+  const showCredit = themeConfig?.show_html5up_credit !== false;
+  const searchAction = getSearchUrl("").split("?")[0];
+  const navItems = (nav ?? []).slice(0, 12);
+  const isActive = (route: string) =>
+    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isHome = currentPath === "/";
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class={defaultDark ? "dark" : ""}>
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
       <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <title>{title}</title>
         {description && <meta name="description" content={String(description)} />}
         {siteUrl && <link rel="canonical" href={canonicalUrl} />}
@@ -31,63 +38,40 @@ export default function Layout({ page, pageTitle, site, config, nav, pathname, d
         {siteUrl && <meta property="og:url" content={canonicalUrl} />}
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
-        <style dangerouslySetInnerHTML={{ __html: `:root{--accent:${accent}}` }} />
-        <script dangerouslySetInnerHTML={{ __html: `
-          (function(){var s=localStorage.getItem('theme-massively');
-          if(s==='dark'||(s===null&&${defaultDark ? "true" : "false"})){document.documentElement.classList.add('dark')}
-          else if(s==='light'){document.documentElement.classList.remove('dark')}})();
-        ` }} />
       </head>
-      <body class="theme-massively archetype-blog-hero">
-        <header class="site-header">
-          <a class="site-logo" href="/">{site?.title ?? "Massively"}</a>
-          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
-          <nav id="main-nav" class="site-nav" aria-label="Main">
-            {(nav ?? []).slice(0, 10).map((item) => (
-              <a key={item.route} href={item.route} class={currentPath === item.route ? "active" : ""}>
-                {item.navTitle ?? item.frontmatter?.title ?? item.route}
-              </a>
-            ))}
-          </nav>
-          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">◐</button>
-        </header>
-        {currentPath === "/" && (
-          <section class="hero">
-            <h1>{site?.title ?? "Massively"}</h1>
-            <p>{themeConfig?.home_subtitle || site?.description || "Stories and updates"}</p>
-          </section>
-        )}
-        {children}
-        <footer class="site-footer">
-          {footerText || (
-            <>
-              © {new Date().getFullYear()} {site?.title ?? "Massively"} ·{" "}
-              {(themeConfig?.show_html5up_credit !== false) && (
-                <>
-                  <a href="https://html5up.net/massively">Massively by HTML5 UP</a> ·{" "}
-                </>
-              )}
-              Powered by <a href="https://getdune.org">Dune</a>
-            </>
+      <body class="is-preload">
+        <div id="wrapper" class="fade-in">
+          {isHome && (
+            <div id="intro">
+              <h1>{site?.title ?? "Massively"}</h1>
+              <p>{site?.description ?? "Built with Dune CMS"}</p>
+            </div>
           )}
-        </footer>
-        <script dangerouslySetInnerHTML={{ __html: `
-          (function(){
-            var navBtn=document.querySelector('.nav-toggle');
-            var nav=document.getElementById('main-nav');
-            if(navBtn&&nav){navBtn.addEventListener('click',function(){
-              var open=nav.classList.toggle('is-open');
-              navBtn.setAttribute('aria-expanded',open?'true':'false');
-            });}
-            var btn=document.getElementById('theme-toggle');
-            if(!btn)return;
-            btn.addEventListener('click',function(){
-              var dark=document.documentElement.classList.toggle('dark');
-              localStorage.setItem('theme-massively',dark?'dark':'light');
-            });
-          })();
-        ` }} />
+          <header id="header">
+            <a href="/" class="logo">{site?.title ?? "Massively"}</a>
+          </header>
+          <nav id="nav">
+            <ul class="links">{navItems.map((item) => (
+              <li key={item.route} class={isActive(item.route) ? "current" : ""}>
+                <a href={item.route}>{item.navTitle ?? item.frontmatter?.title ?? item.route}</a>
+              </li>
+            ))}</ul>
+          </nav>
+          <div id="main">{children}</div>
+          <footer id="footer">
+            {showCredit && (
+          <ul class="copyright" id="copyright">
+            <li>&copy; {new Date().getFullYear()} {site?.title ?? "Massively"}.</li>
+            <li>Design: <a href="https://html5up.net/massively">Massively by HTML5 UP</a></li>
+          </ul>
+        )}
+          </footer>
+        </div>
+            <script dangerouslySetInnerHTML={{ __html: `(function(){
+  window.addEventListener('load',function(){
+    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+  });
+})();` }} />
       </body>
     </html>
   );
-}

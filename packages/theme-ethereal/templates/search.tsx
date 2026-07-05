@@ -16,32 +16,21 @@ export default function SearchTemplate(props: TemplateProps & {
 
   return (
     <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{tr("search.title")}</h1>
+      <article class="post prose-search">
+        <header><h2>{tr("search.title")}</h2></header>
         <form class="search-form" action={action} method="get" role="search">
-          <input
-            type="search"
-            name="q"
-            value={searchQuery ?? ""}
-            placeholder={tr("search.placeholder")}
-            aria-label={tr("search.placeholder")}
-          />
-          <button type="submit">{tr("search.submit")}</button>
+          <input type="search" name="q" class="text" value={searchQuery ?? ""} placeholder={tr("search.placeholder")} />
+          <button type="submit" class="button">{tr("search.submit")}</button>
         </form>
         {searchQuery && (
           <section class="search-results" aria-live="polite">
-            {(searchResults ?? []).length === 0
-              ? <p>{tr("search.empty")}</p>
-              : (
-                <ol>
-                  {searchResults!.map((r) => (
-                    <li key={r.route}>
-                      <a href={r.route}>{r.title}</a>
-                      {r.excerpt && <p>{r.excerpt}</p>}
-                    </li>
-                  ))}
-                </ol>
-              )}
+            {(searchResults ?? []).length === 0 ? <p>{tr("search.empty")}</p> : (
+              <ol>
+                {searchResults!.map((r) => (
+                  <li key={r.route}><a href={r.route}>{r.title}</a>{r.excerpt && <p>{r.excerpt}</p>}</li>
+                ))}
+              </ol>
+            )}
           </section>
         )}
       </article>

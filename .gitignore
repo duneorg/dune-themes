@@ -1,5 +1,6 @@
 .deno/
 dist/
 *.zip
+.cache/
 .DS_Store
 notes/

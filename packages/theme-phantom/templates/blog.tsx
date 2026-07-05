@@ -2,6 +2,7 @@
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 
+
 export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
@@ -13,30 +14,43 @@ export default function BlogTemplate(props: TemplateProps & {
   const items = collection?.items ?? [];
 
   return (
-    <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{page.frontmatter.title}</h1>
-        {children}
-        <div class="entry-list">
-          {items.map((post) => (
-            <article class="entry" key={post.route}>
-              <h2><a href={post.route}>{String(post.frontmatter.title ?? post.route)}</a></h2>
-              {post.frontmatter.date && (
-                <div class="post-meta"><time>{String(post.frontmatter.date)}</time></div>
-              )}
-              {post.frontmatter.metadata?.description && (
-                <p>{String((post.frontmatter.metadata as Record<string, unknown>).description)}</p>
+    <LayoutComponent
+      {...props}
+      recentPosts={items.slice(0, 5).map((post) => ({
+        route: post.route,
+        title: String(post.frontmatter.title ?? post.route),
+      }))}
+    >
+      {page.frontmatter.title && <header><h2>{page.frontmatter.title}</h2></header>}
+      {children}
+      <section class="posts">
+        {items.map((post) => {
+          const fm = post.frontmatter;
+          const date = fm.date ? String(fm.date) : "";
+          const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+          const excerpt = (fm.metadata as Record<string, unknown> | undefined)?.description;
+          return (
+            <article key={post.route} class="post">
+              <header>
+                
+                <h2><a href={post.route}>{String(fm.title ?? post.route)}</a></h2>
+                {excerpt && <p>{String(excerpt)}</p>}
+              </header>
+              {cover && (
+                <a href={post.route} class="image featured">
+                  <img src={cover} alt="" />
+                </a>
               )}
             </article>
-          ))}
+          );
+        })}
+      </section>
+      {(pagination?.newer || pagination?.older) && (
+        <div class="pagination">
+          {pagination.older && <a href={pagination.older} class="button">← Older</a>}
+          {pagination.newer && <a href={pagination.newer} class="button">Newer →</a>}
         </div>
-        {(pagination?.newer || pagination?.older) && (
-          <nav class="pagination" aria-label="Pagination">
-            {pagination.newer && <a href={pagination.newer}>← Newer</a>}
-            {pagination.older && <a href={pagination.older}>Older →</a>}
-          </nav>
-        )}
-      </article>
+      )}
     </LayoutComponent>
   );
 }

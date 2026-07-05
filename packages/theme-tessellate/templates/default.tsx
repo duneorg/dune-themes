@@ -7,8 +7,8 @@ export default function DefaultTemplate(props: TemplateProps & { children?: unkn
   const { page, children } = props;
   return (
     <LayoutComponent {...props}>
-      <article class="prose">
-        <h1>{page.frontmatter.title}</h1>
+      <article class="post">
+        <header><h2>{page.frontmatter.title}</h2></header>
         <div data-dune-body>{children}</div>
       </article>
     </LayoutComponent>

@@ -1,5 +1,5 @@
-@import url("./html5up/main.css");
-@import url("./html5up/fontawesome-all.min.css");
+@import url("./html5up/css/main.css");
+@import url("./html5up/css/fontawesome-all.min.css");
 
 /* Dune content hooks — minimal overrides; upstream CSS does the heavy lifting. */
 #content .inner .prose-search h1 {
