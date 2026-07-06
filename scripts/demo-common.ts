@@ -86,14 +86,23 @@ export function catalogHasSlug(slug: string): boolean {
   return CATALOG.some((e) => e.slug === slug);
 }
 
+/**
+ * Directory name for the generated "About this theme" page (see
+ * `generateReadmePage`). Numbered to sort last regardless of which shared
+ * fixture is in use; gitignored and regenerated on every `demo:link` so it
+ * never drifts from the theme's actual README.
+ */
+const ABOUT_DIR_NAME = "99.about-theme";
+
 /** Ensure themes/{slug} and content symlinks exist for a demo site. */
 export async function linkDemo(slug: string): Promise<void> {
   const dir = demoDir(slug);
   const themesDir = join(dir, "themes");
   const themeLink = join(themesDir, slug);
   const packageDir = join(ROOT, "packages", `theme-${slug}`);
-  const contentLink = join(dir, "content");
+  const contentDir = join(dir, "content");
   const fixture = contentFixtureFor(slug);
+  const fixtureDir = join(ROOT, "demos", "_shared", fixture);
 
   await Deno.mkdir(themesDir, { recursive: true });
 
@@ -104,7 +113,81 @@ export async function linkDemo(slug: string): Promise<void> {
   }
 
   await ensureSymlink(themeLink, join("..", "..", "..", "packages", `theme-${slug}`));
-  await ensureSymlink(contentLink, join("..", "_shared", fixture));
+
+  // content/ is a real (copied, not symlinked) directory: Dune's directory
+  // lister only follows a symlink when it *is* the path being opened (as
+  // the old single `content -> ../_shared/{fixture}` symlink was); a
+  // symlink discovered as a readDir() *entry* comes back `isSymlink: true`
+  // with `isDirectory: false`, so the recursive content walk silently
+  // never descends into it. A real directory sidesteps that, and lets us
+  // add the generated About page alongside the fixture content. Re-run
+  // `deno task demo:link {slug}` after editing shared fixture content —
+  // it's copied, not live-linked.
+  await Deno.remove(contentDir, { recursive: true }).catch(() => {});
+  await copyDirRecursive(fixtureDir, contentDir);
+  await generateReadmePage(slug, packageDir, contentDir);
+}
+
+async function copyDirRecursive(src: string, dest: string): Promise<void> {
+  await Deno.mkdir(dest, { recursive: true });
+  for await (const entry of Deno.readDir(src)) {
+    const from = join(src, entry.name);
+    const to = join(dest, entry.name);
+    if (entry.isDirectory) {
+      await copyDirRecursive(from, to);
+    } else if (entry.isFile) {
+      await Deno.copyFile(from, to);
+    }
+  }
+}
+
+/**
+ * Render the theme package's README.md as a demo content page, so the demo
+ * site shows the same "what is this theme" copy that JSR/GitHub visitors
+ * see — regenerated on every link, so it can't go stale.
+ */
+async function generateReadmePage(slug: string, packageDir: string, contentDir: string): Promise<void> {
+  const aboutDir = join(contentDir, ABOUT_DIR_NAME);
+  const targetFile = join(aboutDir, "default.md");
+
+  let raw: string;
+  try {
+    raw = await Deno.readTextFile(join(packageDir, "README.md"));
+  } catch {
+    await Deno.remove(aboutDir, { recursive: true }).catch(() => {});
+    return;
+  }
+
+  const lines = raw.split("\n");
+  // The template already renders `<h1>{frontmatter.title}</h1>` — drop a
+  // leading "# Title" line (plus the blank line after it) to avoid a
+  // duplicate heading.
+  let title = slug;
+  if (lines[0]?.startsWith("# ")) {
+    title = lines[0].slice(2).trim();
+    lines.shift();
+    if (lines[0] === "") lines.shift();
+  }
+
+  // Repo-relative links (sibling theme packages, LICENSE, etc.) don't
+  // resolve on a deployed demo — keep the label, drop the dead link.
+  const body = lines.join("\n").replace(
+    /\[([^\]]+)\]\((?!https?:\/\/|#)[^)]+\)/g,
+    "$1",
+  );
+
+  const frontmatter = [
+    "---",
+    `title: ${JSON.stringify(title)}`,
+    "template: default",
+    "nav_title: About",
+    "published: true",
+    "---",
+    "",
+  ].join("\n");
+
+  await Deno.mkdir(aboutDir, { recursive: true });
+  await Deno.writeTextFile(targetFile, frontmatter + body);
 }
 
 async function ensureSymlink(linkPath: string, target: string): Promise<void> {
