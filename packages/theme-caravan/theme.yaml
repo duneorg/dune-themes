@@ -9,6 +9,11 @@ config_schema:
     options: [blue, slate, green, purple, amber, rose]
     default: blue
     help: "Accent color for links and the active sidebar item; each has a matched light/dark-mode pair (see utils/color-schemes.ts)"
+  scheme_switcher:
+    type: toggle
+    label: "Let visitors switch the color scheme"
+    default: false
+    help: "Adds a sidebar dropdown so visitors can preview the other color_scheme presets client-side (choice persists in their browser via localStorage, doesn't change your site's actual config). Off by default — most sites want one consistent brand color; useful for a theme showcase/demo site."
   show_search:
     type: toggle
     label: "Show search box in sidebar"

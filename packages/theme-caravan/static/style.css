@@ -3,9 +3,9 @@
 :root {
   --color-text: #101010;
   --color-secondary: #555;
-  /* --color-link is set inline per-request from the color_scheme config option (see components/layout.tsx) */
+  /* --color-link and --menu-background are set inline per-request from the
+     color_scheme config option (see components/layout.tsx, utils/color-schemes.ts) */
   --body-background: #fff;
-  --menu-background: #f8f9fa;
   --border-color: #e9ecef;
   --code-background: #f8f9fa;
   --menu-width: 16rem;
@@ -17,7 +17,6 @@
     --color-text: #eaeaea;
     --color-secondary: #a0a0a0;
     --body-background: #1b1d1e;
-    --menu-background: #16181a;
     --border-color: #2b2f31;
     --code-background: #24272a;
   }
@@ -28,7 +27,6 @@
   --color-text: #eaeaea;
   --color-secondary: #a0a0a0;
   --body-background: #1b1d1e;
-  --menu-background: #16181a;
   --border-color: #2b2f31;
   --code-background: #24272a;
 }
@@ -36,7 +34,6 @@
   --color-text: #101010;
   --color-secondary: #555;
   --body-background: #fff;
-  --menu-background: #f8f9fa;
   --border-color: #e9ecef;
   --code-background: #f8f9fa;
 }
@@ -110,6 +107,17 @@ img { max-width: 100%; height: auto; }
 }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: inline-flex; }
+
+.scheme-switcher {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  background: var(--body-background);
+  color: var(--color-text);
+  font-size: 0.8125rem;
+}
 
 .book-search { position: relative; margin-bottom: 1rem; }
 .book-search input {

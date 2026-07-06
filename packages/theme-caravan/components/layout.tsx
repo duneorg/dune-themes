@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 import { h } from "preact";
-import { colorSchemeCss, resolveColorScheme } from "../utils/color-schemes.ts";
+import { COLOR_SCHEMES, colorSchemeCss, resolveColorScheme } from "../utils/color-schemes.ts";
 
 export default function Layout(
   { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
@@ -18,12 +18,15 @@ export default function Layout(
   const normalizedPath = stripSlash(page?.route ?? canonicalPath);
   const description = page?.frontmatter?.metadata?.description ??
     page?.frontmatter?.description ?? site?.description ?? "";
-  const colorScheme = resolveColorScheme(themeConfig?.color_scheme);
+  const colorSchemeId = typeof themeConfig?.color_scheme === "string" ? themeConfig.color_scheme : "blue";
+  const colorScheme = resolveColorScheme(colorSchemeId);
   const showSearch = themeConfig?.show_search !== false;
+  const showSchemeSwitcher = themeConfig?.scheme_switcher === true;
   const footerText = themeConfig?.footer_text ?? "";
   const searchLabel = tr("search", "Search");
   const noResultsLabel = tr("no_results", "No results");
-  const toggleThemeLabel = tr("toggle_theme", "Toggle color scheme");
+  const toggleThemeLabel = tr("toggle_theme", "Toggle light/dark mode");
+  const schemeSwitcherLabel = tr("scheme_switcher", "Color scheme");
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -40,8 +43,24 @@ export default function Layout(
         <style dangerouslySetInnerHTML={{ __html: colorSchemeCss(colorScheme) }} />
         <script
           dangerouslySetInnerHTML={{
-            __html:
-              `(function(){var t=localStorage.getItem("caravan-theme");if(t)document.documentElement.dataset.theme=t;})();`,
+            __html: `(function(){
+              var t=localStorage.getItem("caravan-theme");
+              if(t)document.documentElement.dataset.theme=t;
+              ${
+              showSchemeSwitcher
+                ? `
+              var schemes=${JSON.stringify(COLOR_SCHEMES)};
+              var id=localStorage.getItem("caravan-color-scheme");
+              if(id&&schemes[id]){
+                var mode=document.documentElement.dataset.theme
+                  ||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+                var v=schemes[id][mode];
+                document.documentElement.style.setProperty('--color-link',v.accent);
+                document.documentElement.style.setProperty('--menu-background',v.menuBackground);
+              }`
+                : ""
+            }
+            })();`,
           }}
         />
       </head>
@@ -75,6 +94,18 @@ export default function Layout(
                   </svg>
                 </button>
               </h2>
+              {showSchemeSwitcher && (
+                <select
+                  id="scheme-switcher"
+                  class="scheme-switcher"
+                  aria-label={schemeSwitcherLabel}
+                  title={schemeSwitcherLabel}
+                >
+                  {Object.entries(COLOR_SCHEMES).map(([id, scheme]) => (
+                    <option value={id} selected={id === colorSchemeId}>{scheme.label}</option>
+                  ))}
+                </select>
+              )}
               {showSearch && (
                 <div class="book-search">
                   <input
@@ -132,6 +163,27 @@ export default function Layout(
         </div>
         <script dangerouslySetInnerHTML={{ __html: `
           (function(){
+            var STORAGE_KEY='caravan-color-scheme';
+            var schemes=${showSchemeSwitcher ? JSON.stringify(COLOR_SCHEMES) : "null"};
+            function currentMode(){
+              var t=document.documentElement.dataset.theme;
+              return t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+            }
+            function applyScheme(id){
+              if(!schemes||!schemes[id])return;
+              var v=schemes[id][currentMode()];
+              document.documentElement.style.setProperty('--color-link',v.accent);
+              document.documentElement.style.setProperty('--menu-background',v.menuBackground);
+            }
+            var select=document.getElementById('scheme-switcher');
+            if(select){
+              var stored=localStorage.getItem(STORAGE_KEY);
+              if(stored&&schemes&&schemes[stored])select.value=stored;
+              select.addEventListener('change',function(){
+                localStorage.setItem(STORAGE_KEY,select.value);
+                applyScheme(select.value);
+              });
+            }
             var btn=document.getElementById('theme-toggle');
             if(!btn)return;
             btn.addEventListener('click',function(){
@@ -142,6 +194,8 @@ export default function Layout(
               var next=isDark?'light':'dark';
               document.documentElement.dataset.theme=next;
               localStorage.setItem('caravan-theme',next);
+              var storedScheme=localStorage.getItem(STORAGE_KEY);
+              if(storedScheme)applyScheme(storedScheme);
             });
           })();
         ` }} />

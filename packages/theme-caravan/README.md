@@ -5,7 +5,10 @@ Original Dune theme, design inspired by [hugo-book](https://github.com/alex-shpa
 **Templates**: `default` (docs page) · `section` (page body + linked child-page list via a `collection` block) · `search` (dedicated `/search` results page — the sidebar's live search covers the common case, this covers direct/bookmarked/no-JS navigation) · `error` (404/500, kept inside the docs layout so a lost reader can navigate straight back into the sidebar)
 
 **Config schema**: `color_scheme` (blue/slate/green/purple/amber/rose — curated
-light/dark-mode accent pairs, see `utils/color-schemes.ts`), `show_search`,
+light/dark-mode accent + sidebar-tint pairs, see `utils/color-schemes.ts`),
+`scheme_switcher` (adds a sidebar dropdown so visitors can preview the other
+presets client-side via `localStorage` — doesn't touch the site's actual
+config; off by default, useful for a showcase/demo site), `show_search`,
 `footer_text`
 
 Sticky sidebar built from top-level nav, live search against `/api/search`, CSS-only mobile drawer, dark mode via a sidebar toggle (persisted in `localStorage`, defaults to `prefers-color-scheme`). UI strings are localized via `locales/en.json`.
