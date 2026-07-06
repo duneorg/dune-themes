@@ -3,8 +3,7 @@
 :root {
   --color-text: #101010;
   --color-secondary: #555;
-  --color-link: #0055bb;
-  --color-visited-link: #8440f1;
+  /* --color-link is set inline per-request from the color_scheme config option (see components/layout.tsx) */
   --body-background: #fff;
   --menu-background: #f8f9fa;
   --border-color: #e9ecef;

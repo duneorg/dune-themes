@@ -3,10 +3,12 @@ description: "Caravan — a clean documentation theme with book-style sidebar, i
 author: "Dune Theme Library (design inspired by hugo-book by Alex Shpak)"
 version: "1.0.0"
 config_schema:
-  accent_color:
-    type: color
-    label: "Link / accent colour"
-    default: "#0055bb"
+  color_scheme:
+    type: select
+    label: "Color scheme"
+    options: [blue, slate, green, purple, amber, rose]
+    default: blue
+    help: "Accent color for links and the active sidebar item; each has a matched light/dark-mode pair (see utils/color-schemes.ts)"
   show_search:
     type: toggle
     label: "Show search box in sidebar"

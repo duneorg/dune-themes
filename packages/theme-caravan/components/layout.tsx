@@ -1,5 +1,6 @@
 /** @jsxImportSource preact */
 import { h } from "preact";
+import { colorSchemeCss, resolveColorScheme } from "../utils/color-schemes.ts";
 
 export default function Layout(
   { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
@@ -10,10 +11,14 @@ export default function Layout(
   const canonicalPath = pathname ?? page?.route ?? "/";
   const canonicalUrl = `${siteUrl}${canonicalPath}`;
   const stripSlash = (p: string) => p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
-  const normalizedPath = stripSlash(canonicalPath);
+  // Nav matching uses the page's own route, not the request path: the
+  // homepage is reachable at both "/" and its directory route (e.g.
+  // "/home/"), so matching on `pathname` alone means the sidebar's home
+  // link never highlights when visiting bare "/".
+  const normalizedPath = stripSlash(page?.route ?? canonicalPath);
   const description = page?.frontmatter?.metadata?.description ??
     page?.frontmatter?.description ?? site?.description ?? "";
-  const accent = themeConfig?.accent_color ?? "#0055bb";
+  const colorScheme = resolveColorScheme(themeConfig?.color_scheme);
   const showSearch = themeConfig?.show_search !== false;
   const footerText = themeConfig?.footer_text ?? "";
   const searchLabel = tr("search", "Search");
@@ -32,7 +37,7 @@ export default function Layout(
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
-        <style dangerouslySetInnerHTML={{ __html: `:root{--color-link:${accent}}` }} />
+        <style dangerouslySetInnerHTML={{ __html: colorSchemeCss(colorScheme) }} />
         <script
           dangerouslySetInnerHTML={{
             __html:
