@@ -18,6 +18,7 @@ export default function Layout(
   const footerText = themeConfig?.footer_text ?? "";
   const searchLabel = tr("search", "Search");
   const noResultsLabel = tr("no_results", "No results");
+  const toggleThemeLabel = tr("toggle_theme", "Toggle color scheme");
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -32,6 +33,12 @@ export default function Layout(
         <meta property="og:url" content={canonicalUrl} />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
         <style dangerouslySetInnerHTML={{ __html: `:root{--color-link:${accent}}` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              `(function(){var t=localStorage.getItem("caravan-theme");if(t)document.documentElement.dataset.theme=t;})();`,
+          }}
+        />
       </head>
       <body>
         <input type="checkbox" id="menu-control" class="hidden" />
@@ -40,6 +47,28 @@ export default function Layout(
             <nav>
               <h2 class="book-brand">
                 <a href="/">{site?.title}</a>
+                <button
+                  id="theme-toggle"
+                  class="theme-toggle"
+                  type="button"
+                  aria-label={toggleThemeLabel}
+                  title={toggleThemeLabel}
+                >
+                  <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                  </svg>
+                  <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                  </svg>
+                </button>
               </h2>
               {showSearch && (
                 <div class="book-search">
@@ -96,6 +125,21 @@ export default function Layout(
             </footer>
           </div>
         </div>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            var btn=document.getElementById('theme-toggle');
+            if(!btn)return;
+            btn.addEventListener('click',function(){
+              var current=document.documentElement.dataset.theme;
+              var isDark=current
+                ? current==='dark'
+                : window.matchMedia('(prefers-color-scheme: dark)').matches;
+              var next=isDark?'light':'dark';
+              document.documentElement.dataset.theme=next;
+              localStorage.setItem('caravan-theme',next);
+            });
+          })();
+        ` }} />
         {showSearch && (
           <script dangerouslySetInnerHTML={{ __html: `
             (function(){

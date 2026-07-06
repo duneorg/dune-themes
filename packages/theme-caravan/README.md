@@ -6,7 +6,7 @@ Original Dune theme, design inspired by [hugo-book](https://github.com/alex-shpa
 
 **Config schema**: `accent_color`, `show_search`, `footer_text`
 
-Sticky sidebar built from top-level nav, live search against `/api/search`, CSS-only mobile drawer, automatic dark mode via `prefers-color-scheme`. UI strings are localized via `locales/en.json`.
+Sticky sidebar built from top-level nav, live search against `/api/search`, CSS-only mobile drawer, dark mode via a sidebar toggle (persisted in `localStorage`, defaults to `prefers-color-scheme`). UI strings are localized via `locales/en.json`.
 
 ## Deviations / scope
 
