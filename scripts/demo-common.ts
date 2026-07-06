@@ -74,6 +74,19 @@ function contentFixtureFor(slug: string): string {
   return DEMO_CONTENT_FIXTURE[slug as DemoSlug] ?? "blog";
 }
 
+/**
+ * Demos where the theme's README *is* the homepage, replacing the shared
+ * fixture's generic `01.home` page, instead of living at a separate
+ * `/about-theme/` page. Makes sense for docs themes, where a visitor
+ * should see "what is this theme" immediately — wrong for archetypes
+ * (blog, portfolio, landing) where the homepage's job is to demonstrate
+ * the theme's actual design, and README prose would bury that.
+ */
+const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan"]);
+
+/** Directory name of the fixture's homepage, by convention across all shared fixtures. */
+const HOME_DIR_NAME = "01.home";
+
 export function demoDir(slug: string): string {
   return join(ROOT, "demos", slug);
 }
@@ -125,7 +138,13 @@ export async function linkDemo(slug: string): Promise<void> {
   // it's copied, not live-linked.
   await Deno.remove(contentDir, { recursive: true }).catch(() => {});
   await copyDirRecursive(fixtureDir, contentDir);
-  await generateReadmePage(slug, packageDir, contentDir);
+
+  const readme = await readReadmeMarkdown(packageDir);
+  if (readme && DEMO_README_AS_HOME.has(slug as DemoSlug)) {
+    await writeReadmeHome(contentDir, readme);
+  } else if (readme) {
+    await writeReadmeAboutPage(contentDir, readme);
+  }
 }
 
 async function copyDirRecursive(src: string, dest: string): Promise<void> {
@@ -141,53 +160,77 @@ async function copyDirRecursive(src: string, dest: string): Promise<void> {
   }
 }
 
-/**
- * Render the theme package's README.md as a demo content page, so the demo
- * site shows the same "what is this theme" copy that JSR/GitHub visitors
- * see — regenerated on every link, so it can't go stale.
- */
-async function generateReadmePage(slug: string, packageDir: string, contentDir: string): Promise<void> {
-  const aboutDir = join(contentDir, ABOUT_DIR_NAME);
-  const targetFile = join(aboutDir, "default.md");
+interface ReadmeContent {
+  title: string;
+  body: string;
+}
 
+/**
+ * Read and transform a theme package's README.md for reuse as demo content:
+ * drop the leading "# Title" (the template already renders
+ * `<h1>{frontmatter.title}</h1>`, so keeping it would duplicate the
+ * heading) and strip repo-relative links (sibling theme packages, LICENSE,
+ * etc.) that would 404 on a deployed demo, keeping the label text and
+ * real http(s) links intact. Returns undefined if the package has no
+ * README.
+ */
+async function readReadmeMarkdown(packageDir: string): Promise<ReadmeContent | undefined> {
   let raw: string;
   try {
     raw = await Deno.readTextFile(join(packageDir, "README.md"));
   } catch {
-    await Deno.remove(aboutDir, { recursive: true }).catch(() => {});
-    return;
+    return undefined;
   }
 
   const lines = raw.split("\n");
-  // The template already renders `<h1>{frontmatter.title}</h1>` — drop a
-  // leading "# Title" line (plus the blank line after it) to avoid a
-  // duplicate heading.
-  let title = slug;
+  let title = "";
   if (lines[0]?.startsWith("# ")) {
     title = lines[0].slice(2).trim();
     lines.shift();
     if (lines[0] === "") lines.shift();
   }
 
-  // Repo-relative links (sibling theme packages, LICENSE, etc.) don't
-  // resolve on a deployed demo — keep the label, drop the dead link.
   const body = lines.join("\n").replace(
     /\[([^\]]+)\]\((?!https?:\/\/|#)[^)]+\)/g,
     "$1",
   );
 
+  return { title, body };
+}
+
+/** Write the README as a standalone "About this theme" page, sorted last in the nav. */
+async function writeReadmeAboutPage(contentDir: string, readme: ReadmeContent): Promise<void> {
+  const aboutDir = join(contentDir, ABOUT_DIR_NAME);
   const frontmatter = [
     "---",
-    `title: ${JSON.stringify(title)}`,
+    `title: ${JSON.stringify(readme.title)}`,
     "template: default",
     "nav_title: About",
     "published: true",
     "---",
     "",
   ].join("\n");
-
   await Deno.mkdir(aboutDir, { recursive: true });
-  await Deno.writeTextFile(targetFile, frontmatter + body);
+  await Deno.writeTextFile(join(aboutDir, "default.md"), frontmatter + readme.body);
+}
+
+/** Replace the fixture's generic homepage with the theme's README (see DEMO_README_AS_HOME). */
+async function writeReadmeHome(contentDir: string, readme: ReadmeContent): Promise<void> {
+  const homeDir = join(contentDir, HOME_DIR_NAME);
+  try {
+    await Deno.stat(homeDir);
+  } catch {
+    throw new Error(`Expected a ${HOME_DIR_NAME} directory in the fixture content to override — none found`);
+  }
+  const frontmatter = [
+    "---",
+    `title: ${JSON.stringify(readme.title)}`,
+    "template: default",
+    "published: true",
+    "---",
+    "",
+  ].join("\n");
+  await Deno.writeTextFile(join(homeDir, "default.md"), frontmatter + readme.body);
 }
 
 async function ensureSymlink(linkPath: string, target: string): Promise<void> {
