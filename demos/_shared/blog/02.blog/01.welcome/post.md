@@ -8,8 +8,6 @@ taxonomy:
   tag: [welcome, demo]
 ---
 
-# Welcome to PaperMod
-
 This demo site showcases **PaperMod for Dune** — a port of the popular Hugo
 PaperMod theme with the same CSS bundle and markup conventions.
 

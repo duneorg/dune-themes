@@ -8,8 +8,6 @@ taxonomy:
   tag: [code, demo]
 ---
 
-# Code samples
-
 When `show_code_copy_buttons` is enabled in theme config, fenced blocks include
 a copy button — matching upstream PaperMod behaviour.
 

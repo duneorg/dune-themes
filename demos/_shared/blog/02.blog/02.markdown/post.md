@@ -8,8 +8,6 @@ taxonomy:
   tag: [markdown, demo]
 ---
 
-# Markdown formatting
-
 PaperMod styles standard Markdown elements with the upstream stylesheet.
 
 ## Lists
