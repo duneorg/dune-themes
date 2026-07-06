@@ -4,7 +4,7 @@
  * Frontmatter `view:` selects the list view (card, article-grid, citation,
  * date-title-summary), `columns:` the grid width.
  */
-import type { TemplateProps } from "@dune/core";
+import type { TemplateProps } from "@dune/core/content/types";
 import Layout from "../components/layout.tsx";
 import { ArticleGrid, CardList, CitationList, DateTitleSummaryList, type ViewConfig } from "../components/views.tsx";
 import {

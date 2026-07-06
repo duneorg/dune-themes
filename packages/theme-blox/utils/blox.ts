@@ -1,5 +1,5 @@
 /** Shared helpers for the Blox port. */
-import type { Collection, Page, PageIndex, TemplateProps } from "@dune/core";
+import type { Collection, Page, PageIndex, TemplateProps } from "@dune/core/content/types";
 
 // ── URLs ────────────────────────────────────────────────────────────────────
 

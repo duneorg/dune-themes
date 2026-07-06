@@ -4,7 +4,7 @@
  * Collection blocks reference entries of the page's `collections:` map
  * via `content.collection: <name>`.
  */
-import type { TemplateProps } from "@dune/core";
+import type { TemplateProps } from "@dune/core/content/types";
 import Layout from "../components/layout.tsx";
 import { type BlockDef, renderBlock } from "../components/blocks.tsx";
 

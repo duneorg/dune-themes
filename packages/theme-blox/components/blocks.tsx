@@ -8,7 +8,7 @@
  * templates don't read arbitrary pages.
  */
 import type { ComponentChildren } from "preact";
-import type { Collection, Page, TemplateProps } from "@dune/core";
+import type { Collection, Page, TemplateProps } from "@dune/core/content/types";
 import { Icon } from "./icon.tsx";
 import {
   formatMonthYear,

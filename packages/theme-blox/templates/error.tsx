@@ -3,7 +3,7 @@
  * synthetic page carrying `frontmatter.statusCode` / `.message`. Suggests
  * recent pages from navAll like upstream's recommendations list.
  */
-import type { TemplateProps } from "@dune/core";
+import type { TemplateProps } from "@dune/core/content/types";
 import Layout from "../components/layout.tsx";
 import { normalizeRoute } from "../utils/blox.ts";
 

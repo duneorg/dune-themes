@@ -1,2 +1,5 @@
-/** JSR package entry — theme files are loaded from the theme directory at runtime. */
+/**
+ * JSR entry point for this Dune theme package.
+ * Dune resolves `jsr:@dune/theme-*@version` to the directory containing theme.yaml.
+ */
 export {};

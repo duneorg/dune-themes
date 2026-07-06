@@ -2,7 +2,7 @@
  * Collection views — ports of layouts/_partials/views/
  * (card, article-grid, citation, date-title-summary).
  */
-import type { Page } from "@dune/core";
+import type { Page } from "@dune/core/content/types";
 import {
   formatDateLong,
   inlineMarkdown,

@@ -4,7 +4,7 @@
  * (site_footer.html + footers/minimal.html), and the search modal shell.
  */
 import type { ComponentChildren } from "preact";
-import type { PageIndex, PageTranslation, TemplateProps } from "@dune/core";
+import type { PageIndex, PageTranslation, TemplateProps } from "@dune/core/content/types";
 import { Icon } from "./icon.tsx";
 import { linkTarget, type MenuItem, normalizeRoute, parseMenu, str } from "../utils/blox.ts";
 

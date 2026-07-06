@@ -2,7 +2,7 @@
  * Search results page for Dune's /search route (upstream is modal-only; the
  * modal is also available via the navbar / Ctrl+K).
  */
-import type { TemplateProps } from "@dune/core";
+import type { TemplateProps } from "@dune/core/content/types";
 import Layout from "../components/layout.tsx";
 import { normalizeRoute } from "../utils/blox.ts";
 

@@ -2,7 +2,7 @@
  * Single-page template — port of single.html: title, date/author/reading-time
  * row, publication/event metadata grid, prose content.
  */
-import type { TemplateProps } from "@dune/core";
+import type { TemplateProps } from "@dune/core/content/types";
 import Layout from "../components/layout.tsx";
 import {
   formatDateLong,
