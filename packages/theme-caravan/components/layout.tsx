@@ -2,8 +2,9 @@
 import { h } from "preact";
 
 export default function Layout(
-  { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig }: any,
+  { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
 ) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "caravan";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const canonicalPath = pathname ?? page?.route ?? "/";
@@ -15,6 +16,8 @@ export default function Layout(
   const accent = themeConfig?.accent_color ?? "#0055bb";
   const showSearch = themeConfig?.show_search !== false;
   const footerText = themeConfig?.footer_text ?? "";
+  const searchLabel = tr("search", "Search");
+  const noResultsLabel = tr("no_results", "No results");
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -43,8 +46,8 @@ export default function Layout(
                   <input
                     id="book-search-input"
                     type="search"
-                    placeholder="Search"
-                    aria-label="Search"
+                    placeholder={searchLabel}
+                    aria-label={searchLabel}
                     autocomplete="off"
                   />
                   <ul id="book-search-results" class="book-search-results" hidden></ul>
@@ -52,8 +55,9 @@ export default function Layout(
               )}
               <ul class="book-menu-list">
                 {(nav ?? []).map((item: any) => {
-                  const active = normalizedPath === stripSlash(item.route);
-                  const inSection = item.route !== "/" && canonicalPath.startsWith(item.route + "/");
+                  const itemPath = stripSlash(item.route);
+                  const active = normalizedPath === itemPath;
+                  const inSection = itemPath !== "/" && !active && normalizedPath.startsWith(itemPath + "/");
                   return (
                     <li key={item.route}>
                       <a href={item.route} class={active ? "active" : inSection ? "in-section" : ""}>
@@ -68,7 +72,7 @@ export default function Layout(
 
           <div class="book-page">
             <header class="book-header">
-              <label for="menu-control" aria-label="Toggle menu">
+              <label for="menu-control" aria-label={tr("toggle_menu", "Toggle menu")}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                   <path d="M3 6h18M3 12h18M3 18h18" />
                 </svg>
@@ -98,6 +102,7 @@ export default function Layout(
               var input=document.getElementById('book-search-input');
               var list=document.getElementById('book-search-results');
               if(!input||!list)return;
+              var noResultsLabel=${JSON.stringify(noResultsLabel)};
               var timer;
               input.addEventListener('input',function(){
                 clearTimeout(timer);
@@ -113,7 +118,7 @@ export default function Layout(
                             return '<li><a href="'+h.route+'">'+
                               h.title.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</a></li>';
                           }).join('')
-                        : '<li class="empty">No results</li>';
+                        : '<li class="empty">'+noResultsLabel+'</li>';
                       list.hidden=false;
                     })
                     .catch(function(){list.hidden=true});

@@ -24,7 +24,10 @@ try {
 
 await linkDemo(slug);
 
-console.log(`Starting demo for ${slug} at http://localhost:8765 …\n`);
+const manifest = JSON.parse(await Deno.readTextFile(`${dir}/deno.json`));
+const port = manifest.tasks?.dev?.match(/--port (\d+)/)?.[1] ?? "8765";
+
+console.log(`Starting demo for ${slug} at http://localhost:${port} …\n`);
 const cmd = new Deno.Command("deno", {
   args: ["task", "dev"],
   cwd: dir,

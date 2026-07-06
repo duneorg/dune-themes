@@ -1,0 +1,7 @@
+title: Caravan Docs
+description: Live demo of Caravan — a clean documentation theme for Dune, inspired by hugo-book
+url: https://themes.getdune.org/caravan
+theme:
+  name: caravan
+taxonomies:
+  - tag

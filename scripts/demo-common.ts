@@ -54,9 +54,25 @@ export const DEMO_SLUGS = [
   "tessellate",
   "twenty",
   "verti",
+  "caravan",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
+
+/**
+ * Shared content fixture each demo symlinks `content` to (under
+ * `demos/_shared/`). Defaults to "blog" — docs-family themes (caravan, and
+ * later book/lucid/manual) use "docs" instead; landing/portfolio themes
+ * should get their own fixture here once those are built (see
+ * notes/RELEASE-PLAN.md).
+ */
+const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
+  caravan: "docs",
+};
+
+function contentFixtureFor(slug: string): string {
+  return DEMO_CONTENT_FIXTURE[slug as DemoSlug] ?? "blog";
+}
 
 export function demoDir(slug: string): string {
   return join(ROOT, "demos", slug);
@@ -77,7 +93,7 @@ export async function linkDemo(slug: string): Promise<void> {
   const themeLink = join(themesDir, slug);
   const packageDir = join(ROOT, "packages", `theme-${slug}`);
   const contentLink = join(dir, "content");
-  const sharedContent = join(ROOT, "demos", "_shared", "blog");
+  const fixture = contentFixtureFor(slug);
 
   await Deno.mkdir(themesDir, { recursive: true });
 
@@ -88,7 +104,7 @@ export async function linkDemo(slug: string): Promise<void> {
   }
 
   await ensureSymlink(themeLink, join("..", "..", "..", "packages", `theme-${slug}`));
-  await ensureSymlink(contentLink, join("..", "_shared", "blog"));
+  await ensureSymlink(contentLink, join("..", "_shared", fixture));
 }
 
 async function ensureSymlink(linkPath: string, target: string): Promise<void> {
