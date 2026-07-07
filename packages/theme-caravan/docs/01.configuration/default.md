@@ -22,24 +22,41 @@ panel's Theme Settings tab (Settings → Theme), or by hand in that file.
 
 ## Setting them
 
+`data/theme-config.json` is namespaced by theme name, so switching themes
+and back doesn't discard your settings:
+
 ```json
 // data/theme-config.json
 {
-  "color_scheme": "green",
-  "show_search": true,
-  "footer_text": "© 2026 Acme Docs"
+  "caravan": {
+    "color_scheme": "green",
+    "show_search": true,
+    "footer_text": "© 2026 Acme Docs"
+  }
 }
 ```
 
 Or through the admin panel, which renders a form from the same
-`config_schema` — no code changes needed for any of the above.
+`config_schema` (dropdowns for `select` fields, real checkboxes for
+`toggle`, a native color picker for `color`) — no code changes needed for
+any of the above.
 
 ## Per-page and per-section overrides
 
-Caravan itself doesn't currently read anything beyond the site-level config
-above — every page uses the same `color_scheme`. Dune's own per-section
-config-override mechanism (a page or section overriding specific keys via
-frontmatter, the way `collections:` already works) is being tracked for the
-theme library more broadly; once it lands, a `theme_config:` block in a
-section's frontmatter will let e.g. a `/blog/` section use a different
-accent than the rest of the site.
+A page or section can override any of the options above for itself and its
+descendants with a `theme_config:` block in frontmatter — the same
+mechanism `collections:` uses. Site-level config applies first, then the
+nearest ancestor section's `theme_config`, then the page's own — each layer
+only overriding the keys it sets:
+
+```yaml
+# a section's default.md
+title: Blog
+theme_config:
+  color_scheme: purple
+```
+
+Every page under that section renders with `color_scheme: purple` instead
+of the site-level default, without Caravan needing to know or care —
+`props.themeConfig` already arrives pre-resolved by the time a template
+sees it.
