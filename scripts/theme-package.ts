@@ -23,8 +23,8 @@ export function themeDenoJson(options: ThemePackageManifestOptions): string {
     license: "MIT",
     exports: "./mod.ts",
     imports: {
-      "@dune/core/content/types": "jsr:@dune/core@^0.27/content/types",
-      "@dune/core/theme-helpers": "jsr:@dune/core@^0.27/theme-helpers",
+      "@dune/core/content/types": "jsr:@dune/core@^0.28/content/types",
+      "@dune/core/theme-helpers": "jsr:@dune/core@^0.28/theme-helpers",
       preact: "npm:preact@^10",
       "preact/hooks": "npm:preact@^10/hooks",
       "preact/jsx-runtime": "npm:preact@^10/jsx-runtime",

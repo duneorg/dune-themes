@@ -222,7 +222,7 @@ export function buildRegistryJson(catalog: CatalogEntry[] = MARKETPLACE_CATALOG)
       sha256: "",
       verified: true,
       downloads: 0,
-      compatibleWith: "^0.27.0",
+      compatibleWith: "^0.28.0",
     })),
   };
 }
