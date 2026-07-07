@@ -87,6 +87,13 @@ const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan"]);
 /** Directory name of the fixture's homepage, by convention across all shared fixtures. */
 const HOME_DIR_NAME = "01.home";
 
+/**
+ * Target directory for a theme's own `docs/` folder (see below) — sorted
+ * right after the homepage, ahead of the shared fixture's generic
+ * platform-docs sections (which start at 03 to leave this slot free).
+ */
+const THEME_DOCS_DIR_NAME = "02.theme-docs";
+
 export function demoDir(slug: string): string {
   return join(ROOT, "demos", slug);
 }
@@ -138,6 +145,18 @@ export async function linkDemo(slug: string): Promise<void> {
   // it's copied, not live-linked.
   await Deno.remove(contentDir, { recursive: true }).catch(() => {});
   await copyDirRecursive(fixtureDir, contentDir);
+
+  // A theme's own docs/ (real, theme-specific documentation — config
+  // reference, customization guide, template walkthrough — content that
+  // can't be shared across themes the way _shared/{fixture} is) folds in
+  // alongside the generic fixture content, if the theme package has one.
+  const themeDocsDir = join(packageDir, "docs");
+  try {
+    await Deno.stat(themeDocsDir);
+    await copyDirRecursive(themeDocsDir, join(contentDir, THEME_DOCS_DIR_NAME));
+  } catch {
+    // theme has no docs/ folder — fine, not every theme needs one
+  }
 
   const readme = await readReadmeMarkdown(packageDir);
   if (readme && DEMO_README_AS_HOME.has(slug as DemoSlug)) {

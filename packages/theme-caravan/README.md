@@ -13,6 +13,18 @@ config; off by default, useful for a showcase/demo site), `show_search`,
 
 Sticky sidebar built from top-level nav, live search against `/api/search`, CSS-only mobile drawer, dark mode via a sidebar toggle (persisted in `localStorage`, defaults to `prefers-color-scheme`). UI strings are localized via `locales/en.json`.
 
+## `docs/`
+
+Real, theme-specific documentation (config reference, customization guide,
+template walkthrough) lives in `docs/` alongside this README, in the same
+directory-per-page shape as demo content (`docs/default.md` is the section
+index, `docs/01.configuration/default.md` etc. are its children). The demo
+tooling in the `dune-themes` monorepo (`scripts/demo-common.ts`) folds this
+into the demo site as a "Using Caravan" section, right after the homepage —
+in addition to the README-as-homepage, not instead of it. It ships inside
+the published package too (harmless: a real site never surfaces it as
+content unless something explicitly copies it out, the way the demo does).
+
 ## Deviations / scope
 
 Deliberately lighter than [`book`](../theme-book/) (the faithful hugo-book port): flat top-level sidebar nav rather than a collapsible nested tree, no breadcrumbs/table-of-contents/prev-next navigation, no edit-this-page link, no KaTeX/Mermaid. If you need those, use `book` instead — caravan is the "clean and small" alternative for docs that don't need the full hugo-book feature set.
