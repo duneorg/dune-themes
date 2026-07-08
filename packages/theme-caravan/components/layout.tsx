@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 import { h } from "preact";
-import { COLOR_SCHEMES, colorSchemeCss, resolveColorScheme } from "../utils/color-schemes.ts";
+import { clientSchemeTable, colorSchemeCss, COLOR_SCHEMES, resolveColorScheme } from "../utils/color-schemes.ts";
 
 export default function Layout(
   { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
@@ -49,14 +49,13 @@ export default function Layout(
               ${
               showSchemeSwitcher
                 ? `
-              var schemes=${JSON.stringify(COLOR_SCHEMES)};
+              var schemes=${JSON.stringify(clientSchemeTable())};
               var id=localStorage.getItem("caravan-color-scheme");
               if(id&&schemes[id]){
                 var mode=document.documentElement.dataset.theme
                   ||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
                 var v=schemes[id][mode];
-                document.documentElement.style.setProperty('--color-link',v.accent);
-                document.documentElement.style.setProperty('--menu-background',v.menuBackground);
+                for(var k in v)document.documentElement.style.setProperty('--'+k,v[k]);
               }`
                 : ""
             }
@@ -164,7 +163,7 @@ export default function Layout(
         <script dangerouslySetInnerHTML={{ __html: `
           (function(){
             var STORAGE_KEY='caravan-color-scheme';
-            var schemes=${showSchemeSwitcher ? JSON.stringify(COLOR_SCHEMES) : "null"};
+            var schemes=${showSchemeSwitcher ? JSON.stringify(clientSchemeTable()) : "null"};
             function currentMode(){
               var t=document.documentElement.dataset.theme;
               return t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
@@ -172,8 +171,7 @@ export default function Layout(
             function applyScheme(id){
               if(!schemes||!schemes[id])return;
               var v=schemes[id][currentMode()];
-              document.documentElement.style.setProperty('--color-link',v.accent);
-              document.documentElement.style.setProperty('--menu-background',v.menuBackground);
+              for(var k in v)document.documentElement.style.setProperty('--'+k,v[k]);
             }
             var select=document.getElementById('scheme-switcher');
             if(select){

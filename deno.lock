@@ -6,7 +6,9 @@
     "jsr:@deno/loader@~0.3.10": "0.3.14",
     "jsr:@denosaurs/plug@1": "1.1.0",
     "jsr:@dune/core@0.25": "0.25.1",
+    "jsr:@dune/core@0.27": "0.27.0",
     "jsr:@dune/core@0.28": "0.28.1",
+    "jsr:@dune/plugin-admin@1": "1.0.1",
     "jsr:@fresh/build-id@1": "1.0.1",
     "jsr:@fresh/core@2": "2.3.3",
     "jsr:@std/assert@0.217": "0.217.0",
@@ -93,6 +95,17 @@
         "npm:polizy"
       ]
     },
+    "@dune/core@0.27.0": {
+      "integrity": "89a0ee5a5d33c680ee87b426c3171075cd23866e0dbfac3ede913eebf32d24f3",
+      "dependencies": [
+        "jsr:@std/encoding@1",
+        "jsr:@std/fs@1",
+        "jsr:@std/path@^1.1.4",
+        "jsr:@std/yaml",
+        "npm:ioredis",
+        "npm:polizy"
+      ]
+    },
     "@dune/core@0.28.1": {
       "integrity": "75a87418a5cf3c9d51c3a583d5887781776fcf7eca86d8f6f8d9684825919b9c",
       "dependencies": [
@@ -112,6 +125,20 @@
         "npm:preact-render-to-string@6",
         "npm:preact@10",
         "npm:sharp"
+      ]
+    },
+    "@dune/plugin-admin@1.0.1": {
+      "integrity": "9b6e7fec83e27fd35282ded973aedbb8846ed041db24aeaf0a5ad9283e39df7f",
+      "dependencies": [
+        "jsr:@dune/core@0.27",
+        "jsr:@std/encoding@1",
+        "jsr:@std/path@^1.1.4",
+        "jsr:@std/yaml",
+        "jsr:@zip-js/zip-js",
+        "npm:marked",
+        "npm:nodemailer",
+        "npm:preact-render-to-string@6",
+        "npm:preact@10"
       ]
     },
     "@fresh/build-id@1.0.1": {
