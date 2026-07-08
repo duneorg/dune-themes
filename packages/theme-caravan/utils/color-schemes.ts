@@ -36,32 +36,32 @@ export interface ColorScheme {
 export const COLOR_SCHEMES: Record<string, ColorScheme> = {
   blue: {
     label: "Blue",
-    light: { accent: "#1d4ed8", menuBackground: "#eff4ff" },
+    light: { accent: "#1d4ed8", menuBackground: "#d3dae9" },
     dark: { accent: "#60a5fa", menuBackground: "#1b2336" },
   },
   slate: {
     label: "Slate",
-    light: { accent: "#334155", menuBackground: "#f8f9fa" },
+    light: { accent: "#334155", menuBackground: "#dedede" },
     dark: { accent: "#94a3b8", menuBackground: "#1e2022" },
   },
   green: {
     label: "Green",
-    light: { accent: "#15803d", menuBackground: "#f0fdf4" },
+    light: { accent: "#15803d", menuBackground: "#d6e7dd" },
     dark: { accent: "#4ade80", menuBackground: "#1c3024" },
   },
   purple: {
     label: "Purple",
-    light: { accent: "#6d28d9", menuBackground: "#f5f3ff" },
+    light: { accent: "#6d28d9", menuBackground: "#d9d7e5" },
     dark: { accent: "#a78bfa", menuBackground: "#262336" },
   },
   amber: {
     label: "Amber",
-    light: { accent: "#a16207", menuBackground: "#fffbeb" },
+    light: { accent: "#a16207", menuBackground: "#e7e3d6" },
     dark: { accent: "#fbbf24", menuBackground: "#332e1e" },
   },
   rose: {
     label: "Rose",
-    light: { accent: "#be123c", menuBackground: "#fff1f2" },
+    light: { accent: "#be123c", menuBackground: "#e7d6de" },
     dark: { accent: "#fb7185", menuBackground: "#331e28" },
   },
 };
@@ -131,17 +131,33 @@ function hslToRgb([h, s, l]: [number, number, number]): [number, number, number]
  * `neutralHex`'s own saturation to `menuHex`'s saturation. `satT` near 1
  * (body) makes the surface pick up close to the scheme's full color;
  * `satT` near 0 (code) keeps it close to neutral, just hue-shifted.
+ *
+ * When `menuHex` itself is (near-)achromatic (slate), its hue is
+ * mathematically undefined — blending toward it at a low `satT` would
+ * otherwise leak the neutral surface's own incidental hue/saturation
+ * through (e.g. the shared neutral code background has a faint blue cast)
+ * at an arbitrary hue. There's nothing meaningful to partially blend
+ * toward when the target has no color, so collapse straight to gray.
  */
 function retint(neutralHex: string, menuHex: string, satT: number, lightnessBoost: number): string {
   const [, sn, ln] = rgbToHsl(hexToRgb(neutralHex));
   const [hm, sm] = rgbToHsl(hexToRgb(menuHex));
-  const s = sn + (sm - sn) * satT;
   const l = Math.min(1, Math.max(0, ln + lightnessBoost));
+  if (sm < 0.001) return rgbToHex(hslToRgb([0, 0, l]));
+  const s = sn + (sm - sn) * satT;
   return rgbToHex(hslToRgb([hm, s, l]));
 }
 
+/**
+ * In dark mode the neutral surfaces sit near the bottom of the lightness
+ * range, so retinting nudges lightness *up* toward the (brighter)
+ * menuBackground. In light mode the neutral surfaces sit at/near the very
+ * top (pure white can't get any lighter), so the same move has to go the
+ * other way: nudge lightness *down* toward the (still very light, but not
+ * literally white) menuBackground. Same idea, opposite sign.
+ */
 const LIGHTNESS_BOOST = {
-  light: { body: 0, code: 0 },
+  light: { body: -0.055, code: -0.1015 },
   dark: { body: 0.004, code: 0.006 },
 } as const;
 
