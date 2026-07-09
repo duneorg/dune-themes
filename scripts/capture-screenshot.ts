@@ -29,7 +29,15 @@ await Deno.mkdir(outDir, { recursive: true });
 let baseUrl = urlArg;
 if (!baseUrl) {
   await linkDemo(slug);
-  baseUrl = "http://127.0.0.1:8765";
+  // Each demo's `dev` task hardcodes its own --port in demos/{slug}/deno.json;
+  // read it from there rather than assuming a shared port.
+  const demoManifest = JSON.parse(await Deno.readTextFile(join(demoDir(slug), "deno.json")));
+  const portMatch = (demoManifest.tasks?.dev as string | undefined)?.match(/--port (\d+)/);
+  if (!portMatch) {
+    console.error(`Could not find --port in demos/${slug}/deno.json dev task`);
+    Deno.exit(1);
+  }
+  baseUrl = `http://127.0.0.1:${portMatch[1]}`;
   console.log(`Starting demo server for ${slug}…`);
   const server = new Deno.Command("deno", {
     args: ["task", "dev"],
@@ -67,7 +75,10 @@ async function capture(url: string, path: string): Promise<void> {
   const browser = await chromium.launch();
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
-    await page.goto(url, { waitUntil: "networkidle" });
+    // Not "networkidle": the dev server's live-reload connection
+    // (/__dune_reload) never settles, so networkidle always times out.
+    await page.goto(url, { waitUntil: "load" });
+    await page.waitForTimeout(1500);
     await page.screenshot({ path, fullPage: false });
   } finally {
     await browser.close();

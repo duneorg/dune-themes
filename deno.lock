@@ -47,6 +47,7 @@
     "npm:ioredis@5": "5.10.1",
     "npm:marked@15": "15.0.12",
     "npm:nodemailer@6": "6.10.1",
+    "npm:playwright@^1.45.0": "1.61.1",
     "npm:polizy@0.2": "0.2.0",
     "npm:postgres@^3.4.0": "3.4.9",
     "npm:preact-render-to-string@6": "6.6.7_preact@10.29.1",
@@ -819,6 +820,11 @@
     "fast-equals@5.4.0": {
       "integrity": "sha512-jt2DW/aNFNwke7AUd+Z+e6pz39KO5rzdbbFCg2sGafS4mk13MI7Z8O5z9cADNn5lhGODIgLwug6TZO2ctf7kcw=="
     },
+    "fsevents@2.3.2": {
+      "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==",
+      "os": ["darwin"],
+      "scripts": true
+    },
     "gray-matter@4.0.3": {
       "integrity": "sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==",
       "dependencies": [
@@ -1324,6 +1330,20 @@
         "is-decimal",
         "is-hexadecimal"
       ]
+    },
+    "playwright-core@1.61.1": {
+      "integrity": "sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==",
+      "bin": true
+    },
+    "playwright@1.61.1": {
+      "integrity": "sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==",
+      "dependencies": [
+        "playwright-core"
+      ],
+      "optionalDependencies": [
+        "fsevents"
+      ],
+      "bin": true
     },
     "polizy@0.2.0": {
       "integrity": "sha512-x7GHOHazLr3LikH/UErFzISsFSNkKZNAtJJ3Kkk7fuYOiNdITD9DSmr4feDPdHqoK79aQC2o94jkFdvhRdvXTQ==",
