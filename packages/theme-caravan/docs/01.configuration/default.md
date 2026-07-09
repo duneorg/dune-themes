@@ -18,6 +18,7 @@ panel's Theme Settings tab (Settings → Theme), or by hand in that file.
 | `color_scheme` | select | `blue` | Accent color + sidebar tint. One of `blue`, `slate`, `green`, `purple`, `amber`, `rose` — see [Customization](../customization/) for what each pair actually contains. |
 | `scheme_switcher` | toggle | `false` | Adds a sidebar dropdown so *visitors* can preview the other presets client-side (stored in their browser's `localStorage`). Doesn't change your site's actual `color_scheme` — off by default, since most sites want one consistent brand color rather than letting visitors repaint the site. This demo has it turned on so you can try the presets. |
 | `show_search` | toggle | `true` | Shows the live search box at the top of the sidebar. |
+| `flat_nav` | toggle | `false` | The sidebar shows the full nested page tree by default (click a section to expand it, current page's ancestors start expanded). Turn this on to show only top-level pages instead. |
 | `footer_text` | text | *(empty)* | Replaces the default "Built with Dune — theme Caravan" footer line. |
 
 ## Setting them

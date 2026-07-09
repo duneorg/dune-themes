@@ -18,6 +18,11 @@ config_schema:
     type: toggle
     label: "Show search box in sidebar"
     default: true
+  flat_nav:
+    type: toggle
+    label: "Flatten sidebar navigation"
+    default: false
+    help: "By default the sidebar shows the full nested page tree (click a section to expand it). Turn this on to show only top-level pages, matching caravan's original flat nav."
   footer_text:
     type: text
     label: "Footer text"

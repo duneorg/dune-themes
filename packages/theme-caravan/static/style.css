@@ -222,6 +222,31 @@ img { max-width: 100%; height: auto; }
 .book-menu-list a.active { color: var(--color-link); }
 .book-menu-list a.in-section { font-weight: 500; }
 
+/* Nested sidebar tree (see utils/nav.ts, theme_config.flat_nav) — a hidden
+   checkbox + label reuses the same zero-JS expand/collapse technique
+   already used for #menu-control (the mobile sidebar toggle). */
+.nav-item-row { display: flex; align-items: center; gap: 0.25rem; }
+.nav-item-row a { flex: 1; min-width: 0; }
+.nav-expand-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+.nav-expand-toggle svg { transition: transform 0.15s ease; }
+.nav-toggle:checked ~ .nav-item-row .nav-expand-toggle svg { transform: rotate(90deg); }
+.book-menu-list ul.nested {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding-left: 1.1rem;
+  display: none;
+}
+.nav-toggle:checked ~ ul.nested { display: block; }
+
 /* ── Page ────────────────────────────────────────────── */
 .book-page {
   flex: 1 1 auto;

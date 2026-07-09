@@ -1,9 +1,10 @@
 /** @jsxImportSource preact */
 import { h } from "preact";
 import { clientSchemeTable, colorSchemeCss, COLOR_SCHEMES, resolveColorScheme } from "../utils/color-schemes.ts";
+import { buildNavTree, isRouteWithin, navLabel, type NavNode } from "../utils/nav.ts";
 
 export default function Layout(
-  { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
+  { children, site, config, nav, navAll, page, pageTitle, pathname, dir, themeConfig, t }: any,
 ) {
   const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "caravan";
@@ -23,10 +24,42 @@ export default function Layout(
   const showSearch = themeConfig?.show_search !== false;
   const showSchemeSwitcher = themeConfig?.scheme_switcher === true;
   const footerText = themeConfig?.footer_text ?? "";
+  const flatNav = themeConfig?.flat_nav === true;
+  const navTree: NavNode[] = flatNav
+    ? []
+    : buildNavTree((navAll ?? nav ?? []) as NavNode[]);
   const searchLabel = tr("search", "Search");
   const noResultsLabel = tr("no_results", "No results");
   const toggleThemeLabel = tr("toggle_theme", "Toggle light/dark mode");
   const schemeSwitcherLabel = tr("scheme_switcher", "Color scheme");
+  let navCheckboxSeq = 0;
+
+  function renderNavNode(node: NavNode): h.JSX.Element {
+    const itemPath = stripSlash(node.route);
+    const active = normalizedPath === itemPath;
+    const inSection = itemPath !== "/" && !active && normalizedPath.startsWith(itemPath + "/");
+    const hasChildren = node.children.length > 0;
+    const expanded = hasChildren && isRouteWithin(normalizedPath, node.route);
+    const checkboxId = `nav-toggle-${navCheckboxSeq++}`;
+    return (
+      <li key={node.route}>
+        {hasChildren && <input type="checkbox" id={checkboxId} class="hidden nav-toggle" checked={expanded} />}
+        <div class="nav-item-row">
+          {hasChildren && (
+            <label for={checkboxId} class="nav-expand-toggle" aria-label={tr("toggle_section", "Toggle section")}>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </label>
+          )}
+          <a href={node.route} class={active ? "active" : inSection ? "in-section" : ""}>
+            {navLabel(node)}
+          </a>
+        </div>
+        {hasChildren && <ul class="book-menu-list nested">{node.children.map(renderNavNode)}</ul>}
+      </li>
+    );
+  }
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -84,18 +117,20 @@ export default function Layout(
                 </div>
               )}
               <ul class="book-menu-list">
-                {(nav ?? []).map((item: any) => {
-                  const itemPath = stripSlash(item.route);
-                  const active = normalizedPath === itemPath;
-                  const inSection = itemPath !== "/" && !active && normalizedPath.startsWith(itemPath + "/");
-                  return (
-                    <li key={item.route}>
-                      <a href={item.route} class={active ? "active" : inSection ? "in-section" : ""}>
-                        {item.navTitle ?? item.title}
-                      </a>
-                    </li>
-                  );
-                })}
+                {flatNav
+                  ? (nav ?? []).map((item: any) => {
+                    const itemPath = stripSlash(item.route);
+                    const active = normalizedPath === itemPath;
+                    const inSection = itemPath !== "/" && !active && normalizedPath.startsWith(itemPath + "/");
+                    return (
+                      <li key={item.route}>
+                        <a href={item.route} class={active ? "active" : inSection ? "in-section" : ""}>
+                          {item.navTitle ?? item.title}
+                        </a>
+                      </li>
+                    );
+                  })
+                  : navTree.map(renderNavNode)}
               </ul>
               <div class="book-menu-bottom">
                 {showSchemeSwitcher && (
