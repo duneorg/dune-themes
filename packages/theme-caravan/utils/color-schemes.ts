@@ -50,7 +50,7 @@ export const COLOR_SCHEMES: Record<string, ColorScheme> = {
   },
   slate: {
     label: "Slate",
-    light: { accent: "#334155", menuBackground: "#dedede" },
+    light: { accent: "#587a9b", menuBackground: "#dedede" },
     dark: {
       accent: "#94b0cc",
       menuBackground: "#272c30",
