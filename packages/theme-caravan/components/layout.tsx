@@ -45,6 +45,9 @@ export default function Layout(
       <li key={node.route}>
         {hasChildren && <input type="checkbox" id={checkboxId} class="hidden nav-toggle" checked={expanded} />}
         <div class="nav-item-row">
+          <a href={node.route} class={active ? "active" : inSection ? "in-section" : ""}>
+            {navLabel(node)}
+          </a>
           {hasChildren && (
             <label for={checkboxId} class="nav-expand-toggle" aria-label={tr("toggle_section", "Toggle section")}>
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -52,9 +55,6 @@ export default function Layout(
               </svg>
             </label>
           )}
-          <a href={node.route} class={active ? "active" : inSection ? "in-section" : ""}>
-            {navLabel(node)}
-          </a>
         </div>
         {hasChildren && <ul class="book-menu-list nested">{node.children.map(renderNavNode)}</ul>}
       </li>

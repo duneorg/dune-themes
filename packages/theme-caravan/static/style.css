@@ -6,7 +6,7 @@
   /* --color-link and --menu-background are set inline per-request from the
      color_scheme config option (see components/layout.tsx, utils/color-schemes.ts) */
   --body-background: #fff;
-  --border-color: #e9ecef;
+  --border-color: #c1c1c1;
   --code-background: #f8f9fa;
   --menu-width: 16rem;
   --font-size: 16px;
@@ -17,7 +17,7 @@
     --color-text: #eaeaea;
     --color-secondary: #a0a0a0;
     --body-background: #1b1d1e;
-    --border-color: #2b2f31;
+    --border-color: #464646;
     --code-background: #24272a;
   }
 }
@@ -27,14 +27,14 @@
   --color-text: #eaeaea;
   --color-secondary: #a0a0a0;
   --body-background: #1b1d1e;
-  --border-color: #2b2f31;
+  --border-color: #464646;
   --code-background: #24272a;
 }
 :root[data-theme="light"] {
   --color-text: #101010;
   --color-secondary: #555;
   --body-background: #fff;
-  --border-color: #e9ecef;
+  --border-color: #c1c1c1;
   --code-background: #f8f9fa;
 }
 
