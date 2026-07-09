@@ -94,6 +94,15 @@ const HOME_DIR_NAME = "01.home";
  */
 const THEME_DOCS_DIR_NAME = "02.theme-docs";
 
+/**
+ * Target directory for a theme's own `style-guide/` folder (see below) —
+ * sorted after the shared fixture's own sections, ahead of the generated
+ * About page, so it reads as "one more top-level page" rather than being
+ * nested inside theme-docs (a style guide is a reference artifact, not
+ * documentation prose).
+ */
+const STYLE_GUIDE_DIR_NAME = "06.style-guide";
+
 export function demoDir(slug: string): string {
   return join(ROOT, "demos", slug);
 }
@@ -156,6 +165,17 @@ export async function linkDemo(slug: string): Promise<void> {
     await copyDirRecursive(themeDocsDir, join(contentDir, THEME_DOCS_DIR_NAME));
   } catch {
     // theme has no docs/ folder — fine, not every theme needs one
+  }
+
+  // A theme's own style-guide/ (hand-authored template exercising every
+  // component the theme's stylesheet supports) folds in as its own
+  // top-level page, if the theme package has one.
+  const styleGuideDir = join(packageDir, "style-guide");
+  try {
+    await Deno.stat(styleGuideDir);
+    await copyDirRecursive(styleGuideDir, join(contentDir, STYLE_GUIDE_DIR_NAME));
+  } catch {
+    // theme has no style-guide/ folder — fine, not every theme needs one
   }
 
   const readme = await readReadmeMarkdown(packageDir);
