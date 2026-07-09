@@ -25,6 +25,15 @@
 export interface ColorSchemeVariant {
   accent: string;
   menuBackground: string;
+  /**
+   * Explicit body/code overrides, bypassing the retinted derivation below.
+   * Slate uses this: retint()'s shared lightness boost is tuned for the
+   * five tinted schemes, and widening it there for more body-vs-menu
+   * contrast would rock that already-settled balance — slate's near-zero
+   * saturation means it needs a bigger, scheme-specific push instead.
+   */
+  bodyBackground?: string;
+  codeBackground?: string;
 }
 
 export interface ColorScheme {
@@ -42,7 +51,12 @@ export const COLOR_SCHEMES: Record<string, ColorScheme> = {
   slate: {
     label: "Slate",
     light: { accent: "#334155", menuBackground: "#dedede" },
-    dark: { accent: "#94a3b8", menuBackground: "#1e2022" },
+    dark: {
+      accent: "#94b0cc",
+      menuBackground: "#272c30",
+      bodyBackground: "#1f2123",
+      codeBackground: "#32373c",
+    },
   },
   green: {
     label: "Green",
@@ -183,8 +197,8 @@ function surfaceVars(v: ColorSchemeVariant, mode: "light" | "dark"): SchemeSurfa
   return {
     "color-link": v.accent,
     "menu-background": v.menuBackground,
-    "body-background": retint(neutral.body, v.menuBackground, 1, boost.body),
-    "code-background": retint(neutral.code, v.menuBackground, 0.05, boost.code),
+    "body-background": v.bodyBackground ?? retint(neutral.body, v.menuBackground, 1, boost.body),
+    "code-background": v.codeBackground ?? retint(neutral.code, v.menuBackground, 0.05, boost.code),
   };
 }
 
