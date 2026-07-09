@@ -99,16 +99,32 @@ export default function Layout(
               </ul>
               <div class="book-menu-bottom">
                 {showSchemeSwitcher && (
-                  <select
-                    id="scheme-switcher"
-                    class="scheme-switcher"
-                    aria-label={schemeSwitcherLabel}
-                    title={schemeSwitcherLabel}
-                  >
-                    {Object.entries(COLOR_SCHEMES).map(([id, scheme]) => (
-                      <option value={id} selected={id === colorSchemeId}>{scheme.label}</option>
-                    ))}
-                  </select>
+                  <div class="scheme-picker" id="scheme-picker">
+                    <button
+                      type="button"
+                      id="scheme-picker-toggle"
+                      class="scheme-picker-toggle"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                      aria-label={schemeSwitcherLabel}
+                      title={schemeSwitcherLabel}
+                    >
+                      <span class="scheme-swatch" style={`background:${colorScheme.light.accent}`} />
+                      <span class="scheme-swatch" style={`background:${colorScheme.dark.accent}`} />
+                      <svg class="scheme-picker-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                    <ul class="scheme-picker-list" id="scheme-picker-list" role="listbox" hidden>
+                      {Object.entries(COLOR_SCHEMES).map(([id, scheme]) => (
+                        <li key={id} role="option" tabindex={0} data-scheme-id={id} aria-selected={id === colorSchemeId}>
+                          <span class="scheme-swatch" style={`background:${scheme.light.accent}`} />
+                          <span class="scheme-swatch" style={`background:${scheme.dark.accent}`} />
+                          <span class="scheme-picker-label">{scheme.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
                 <button
                   id="theme-toggle"
@@ -175,14 +191,50 @@ export default function Layout(
               var v=schemes[id][currentMode()];
               for(var k in v)document.documentElement.style.setProperty('--'+k,v[k]);
             }
-            var select=document.getElementById('scheme-switcher');
-            if(select){
-              var stored=localStorage.getItem(STORAGE_KEY);
-              if(stored&&schemes&&schemes[stored])select.value=stored;
-              select.addEventListener('change',function(){
-                localStorage.setItem(STORAGE_KEY,select.value);
-                applyScheme(select.value);
+            var picker=document.getElementById('scheme-picker');
+            var toggleBtn=document.getElementById('scheme-picker-toggle');
+            var list=document.getElementById('scheme-picker-list');
+            if(picker&&toggleBtn&&list){
+              function closeList(){list.hidden=true;toggleBtn.setAttribute('aria-expanded','false');}
+              function openList(){list.hidden=false;toggleBtn.setAttribute('aria-expanded','true');}
+              function syncToggle(li){
+                var liSwatches=li.querySelectorAll('.scheme-swatch');
+                var toggleSwatches=toggleBtn.querySelectorAll('.scheme-swatch');
+                for(var i=0;i<toggleSwatches.length;i++)toggleSwatches[i].style.background=liSwatches[i].style.background;
+                var items=list.querySelectorAll('li');
+                for(var j=0;j<items.length;j++)items[j].setAttribute('aria-selected',items[j]===li?'true':'false');
+              }
+              function selectLi(li){
+                syncToggle(li);
+                var id=li.getAttribute('data-scheme-id');
+                localStorage.setItem(STORAGE_KEY,id);
+                applyScheme(id);
+                closeList();
+              }
+              toggleBtn.addEventListener('click',function(e){
+                e.stopPropagation();
+                if(list.hidden)openList();else closeList();
               });
+              var options=list.querySelectorAll('li');
+              for(var k=0;k<options.length;k++){
+                (function(li){
+                  li.addEventListener('click',function(){selectLi(li);});
+                  li.addEventListener('keydown',function(e){
+                    if(e.key==='Enter'||e.key===' '){e.preventDefault();selectLi(li);}
+                  });
+                })(options[k]);
+              }
+              document.addEventListener('click',function(e){
+                if(!picker.contains(e.target))closeList();
+              });
+              document.addEventListener('keydown',function(e){
+                if(e.key==='Escape')closeList();
+              });
+              var stored=localStorage.getItem(STORAGE_KEY);
+              if(stored){
+                var storedLi=list.querySelector('li[data-scheme-id="'+stored+'"]');
+                if(storedLi)syncToggle(storedLi);
+              }
             }
             var btn=document.getElementById('theme-toggle');
             if(!btn)return;

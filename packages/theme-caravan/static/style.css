@@ -100,6 +100,9 @@ img { max-width: 100%; height: auto; }
   background: none;
   color: var(--color-secondary);
   cursor: pointer;
+  /* Pushes the toggle to the far end of .book-menu-bottom's row, regardless
+     of whether the scheme picker is present alongside it. */
+  margin-left: auto;
 }
 .theme-toggle:hover { background: var(--border-color); color: var(--color-text); }
 .theme-toggle .icon-moon { display: none; }
@@ -111,29 +114,70 @@ img { max-width: 100%; height: auto; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: inline-flex; }
 
 /*
- * Sits below the nav list, roughly halfway through the remaining sidebar
- * height: `margin-top`/`margin-bottom: auto` on a flex item split whatever
- * free space is left in the column evenly above and below it, rather than
- * pinning it flush to the bottom.
+ * Sits directly below the nav list with a fixed gap. Both controls share
+ * one row — the scheme picker sized to its content, the toggle pinned to
+ * the right via its own margin-left: auto above.
  */
 .book-menu-bottom {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-top: auto;
-  margin-bottom: auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
 }
 
-.scheme-switcher {
-  width: 100%;
-  padding: 0.4rem 0.5rem;
+.scheme-swatch {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.scheme-picker { position: relative; }
+.scheme-picker-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.5rem;
   border: 1px solid var(--border-color);
   border-radius: 0.25rem;
   background: var(--body-background);
   color: var(--color-text);
   font-size: 0.8125rem;
+  cursor: pointer;
 }
+.scheme-picker-toggle:hover { background: var(--menu-background); }
+.scheme-picker-caret { color: var(--color-secondary); flex-shrink: 0; }
+.scheme-picker-list {
+  position: absolute;
+  z-index: 10;
+  /* nav is a full-height (height: 100vh) flex column, so there's always
+     room below .book-menu-bottom before nav's own box ends — opening
+     downward never gets clipped by nav's overflow-y: auto, unlike when
+     nav only shrink-wraps its content. */
+  top: 100%;
+  left: 0;
+  margin: 4px 0 0;
+  min-width: 100%;
+  padding: 0.25rem 0;
+  list-style: none;
+  background: var(--body-background);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+.scheme-picker-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.scheme-picker-list li:hover { background: var(--menu-background); }
+.scheme-picker-list li[aria-selected="true"] { font-weight: 500; }
 
 .book-search { position: relative; margin-bottom: 1rem; }
 .book-search input {
