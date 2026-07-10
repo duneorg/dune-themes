@@ -273,8 +273,30 @@ async function writeTheme(def: ThemeDef): Promise<void> {
 
 async function writeRegistry(): Promise<void> {
   const registry = buildRegistryJson();
+
+  // Preserve per-release fields (sha256, downloads) that `deno task release`
+  // writes per-slug — catalog.ts has no notion of them, so a fresh
+  // buildRegistryJson() would otherwise wipe every theme's release metadata
+  // back to blank each time scaffold runs.
+  const registryPath = join(ROOT, "registry.json");
+  try {
+    const previous = JSON.parse(await Deno.readTextFile(registryPath)) as ReturnType<
+      typeof buildRegistryJson
+    >;
+    const bySlug = new Map(previous.themes.map((t) => [t.slug, t]));
+    for (const entry of registry.themes) {
+      const prev = bySlug.get(entry.slug);
+      if (prev) {
+        entry.sha256 = prev.sha256;
+        entry.downloads = prev.downloads;
+      }
+    }
+  } catch {
+    // No existing registry.json (first run) — nothing to preserve.
+  }
+
   await Deno.writeTextFile(
-    join(ROOT, "registry.json"),
+    registryPath,
     JSON.stringify(registry, null, 2) + "\n",
   );
   console.log(`  ✓ registry.json (${registry.themes.length} themes)`);

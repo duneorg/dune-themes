@@ -51,7 +51,16 @@ if (!entry) {
   Deno.exit(1);
 }
 
-entry.sha256 = hash;
+// Refresh the whole entry from catalog.ts (not just sha256) so fields like
+// compatibleWith/tags/description don't drift stale between releases —
+// only the per-release fields (sha256, downloads) survive the refresh.
+const fresh = buildRegistryJson().themes.find((t) => t.slug === slug);
+if (!fresh) {
+  console.error(`Slug "${slug}" not in catalog.ts`);
+  Deno.exit(1);
+}
+const downloads = entry.downloads;
+Object.assign(entry, fresh, { sha256: hash, downloads });
 registry.updatedAt = new Date().toISOString().slice(0, 10);
 await Deno.writeTextFile(registryPath, JSON.stringify(registry, null, 2) + "\n");
 console.log(`  ✓ registry.json sha256 for ${slug}: ${hash.slice(0, 16)}…`);
