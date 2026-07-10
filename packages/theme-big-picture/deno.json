@@ -18,10 +18,5 @@
       "deno.window",
       "dom"
     ]
-  },
-  "publish": {
-    "exclude": [
-      "screenshots/"
-    ]
   }
 }

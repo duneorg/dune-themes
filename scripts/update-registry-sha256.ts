@@ -9,7 +9,7 @@ import { join } from "@std/path";
 import { buildRegistryJson } from "./catalog.ts";
 import { ROOT } from "./demo-common.ts";
 
-async function sha256Hex(bytes: Uint8Array): Promise<string> {
+async function sha256Hex(bytes: Uint8Array<ArrayBuffer>): Promise<string> {
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return Array.from(new Uint8Array(digest))
     .map((b) => b.toString(16).padStart(2, "0"))
@@ -31,7 +31,7 @@ if (!slug) {
 
 const version = await readThemeVersion(slug);
 const zipPath = join(ROOT, "dist", `${slug}-${version}.zip`);
-let zipBytes: Uint8Array;
+let zipBytes: Uint8Array<ArrayBuffer>;
 try {
   zipBytes = await Deno.readFile(zipPath);
 } catch {

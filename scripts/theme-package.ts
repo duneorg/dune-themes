@@ -35,8 +35,5 @@ export function themeDenoJson(options: ThemePackageManifestOptions): string {
       jsxImportSource: "preact",
       lib: ["deno.window", "dom"],
     },
-    publish: {
-      exclude: ["screenshots/"],
-    },
   }, null, 2) + "\n";
 }

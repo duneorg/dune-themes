@@ -7,8 +7,9 @@
  *   deno task screenshot papermod
  *   deno task screenshot papermod --url https://themes.getdune.org/papermod
  *
- * Output: packages/theme-{slug}/screenshots/screenshot.png (local reference;
- * upload to getdune.org/themes/{slug}/screenshot.png separately).
+ * Output: packages/theme-{slug}/static/screenshot.png — ships inside the theme
+ * package and is served by any site running the theme at
+ * /themes/{slug}/static/screenshot.png (e.g. the demo sites on themes.getdune.org).
  */
 
 import { join } from "@std/path";
@@ -22,7 +23,7 @@ if (!slug || !isDemoSlug(slug)) {
   Deno.exit(1);
 }
 
-const outDir = join(ROOT, "packages", `theme-${slug}`, "screenshots");
+const outDir = join(ROOT, "packages", `theme-${slug}`, "static");
 const outPath = join(outDir, "screenshot.png");
 await Deno.mkdir(outDir, { recursive: true });
 
