@@ -8,7 +8,7 @@
  *   deno task screenshot papermod --url https://themes.getdune.org/papermod
  *
  * Output: packages/theme-{slug}/screenshots/screenshot.png (local reference;
- * upload to cdn.getdune.org/themes/{slug}/screenshot.png separately).
+ * upload to getdune.org/themes/{slug}/screenshot.png separately).
  */
 
 import { join } from "@std/path";
