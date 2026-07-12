@@ -1,0 +1,43 @@
+name: Publish JSR
+
+# Deliberately separate from release-zip.yml: a tag push there gets the ZIP
+# on GitHub and the demo redeployed, but does NOT publish to JSR. This
+# workflow is the actual JSR-publish trigger, run by hand once the
+# redeployed demo has been verified live — not on any automatic event.
+#
+#   gh workflow run publish-jsr.yml -f tag=caravan-v1.1.0
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to publish, e.g. caravan-v1.1.0 (must already exist)"
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # JSR OIDC
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Parse tag
+        id: tag
+        run: |
+          TAG="${{ inputs.tag }}"
+          if [[ ! "$TAG" =~ ^(.+)-v([0-9]+\.[0-9]+\.[0-9]+([-+][^ ]+)?)$ ]]; then
+            echo "Tag must match {slug}-v{semver}, got: $TAG"
+            exit 1
+          fi
+          echo "slug=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish to JSR
+        working-directory: packages/theme-${{ steps.tag.outputs.slug }}
+        run: deno publish

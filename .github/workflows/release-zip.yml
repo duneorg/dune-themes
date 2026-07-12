@@ -1,4 +1,4 @@
-name: Release
+name: Release ZIP
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write  # JSR OIDC
     steps:
       - uses: actions/checkout@v4
 
@@ -47,12 +46,13 @@ jobs:
           git diff --staged --quiet || git commit -m "Update registry sha256 for ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}"
           git push || true
 
-      - name: Publish to JSR
-        working-directory: packages/theme-${{ steps.tag.outputs.slug }}
-        run: deno publish
-
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}
           files: dist/${{ steps.tag.outputs.slug }}-${{ steps.tag.outputs.version }}.zip
+
+      - run: |
+          echo "### Next steps" >> "$GITHUB_STEP_SUMMARY"
+          echo "1. Redeploy the demo (Deployments context) and verify \`themes.getdune.org/${{ steps.tag.outputs.slug }}\` live." >> "$GITHUB_STEP_SUMMARY"
+          echo "2. Once verified, publish to JSR deliberately: \`gh workflow run publish-jsr.yml -f tag=${{ github.ref_name }}\`." >> "$GITHUB_STEP_SUMMARY"
