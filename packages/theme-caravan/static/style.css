@@ -246,6 +246,9 @@ img { max-width: 100%; height: auto; }
   display: none;
 }
 .nav-toggle:checked ~ ul.nested { display: block; }
+/* nav_expand: "auto" — no checkbox/chevron rendered; expansion is driven
+   purely by isRouteWithin() at render time via this class instead. */
+.book-menu-list ul.nested.nested-auto-open { display: block; }
 
 /* ── Page ────────────────────────────────────────────── */
 .book-page {

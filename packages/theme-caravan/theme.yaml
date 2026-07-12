@@ -23,6 +23,12 @@ config_schema:
     label: "Flatten sidebar navigation"
     default: false
     help: "By default the sidebar shows the full nested page tree (click a section to expand it). Turn this on to show only top-level pages, matching caravan's original flat nav."
+  nav_expand:
+    type: select
+    label: "Sidebar section expansion"
+    options: [auto, click]
+    default: auto
+    help: "\"auto\" (default) shows no chevron — a section is only ever open because the current page is inside it. \"click\" adds a chevron on each section so visitors can also expand/collapse it manually. Ignored when flat_nav is on (no sections to expand)."
   footer_text:
     type: text
     label: "Footer text"

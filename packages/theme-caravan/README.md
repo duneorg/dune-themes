@@ -10,13 +10,16 @@ light/dark-mode accent + sidebar-tint pairs, see `utils/color-schemes.ts`),
 presets client-side via `localStorage` — doesn't touch the site's actual
 config; off by default, useful for a showcase/demo site), `show_search`,
 `flat_nav` (shows only top-level pages instead of the full nested tree —
-see below), `footer_text`
+see below), `nav_expand` (`auto`, default — sections open only around the
+current page, no chevron; `click` — adds a chevron so visitors can also
+expand/collapse manually), `footer_text`
 
-Sticky sidebar built from the full page tree (see `utils/nav.ts`, expandable
-sections via a zero-JS checkbox+CSS toggle — the current page's ancestor
-sections start expanded), live search against `/api/search`, CSS-only mobile
-drawer, dark mode via a sidebar toggle (persisted in `localStorage`, defaults
-to `prefers-color-scheme`). UI strings are localized via `locales/en.json`.
+Sticky sidebar built from the full page tree (see `utils/nav.ts` — the
+current page's ancestor sections start expanded; `nav_expand: click` adds a
+zero-JS checkbox+CSS toggle so visitors can expand/collapse sections
+themselves), live search against `/api/search`, CSS-only mobile drawer,
+dark mode via a sidebar toggle (persisted in `localStorage`, defaults to
+`prefers-color-scheme`). UI strings are localized via `locales/en.json`.
 
 ## `docs/`
 

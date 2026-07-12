@@ -25,6 +25,7 @@ export default function Layout(
   const showSchemeSwitcher = themeConfig?.scheme_switcher === true;
   const footerText = themeConfig?.footer_text ?? "";
   const flatNav = themeConfig?.flat_nav === true;
+  const navExpandAuto = themeConfig?.nav_expand !== "click";
   const navTree: NavNode[] = flatNav
     ? []
     : buildNavTree((navAll ?? nav ?? []) as NavNode[]);
@@ -43,12 +44,14 @@ export default function Layout(
     const checkboxId = `nav-toggle-${navCheckboxSeq++}`;
     return (
       <li key={node.route}>
-        {hasChildren && <input type="checkbox" id={checkboxId} class="hidden nav-toggle" checked={expanded} />}
+        {hasChildren && !navExpandAuto && (
+          <input type="checkbox" id={checkboxId} class="hidden nav-toggle" checked={expanded} />
+        )}
         <div class="nav-item-row">
           <a href={node.route} class={active ? "active" : inSection ? "in-section" : ""}>
             {navLabel(node)}
           </a>
-          {hasChildren && (
+          {hasChildren && !navExpandAuto && (
             <label for={checkboxId} class="nav-expand-toggle" aria-label={tr("toggle_section", "Toggle section")}>
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M9 6l6 6-6 6" />
@@ -56,7 +59,11 @@ export default function Layout(
             </label>
           )}
         </div>
-        {hasChildren && <ul class="book-menu-list nested">{node.children.map(renderNavNode)}</ul>}
+        {hasChildren && (
+          <ul class={`book-menu-list nested${navExpandAuto && expanded ? " nested-auto-open" : ""}`}>
+            {node.children.map(renderNavNode)}
+          </ul>
+        )}
       </li>
     );
   }

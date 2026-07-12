@@ -141,6 +141,61 @@ export default function ElementsTemplate(props: any) {
         </li>
       </ul>
 
+      <h3>Section expansion — <code>nav_expand</code></h3>
+      <p>
+        Sections with children render one of two ways, set by the{" "}
+        <code>nav_expand</code> config option. Both auto-expand around
+        whichever page is currently active — the difference is whether a
+        chevron lets visitors toggle a section manually too.
+      </p>
+      <div style="display:flex;gap:2rem;flex-wrap:wrap;margin:1rem 0">
+        <div>
+          <p style="margin:0 0 0.5rem;font-size:0.875rem;color:var(--color-secondary)">
+            <code>auto</code> (default) — no chevron, no manual toggle
+          </p>
+          <ul class="book-menu-list" style="max-width:14rem;border:1px solid var(--border-color);border-radius:0.25rem;padding:1rem 1.25rem">
+            <li>
+              <div class="nav-item-row">
+                <a href="#">Guides</a>
+              </div>
+              <ul class="book-menu-list nested nested-auto-open">
+                <li>
+                  <div class="nav-item-row"><a href="#" class="active">Theming your site</a></div>
+                </li>
+                <li>
+                  <div class="nav-item-row"><a href="#">Deployment</a></div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin:0 0 0.5rem;font-size:0.875rem;color:var(--color-secondary)">
+            <code>click</code> — adds a chevron, visitor can also toggle it
+          </p>
+          <ul class="book-menu-list" style="max-width:14rem;border:1px solid var(--border-color);border-radius:0.25rem;padding:1rem 1.25rem">
+            <li>
+              <div class="nav-item-row">
+                <a href="#">Guides</a>
+                <span class="nav-expand-toggle" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(90deg)">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </div>
+              <ul class="book-menu-list nested nested-auto-open">
+                <li>
+                  <div class="nav-item-row"><a href="#" class="active">Theming your site</a></div>
+                </li>
+                <li>
+                  <div class="nav-item-row"><a href="#">Deployment</a></div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <h2>Section listing</h2>
       <p>What a section page's child listing looks like (see <code>templates/section.tsx</code>):</p>
       <ul class="book-section-list">
