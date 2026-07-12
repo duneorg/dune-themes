@@ -8,8 +8,8 @@ taxonomy:
   tag: [code, demo]
 ---
 
-When `show_code_copy_buttons` is enabled in theme config, fenced blocks include
-a copy button — matching upstream PaperMod behaviour.
+Some themes add a copy button to fenced code blocks, configurable via their
+own `theme.yaml` options.
 
 ```css
 .post-content pre {
@@ -20,9 +20,9 @@ a copy button — matching upstream PaperMod behaviour.
 
 ```yaml
 theme:
-  name: papermod
+  name: <theme-slug>
 ```
 
 ```bash
-dune theme:install jsr:@dune/theme-papermod@1.0.0 --activate
+dune theme:install jsr:@dune/theme-<slug>@1.0.0 --activate
 ```

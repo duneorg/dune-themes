@@ -1,12 +1,12 @@
 ---
-title: PaperMod Demo
+title: Blog Demo
 template: blog
 published: true
 homeInfo:
-  title: PaperMod for Dune
+  title: Dune Blog Theme
   content: |
-    A faithful port of the Hugo PaperMod theme — blog listing, posts, search,
-    archives, and light/dark mode.
+    A blog-archetype theme for Dune — post listing, individual posts,
+    search, and light/dark mode.
   social:
     - name: GitHub
       url: https://github.com/duneorg/dune-themes
@@ -19,5 +19,5 @@ collection:
     by: date
     dir: desc
 taxonomy:
-  tag: [demo, papermod]
+  tag: [demo, blog]
 ---

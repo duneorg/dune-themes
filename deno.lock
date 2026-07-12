@@ -1847,6 +1847,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/sirocco": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/solid-state": {
         "dependencies": [
           "jsr:@dune/core@0.28",

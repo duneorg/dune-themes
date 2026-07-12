@@ -4,8 +4,9 @@ import { formatDate, truncate } from "@dune/core/theme-helpers";
 import StaticLayout from "../components/layout.tsx";
 
 export default function BlogTemplate(props: any) {
-  const { page, children, Layout, collection, themeConfig } = props;
+  const { page, children, Layout, collection, themeConfig, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const subtitle = themeConfig?.home_subtitle || page.frontmatter.metadata?.description;
 
   return (
@@ -36,7 +37,12 @@ export default function BlogTemplate(props: any) {
                 )}
                 {post.frontmatter.author && <span>&nbsp;·&nbsp;{post.frontmatter.author}</span>}
               </footer>
-              <a class="entry-link" aria-label={`post link to ${post.frontmatter.title}`} href={post.route}></a>
+              <a
+                class="entry-link"
+                aria-label={`${tr("post_link_aria_prefix", "post link to")} ${post.frontmatter.title}`}
+                href={post.route}
+              >
+              </a>
             </article>
           );
         })}
@@ -44,10 +50,14 @@ export default function BlogTemplate(props: any) {
       {(collection?.hasPrev || collection?.hasNext) && (
         <nav class="pagination">
           {collection.hasPrev && (
-            <a class="prev" href={`${page.route}/page:${(collection.page ?? 2) - 1}`}>« Newer</a>
+            <a class="prev" href={`${page.route}/page:${(collection.page ?? 2) - 1}`}>
+              {tr("pagination_newer", "« Newer")}
+            </a>
           )}
           {collection.hasNext && (
-            <a class="next" href={`${page.route}/page:${(collection.page ?? 1) + 1}`}>Older »</a>
+            <a class="next" href={`${page.route}/page:${(collection.page ?? 1) + 1}`}>
+              {tr("pagination_older", "Older »")}
+            </a>
           )}
         </nav>
       )}

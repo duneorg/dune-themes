@@ -3,6 +3,7 @@
  */
 
 import { join } from "@std/path";
+import { parse as parseYaml } from "@std/yaml";
 import { CATALOG } from "./catalog.ts";
 
 export const ROOT = new URL("..", import.meta.url).pathname;
@@ -55,6 +56,7 @@ export const DEMO_SLUGS = [
   "twenty",
   "verti",
   "caravan",
+  "sirocco",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -142,6 +144,29 @@ export async function linkDemo(slug: string): Promise<void> {
   }
 
   await ensureSymlink(themeLink, join("..", "..", "..", "packages", `theme-${slug}`));
+
+  // A theme can declare `parent: {name}` in theme.yaml to inherit templates/
+  // locales it doesn't define itself (see src/themes/loader.ts's theme
+  // chain resolution in @dune/core). The engine looks for each ancestor
+  // under this demo's own themes/{parentName}/, so it needs its own
+  // symlink here too, walking the full chain in case of multi-level
+  // inheritance.
+  let currentPackageDir = packageDir;
+  const seenParents = new Set<string>();
+  for (;;) {
+    const manifest = parseYaml(
+      await Deno.readTextFile(join(currentPackageDir, "theme.yaml")),
+    ) as { parent?: string };
+    const parentName = manifest.parent;
+    if (!parentName || seenParents.has(parentName)) break;
+    seenParents.add(parentName);
+    const parentPackageDir = join(ROOT, "packages", `theme-${parentName}`);
+    await ensureSymlink(
+      join(themesDir, parentName),
+      join("..", "..", "..", "packages", `theme-${parentName}`),
+    );
+    currentPackageDir = parentPackageDir;
+  }
 
   // content/ is a real (copied, not symlinked) directory: Dune's directory
   // lister only follows a symlink when it *is* the path being opened (as

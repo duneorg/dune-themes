@@ -1,0 +1,7 @@
+title: Sirocco Demo
+description: Live demo of Sirocco — a fast, minimalist blog theme for Dune, inspired by Hugo PaperMod
+url: https://themes.getdune.org/sirocco
+theme:
+  name: sirocco
+taxonomies:
+  - tag

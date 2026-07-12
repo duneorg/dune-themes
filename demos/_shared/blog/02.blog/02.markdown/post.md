@@ -3,12 +3,12 @@ title: Markdown formatting
 date: 2026-02-01
 template: post
 published: true
-summary: Headings, lists, blockquotes, and code blocks in PaperMod.
+summary: Headings, lists, blockquotes, and code blocks.
 taxonomy:
   tag: [markdown, demo]
 ---
 
-PaperMod styles standard Markdown elements with the upstream stylesheet.
+This theme styles standard Markdown elements with its own stylesheet.
 
 ## Lists
 
@@ -29,4 +29,4 @@ console.log(greeting);
 
 ## Links and emphasis
 
-**Bold**, *italic*, and [links](https://getdune.org) render with PaperMod typography.
+**Bold**, *italic*, and [links](https://getdune.org) render with this theme's typography.

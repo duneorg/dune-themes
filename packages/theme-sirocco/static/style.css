@@ -188,7 +188,7 @@ img { max-width: 100%; height: auto; }
   margin: 0;
   padding: 0;
 }
-.post-tags a {
+.post-tags li {
   display: block;
   background: var(--entry);
   border-radius: var(--radius);
@@ -196,7 +196,23 @@ img { max-width: 100%; height: auto; }
   color: var(--secondary);
   font-size: 14px;
 }
-.post-tags a:hover { color: var(--primary); }
+
+/* ── Archives ───────────────────────────────────────── */
+.archive-year { margin-top: var(--gap); }
+.archive-year h2 { font-size: 22px; margin-bottom: 4px; }
+.archive-month { margin: 12px 0 20px; }
+.archive-month h3 { font-size: 15px; color: var(--secondary); font-weight: 500; margin-bottom: 8px; }
+.archive-posts { list-style: none; margin: 0; padding: 0; }
+.archive-posts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.archive-posts a { color: var(--primary); }
+.archive-posts a:hover { text-decoration: underline; }
+.archive-posts time { color: var(--secondary); font-size: 14px; white-space: nowrap; }
 
 /* ── Pagination ─────────────────────────────────────── */
 .pagination { display: flex; justify-content: space-between; margin-top: var(--gap); }

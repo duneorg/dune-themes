@@ -35,11 +35,7 @@ export default async function PostTemplate(props: any) {
         {tags.length > 0 && (
           <footer class="post-footer">
             <ul class="post-tags">
-              {tags.map((t) => (
-                <li key={t}>
-                  <a href={`/tag:${encodeURIComponent(t)}`}>{t}</a>
-                </li>
-              ))}
+              {tags.map((t) => <li key={t}>{t}</li>)}
             </ul>
           </footer>
         )}

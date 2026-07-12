@@ -10,6 +10,4 @@ collection:
     dir: desc
 ---
 
-# Archives
-
 All posts from the demo blog section, grouped by year and month.
