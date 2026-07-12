@@ -40,54 +40,54 @@ All packages live under `packages/theme-{slug}/`. The `theme.yaml` `name:` field
 
 ### HTML5 UP themes (CC BY 3.0)
 
-All 44 free [HTML5 UP](https://html5up.net) templates — hand-polished with upstream-faithful layouts and vendored CSS. `deno task graduate:html5up` still vendors assets for new work but skips hand-maintained slugs.
+All 44 free [HTML5 UP](https://html5up.net) templates, layouts adapted and CSS vendored from upstream. Scaffolded/generated, not individually verified — none have been through the actual QA pass (real demo, manual click-through, visual-parity check against upstream) documented in `notes/RELEASE-PLAN.md`; caravan is currently the only theme in this repo that has. `deno task graduate:html5up` still vendors assets for new work but skips hand-maintained slugs.
 
-| Status | Notes |
-|--------|-------|
-| **Striped** | Hand-polished sidebar blog (reference port) |
-| **Massively** | Hand-polished hero blog |
-| **Editorial** | Hand-polished main + sidebar magazine |
-| **Future Imperfect** | Hand-polished magazine blog |
-| **Dimension** | Hand-polished modal panel landing |
-| **Dopetrope** | Hand-polished magazine blog |
-| **Phantom** | Hand-polished tile grid blog |
-| **Hyperspace** | Hand-polished sidebar landing |
-| **Read Only** | Hand-polished profile sidebar blog |
-| **Strongly Typed** | Hand-polished typography blog |
-| **Astral** | Hand-polished icon-nav portfolio panels |
-| **Fractal** | Hand-polished spotlight portfolio |
-| **Lens** | Hand-polished fullscreen gallery portfolio |
-| **Miniport** | Hand-polished compact portfolio |
-| **Parallelism** | Hand-polished masonry portfolio grid |
-| **Photon** | Hand-polished hero portfolio |
-| **Strata** | Hand-polished avatar portfolio |
-| **TXT** | Hand-polished page-wrapper portfolio |
-| **Aerial** | Hand-polished fullscreen landing |
-| **Alpha** | Hand-polished business landing |
-| **Arcana** | Hand-polished corporate landing |
-| **Halcyonic** | Hand-polished business layout landing |
-| **Escape Velocity** | Hand-polished marketing site landing |
-| **Eventually** | Hand-polished coming-soon landing |
-| **ZeroFour** | Hand-polished minimal page shell |
-| **Big Picture** | Hand-polished scroll-driven gallery landing |
-| **Directive** | Hand-polished simple landing |
-| **Ethereal** | Hand-polished panel grid landing |
-| **Forty** | Hand-polished tile multipurpose landing |
-| **Helios** | Hand-polished carousel landing |
-| **Highlights** | Hand-polished photo scroll landing |
-| **Landed** | Hand-polished product landing |
-| **Minimaxing** | Hand-polished compact landing |
-| **Multiverse** | Hand-polished thumb gallery landing |
-| **Paradigm Shift** | Hand-polished split scroll landing |
-| **Prologue** | Hand-polished sidebar intro landing |
-| **Solid State** | Hand-polished business landing |
-| **Spectral** | Hand-polished event landing |
-| **Stellar** | Hand-polished multipurpose landing |
-| **Story** | Hand-polished scroll narrative landing |
-| **Telephasic** | Hand-polished business site landing |
-| **Tessellate** | Hand-polished grid landing |
-| **Twenty** | Hand-polished multipurpose landing |
-| **Verti** | Hand-polished business landing |
+| Theme | Layout |
+|-------|--------|
+| **Striped** | Sidebar blog (reference port) |
+| **Massively** | Hero blog |
+| **Editorial** | Main + sidebar magazine |
+| **Future Imperfect** | Magazine blog |
+| **Dimension** | Modal panel landing |
+| **Dopetrope** | Magazine blog |
+| **Phantom** | Tile grid blog |
+| **Hyperspace** | Sidebar landing |
+| **Read Only** | Profile sidebar blog |
+| **Strongly Typed** | Typography blog |
+| **Astral** | Icon-nav portfolio panels |
+| **Fractal** | Spotlight portfolio |
+| **Lens** | Fullscreen gallery portfolio |
+| **Miniport** | Compact portfolio |
+| **Parallelism** | Masonry portfolio grid |
+| **Photon** | Hero portfolio |
+| **Strata** | Avatar portfolio |
+| **TXT** | Page-wrapper portfolio |
+| **Aerial** | Fullscreen landing |
+| **Alpha** | Business landing |
+| **Arcana** | Corporate landing |
+| **Halcyonic** | Business layout landing |
+| **Escape Velocity** | Marketing site landing |
+| **Eventually** | Coming-soon landing |
+| **ZeroFour** | Minimal page shell |
+| **Big Picture** | Scroll-driven gallery landing |
+| **Directive** | Simple landing |
+| **Ethereal** | Panel grid landing |
+| **Forty** | Tile multipurpose landing |
+| **Helios** | Carousel landing |
+| **Highlights** | Photo scroll landing |
+| **Landed** | Product landing |
+| **Minimaxing** | Compact landing |
+| **Multiverse** | Thumb gallery landing |
+| **Paradigm Shift** | Split scroll landing |
+| **Prologue** | Sidebar intro landing |
+| **Solid State** | Business landing |
+| **Spectral** | Event landing |
+| **Stellar** | Multipurpose landing |
+| **Story** | Scroll narrative landing |
+| **Telephasic** | Business site landing |
+| **Tessellate** | Grid landing |
+| **Twenty** | Multipurpose landing |
+| **Verti** | Business landing |
 
 ```bash
 deno task graduate:html5up           # vendor assets (skips hand-maintained slugs)
