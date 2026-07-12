@@ -55,7 +55,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Sidebar documentation theme inspired by hugo-book — Dune-native, not a port.",
     inspiredBy: "hugo-book",
     tags: ["docs", "sidebar", "inspired"],
-    version: "1.0.0",
+    version: "1.1.0",
   },
   {
     slug: "fennec",
