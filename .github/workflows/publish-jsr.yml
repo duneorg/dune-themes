@@ -5,6 +5,10 @@ name: Publish JSR
 # workflow is the actual JSR-publish trigger, run by hand once the
 # redeployed demo has been verified live — not on any automatic event.
 #
+# Before running this, work through notes/pre-jsr-publish-checklist.md —
+# a JSR publish can't be un-published the way a GitHub Release/ZIP can be
+# replaced, so verify rather than assume.
+#
 #   gh workflow run publish-jsr.yml -f tag=caravan-v1.1.0
 
 on:
