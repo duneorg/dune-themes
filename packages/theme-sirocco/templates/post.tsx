@@ -4,7 +4,8 @@ import { formatDate } from "@dune/core/theme-helpers";
 import StaticLayout from "../components/layout.tsx";
 
 export default async function PostTemplate(props: any) {
-  const { page, children, Layout, themeConfig } = props;
+  const { page, children, Layout, themeConfig, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const LayoutComponent = Layout ?? StaticLayout;
   const fm = page.frontmatter;
   const date = fm.date ? new Date(fm.date).getTime() : undefined;
@@ -14,7 +15,8 @@ export default async function PostTemplate(props: any) {
   if (themeConfig?.show_reading_time !== false) {
     const text = (await page.html()).replace(/<[^>]+>/g, " ");
     const words = text.split(/\s+/).filter(Boolean).length;
-    readingTime = `${Math.max(1, Math.round(words / 200))} min`;
+    const minutes = Math.max(1, Math.round(words / 200));
+    readingTime = tr("read_time", "{n} min").replace("{n}", String(minutes));
   }
 
   return (
@@ -35,9 +37,9 @@ export default async function PostTemplate(props: any) {
         {tags.length > 0 && (
           <footer class="post-footer">
             <ul class="post-tags">
-              {tags.map((t) => (
-                <li key={t}>
-                  <a href={`/tag:${encodeURIComponent(t)}`}>{t}</a>
+              {tags.map((tag) => (
+                <li key={tag}>
+                  <a href={`/tag:${encodeURIComponent(tag)}`}>{tag}</a>
                 </li>
               ))}
             </ul>

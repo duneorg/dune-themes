@@ -1,0 +1,18 @@
+{
+  "toggle_theme": "Toggle theme",
+  "toggle_theme_title": "Toggle theme (t)",
+  "go_to_top": "Go to top",
+  "footer_powered_by": "Powered by",
+  "footer_theme": "Theme",
+  "pagination_newer": "« Newer",
+  "pagination_older": "Older »",
+  "post_link_to": "post link to {title}",
+  "read_time": "{n} min",
+  "search": "Search",
+  "search_placeholder": "Search…",
+  "search_submit": "Search",
+  "no_results": "No results found.",
+  "page_not_found_message": "This page could not be found.",
+  "server_error": "Something went wrong.",
+  "back_home": "Back to home"
+}

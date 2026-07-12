@@ -2,18 +2,26 @@
 import { h } from "preact";
 
 export default function Layout(
-  { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig }: any,
+  { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
 ) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "sirocco";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const canonicalPath = pathname ?? page?.route ?? "/";
   const canonicalUrl = `${siteUrl}${canonicalPath}`;
   const stripSlash = (p: string) => p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
-  const normalizedPath = stripSlash(canonicalPath);
+  // Match on the page route (not bare pathname) so home highlights at both
+  // "/" and its directory route. Strip trailing slashes before prefix checks —
+  // Dune nav routes already carry a trailing slash, so `item.route + "/"`
+  // would produce a double slash that never matches.
+  const normalizedPath = stripSlash(page?.route ?? canonicalPath);
   const description = page?.frontmatter?.metadata?.description ??
     page?.frontmatter?.description ?? site?.description ?? "";
   const accent = themeConfig?.accent_color ?? "#1e88e5";
   const defaultDark = themeConfig?.default_dark === true;
+  const toggleThemeLabel = tr("toggle_theme", "Toggle theme");
+  const toggleThemeTitle = tr("toggle_theme_title", "Toggle theme (t)");
+  const goToTopLabel = tr("go_to_top", "Go to top");
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class={defaultDark ? "dark" : ""}>
@@ -41,7 +49,7 @@ export default function Layout(
           <nav class="nav">
             <div class="logo">
               <a href="/" accesskey="h" title={site?.title}>{site?.title}</a>
-              <button id="theme-toggle" accesskey="t" title="Toggle theme (t)" aria-label="Toggle theme">
+              <button id="theme-toggle" accesskey="t" title={toggleThemeTitle} aria-label={toggleThemeLabel}>
                 <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="5" />
                   <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
@@ -52,19 +60,18 @@ export default function Layout(
               </button>
             </div>
             <ul class="menu">
-              {(nav ?? []).map((item: any) => (
-                <li key={item.route}>
-                  <a
-                    href={item.route}
-                    class={normalizedPath === stripSlash(item.route) ||
-                        (item.route !== "/" && canonicalPath.startsWith(item.route + "/"))
-                      ? "active"
-                      : ""}
-                  >
-                    {item.navTitle ?? item.title}
-                  </a>
-                </li>
-              ))}
+              {(nav ?? []).map((item: any) => {
+                const itemPath = stripSlash(item.route);
+                const active = normalizedPath === itemPath ||
+                  (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+                return (
+                  <li key={item.route}>
+                    <a href={item.route} class={active ? "active" : ""}>
+                      {item.navTitle ?? item.title}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </header>
@@ -75,11 +82,14 @@ export default function Layout(
           <span>&copy; {new Date().getFullYear()} {site?.title}</span>
           <span>·</span>
           <span>
-            Powered by <a href="https://getdune.org" target="_blank" rel="noopener">Dune</a> ·
-            Theme <a href="https://github.com/duneorg/themes" target="_blank" rel="noopener">Sirocco</a>
+            {tr("footer_powered_by", "Powered by")}{" "}
+            <a href="https://getdune.org" target="_blank" rel="noopener">Dune</a>
+            {" · "}
+            {tr("footer_theme", "Theme")}{" "}
+            <a href="https://github.com/duneorg/themes" target="_blank" rel="noopener">Sirocco</a>
           </span>
         </footer>
-        <button id="top-link" title="Go to top" aria-label="Go to top">
+        <button id="top-link" title={goToTopLabel} aria-label={goToTopLabel}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <path d="M18 15l-6-6-6 6" />
           </svg>

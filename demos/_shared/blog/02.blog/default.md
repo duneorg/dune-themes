@@ -10,6 +10,4 @@ collection:
     dir: desc
 ---
 
-# Blog
-
 Posts from the demo blog section.

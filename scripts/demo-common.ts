@@ -55,6 +55,7 @@ export const DEMO_SLUGS = [
   "twenty",
   "verti",
   "caravan",
+  "sirocco",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
