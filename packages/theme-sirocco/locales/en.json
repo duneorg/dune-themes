@@ -6,5 +6,6 @@
   "footer_theme": "Theme",
   "pagination_newer": "« Newer",
   "pagination_older": "Older »",
-  "post_link_aria_prefix": "post link to"
+  "post_link_aria_prefix": "post link to",
+  "see_all_posts": "See all posts →"
 }

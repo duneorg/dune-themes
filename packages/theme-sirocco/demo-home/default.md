@@ -1,5 +1,5 @@
 ---
-title: Blog
+title: Sirocco
 template: blog
 published: true
 collection:
@@ -8,8 +8,7 @@ collection:
   order:
     by: date
     dir: desc
-  pagination:
-    size: 4
+  limit: 3
+taxonomy:
+  tag: [demo, blog]
 ---
-
-Posts from the demo blog section.

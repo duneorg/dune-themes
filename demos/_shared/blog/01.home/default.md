@@ -18,6 +18,7 @@ collection:
   order:
     by: date
     dir: desc
+  limit: 3
 taxonomy:
   tag: [demo, blog]
 ---

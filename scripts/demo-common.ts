@@ -86,6 +86,17 @@ function contentFixtureFor(slug: string): string {
  */
 const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan"]);
 
+/**
+ * Top-level fixture directories a theme's demo skips folding in — for
+ * content a theme's own `demo-posts/`/`docs/` covers better than the
+ * generic shared version. Sirocco's own "Installing Sirocco" post replaces
+ * the generic `03.about` (real slug/version instead of a `<slug>`
+ * placeholder), so it doesn't need the generic page too.
+ */
+const DEMO_FIXTURE_EXCLUDE: Partial<Record<DemoSlug, string[]>> = {
+  sirocco: ["03.about"],
+};
+
 /** Directory name of the fixture's homepage, by convention across all shared fixtures. */
 const HOME_DIR_NAME = "01.home";
 
@@ -104,6 +115,17 @@ const THEME_DOCS_DIR_NAME = "02.theme-docs";
  * documentation prose).
  */
 const STYLE_GUIDE_DIR_NAME = "06.style-guide";
+
+/**
+ * Folder name of the "blog" fixture's own posts collection — the merge
+ * target for a theme's own `demo-posts/` (see below). Only meaningful when
+ * `contentFixtureFor(slug) === "blog"`; blog-archetype themes have no
+ * sidebar/section concept to fold theme-specific content into the way
+ * `THEME_DOCS_DIR_NAME`/`STYLE_GUIDE_DIR_NAME` do, so the idiomatic
+ * equivalent is real posts mixed into the same collection, not a
+ * separate top-level page.
+ */
+const BLOG_POSTS_DIR_NAME = "02.blog";
 
 export function demoDir(slug: string): string {
   return join(ROOT, "demos", slug);
@@ -180,6 +202,23 @@ export async function linkDemo(slug: string): Promise<void> {
   await Deno.remove(contentDir, { recursive: true }).catch(() => {});
   await copyDirRecursive(fixtureDir, contentDir);
 
+  for (const excluded of DEMO_FIXTURE_EXCLUDE[slug as DemoSlug] ?? []) {
+    await Deno.remove(join(contentDir, excluded), { recursive: true }).catch(() => {});
+  }
+
+  // A theme's own demo-home/ overrides specific fields on the shared
+  // fixture's home page (e.g. a generic "Blog Demo" title reading as the
+  // theme's actual name instead) without replacing the whole page the way
+  // DEMO_README_AS_HOME does — copied on top of the already-copied fixture
+  // home page, so it only needs to contain what it's overriding.
+  const demoHomeDir = join(packageDir, "demo-home");
+  try {
+    await Deno.stat(demoHomeDir);
+    await copyDirRecursive(demoHomeDir, join(contentDir, HOME_DIR_NAME));
+  } catch {
+    // theme has no demo-home/ folder — fine, not every theme needs one
+  }
+
   // A theme's own docs/ (real, theme-specific documentation — config
   // reference, customization guide, template walkthrough — content that
   // can't be shared across themes the way _shared/{fixture} is) folds in
@@ -201,6 +240,23 @@ export async function linkDemo(slug: string): Promise<void> {
     await copyDirRecursive(styleGuideDir, join(contentDir, STYLE_GUIDE_DIR_NAME));
   } catch {
     // theme has no style-guide/ folder — fine, not every theme needs one
+  }
+
+  // A blog-archetype theme's own demo-posts/ (real, dated posts that
+  // dogfood its config options and typography while also being ordinary
+  // readable content) merge directly into the blog fixture's own posts
+  // collection, so they appear inline in the listing next to the generic
+  // fixture posts — not as a separate top-level page the way
+  // docs/style-guide are for docs-archetype themes, since a blog theme has
+  // no sidebar/section concept to hang a separate page off of.
+  if (fixture === "blog") {
+    const demoPostsDir = join(packageDir, "demo-posts");
+    try {
+      await Deno.stat(demoPostsDir);
+      await copyDirRecursive(demoPostsDir, join(contentDir, BLOG_POSTS_DIR_NAME));
+    } catch {
+      // theme has no demo-posts/ folder — fine, not every theme needs one
+    }
   }
 
   const readme = await readReadmeMarkdown(packageDir);

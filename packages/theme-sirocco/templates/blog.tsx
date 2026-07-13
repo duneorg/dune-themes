@@ -4,10 +4,17 @@ import { formatDate, truncate } from "@dune/core/theme-helpers";
 import StaticLayout from "../components/layout.tsx";
 
 export default function BlogTemplate(props: any) {
-  const { page, children, Layout, collection, themeConfig, t } = props;
+  const { page, children, Layout, collection, themeConfig, t, pathname } = props;
   const LayoutComponent = Layout ?? StaticLayout;
   const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
-  const subtitle = themeConfig?.home_subtitle || page.frontmatter.metadata?.description;
+  // page.route is the page's own folder-derived route (e.g. "/home/"); the
+  // homepage is served for request path "/" regardless of what that is —
+  // pathname is the actual request path, route is not.
+  const isHome = pathname === "/";
+  // home_subtitle is a homepage-only setting — any other page using this
+  // template (e.g. the /blog archive) falls back to its own description
+  // instead of inheriting the homepage's subtitle.
+  const subtitle = (isHome && themeConfig?.home_subtitle) || page.frontmatter.metadata?.description;
 
   return (
     <LayoutComponent {...props}>
@@ -47,6 +54,11 @@ export default function BlogTemplate(props: any) {
           );
         })}
       </div>
+      {isHome && (
+        <p class="see-all-posts">
+          <a href="/blog/">{tr("see_all_posts", "See all posts →")}</a>
+        </p>
+      )}
       {(collection?.hasPrev || collection?.hasNext) && (
         <nav class="pagination">
           {collection.hasPrev && (

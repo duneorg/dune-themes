@@ -104,6 +104,9 @@ img { max-width: 100%; height: auto; }
 .home-info h1 { margin: 0 0 8px; font-size: 32px; }
 .home-info p { color: var(--secondary); margin: 0 0 var(--gap); }
 
+.see-all-posts { margin: var(--content-gap) 0 0; }
+.see-all-posts a { color: var(--accent, #1e88e5); font-weight: 500; }
+
 /* ── Post entries (list) ────────────────────────────── */
 .post-entries { display: flex; flex-direction: column; gap: var(--content-gap); }
 .post-entry {
