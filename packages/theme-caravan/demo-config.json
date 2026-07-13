@@ -1,0 +1,9 @@
+{
+  "caravan": {
+    "color_scheme": "blue",
+    "scheme_switcher": true,
+    "show_search": true,
+    "footer_text": "",
+    "nav_expand": "auto"
+  }
+}

@@ -265,6 +265,26 @@ export async function linkDemo(slug: string): Promise<void> {
   } else if (readme) {
     await writeReadmeAboutPage(contentDir, readme);
   }
+
+  // A theme's own demo-config.json (committed, unlike demos/{slug}/data/
+  // which is gitignored runtime state) seeds this demo's theme_config —
+  // e.g. turning on scheme_switcher, a demo-only preview feature real
+  // sites leave off by default. Previously this only ever existed as a
+  // hand-created local file, so it never actually reached a fresh deploy —
+  // caravan's scheme switcher shipped live without it, present in every
+  // dev sandbox but absent from themes.getdune.org. Overwrites on every
+  // relink, same as content/ — a demo represents fixed, intentional
+  // settings, not something to hand-configure via the admin panel and
+  // expect to persist.
+  const demoConfigFile = join(packageDir, "demo-config.json");
+  try {
+    const demoConfig = await Deno.readTextFile(demoConfigFile);
+    const dataDir = join(dir, "data");
+    await Deno.mkdir(dataDir, { recursive: true });
+    await Deno.writeTextFile(join(dataDir, "theme-config.json"), demoConfig);
+  } catch {
+    // theme has no demo-config.json — fine, not every theme needs one
+  }
 }
 
 async function copyDirRecursive(src: string, dest: string): Promise<void> {
