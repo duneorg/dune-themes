@@ -1,6 +1,6 @@
 ---
 title: Configuring Sirocco
-date: 2026-06-01
+date: 2026-06-15
 template: post
 published: true
 summary: The four things you can change, and what this demo has set.

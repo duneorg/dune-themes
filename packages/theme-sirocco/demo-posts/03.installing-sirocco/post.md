@@ -1,6 +1,6 @@
 ---
 title: Installing Sirocco
-date: 2026-03-01
+date: 2026-07-05
 template: post
 published: true
 summary: The two ways to add Sirocco to a Dune site — JSR or a ZIP.

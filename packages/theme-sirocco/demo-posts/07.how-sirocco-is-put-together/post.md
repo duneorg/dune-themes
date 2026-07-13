@@ -1,6 +1,6 @@
 ---
 title: How Sirocco is put together
-date: 2026-07-01
+date: 2026-06-01
 template: post
 published: true
 summary: What each template renders, and a few CSS variables worth knowing about.
