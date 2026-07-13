@@ -8,7 +8,7 @@ taxonomy:
   tag: [customization, sirocco]
 ---
 
-Everything so far in this demo has been about `config_schema` — the four
+Everything so far in this demo has been about `config_schema` — the five
 options the admin panel can change without touching any code. This post is
 for the rest: what Sirocco's templates actually do, and a couple of things
 you can override from your own site's stylesheet if you want to go further

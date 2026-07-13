@@ -1,5 +1,6 @@
 /** @jsxImportSource preact */
 import { h } from "preact";
+import { clientSchemeTable, colorSchemeCss, COLOR_SCHEMES, resolveColorScheme } from "../utils/color-schemes.ts";
 
 export default function Layout(
   { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
@@ -13,7 +14,10 @@ export default function Layout(
   const normalizedPath = stripSlash(canonicalPath);
   const description = page?.frontmatter?.metadata?.description ??
     page?.frontmatter?.description ?? site?.description ?? "";
-  const accent = themeConfig?.accent_color ?? "#1e88e5";
+  const colorSchemeId = typeof themeConfig?.color_scheme === "string" ? themeConfig.color_scheme : "blue";
+  const colorScheme = resolveColorScheme(colorSchemeId);
+  const showSchemeSwitcher = themeConfig?.scheme_switcher === true;
+  const schemeSwitcherLabel = tr("scheme_switcher", "Color scheme");
   const defaultDark = themeConfig?.default_dark === true;
 
   return (
@@ -29,7 +33,7 @@ export default function Layout(
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
-        <style dangerouslySetInnerHTML={{ __html: `:root{--accent:${accent}}` }} />
+        <style dangerouslySetInnerHTML={{ __html: colorSchemeCss(colorScheme) }} />
         {/* Apply saved theme before first paint to avoid flash */}
         <script dangerouslySetInnerHTML={{ __html: `
           (function(){var s=localStorage.getItem('pm-theme');
@@ -56,6 +60,34 @@ export default function Layout(
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
               </button>
+              {showSchemeSwitcher && (
+                <div class="scheme-picker" id="scheme-picker">
+                  <button
+                    type="button"
+                    id="scheme-picker-toggle"
+                    class="scheme-picker-toggle"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-label={schemeSwitcherLabel}
+                    title={schemeSwitcherLabel}
+                  >
+                    <span class="scheme-swatch" style={`background:${colorScheme.light}`} />
+                    <span class="scheme-swatch" style={`background:${colorScheme.dark}`} />
+                    <svg class="scheme-picker-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                  <ul class="scheme-picker-list" id="scheme-picker-list" role="listbox" hidden>
+                    {Object.entries(COLOR_SCHEMES).map(([id, scheme]) => (
+                      <li key={id} role="option" tabindex={0} data-scheme-id={id} aria-selected={id === colorSchemeId}>
+                        <span class="scheme-swatch" style={`background:${scheme.light}`} />
+                        <span class="scheme-swatch" style={`background:${scheme.dark}`} />
+                        <span class="scheme-picker-label">{scheme.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
             <ul class="menu">
               {(nav ?? []).map((item: any) => (
@@ -94,10 +126,65 @@ export default function Layout(
         </button>
         <script dangerouslySetInnerHTML={{ __html: `
           (function(){
+            var STORAGE_KEY='sirocco-color-scheme';
+            var schemes=${showSchemeSwitcher ? JSON.stringify(clientSchemeTable()) : "null"};
+            function currentMode(){return document.documentElement.classList.contains('dark')?'dark':'light';}
+            function applyScheme(id){
+              if(!schemes||!schemes[id])return;
+              document.documentElement.style.setProperty('--accent',schemes[id][currentMode()]);
+            }
+            var picker=document.getElementById('scheme-picker');
+            var toggleBtn=document.getElementById('scheme-picker-toggle');
+            var list=document.getElementById('scheme-picker-list');
+            if(picker&&toggleBtn&&list){
+              function closeList(){list.hidden=true;toggleBtn.setAttribute('aria-expanded','false');}
+              function openList(){list.hidden=false;toggleBtn.setAttribute('aria-expanded','true');}
+              function syncToggle(li){
+                var liSwatches=li.querySelectorAll('.scheme-swatch');
+                var toggleSwatches=toggleBtn.querySelectorAll('.scheme-swatch');
+                for(var i=0;i<toggleSwatches.length;i++)toggleSwatches[i].style.background=liSwatches[i].style.background;
+                var items=list.querySelectorAll('li');
+                for(var j=0;j<items.length;j++)items[j].setAttribute('aria-selected',items[j]===li?'true':'false');
+              }
+              function selectLi(li){
+                syncToggle(li);
+                var id=li.getAttribute('data-scheme-id');
+                localStorage.setItem(STORAGE_KEY,id);
+                applyScheme(id);
+                closeList();
+              }
+              toggleBtn.addEventListener('click',function(e){
+                e.stopPropagation();
+                if(list.hidden)openList();else closeList();
+              });
+              var options=list.querySelectorAll('li');
+              for(var k=0;k<options.length;k++){
+                (function(li){
+                  li.addEventListener('click',function(){selectLi(li);});
+                  li.addEventListener('keydown',function(e){
+                    if(e.key==='Enter'||e.key===' '){e.preventDefault();selectLi(li);}
+                  });
+                })(options[k]);
+              }
+              document.addEventListener('click',function(e){
+                if(!picker.contains(e.target))closeList();
+              });
+              document.addEventListener('keydown',function(e){
+                if(e.key==='Escape')closeList();
+              });
+              var stored=localStorage.getItem(STORAGE_KEY);
+              if(stored){
+                var storedLi=list.querySelector('li[data-scheme-id="'+stored+'"]');
+                if(storedLi)syncToggle(storedLi);
+                applyScheme(stored);
+              }
+            }
             var t=document.getElementById('theme-toggle');
             if(t)t.addEventListener('click',function(){
               var d=document.documentElement.classList.toggle('dark');
               localStorage.setItem('pm-theme',d?'dark':'light');
+              var storedScheme=localStorage.getItem(STORAGE_KEY);
+              if(storedScheme)applyScheme(storedScheme);
             });
             var top=document.getElementById('top-link');
             if(top){

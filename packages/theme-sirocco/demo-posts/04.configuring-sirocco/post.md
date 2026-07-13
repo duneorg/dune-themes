@@ -3,21 +3,30 @@ title: Configuring Sirocco
 date: 2026-06-15
 template: post
 published: true
-summary: The four things you can change, and what this demo has set.
+summary: The five things you can change, and what this demo has set.
 taxonomy:
   tag: [configuration, sirocco]
 ---
 
-Sirocco keeps its `theme.yaml` config_schema to four options. Here's what
+Sirocco keeps its `theme.yaml` config_schema to five options. Here's what
 each one does, and what this demo site actually has set — you're reading
 the result of these values right now, not a description of them.
 
-## `accent_color`
+## `color_scheme`
 
-A single color picker, not a preset list — this demo uses the schema
-default, `#1e88e5`. It shows up in link hover states and the accent
-underline on the active nav item. Change it and every one of those updates
-without touching CSS.
+Six curated presets — blue, slate, green, purple, amber, rose — each a
+matched light/dark accent pair, rather than a freeform color picker. This
+demo uses the schema default, blue. It drives link color, the underline on
+the active nav item, and blockquote borders — everywhere "accent" shows up
+in this theme.
+
+## `scheme_switcher`
+
+Off by default — most sites want one consistent brand color, not a menu of
+options for visitors. This demo turns it on: the dropdown next to the
+dark-mode toggle lets you preview the other five presets without touching
+this site's actual configuration (your pick is remembered in
+`localStorage`, same as the light/dark choice).
 
 ## `default_dark`
 
