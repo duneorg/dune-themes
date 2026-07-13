@@ -4,11 +4,25 @@ Original Dune theme, design inspired by [hugo-book](https://github.com/alex-shpa
 
 ![Caravan screenshot](https://themes.getdune.org/caravan/themes/caravan/static/screenshot.png)
 
+**Demo**: https://themes.getdune.org/caravan
+
+## Install
+
 ```bash
 dune theme:install jsr:@dune/theme-caravan@1.1.0 --activate
 ```
 
-**Demo**: https://themes.getdune.org/caravan
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: caravan
+    src: jsr:@dune/theme-caravan@1.1.0
+
+theme:
+  name: caravan
+  src: jsr:@dune/theme-caravan@1.1.0
+```
 
 **Templates**: `default` (docs page) · `section` (page body + linked child-page list via a `collection` block) · `search` (dedicated `/search` results page — the sidebar's live search covers the common case, this covers direct/bookmarked/no-JS navigation) · `error` (404/500, kept inside the docs layout so a lost reader can navigate straight back into the sidebar)
 
