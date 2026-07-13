@@ -13,14 +13,26 @@ theme, reused everywhere from the nav to a post's largest heading. Fewer
 sizes means less to get wrong, and it's easier to keep every page feeling
 like the same theme.
 
-## Headings and lists
+## Headings
 
-Section headings sit a size below the post title, with enough margin above
-to read as a break, not a continuation:
+This is an `h2` — section headings sit a size below the post title, with
+enough margin above to read as a break, not a continuation.
+
+### And this is an `h3`
+
+One size down again, for a subsection within a section. Sirocco doesn't
+go deeper than that in practice — if a post needs a fourth heading level,
+it's a sign the post should probably be two posts.
+
+## Lists
 
 - Ordered and unordered lists share the same line height as body text
 - Nested items indent without changing size
 - A list is still just paragraphs, visually
+
+1. Numbered lists use the same rules
+2. The number doesn't change the indent or spacing
+3. Mix ordered and unordered as needed — they share one stylesheet, not two
 
 > Blockquotes get a left border in the accent color and slightly muted
 > text — enough to read as "someone else said this" without looking like
@@ -36,8 +48,23 @@ function formatDate(ms: number, lang: string) {
 }
 ```
 
+## Tables
+
+| Option | Type | Default |
+| --- | --- | --- |
+| `accent_color` | color | `#1e88e5` |
+| `default_dark` | toggle | `false` |
+| `show_reading_time` | toggle | `true` |
+| `home_subtitle` | text | *(empty)* |
+
 ## Links
 
 **Bold**, *italic*, and [links](https://getdune.org) all read at the same
 weight as the rest of the paragraph — nothing about Sirocco's typography
 shouts.
+
+---
+
+That horizontal rule above is the only divider Sirocco's stylesheet
+defines — a plain line in the same muted border color used everywhere
+else, no ornamentation.
