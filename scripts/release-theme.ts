@@ -113,7 +113,6 @@ if (
 
 console.log(`\n✓ Released ${tag} (ZIP + GitHub release). Remaining manual steps:`);
 console.log("  - commit registry.json (sha256 update) and push");
-console.log("  - deno task sync:admin-registry, then commit/publish plugin-admin");
 console.log("  - deno task screenshot {slug} before releasing if the theme's look changed (ships in static/)");
 console.log("  - redeploy the demo and verify it live at themes.getdune.org/{slug}");
 console.log(`  - only then: gh workflow run publish-jsr.yml -f tag=${tag}`);
