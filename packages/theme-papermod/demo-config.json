@@ -1,0 +1,11 @@
+{
+  "papermod": {
+    "show_reading_time": true,
+    "show_word_count": true,
+    "show_breadcrumbs": true,
+    "show_toc": true,
+    "show_share_buttons": true,
+    "show_code_copy_buttons": true,
+    "language_labels": "name"
+  }
+}

@@ -91,10 +91,12 @@ const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan"]);
  * content a theme's own `demo-posts/`/`docs/` covers better than the
  * generic shared version. Sirocco's own "Installing Sirocco" post replaces
  * the generic `03.about` (real slug/version instead of a `<slug>`
- * placeholder), so it doesn't need the generic page too.
+ * placeholder), so it doesn't need the generic page too. Same reasoning
+ * for papermod, whose own `04.installing-papermod` demo post covers it.
  */
 const DEMO_FIXTURE_EXCLUDE: Partial<Record<DemoSlug, string[]>> = {
   sirocco: ["03.about"],
+  papermod: ["03.about"],
 };
 
 /** Directory name of the fixture's homepage, by convention across all shared fixtures. */

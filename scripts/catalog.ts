@@ -155,7 +155,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Faithful port of Hugo PaperMod for Dune.",
     inspiredBy: "hugo-PaperMod",
     tags: ["blog", "minimal", "faithful"],
-    version: "1.0.0",
+    version: "1.0.1",
   },
   {
     slug: "book",

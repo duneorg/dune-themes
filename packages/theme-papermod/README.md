@@ -3,10 +3,37 @@
 Faithful port of [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod)
 (MIT © 2020 nanxiaobei and adityatelange — see [LICENSE](LICENSE)).
 
+![PaperMod screenshot](https://themes.getdune.org/papermod/themes/papermod/static/screenshot.png)
+
+**Demo**: https://themes.getdune.org/papermod
+
+**Tags**: dune-theme, blog, minimal, faithful
+
+## Install
+
+```bash
+dune theme:install jsr:@dune/theme-papermod@1.0.1 --activate
+```
+
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: papermod
+    src: jsr:@dune/theme-papermod@1.0.1
+
+theme:
+  name: papermod
+  src: jsr:@dune/theme-papermod@1.0.1
+```
+
 The stylesheet is the unmodified upstream CSS bundle (all `core/`, `common/`
 and `includes/` files concatenated in Hugo's bundle order), so the rendered
 pages match PaperMod pixel-for-pixel. Templates reproduce upstream markup and
 class names 1:1; Hugo template constructs are mapped to Dune equivalents.
+
+Full deviations-from-upstream detail and a config walkthrough are in the
+[live demo](https://themes.getdune.org/papermod)'s posts.
 
 ## Templates
 
