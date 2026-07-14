@@ -7,7 +7,7 @@
       "name": "Sirocco",
       "description": "Fast, clean minimalist blog inspired by Hugo PaperMod — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "license": "MIT",
       "tags": [
         "blog",
@@ -18,9 +18,9 @@
       "inspiredBy": "hugo-PaperMod",
       "demoUrl": "https://themes.getdune.org/sirocco",
       "screenshotUrl": "https://themes.getdune.org/sirocco/themes/sirocco/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-sirocco@1.1.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/sirocco-v1.1.0/sirocco-1.1.0.zip",
-      "sha256": "c10b9714b866ae9e7f3cff83f9701742faffa17d8ab189df9ace44acc00dba09",
+      "jsr": "jsr:@dune/theme-sirocco@1.1.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/sirocco-v1.1.1/sirocco-1.1.1.zip",
+      "sha256": "c4712a3d00d0d287b4a94750773245b12a3a2997750eb0b4c5eed5c3e72690e8",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
