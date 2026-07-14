@@ -284,7 +284,7 @@
       "name": "PaperMod for Dune",
       "description": "Faithful port of Hugo PaperMod for Dune.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "blog",
@@ -295,9 +295,9 @@
       "inspiredBy": "hugo-PaperMod",
       "demoUrl": "https://themes.getdune.org/papermod",
       "screenshotUrl": "https://themes.getdune.org/papermod/themes/papermod/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-papermod@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/papermod-v1.0.0/papermod-1.0.0.zip",
-      "sha256": "",
+      "jsr": "jsr:@dune/theme-papermod@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/papermod-v1.0.1/papermod-1.0.1.zip",
+      "sha256": "9f954598541b913794c3f3631c1a8034bcc260beddd7a77edf291eaf7cbf4b83",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
