@@ -11,6 +11,10 @@ export default function BlogTemplate(props: any) {
   // homepage is served for request path "/" regardless of what that is —
   // pathname is the actual request path, route is not.
   const isHome = pathname === "/";
+  // page.route already carries a trailing slash — appending "/page:N"
+  // directly produces a double slash, same class of bug as the nav-link
+  // matching fix elsewhere.
+  const routeBase = page.route.endsWith("/") ? page.route.slice(0, -1) : page.route;
   // home_subtitle is a homepage-only setting — any other page using this
   // template (e.g. the /blog archive) falls back to its own description
   // instead of inheriting the homepage's subtitle.
@@ -62,12 +66,12 @@ export default function BlogTemplate(props: any) {
       {(collection?.hasPrev || collection?.hasNext) && (
         <nav class="pagination">
           {collection.hasPrev && (
-            <a class="prev" href={`${page.route}/page:${(collection.page ?? 2) - 1}`}>
+            <a class="prev" href={`${routeBase}/page:${(collection.page ?? 2) - 1}`}>
               {tr("pagination_newer", "« Newer")}
             </a>
           )}
           {collection.hasNext && (
-            <a class="next" href={`${page.route}/page:${(collection.page ?? 1) + 1}`}>
+            <a class="next" href={`${routeBase}/page:${(collection.page ?? 1) + 1}`}>
               {tr("pagination_older", "Older »")}
             </a>
           )}

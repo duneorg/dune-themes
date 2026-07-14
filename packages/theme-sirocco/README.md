@@ -11,7 +11,7 @@ Original Dune theme, design inspired by [hugo-PaperMod](https://github.com/adity
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-sirocco@1.1.0 --activate
+dune theme:install jsr:@dune/theme-sirocco@1.1.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -19,11 +19,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: sirocco
-    src: jsr:@dune/theme-sirocco@1.1.0
+    src: jsr:@dune/theme-sirocco@1.1.1
 
 theme:
   name: sirocco
-  src: jsr:@dune/theme-sirocco@1.1.0
+  src: jsr:@dune/theme-sirocco@1.1.1
 ```
 
 **Templates**: `default` (plain page) · `post` (date, reading time, author, tags) · `blog` (card list, also works as a shorter home teaser via a collection `limit`) · `archives` (every post grouped by year and month). `search` and `error` aren't in Sirocco's own `templates/` — they're inherited from the `dune-minimal` base theme declared as `parent` in `theme.yaml`.
