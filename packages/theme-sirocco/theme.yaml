@@ -2,7 +2,7 @@ name: sirocco
 parent: dune-minimal
 description: "Sirocco — a fast, clean, minimalist blog theme for Dune, inspired by Hugo PaperMod"
 author: "Dune Theme Library (design inspired by PaperMod by Aditya Telange)"
-version: "1.1.1"
+version: "1.2.0"
 config_schema:
   color_scheme:
     type: select

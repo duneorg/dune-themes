@@ -37,8 +37,10 @@ export default function Layout(
         {/* Apply saved theme before first paint to avoid flash */}
         <script dangerouslySetInnerHTML={{ __html: `
           (function(){var s=localStorage.getItem('pm-theme');
-          if(s==='dark'||(s===null&&${defaultDark ? "true" : "false"})){document.documentElement.classList.add('dark')}
-          else if(s==='light'){document.documentElement.classList.remove('dark')}})();
+          var isDark=s==='dark'||(s===null&&${
+      defaultDark ? "true" : "window.matchMedia('(prefers-color-scheme: dark)').matches"
+    });
+          document.documentElement.setAttribute('data-theme',isDark?'dark':'light');})();
         ` }} />
       </head>
       <body>
@@ -71,8 +73,8 @@ export default function Layout(
                     aria-label={schemeSwitcherLabel}
                     title={schemeSwitcherLabel}
                   >
-                    <span class="scheme-swatch" style={`background:${colorScheme.light}`} />
-                    <span class="scheme-swatch" style={`background:${colorScheme.dark}`} />
+                    <span class="scheme-swatch" style={`background:${colorScheme.light.accent}`} />
+                    <span class="scheme-swatch" style={`background:${colorScheme.dark.accent}`} />
                     <svg class="scheme-picker-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M6 9l6 6 6-6" />
                     </svg>
@@ -80,8 +82,8 @@ export default function Layout(
                   <ul class="scheme-picker-list" id="scheme-picker-list" role="listbox" hidden>
                     {Object.entries(COLOR_SCHEMES).map(([id, scheme]) => (
                       <li key={id} role="option" tabindex={0} data-scheme-id={id} aria-selected={id === colorSchemeId}>
-                        <span class="scheme-swatch" style={`background:${scheme.light}`} />
-                        <span class="scheme-swatch" style={`background:${scheme.dark}`} />
+                        <span class="scheme-swatch" style={`background:${scheme.light.accent}`} />
+                        <span class="scheme-swatch" style={`background:${scheme.dark.accent}`} />
                         <span class="scheme-picker-label">{scheme.label}</span>
                       </li>
                     ))}
@@ -128,10 +130,13 @@ export default function Layout(
           (function(){
             var STORAGE_KEY='sirocco-color-scheme';
             var schemes=${showSchemeSwitcher ? JSON.stringify(clientSchemeTable()) : "null"};
-            function currentMode(){return document.documentElement.classList.contains('dark')?'dark':'light';}
+            function currentMode(){return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light';}
             function applyScheme(id){
               if(!schemes||!schemes[id])return;
-              document.documentElement.style.setProperty('--accent',schemes[id][currentMode()]);
+              var v=schemes[id][currentMode()];
+              document.documentElement.style.setProperty('--accent',v.accent);
+              document.documentElement.style.setProperty('--entry',v.entry);
+              document.documentElement.style.setProperty('--theme',v.theme);
             }
             var picker=document.getElementById('scheme-picker');
             var toggleBtn=document.getElementById('scheme-picker-toggle');
@@ -181,7 +186,8 @@ export default function Layout(
             }
             var t=document.getElementById('theme-toggle');
             if(t)t.addEventListener('click',function(){
-              var d=document.documentElement.classList.toggle('dark');
+              var d=currentMode()!=='dark';
+              document.documentElement.setAttribute('data-theme',d?'dark':'light');
               localStorage.setItem('pm-theme',d?'dark':'light');
               var storedScheme=localStorage.getItem(STORAGE_KEY);
               if(storedScheme)applyScheme(storedScheme);

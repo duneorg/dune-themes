@@ -14,11 +14,14 @@ the result of these values right now, not a description of them.
 
 ## `color_scheme`
 
-Six curated presets — blue, slate, green, purple, amber, rose — each a
-matched light/dark accent pair, rather than a freeform color picker. This
-demo uses the schema default, blue. It drives link color, the underline on
-the active nav item, and blockquote borders — everywhere "accent" shows up
-in this theme.
+Six curated presets — blue, slate, green, purple, amber, rose — rather
+than a freeform color picker. This demo uses the schema default, blue.
+Each preset drives the accent color (link color, the underline on the
+active nav item, blockquote borders, pagination and search-result hovers)
+plus a tinted card background on post entries, search results, and
+archive/section lists, and a subtler tint on the page body itself derived
+from that same card tint — so switching presets recolors the whole page,
+not just the links.
 
 ## `scheme_switcher`
 
@@ -32,8 +35,11 @@ this site's actual configuration (your pick is remembered in
 
 Off in this demo (the schema default). The header's sun/moon toggle still
 switches at runtime and remembers your choice in `localStorage` regardless
-of this setting — `default_dark` only decides which mode a first-time
-visitor sees before they've chosen for themselves.
+of this setting. `default_dark` only decides which mode a first-time
+visitor sees before they've chosen for themselves — and only when it's
+turned on; left off, a first-time visitor's own OS light/dark preference
+decides instead (including for visitors with JS disabled, via a pure-CSS
+fallback), rather than always defaulting to light.
 
 ## `show_reading_time`
 
