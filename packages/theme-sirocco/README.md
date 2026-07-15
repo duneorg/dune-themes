@@ -11,7 +11,7 @@ Original Dune theme, design inspired by [hugo-PaperMod](https://github.com/adity
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-sirocco@1.2.0 --activate
+dune theme:install jsr:@dune/theme-sirocco@1.2.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -19,21 +19,22 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: sirocco
-    src: jsr:@dune/theme-sirocco@1.2.0
+    src: jsr:@dune/theme-sirocco@1.2.1
 
 theme:
   name: sirocco
-  src: jsr:@dune/theme-sirocco@1.2.0
+  src: jsr:@dune/theme-sirocco@1.2.1
 ```
 
 **Templates**: `default` (plain page) · `post` (date, reading time, author, tags) · `blog` (card list, also works as a shorter home teaser via a collection `limit`) · `archives` (every post grouped by year and month). `search` and `error` aren't in Sirocco's own `templates/` — they're inherited from the `dune-minimal` base theme declared as `parent` in `theme.yaml`.
 
 **Config schema**: `color_scheme` (blue/slate/green/purple/amber/rose —
 curated light/dark-mode presets, each driving the accent color — links,
-the active nav underline, blockquote borders, pagination/search-result
-hovers — plus a tinted card background (post entries, search results,
-archive/section lists) and a subtly tinted body background derived from
-it), `scheme_switcher` (adds a dropdown next to the dark-mode toggle so
+the active nav item (text and underline), blockquote borders, pagination/
+search-result hovers — plus a tinted card background (post entries, search
+results, archive/section lists, table row striping) and subtly tinted
+body and code-block backgrounds derived from it), `scheme_switcher` (adds
+a dropdown next to the dark-mode toggle so
 visitors can preview the other presets client-side via `localStorage` —
 doesn't touch the site's actual config; off by default, useful for a
 showcase/demo site), `default_dark`, `show_reading_time`, `home_subtitle`.

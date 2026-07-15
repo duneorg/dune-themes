@@ -163,7 +163,7 @@ img { max-width: 100%; height: auto; }
 .menu a { font-size: 16px; color: var(--secondary); display: block; padding: 4px 0; }
 .menu a:hover { color: var(--primary); }
 .menu a.active {
-  color: var(--primary);
+  color: var(--accent, #1e88e5);
   font-weight: 500;
   box-shadow: 0 2px 0 var(--accent, #1e88e5);
 }
@@ -252,6 +252,7 @@ img { max-width: 100%; height: auto; }
   width: 100%;
   margin: 20px 0;
 }
+.post-content tr:nth-child(2n) { background: var(--entry); }
 .post-content th, .post-content td {
   border: 1px solid var(--border);
   padding: 8px 12px;

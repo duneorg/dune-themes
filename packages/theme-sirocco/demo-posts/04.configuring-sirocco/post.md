@@ -16,12 +16,12 @@ the result of these values right now, not a description of them.
 
 Six curated presets — blue, slate, green, purple, amber, rose — rather
 than a freeform color picker. This demo uses the schema default, blue.
-Each preset drives the accent color (link color, the underline on the
-active nav item, blockquote borders, pagination and search-result hovers)
-plus a tinted card background on post entries, search results, and
-archive/section lists, and a subtler tint on the page body itself derived
-from that same card tint — so switching presets recolors the whole page,
-not just the links.
+Each preset drives the accent color (link color, the active nav item's
+text and underline, blockquote borders, pagination and search-result
+hovers) plus a tinted card background on post entries, search results,
+archive/section lists, and table row striping, and subtler tints on the
+page body and code blocks derived from that same card tint — so switching
+presets recolors the whole page, not just the links.
 
 ## `scheme_switcher`
 

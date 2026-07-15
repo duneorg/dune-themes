@@ -46,7 +46,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Fast, clean minimalist blog inspired by Hugo PaperMod — Dune-native, not a port.",
     inspiredBy: "hugo-PaperMod",
     tags: ["blog", "minimal", "inspired"],
-    version: "1.2.0",
+    version: "1.2.1",
   },
   {
     slug: "caravan",

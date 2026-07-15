@@ -2,12 +2,11 @@
  * Curated color presets for the `color_scheme` config option — the same
  * six tones and `cardBackground` tints as caravan's `utils/color-schemes.ts`
  * (reused verbatim from caravan's `menuBackground`, since both are "a tint
- * of the scheme's hue over a neutral card/panel gray"), but simplified:
- * Sirocco has no sidebar or code-block retint, so each preset here only
- * covers `accent` (links, active nav underline, blockquote borders),
- * `cardBackground` (post/search/section cards — see `--entry` in
- * static/style.css), and a derived `bodyBackground` (`--theme`) — not
- * caravan's fuller {menuBackground, body, code} retint set.
+ * of the scheme's hue over a neutral card/panel gray"), plus the same
+ * retint() approach for a derived body background *and* a subtly retinted
+ * code-block background (mirroring caravan's low-`satT` code treatment) —
+ * not caravan's fuller sidebar-specific `menuBackground` concept, since
+ * Sirocco has no sidebar to tint.
  */
 export interface ColorSchemeVariant {
   accent: string;
@@ -60,8 +59,9 @@ export function resolveColorScheme(id: unknown): ColorScheme {
   return COLOR_SCHEMES[DEFAULT_COLOR_SCHEME];
 }
 
-/** Neutral `--theme` (body) background from static/style.css, tinted toward `cardBackground` below. */
+/** Neutral `--theme` (body) and `--code-bg` backgrounds from static/style.css, tinted toward `cardBackground` below. */
 const NEUTRAL_THEME = { light: "#ffffff", dark: "#1d1e20" };
+const NEUTRAL_CODE = { light: "#f5f5f5", dark: "#2e2e33" };
 
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16);
@@ -113,55 +113,65 @@ function hslToRgb([h, s, l]: [number, number, number]): [number, number, number]
 
 /**
  * Retint `neutralHex` with `tintHex`'s hue, keeping `neutralHex`'s own
- * lightness (plus `lightnessBoost`) and blending fully (`satT`=1, body
- * picks up the scheme's full saturation — sirocco has no code-block
- * surface to retint more subtly the way caravan does).
+ * lightness (plus `lightnessBoost`) and blending `satT` of the way from
+ * `neutralHex`'s own saturation to `tintHex`'s saturation. `satT` near 1
+ * (body) picks up close to the scheme's full color; `satT` near 0 (code)
+ * keeps it close to neutral, just hue-shifted — same idea as caravan's
+ * body/code retint split.
  *
  * When `tintHex` itself is (near-)achromatic (slate), its hue is
  * mathematically undefined — collapse straight to gray rather than
  * leaking an arbitrary hue through.
  */
-function retint(neutralHex: string, tintHex: string, lightnessBoost: number): string {
-  const [, , ln] = rgbToHsl(hexToRgb(neutralHex));
+function retint(neutralHex: string, tintHex: string, satT: number, lightnessBoost: number): string {
+  const [, sn, ln] = rgbToHsl(hexToRgb(neutralHex));
   const [ht, st] = rgbToHsl(hexToRgb(tintHex));
   const l = Math.min(1, Math.max(0, ln + lightnessBoost));
   if (st < 0.001) return rgbToHex(hslToRgb([0, 0, l]));
-  return rgbToHex(hslToRgb([ht, st, l]));
+  const s = sn + (st - sn) * satT;
+  return rgbToHex(hslToRgb([ht, s, l]));
 }
 
 /**
- * In dark mode the neutral `--theme` sits near the bottom of the lightness
+ * In dark mode the neutral surfaces sit near the bottom of the lightness
  * range, so retinting nudges lightness *up* toward the (brighter)
- * cardBackground. In light mode `--theme` is pure white (can't get any
- * lighter), so the same move goes the other way: nudge lightness *down*
- * toward the (still very light, but not literally white) cardBackground.
+ * cardBackground. In light mode the neutral surfaces sit at/near the very
+ * top (pure white can't get any lighter), so the same move goes the other
+ * way: nudge lightness *down* toward the (still very light, but not
+ * literally white) cardBackground.
  */
-const LIGHTNESS_BOOST = { light: -0.055, dark: 0.004 };
+const LIGHTNESS_BOOST = {
+  light: { theme: -0.055, code: -0.1015 },
+  dark: { theme: 0.004, code: 0.006 },
+};
 
 export interface SchemeSurfaceVars {
   accent: string;
   entry: string;
   theme: string;
+  codeBg: string;
 }
 
 /**
- * Computes the full set of CSS custom property values (accent + both
+ * Computes the full set of CSS custom property values (accent + all three
  * tinted surfaces) for one scheme variant + mode. Used both for the CSS
  * `colorSchemeCss` renders at SSR time and for the client-side scheme
  * switcher (see `clientSchemeTable`), so both stay in sync.
  */
 function surfaceVars(v: ColorSchemeVariant, mode: "light" | "dark"): SchemeSurfaceVars {
+  const boost = LIGHTNESS_BOOST[mode];
   return {
     accent: v.accent,
     entry: v.cardBackground,
-    theme: retint(NEUTRAL_THEME[mode], v.cardBackground, LIGHTNESS_BOOST[mode]),
+    theme: retint(NEUTRAL_THEME[mode], v.cardBackground, 1, boost.theme),
+    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.05, boost.code),
   };
 }
 
 /**
- * `--accent` / `--entry` / `--theme` for light/dark, mirroring the
- * `data-theme` attribute + `prefers-color-scheme` fallback pattern
- * static/style.css uses for backgrounds (same shape as caravan's
+ * `--accent` / `--entry` / `--theme` / `--code-bg` for light/dark,
+ * mirroring the `data-theme` attribute + `prefers-color-scheme` fallback
+ * pattern static/style.css uses for backgrounds (same shape as caravan's
  * `colorSchemeCss`) — a real no-JS visitor gets scheme-tinted surfaces
  * matching their OS preference purely from CSS; layout.tsx's pre-paint
  * script sets `data-theme` explicitly once JS runs, which then wins over
@@ -169,7 +179,7 @@ function surfaceVars(v: ColorSchemeVariant, mode: "light" | "dark"): SchemeSurfa
  */
 export function colorSchemeCss(scheme: ColorScheme): string {
   const toCss = (v: SchemeSurfaceVars) =>
-    `--accent:${v.accent};--entry:${v.entry};--theme:${v.theme}`;
+    `--accent:${v.accent};--entry:${v.entry};--theme:${v.theme};--code-bg:${v.codeBg}`;
   const light = toCss(surfaceVars(scheme.light, "light"));
   const dark = toCss(surfaceVars(scheme.dark, "dark"));
   return `:root{${light}}` +

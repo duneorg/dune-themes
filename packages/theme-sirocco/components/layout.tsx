@@ -137,6 +137,7 @@ export default function Layout(
               document.documentElement.style.setProperty('--accent',v.accent);
               document.documentElement.style.setProperty('--entry',v.entry);
               document.documentElement.style.setProperty('--theme',v.theme);
+              document.documentElement.style.setProperty('--code-bg',v.codeBg);
             }
             var picker=document.getElementById('scheme-picker');
             var toggleBtn=document.getElementById('scheme-picker-toggle');
