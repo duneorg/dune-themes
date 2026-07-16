@@ -4,6 +4,7 @@
  * reads site.Params.socialIcons). Unknown names render as a text link. */
 import { h } from "preact";
 import { GithubIcon, LinkedinIcon, RssIcon, XIcon } from "./icons.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 const ICONS: Record<string, () => any> = {
   github: () => <GithubIcon />,
@@ -20,7 +21,7 @@ export default function SocialIcons({ social, align }: any) {
       {social.map((s: any) => (
         <a
           key={s.url}
-          href={s.url}
+          href={safeHref(s.url)}
           target="_blank"
           rel="noopener noreferrer me"
           title={s.title ?? s.name}

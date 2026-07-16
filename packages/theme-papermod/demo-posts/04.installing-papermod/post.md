@@ -14,7 +14,7 @@ there are two install paths.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-papermod@1.0.1 --activate
+dune theme:install jsr:@dune/theme-papermod@1.0.2 --activate
 ```
 
 Pins an exact version in your site's import map — `dune lockfile:sync`

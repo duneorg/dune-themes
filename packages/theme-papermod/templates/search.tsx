@@ -79,7 +79,7 @@ export default function SearchTemplate(props: any) {
                         const hits = data.items || [];
                         let resultSet = '';
                         for (const item of hits) {
-                            resultSet += \`<li class="post-entry"><header class="entry-header">\${esc(item.title)}&nbsp;»</header><a href="\${BASE + item.route}" aria-label="\${esc(item.title)}"></a></li>\`;
+                            resultSet += \`<li class="post-entry"><header class="entry-header">\${esc(item.title)}&nbsp;»</header><a href="\${esc(BASE + item.route)}" aria-label="\${esc(item.title)}"></a></li>\`;
                         }
                         resList.innerHTML = resultSet;
                         first = resList.firstChild;

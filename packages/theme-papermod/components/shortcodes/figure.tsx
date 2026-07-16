@@ -1,6 +1,7 @@
 /** @jsxImportSource preact */
 /** Port of _shortcodes/figure.html. */
 import { h } from "preact";
+import { safeHref } from "../../utils/safe-url.ts";
 
 export default function Figure(
   { src, alt, caption, title, attr, attrlink, link, target, rel, width, height, align, class: cls }: any,
@@ -17,14 +18,14 @@ export default function Figure(
   );
   return (
     <figure class={classes || undefined}>
-      {link ? <a href={link} target={target} rel={rel}>{img}</a> : img}
+      {link ? <a href={safeHref(link)} target={target} rel={rel}>{img}</a> : img}
       {(title || caption || attr) && (
         <figcaption>
           {title}
           {(caption || attr) && (
             <p>
               {caption}
-              {attrlink ? <a href={attrlink}>{attr}</a> : attr}
+              {attrlink ? <a href={safeHref(attrlink)}>{attr}</a> : attr}
             </p>
           )}
         </figcaption>

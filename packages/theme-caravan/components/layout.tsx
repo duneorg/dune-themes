@@ -310,10 +310,10 @@ export default function Layout(
                     .then(function(r){return r.json()})
                     .then(function(data){
                       var hits=data.items||[];
+                      function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
                       list.innerHTML=hits.length
                         ? hits.map(function(h){
-                            return '<li><a href="'+h.route+'">'+
-                              h.title.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</a></li>';
+                            return '<li><a href="'+esc(h.route)+'">'+esc(h.title)+'</a></li>';
                           }).join('')
                         : '<li class="empty">'+noResultsLabel+'</li>';
                       list.hidden=false;

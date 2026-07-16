@@ -12,7 +12,7 @@ Faithful port of [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod)
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-papermod@1.0.1 --activate
+dune theme:install jsr:@dune/theme-papermod@1.0.2 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: papermod
-    src: jsr:@dune/theme-papermod@1.0.1
+    src: jsr:@dune/theme-papermod@1.0.2
 
 theme:
   name: papermod
-  src: jsr:@dune/theme-papermod@1.0.1
+  src: jsr:@dune/theme-papermod@1.0.2
 ```
 
 The stylesheet is the unmodified upstream CSS bundle (all `core/`, `common/`
