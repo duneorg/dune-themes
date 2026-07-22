@@ -1,18 +1,25 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatStronglyTypedDate, postExcerpt } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination } = props;
+  const { page, children, collection, pagination, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const continueLabel = tr("post.continue", "Continue Reading");
   const items = collection?.items ?? [];
   const [featured, ...rest] = items;
+  const featuredCover = featured ? safeHref(featured.frontmatter.cover) : undefined;
+  const featuredExcerpt = featured ? postExcerpt(featured.frontmatter) : undefined;
 
   return (
     <LayoutComponent {...props}>
@@ -39,15 +46,15 @@ export default function BlogTemplate(props: TemplateProps & {
                   </p>
                 )}
               </header>
-              {typeof featured.frontmatter.cover === "string" && (
+              {featuredCover && (
                 <a href={featured.route} class="image featured">
-                  <img src={featured.frontmatter.cover} alt="" />
+                  <img src={featuredCover} alt="" />
                 </a>
               )}
-              {postExcerpt(featured.frontmatter) && <p>{postExcerpt(featured.frontmatter)}</p>}
+              {featuredExcerpt && <p>{featuredExcerpt}</p>}
               <ul class="actions">
                 <li>
-                  <a href={featured.route} class="button icon solid fa-file">Continue Reading</a>
+                  <a href={featured.route} class="button icon solid fa-file">{continueLabel}</a>
                 </li>
               </ul>
             </article>
@@ -56,6 +63,7 @@ export default function BlogTemplate(props: TemplateProps & {
           {rest.map((post) => {
             const fm = post.frontmatter;
             const excerpt = postExcerpt(fm);
+            const cover = safeHref(fm.cover);
             return (
               <article class="box post" key={post.route}>
                 <header>
@@ -68,15 +76,15 @@ export default function BlogTemplate(props: TemplateProps & {
                     </p>
                   )}
                 </header>
-                {typeof fm.cover === "string" && (
+                {cover && (
                   <a href={post.route} class="image featured">
-                    <img src={fm.cover} alt="" />
+                    <img src={cover} alt="" />
                   </a>
                 )}
                 {excerpt && <p>{excerpt}</p>}
                 <ul class="actions">
                   <li>
-                    <a href={post.route} class="button icon solid fa-file">Continue Reading</a>
+                    <a href={post.route} class="button icon solid fa-file">{continueLabel}</a>
                   </li>
                 </ul>
               </article>
@@ -86,10 +94,10 @@ export default function BlogTemplate(props: TemplateProps & {
           {(pagination?.newer || pagination?.older) && (
             <ul class="actions">
               {pagination.older && (
-                <li><a href={pagination.older} class="button">← Older</a></li>
+                <li><a href={pagination.older} class="button">← {tr("pagination.older", "Older")}</a></li>
               )}
               {pagination.newer && (
-                <li><a href={pagination.newer} class="button">Newer →</a></li>
+                <li><a href={pagination.newer} class="button">{tr("pagination.newer", "Newer")} →</a></li>
               )}
             </ul>
           )}

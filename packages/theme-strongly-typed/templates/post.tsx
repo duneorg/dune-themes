@@ -1,17 +1,19 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatStronglyTypedDate, postExcerpt } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function PostTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? String(fm.date) : "";
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+  const cover = safeHref(fm.cover);
   const subtitle = postExcerpt(fm) ?? (typeof fm.subtitle === "string" ? fm.subtitle : undefined);
 
   return (
