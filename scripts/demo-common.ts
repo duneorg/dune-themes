@@ -101,6 +101,11 @@ function contentFixtureFor(slug: string): string {
  */
 const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight", "lucid", "manual"]);
 
+/** True when the theme README replaces the demo homepage (see DEMO_README_AS_HOME). */
+export function isReadmeAsHome(slug: string): boolean {
+  return DEMO_README_AS_HOME.has(slug as DemoSlug);
+}
+
 /**
  * Top-level fixture directories a theme's demo skips folding in — for
  * content a theme's own `demo-posts/`/`docs/` covers better than the
@@ -283,9 +288,9 @@ export async function linkDemo(slug: string): Promise<void> {
 
   const readme = await readReadmeMarkdown(packageDir);
   if (readme && DEMO_README_AS_HOME.has(slug as DemoSlug)) {
-    await writeReadmeHome(contentDir, readme);
+    await writeReadmeHome(contentDir, readme, slug);
   } else if (readme) {
-    await writeReadmeAboutPage(contentDir, readme);
+    await writeReadmeAboutPage(contentDir, readme, slug);
   }
 
   // Dune indexes taxonomy values but does not auto-route `/tag:{name}`.
@@ -499,8 +504,24 @@ async function readReadmeMarkdown(packageDir: string): Promise<ReadmeContent | u
   return { title, body };
 }
 
+/**
+ * Point README screenshot embeds at the local theme static file so demos
+ * and `deno task screenshot` don't depend on themes.getdune.org already
+ * hosting the asset (chicken-and-egg for unpublished themes).
+ */
+function localizeScreenshotUrls(body: string, slug: string): string {
+  const remote =
+    `https://themes.getdune.org/${slug}/themes/${slug}/static/screenshot.png`;
+  const local = `/themes/${slug}/static/screenshot.png`;
+  return body.split(remote).join(local);
+}
+
 /** Write the README as a standalone "About this theme" page, sorted last in the nav. */
-async function writeReadmeAboutPage(contentDir: string, readme: ReadmeContent): Promise<void> {
+async function writeReadmeAboutPage(
+  contentDir: string,
+  readme: ReadmeContent,
+  slug: string,
+): Promise<void> {
   const aboutDir = join(contentDir, ABOUT_DIR_NAME);
   const frontmatter = [
     "---",
@@ -512,11 +533,18 @@ async function writeReadmeAboutPage(contentDir: string, readme: ReadmeContent): 
     "",
   ].join("\n");
   await Deno.mkdir(aboutDir, { recursive: true });
-  await Deno.writeTextFile(join(aboutDir, "default.md"), frontmatter + readme.body);
+  await Deno.writeTextFile(
+    join(aboutDir, "default.md"),
+    frontmatter + localizeScreenshotUrls(readme.body, slug),
+  );
 }
 
 /** Replace the fixture's generic homepage with the theme's README (see DEMO_README_AS_HOME). */
-async function writeReadmeHome(contentDir: string, readme: ReadmeContent): Promise<void> {
+async function writeReadmeHome(
+  contentDir: string,
+  readme: ReadmeContent,
+  slug: string,
+): Promise<void> {
   const homeDir = join(contentDir, HOME_DIR_NAME);
   try {
     await Deno.stat(homeDir);
@@ -531,7 +559,10 @@ async function writeReadmeHome(contentDir: string, readme: ReadmeContent): Promi
     "---",
     "",
   ].join("\n");
-  await Deno.writeTextFile(join(homeDir, "default.md"), frontmatter + readme.body);
+  await Deno.writeTextFile(
+    join(homeDir, "default.md"),
+    frontmatter + localizeScreenshotUrls(readme.body, slug),
+  );
 }
 
 async function ensureSymlink(linkPath: string, target: string): Promise<void> {

@@ -10,10 +10,15 @@
  * Output: packages/theme-{slug}/static/screenshot.png — ships inside the theme
  * package and is served by any site running the theme at
  * /themes/{slug}/static/screenshot.png (e.g. the demo sites on themes.getdune.org).
+ *
+ * For README-as-home themes (caravan, book, starlight, lucid, manual) the
+ * homepage embeds this same screenshot — a single capture would either show
+ * a broken image or never bootstrap. Those themes get a two-pass capture:
+ * hide the embed, write the file, then re-capture so the home image is real.
  */
 
 import { join } from "@std/path";
-import { demoDir, isDemoSlug, linkDemo, ROOT } from "./demo-common.ts";
+import { demoDir, isDemoSlug, isReadmeAsHome, linkDemo, ROOT } from "./demo-common.ts";
 
 const slug = Deno.args.find((a) => !a.startsWith("--"));
 const urlArg = Deno.args.find((a) => a.startsWith("--url="))?.slice("--url=".length);
@@ -26,6 +31,8 @@ if (!slug || !isDemoSlug(slug)) {
 const outDir = join(ROOT, "packages", `theme-${slug}`, "static");
 const outPath = join(outDir, "screenshot.png");
 await Deno.mkdir(outDir, { recursive: true });
+
+const twoPass = isReadmeAsHome(slug);
 
 let baseUrl = urlArg;
 if (!baseUrl) {
@@ -49,13 +56,13 @@ if (!baseUrl) {
 
   try {
     await waitForServer(baseUrl);
-    await capture(baseUrl, outPath);
+    await capture(baseUrl, outPath, { twoPass, slug });
   } finally {
     server.kill();
     await server.status.catch(() => undefined);
   }
 } else {
-  await capture(baseUrl, outPath);
+  await capture(baseUrl, outPath, { twoPass, slug });
 }
 
 console.log(`  ✓ ${outPath}`);
@@ -71,7 +78,11 @@ async function waitForServer(url: string, attempts = 40): Promise<void> {
   throw new Error(`Demo server did not respond at ${url}`);
 }
 
-async function capture(url: string, path: string): Promise<void> {
+async function capture(
+  url: string,
+  path: string,
+  opts: { twoPass: boolean; slug: string },
+): Promise<void> {
   const { chromium } = await import("npm:playwright@^1.45");
   const browser = await chromium.launch();
   try {
@@ -80,6 +91,37 @@ async function capture(url: string, path: string): Promise<void> {
     // (/__dune_reload) never settles, so networkidle always times out.
     await page.goto(url, { waitUntil: "load" });
     await page.waitForTimeout(1500);
+
+    if (opts.twoPass) {
+      // Pass 1: hide the self-referential README screenshot so we don't
+      // bake a broken/missing image (or an infinitely nested prior shot)
+      // into the bootstrap file.
+      await page.addStyleTag({
+        content: `img[src*="screenshot.png"]{visibility:hidden!important}`,
+      });
+      await page.screenshot({ path, fullPage: false });
+      console.log(`  · pass 1 (embed hidden) → ${path}`);
+
+      // Pass 2: reload so the freshly written local asset paints in the
+      // README hero image, then capture the real marketplace frame.
+      await page.goto(url, { waitUntil: "load" });
+      const localShot = `/themes/${opts.slug}/static/screenshot.png`;
+      await page.waitForFunction(
+        (src) => {
+          const img = document.querySelector(`img[src*="screenshot.png"]`) as HTMLImageElement | null;
+          return img && img.complete && img.naturalWidth > 0 && img.src.includes(src);
+        },
+        localShot,
+        { timeout: 8000 },
+      ).catch(() => {
+        /* image may still be remote when --url points at production */
+      });
+      await page.waitForTimeout(500);
+      await page.screenshot({ path, fullPage: false });
+      console.log(`  · pass 2 (embed visible) → ${path}`);
+      return;
+    }
+
     await page.screenshot({ path, fullPage: false });
   } finally {
     await browser.close();
