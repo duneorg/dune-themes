@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-16",
+  "updatedAt": "2026-07-22",
   "themes": [
     {
       "slug": "sirocco",
@@ -66,7 +66,7 @@
       "screenshotUrl": "https://themes.getdune.org/fennec/themes/fennec/static/screenshot.png",
       "jsr": "jsr:@dune/theme-fennec@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fennec-v1.0.0/fennec-1.0.0.zip",
-      "sha256": "",
+      "sha256": "59a310c693e60ed40b6a620ce8dbea00bdd76538238fc421c55083546e60ce56",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
