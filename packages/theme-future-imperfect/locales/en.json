@@ -1,5 +1,10 @@
 {
-  "theme.toggle": "Toggle dark mode",
+  "nav.main": "Site",
+  "nav.menu": "Menu",
+  "credit.design": "Design",
+  "post.continue": "Continue Reading",
+  "pagination.newer": "Newer →",
+  "pagination.older": "← Older",
   "search.title": "Search",
   "search.placeholder": "Search…",
   "search.submit": "Search",

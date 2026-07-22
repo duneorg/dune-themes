@@ -1,21 +1,25 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatFiDate, postExcerpt } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, themeConfig, config } = props;
+  const { page, children, collection, pagination, themeConfig, config, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const items = collection?.items ?? [];
   const themeName = config?.theme?.name ?? "future-imperfect";
   const authorName = (themeConfig?.author_name as string) || "Author";
-  const authorAvatar = (themeConfig?.author_avatar as string) ||
+  const authorAvatar = safeHref(themeConfig?.author_avatar) ||
     `/themes/${themeName}/static/html5up/images/avatar.jpg`;
 
   return (
@@ -35,7 +39,7 @@ export default function BlogTemplate(props: TemplateProps & {
       {items.map((post) => {
         const fm = post.frontmatter;
         const date = fm.date ? String(fm.date) : "";
-        const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+        const cover = safeHref(fm.cover);
         const excerpt = postExcerpt(fm);
         const subtitle = typeof fm.subtitle === "string" ? fm.subtitle : undefined;
 
@@ -64,7 +68,11 @@ export default function BlogTemplate(props: TemplateProps & {
             {excerpt && <p>{excerpt}</p>}
             <footer>
               <ul class="actions">
-                <li><a href={post.route} class="button large">Continue Reading</a></li>
+                <li>
+                  <a href={post.route} class="button large">
+                    {tr("post.continue", "Continue Reading")}
+                  </a>
+                </li>
               </ul>
             </footer>
           </article>
@@ -74,10 +82,18 @@ export default function BlogTemplate(props: TemplateProps & {
       {(pagination?.newer || pagination?.older) && (
         <ul class="actions pagination">
           {pagination.older && (
-            <li><a href={pagination.older} class="button">← Older</a></li>
+            <li>
+              <a href={pagination.older} class="button">
+                {tr("pagination.older", "← Older")}
+              </a>
+            </li>
           )}
           {pagination.newer && (
-            <li><a href={pagination.newer} class="button">Newer →</a></li>
+            <li>
+              <a href={pagination.newer} class="button">
+                {tr("pagination.newer", "Newer →")}
+              </a>
+            </li>
           )}
         </ul>
       )}

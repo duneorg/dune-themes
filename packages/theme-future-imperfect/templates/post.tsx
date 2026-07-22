@@ -1,10 +1,12 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatFiDate, postExcerpt } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function PostTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
 }) {
@@ -12,11 +14,11 @@ export default function PostTemplate(props: TemplateProps & {
   const { page, children, themeConfig, config } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? String(fm.date) : "";
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+  const cover = safeHref(fm.cover);
   const subtitle = typeof fm.subtitle === "string" ? fm.subtitle : postExcerpt(fm);
   const themeName = config?.theme?.name ?? "future-imperfect";
   const authorName = (themeConfig?.author_name as string) || "Author";
-  const authorAvatar = (themeConfig?.author_avatar as string) ||
+  const authorAvatar = safeHref(themeConfig?.author_avatar) ||
     `/themes/${themeName}/static/html5up/images/avatar.jpg`;
 
   return (
