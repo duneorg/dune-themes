@@ -1,11 +1,18 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import { getSearchUrl } from "@dune/core/theme-helpers";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
   recentPosts?: Array<{ route: string; title: string }>;
+  t?: (key: string) => string;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -19,20 +26,35 @@ export default function Layout({
   children,
   themeConfig,
   recentPosts,
+  t,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "striped";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Striped";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const tagline = (themeConfig?.sidebar_tagline as string) || site?.description || "A Dune site";
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const searchAction = getSearchUrl("").split("?")[0];
+  const searchPlaceholder = tr("search.placeholder", "Search");
+  const creditHref = safeHref("https://html5up.net/striped") ?? "https://html5up.net/striped";
+  const creditHomeHref = safeHref("https://html5up.net") ?? "https://html5up.net";
   const navItems = (nav ?? []).slice(0, 12);
-  const recent = (recentPosts ?? navItems.filter((n) => n.route.startsWith("/blog/"))).slice(0, 5);
+  const recent = (recentPosts ?? navItems
+    .filter((n) => stripSlash(n.route).startsWith("/blog"))
+    .map((n) => ({
+      route: n.route,
+      title: String(n.navTitle ?? n.title ?? n.route),
+    }))
+  ).slice(0, 5);
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} class="is-preload">
@@ -48,42 +70,56 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body>
+      <body class="theme-striped archetype-blog">
         <div id="content">
           <div class="inner">{children}</div>
         </div>
 
         <div id="sidebar">
           <h1 id="logo">
-            <a href="/">{site?.title ?? "Striped"}</a>
+            <a href={homeHref}>{site?.title ?? "Striped"}</a>
           </h1>
 
-          <nav id="nav">
+          <nav id="nav" aria-label={tr("nav.main", "Site")}>
             <ul>
-              {navItems.map((item) => (
-                <li
-                  key={item.route}
-                  class={currentPath === item.route || (item.route !== "/" && currentPath.startsWith(item.route + "/")) ? "current" : ""}
-                >
-                  <a href={item.route}>
-                    {item.navTitle ?? item.frontmatter?.title ?? item.route}
-                  </a>
-                </li>
-              ))}
+              {navItems.map((item) => {
+                const itemPath = stripSlash(item.route);
+                const active = normalizedPath === itemPath ||
+                  (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+                return (
+                  <li key={item.route} class={active ? "current" : ""}>
+                    <a href={item.route} aria-current={active ? "page" : undefined}>
+                      {item.navTitle ?? item.title ?? item.route}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
           <section class="box search">
             <form method="get" action={searchAction} role="search">
-              <input type="search" class="text" name="q" placeholder="Search" aria-label="Search" />
+              <input
+                type="search"
+                class="text"
+                name="q"
+                placeholder={searchPlaceholder}
+                aria-label={searchPlaceholder}
+              />
             </form>
           </section>
 
           <section class="box text-style1">
             <div class="inner">
               <p>
-                <strong>{site?.title ?? "Striped"}:</strong> {tagline}. Design by{" "}
-                <a href="https://html5up.net/striped">HTML5 UP</a>.
+                <strong>{site?.title ?? "Striped"}:</strong> {tagline}
+                {showCredit && (
+                  <>
+                    . {tr("credit.design_by", "Design by")}{" "}
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+                  </>
+                )}
+                {!showCredit && "."}
               </p>
             </div>
           </section>
@@ -91,7 +127,7 @@ export default function Layout({
           {recent.length > 0 && (
             <section class="box recent-posts">
               <header>
-                <h2>Recent Posts</h2>
+                <h2>{tr("nav.recent", "Recent Posts")}</h2>
               </header>
               <ul>
                 {recent.map((item) => (
@@ -103,22 +139,25 @@ export default function Layout({
             </section>
           )}
 
-          {showCredit && (
-            <ul id="copyright">
-              <li>&copy; {new Date().getFullYear()} {copyrightName}.</li>
+          <ul id="copyright">
+            <li>&copy; {new Date().getFullYear()} {copyrightName}.</li>
+            {showCredit && (
               <li>
-                Design: <a href="https://html5up.net">HTML5 UP</a>
+                {tr("credit.design", "Design")}:{" "}
+                <a href={creditHomeHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
               </li>
-            </ul>
-          )}
+            )}
+          </ul>
         </div>
 
         <div id="titleBar">
-          <a href="#sidebar" class="toggle" aria-label="Toggle sidebar"></a>
+          <a href="#sidebar" class="toggle" aria-label={tr("nav.menu", "Toggle sidebar")}></a>
           <span class="title">{site?.title ?? "Striped"}</span>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function(){
             var body=document.body;
             window.addEventListener('load',function(){
@@ -140,7 +179,9 @@ export default function Layout({
               }
             });
           })();
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );

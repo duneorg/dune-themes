@@ -1,14 +1,56 @@
 # Striped
 
-Dune theme adapted from [HTML5 UP Striped](https://html5up.net/striped) by [HTML5 UP](https://html5up.net).
+Responsive sidebar blog theme for Dune, adapted from
+[HTML5 UP Striped](https://html5up.net/striped) (CC BY 3.0).
 
-**License:** Design by [HTML5 UP](https://html5up.net) — [Striped](https://html5up.net/striped) (CC BY 3.0). Sites using this theme must keep visible design credit per the [Creative Commons Attribution 3.0 License](https://html5up.net/license).
+![Striped screenshot](https://themes.getdune.org/striped/themes/striped/static/screenshot.png)
 
-**Templates:** `default` · `post` · `blog` · `search` · `error` — sidebar blog layout with HTML5 UP markup classes.
+**Demo**: https://themes.getdune.org/striped
+
+**Tags**: dune-theme, blog, html5up, sidebar
+
+**License:** Design by [HTML5 UP](https://html5up.net) — [Striped](https://html5up.net/striped)
+(CC BY 3.0). Sites using this theme must keep visible design credit per the
+[Creative Commons Attribution 3.0 License](https://html5up.net/license).
+
+## Install
 
 ```bash
 dune theme:install jsr:@dune/theme-striped@1.0.0 --activate
 ```
+
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: striped
+    src: jsr:@dune/theme-striped@1.0.0
+
+theme:
+  name: striped
+  src: jsr:@dune/theme-striped@1.0.0
+```
+
+Sidebar blog chrome with search, recent posts, and a mobile title-bar
+toggle. Config covers `show_html5up_credit`, `sidebar_tagline`, and
+`footer_text` — see the [live demo](https://themes.getdune.org/striped).
+
+## Templates
+
+| Template | Notes |
+|---|---|
+| `blog` | Post list with date badges and optional covers |
+| `post` | Single post |
+| `default` | Plain pages |
+| `archives` | Year-grouped post list |
+| `search` | Form search over Dune `/api/search` |
+| `error` | Themed 404 / 500 |
+
+## Attribution on live sites
+
+The sidebar includes a visible link to HTML5 UP by default
+(`show_html5up_credit`). Do not remove upstream design credit unless you
+hold a separate [Pixelarity](https://pixelarity.com) license.
 
 ## From template to your site
 
@@ -19,7 +61,3 @@ dune theme:install jsr:@dune/theme-striped@1.0.0 --activate
 
 Themes we implement from Pixelarity are **bespoke client projects only** (agency-licensed;
 not part of the public Dune theme catalog). [Contact us →](https://getdune.org/services)
-
-## Attribution on live sites
-
-The sidebar includes a visible link to HTML5 UP by default. Do not remove upstream design credit unless you hold a separate [Pixelarity](https://pixelarity.com) license.

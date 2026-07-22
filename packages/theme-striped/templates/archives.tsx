@@ -1,9 +1,10 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 
 export default function ArchivesTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
 }) {

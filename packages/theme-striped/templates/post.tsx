@@ -1,6 +1,8 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 function formatStripedDate(raw: string): string {
   const d = new Date(raw);
@@ -11,12 +13,14 @@ function formatStripedDate(raw: string): string {
   return `<span class="month">${monthHead}<span>${monthTail}</span></span> <span class="day">${d.getDate()}</span><span class="year">, ${d.getFullYear()}</span>`;
 }
 
-export default function PostTemplate(props: TemplateProps & { children?: unknown; Layout?: typeof StaticLayout }) {
+export default function PostTemplate(
+  props: TemplateProps & { children?: ComponentChildren; Layout?: typeof StaticLayout },
+) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? String(fm.date) : "";
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+  const cover = safeHref(fm.cover);
   const subtitle = typeof fm.subtitle === "string" ? fm.subtitle : undefined;
 
   return (

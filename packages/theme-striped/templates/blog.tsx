@@ -1,6 +1,8 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 function formatStripedDate(raw: string): string {
   const d = new Date(raw);
@@ -12,13 +14,15 @@ function formatStripedDate(raw: string): string {
 }
 
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination } = props;
+  const { page, children, collection, pagination, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const items = collection?.items ?? [];
 
   return (
@@ -38,15 +42,15 @@ export default function BlogTemplate(props: TemplateProps & {
         </header>
       )}
       {children}
-      {items.map((post, index) => {
+      {items.map((post) => {
         const fm = post.frontmatter;
         const date = fm.date ? String(fm.date) : "";
-        const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-        const excerpt = (fm.metadata as Record<string, unknown> | undefined)?.description;
-        const className = index === 0 ? "box post post-excerpt" : "box post post-excerpt";
+        const cover = safeHref(fm.cover);
+        const excerpt = (fm.metadata as Record<string, unknown> | undefined)?.description ??
+          (typeof fm.summary === "string" ? fm.summary : undefined);
 
         return (
-          <article class={className} key={post.route}>
+          <article class="box post post-excerpt" key={post.route}>
             <header>
               <h2><a href={post.route}>{String(fm.title ?? post.route)}</a></h2>
               {excerpt && <p>{String(excerpt)}</p>}
@@ -66,12 +70,20 @@ export default function BlogTemplate(props: TemplateProps & {
       })}
       {(pagination?.newer || pagination?.older) && (
         <div class="pagination">
-          {pagination.older && <a href={pagination.older} class="button previous">Previous Page</a>}
+          {pagination.older && (
+            <a href={pagination.older} class="button previous">
+              {tr("pagination.previous", "Previous Page")}
+            </a>
+          )}
           <div class="pages">
-            {pagination.newer && <a href={pagination.newer}>Newer</a>}
-            {pagination.older && <a href={pagination.older}>Older</a>}
+            {pagination.newer && <a href={pagination.newer}>{tr("pagination.newer", "Newer")}</a>}
+            {pagination.older && <a href={pagination.older}>{tr("pagination.older", "Older")}</a>}
           </div>
-          {pagination.newer && <a href={pagination.newer} class="button next">Next Page</a>}
+          {pagination.newer && (
+            <a href={pagination.newer} class="button next">
+              {tr("pagination.next", "Next Page")}
+            </a>
+          )}
         </div>
       )}
     </LayoutComponent>
