@@ -22,7 +22,7 @@ export default function PostTemplate(props: any) {
               </time>
             )}
             {tags.map((t) => (
-              <a class="af-badge" key={t} href={`/tag:${encodeURIComponent(t)}`}>{t}</a>
+              <a class="af-badge" key={t} href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>
             ))}
           </div>
           <hr />

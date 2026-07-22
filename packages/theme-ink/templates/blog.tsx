@@ -29,7 +29,7 @@ export default function BlogTemplate(props: TemplateProps & {
           {subtitle && <p>{String(subtitle)}</p>}
         </div>
       )}
-      {children}
+      {children && <div class="ink-blog-lead">{children}</div>}
       <div class="post-entries">
         {(collection?.items ?? []).map((post) => {
           const date = post.frontmatter.date

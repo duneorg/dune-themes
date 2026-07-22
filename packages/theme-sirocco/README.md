@@ -42,8 +42,9 @@ showcase/demo site), `default_dark`, `show_reading_time`, `home_subtitle`.
 Light/dark toggle persisted in localStorage, falling back to the visitor's
 OS preference (`prefers-color-scheme`) when there's no stored choice —
 including for visitors with JS disabled, via a pure-CSS fallback; scroll-
-to-top button; tags render as static badges on each post (Dune has no
-per-value tag-listing route to link them to). UI strings are localized via
+to-top button; tags on each post link to `/tags/{name}/` term pages
+(demos generate these via `demo:link`; real sites author the same
+`termPageFor` pages). UI strings are localized via
 `locales/en.json`.
 
 Full configuration reference and a template/customization walkthrough are

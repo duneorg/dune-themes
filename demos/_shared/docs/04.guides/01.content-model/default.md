@@ -31,5 +31,10 @@ collection:
 
 Themes read the resolved result from `props.collection` (single) or
 `props.collections` (a named map, for pages that need several independent
-lists — a landing page showing both "Recent posts" and "Recent talks", for
-example).
+lists — a landing page showing both "Recent posts" and "Recent talks",
+for example).
+
+Taxonomy values are indexed automatically, but HTML term pages are
+authored content: a page with `termPageFor: <term>` (and usually a
+`@taxonomy.tag` collection) becomes the listing for that term. Demo sites
+generate these under `/tags/{name}/` during `demo:link`.

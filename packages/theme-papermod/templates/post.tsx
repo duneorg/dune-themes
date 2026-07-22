@@ -70,7 +70,7 @@ export default async function PostTemplate(props: any) {
             <ul class="post-tags">
               {tags.map((tag) => (
                 <li key={tag}>
-                  <a href={`/tag:${encodeURIComponent(tag)}`}>{tag}</a>
+                  <a href={`/tags/${encodeURIComponent(tag)}/`}>{tag}</a>
                 </li>
               ))}
             </ul>

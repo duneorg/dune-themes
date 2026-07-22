@@ -27,7 +27,7 @@ export default function PostTemplate(props: any) {
         {children}
         {tags.length > 0 && (
           <div class="bx-tags">
-            {tags.map((t) => <a key={t} href={`/tag:${encodeURIComponent(t)}`}>{t}</a>)}
+            {tags.map((t) => <a key={t} href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>)}
           </div>
         )}
       </article>

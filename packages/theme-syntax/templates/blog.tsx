@@ -49,7 +49,7 @@ export default function BlogTemplate(props: TemplateProps & {
                   {tags.length > 0 && (
                     <div class="syntax-tags">
                       {tags.slice(0, 4).map((t) => (
-                        <a class="syntax-tag" key={t} href={`/tag:${encodeURIComponent(t)}`}>{t}</a>
+                        <a class="syntax-tag" key={t} href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>
                       ))}
                     </div>
                   )}

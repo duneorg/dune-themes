@@ -41,7 +41,9 @@ export default function BlogTemplate(props: TemplateProps & {
             )}
             <div class="salon-featured-body">
               {postTags(featured.frontmatter)[0] && (
-                <span class="tag">{postTags(featured.frontmatter)[0]}</span>
+                <a class="tag" href={`/tags/${encodeURIComponent(postTags(featured.frontmatter)[0])}/`}>
+                  {postTags(featured.frontmatter)[0]}
+                </a>
               )}
               <h2>{String(featured.frontmatter.title)}</h2>
               {(featured.frontmatter.metadata as Record<string, unknown>)?.description && (
@@ -66,7 +68,7 @@ export default function BlogTemplate(props: TemplateProps & {
             <article class="salon-card" key={post.route}>
               {cover && <a href={post.route}><img src={cover} alt="" /></a>}
               <div class="salon-card-body">
-                {tags[0] && <a class="tag" href={`/tag:${encodeURIComponent(tags[0])}`}>{tags[0]}</a>}
+                {tags[0] && <a class="tag" href={`/tags/${encodeURIComponent(tags[0])}/`}>{tags[0]}</a>}
                 <h3><a href={post.route}>{String(post.frontmatter.title)}</a></h3>
                 {summary && <p>{String(summary)}</p>}
                 <div class="salon-card-meta">

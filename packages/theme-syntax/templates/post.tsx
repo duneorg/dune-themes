@@ -46,7 +46,7 @@ export default async function PostTemplate(props: TemplateProps & {
             {tagList.length > 0 && (
               <div class="syntax-tags">
                 {tagList.map((t) => (
-                  <a class="syntax-tag" key={t} href={`/tag:${encodeURIComponent(t)}`}>{t}</a>
+                  <a class="syntax-tag" key={t} href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>
                 ))}
               </div>
             )}

@@ -276,6 +276,12 @@ export async function linkDemo(slug: string): Promise<void> {
     await writeReadmeAboutPage(contentDir, readme);
   }
 
+  // Dune indexes taxonomy values but does not auto-route `/tag:{name}`.
+  // Term HTML pages need authored content with `termPageFor` + a
+  // `@taxonomy.tag` collection. Generate one per distinct tag so demo
+  // themes that link to `/tags/{tag}/` resolve instead of 404ing.
+  await generateTagTermPages(contentDir, packageDir);
+
   // A theme's own demo-config.json (committed, unlike demos/{slug}/data/
   // which is gitignored runtime state) seeds this demo's theme_config —
   // e.g. turning on scheme_switcher, a demo-only preview feature real
@@ -307,6 +313,135 @@ async function copyDirRecursive(src: string, dest: string): Promise<void> {
     } else if (entry.isFile) {
       await Deno.copyFile(from, to);
     }
+  }
+}
+
+/** True when `tag` is safe as a URL path segment and folder name. */
+function isSafeTagSegment(tag: string): boolean {
+  return /^[a-zA-Z0-9._-]+$/.test(tag);
+}
+
+/**
+ * Walk generated demo content and collect distinct `taxonomy.tag` /
+ * `taxonomy.tags` / legacy `tags` values.
+ */
+async function collectTaxonomyTags(contentDir: string): Promise<Set<string>> {
+  const tags = new Set<string>();
+
+  async function walk(dir: string): Promise<void> {
+    for await (const entry of Deno.readDir(dir)) {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory) {
+        await walk(path);
+        continue;
+      }
+      if (!entry.isFile || !/\.(md|mdx)$/i.test(entry.name)) continue;
+      const text = await Deno.readTextFile(path);
+      if (!text.startsWith("---")) continue;
+      const end = text.indexOf("\n---", 3);
+      if (end < 0) continue;
+      try {
+        const fm = parseYaml(text.slice(3, end)) as Record<string, unknown>;
+        const tax = fm.taxonomy as Record<string, unknown> | undefined;
+        const list = tax?.tag ?? tax?.tags ?? fm.tags;
+        if (!Array.isArray(list)) continue;
+        for (const value of list) {
+          if (typeof value === "string" && value.trim()) {
+            tags.add(value.trim());
+          }
+        }
+      } catch {
+        // Ignore unparseable frontmatter — same as a missing taxonomy block.
+      }
+    }
+  }
+
+  await walk(contentDir);
+  return tags;
+}
+
+async function themeHasBlogTemplate(packageDir: string): Promise<boolean> {
+  for (const name of ["blog.tsx", "blog.ts", "blog.jsx", "blog.js"]) {
+    try {
+      await Deno.stat(join(packageDir, "templates", name));
+      return true;
+    } catch {
+      // try next
+    }
+  }
+  // Walk parent chain (theme.yaml `parent:`) — e.g. a thin child may inherit
+  // blog from dune-minimal.
+  const seen = new Set<string>();
+  let current = packageDir;
+  for (;;) {
+    let parentName: string | undefined;
+    try {
+      const manifest = parseYaml(
+        await Deno.readTextFile(join(current, "theme.yaml")),
+      ) as { parent?: string };
+      parentName = manifest.parent;
+    } catch {
+      break;
+    }
+    if (!parentName || seen.has(parentName)) break;
+    seen.add(parentName);
+    current = join(ROOT, "packages", `theme-${parentName}`);
+    for (const name of ["blog.tsx", "blog.ts", "blog.jsx", "blog.js"]) {
+      try {
+        await Deno.stat(join(current, "templates", name));
+        return true;
+      } catch {
+        // try next
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * Create `content/tags/{tag}/default.md` term pages for every distinct tag
+ * in the demo, using the theme's `blog` listing template. Skipped when the
+ * theme (or its parent chain) has no blog template, or when there are no tags.
+ */
+async function generateTagTermPages(
+  contentDir: string,
+  packageDir: string,
+): Promise<void> {
+  if (!(await themeHasBlogTemplate(packageDir))) return;
+
+  const tags = await collectTaxonomyTags(contentDir);
+  if (tags.size === 0) return;
+
+  for (const tag of [...tags].sort()) {
+    if (!isSafeTagSegment(tag)) {
+      console.warn(
+        `demo:link: skipping tag term page for unsafe segment "${tag}"`,
+      );
+      continue;
+    }
+    const dir = join(contentDir, "tags", tag);
+    await Deno.mkdir(dir, { recursive: true });
+    await Deno.writeTextFile(
+      join(dir, "default.md"),
+      `---
+title: ${JSON.stringify(tag)}
+template: blog
+published: true
+visible: false
+termPageFor: ${tag}
+collection:
+  items:
+    "@taxonomy.tag": ${tag}
+  order:
+    by: date
+    dir: desc
+  filter:
+    template: post
+---
+
+Posts tagged **${tag}**.
+`,
+    );
   }
 }
 

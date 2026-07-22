@@ -16,7 +16,7 @@ export default function PostTemplate(props: TemplateProps & { children?: unknown
   return (
     <LayoutComponent {...props}>
       <header class="salon-post-header">
-        {primaryTag && <a class="tag" href={`/tag:${encodeURIComponent(primaryTag)}`}>{primaryTag}</a>}
+        {primaryTag && <a class="tag" href={`/tags/${encodeURIComponent(primaryTag)}/`}>{primaryTag}</a>}
         <h1>{String(fm.title ?? page.frontmatter.title)}</h1>
         <div class="salon-post-meta">
           {date && (
@@ -29,7 +29,7 @@ export default function PostTemplate(props: TemplateProps & { children?: unknown
         {tags.length > 1 && (
           <div class="salon-post-tags">
             {tags.slice(1).map((t) => (
-              <a class="tag" key={t} href={`/tag:${encodeURIComponent(t)}`} style="background:color-mix(in srgb, var(--accent) 15%, transparent);color:var(--accent)">{t}</a>
+              <a class="tag" key={t} href={`/tags/${encodeURIComponent(t)}/`} style="background:color-mix(in srgb, var(--accent) 15%, transparent);color:var(--accent)">{t}</a>
             ))}
           </div>
         )}

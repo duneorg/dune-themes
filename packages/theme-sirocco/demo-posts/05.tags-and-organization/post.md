@@ -16,8 +16,9 @@ four different terms so you can try all three against it.
 ## Tags
 
 Every tag on a post — see the row at the bottom of this one — links to
-`/tag:{name}`, a real taxonomy route Dune generates automatically from
-frontmatter. No manual index to maintain: tag a post, and it's
+`/tags/{name}/`, a real content page the demo generates with
+`termPageFor` and a `@taxonomy.tag` collection. Tag a post, re-link the
+demo (or author the matching term page on a real site), and it's
 discoverable.
 
 ## Search
