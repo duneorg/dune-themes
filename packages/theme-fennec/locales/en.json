@@ -1,0 +1,20 @@
+{
+  "scheme_switcher": "Color scheme",
+  "theme.toggle": "Toggle dark mode",
+  "theme.dark": "Dark",
+  "theme.light": "Light",
+  "nav.main": "Site",
+  "hero.greeting": "Hey there",
+  "home.latest": "Latest from blog",
+  "post.read_more": "Read more",
+  "pagination.label": "Pagination",
+  "pagination.newer": "Newer",
+  "pagination.older": "Older",
+  "footer.powered": "built with",
+  "search.title": "Search",
+  "search.placeholder": "Search…",
+  "search.submit": "Search",
+  "search.empty": "No results found.",
+  "error.notfound": "This page could not be found.",
+  "error.home": "Back to home"
+}

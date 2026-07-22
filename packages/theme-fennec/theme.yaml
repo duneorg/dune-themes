@@ -1,21 +1,35 @@
 name: fennec
-description: "Fennec — a personal portfolio & blog theme with sidebar and bold hero, inspired by Astrofy"
-author: "Dune Theme Library (design inspired by Astrofy by Manuel Ernesto Garcia)"
-version: "1.0.0"
+version: 1.0.0
+description: "Personal portfolio and blog theme inspired by Astrofy — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-fennec
+attribution: "Design inspired by Astrofy (MIT) — Dune-native theme, not a port"
 config_schema:
-  primary_color:
-    type: color
-    label: "Primary colour"
-    default: "#f97316"
+  color_scheme:
+    type: select
+    label: Color scheme
+    options: [blue, slate, green, purple, amber, rose, terracotta, teal]
+    default: terracotta
+    help: "Accent colour for links, active nav, and badges — each preset has a matched light/dark pair. Default terracotta matches Astrofy's warm orange."
+  scheme_switcher:
+    type: toggle
+    label: Let visitors switch the color scheme
+    default: false
+    help: "Adds a swatch dropdown next to the dark-mode toggle so visitors can preview other color_scheme presets (persists in their browser). Off by default — useful for a theme showcase/demo."
   avatar_url:
     type: text
-    label: "Sidebar avatar image URL"
+    label: Sidebar avatar image URL
     default: ""
   hero_greeting:
     type: text
-    label: "Hero greeting"
-    default: "Hey there 👋"
+    label: Hero greeting
+    default: "Hey there"
   default_dark:
     type: toggle
-    label: "Default to dark mode"
+    label: Default to dark mode
     default: false
+  footer_text:
+    type: text
+    label: Footer text (leave empty for default)
+    default: ""

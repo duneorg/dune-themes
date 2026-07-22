@@ -1,0 +1,9 @@
+{
+  "fennec": {
+    "color_scheme": "terracotta",
+    "scheme_switcher": true,
+    "default_dark": false,
+    "avatar_url": "/themes/fennec/static/avatar.svg",
+    "hero_greeting": "Hey there"
+  }
+}

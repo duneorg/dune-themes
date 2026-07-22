@@ -67,6 +67,7 @@ export const DEMO_SLUGS = [
   "herald",
   "lucid",
   "manual",
+  "fennec",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -75,7 +76,7 @@ export type DemoSlug = (typeof DEMO_SLUGS)[number];
  * Shared content fixture each demo symlinks `content` to (under
  * `demos/_shared/`). Defaults to "blog" — docs-family themes (caravan, book,
  * starlight, and later lucid/manual) use "docs"; portfolio/academic themes
- * (blox, later fennec/oasis) use "portfolio". Landing-only fixtures may land
+ * (blox, fennec, later oasis) use "portfolio". Landing-only fixtures may land
  * later (see notes/RELEASE-PLAN.md).
  */
 const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
@@ -83,6 +84,7 @@ const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   book: "docs",
   starlight: "docs",
   blox: "portfolio",
+  fennec: "portfolio",
   lucid: "docs",
   manual: "docs",
 };
