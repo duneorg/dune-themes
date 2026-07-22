@@ -1,5 +1,4 @@
 /** @jsxImportSource preact */
-import { h } from "preact";
 import { formatDate } from "@dune/core/theme-helpers";
 import StaticLayout from "../components/layout.tsx";
 
@@ -9,6 +8,7 @@ export default function PostTemplate(props: any) {
   const fm = page.frontmatter;
   const date = fm.date ? new Date(fm.date).getTime() : undefined;
   const tags: string[] = fm.taxonomy?.tag ?? fm.taxonomy?.tags ?? [];
+  const basePath = props.site?.basePath ?? "";
 
   return (
     <LayoutComponent {...props}>
@@ -19,7 +19,11 @@ export default function PostTemplate(props: any) {
             {fm.author && <span>{fm.author}</span>}
             {date && (
               <time datetime={new Date(date).toISOString()}>
-                {formatDate(date, page.language ?? "en", { day: "numeric", month: "long", year: "numeric" })}
+                {formatDate(date, page.language ?? "en", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </time>
             )}
           </div>
@@ -27,7 +31,14 @@ export default function PostTemplate(props: any) {
         {children}
         {tags.length > 0 && (
           <div class="bx-tags">
-            {tags.map((t) => <a key={t} href={`/tags/${encodeURIComponent(t)}/`}>{t}</a>)}
+            {tags.map((tag) => (
+              <a
+                key={tag}
+                href={`${basePath}/tags/${encodeURIComponent(tag)}/`.replace(/([^:]\/)\/+/g, "$1")}
+              >
+                {tag}
+              </a>
+            ))}
           </div>
         )}
       </article>

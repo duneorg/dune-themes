@@ -69,6 +69,7 @@ export const DEMO_SLUGS = [
   "manual",
   "fennec",
   "nightfall",
+  "oasis",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -86,6 +87,7 @@ const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   starlight: "docs",
   blox: "portfolio",
   fennec: "portfolio",
+  oasis: "portfolio",
   lucid: "docs",
   manual: "docs",
   nightfall: "docs",

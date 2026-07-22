@@ -1,0 +1,19 @@
+{
+  "scheme_switcher": "Color scheme",
+  "theme.toggle": "Toggle dark mode",
+  "nav.menu": "Toggle menu",
+  "nav.main": "Site",
+  "landing.education": "Education",
+  "landing.interests": "Interests",
+  "landing.recent": "Recent",
+  "pagination.label": "Pagination",
+  "pagination.newer": "« Newer",
+  "pagination.older": "Older »",
+  "footer.powered": "Published with",
+  "search.title": "Search",
+  "search.placeholder": "Search…",
+  "search.submit": "Search",
+  "search.empty": "No results found.",
+  "error.notfound": "This page could not be found.",
+  "error.home": "Back to home"
+}

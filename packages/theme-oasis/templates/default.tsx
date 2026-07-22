@@ -1,5 +1,4 @@
 /** @jsxImportSource preact */
-import { h } from "preact";
 import StaticLayout from "../components/layout.tsx";
 
 export default function DefaultTemplate(props: any) {
