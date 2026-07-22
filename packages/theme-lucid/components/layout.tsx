@@ -225,6 +225,7 @@ export default function Layout(
               document.documentElement.style.setProperty('--bg',v.bg);
               document.documentElement.style.setProperty('--bg-alt',v.bgAlt);
               document.documentElement.style.setProperty('--code-bg',v.codeBg);
+              document.documentElement.style.setProperty('--sidebar-bg',v.sidebarBg);
             }
             var picker=document.getElementById('scheme-picker');
             var toggleBtn=document.getElementById('scheme-picker-toggle');

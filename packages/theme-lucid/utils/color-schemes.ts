@@ -1,7 +1,7 @@
 /**
  * Curated color presets for the `color_scheme` config option — same set as
  * sirocco/caravan/ink/gale/salon/syntax/herald (stable ids; labels name the hues). Lucid maps
- * surfaces onto `--accent` / `--bg` / `--bg-alt` / `--code-bg` (and sidebar via CSS).
+ * surfaces onto `--accent` / `--bg` / `--bg-alt` / `--code-bg` / `--sidebar-bg`.
  */
 export interface ColorSchemeVariant {
   accent: string;
@@ -69,6 +69,7 @@ export function resolveColorScheme(id: unknown): ColorScheme {
 const NEUTRAL_BG = { light: "#ffffff", dark: "#0f172a" };
 const NEUTRAL_ALT = { light: "#f9fafb", dark: "#1e293b" };
 const NEUTRAL_CODE = { light: "#f3f4f6", dark: "#1e293b" };
+const NEUTRAL_SIDEBAR = { light: "#fafafa", dark: "#111827" };
 
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16);
@@ -138,8 +139,8 @@ function retint(
 }
 
 const LIGHTNESS_BOOST = {
-  light: { bg: -0.02, alt: -0.01, code: -0.04 },
-  dark: { bg: 0.004, alt: 0.008, code: 0.01 },
+  light: { bg: -0.02, alt: -0.01, code: -0.04, sidebar: -0.015 },
+  dark: { bg: 0.004, alt: 0.008, code: 0.01, sidebar: 0.006 },
 };
 
 export interface SchemeSurfaceVars {
@@ -147,6 +148,7 @@ export interface SchemeSurfaceVars {
   bg: string;
   bgAlt: string;
   codeBg: string;
+  sidebarBg: string;
 }
 
 function surfaceVars(
@@ -158,13 +160,14 @@ function surfaceVars(
     accent: v.accent,
     bg: retint(NEUTRAL_BG[mode], v.cardBackground, 1, boost.bg),
     bgAlt: retint(NEUTRAL_ALT[mode], v.cardBackground, 0.85, boost.alt),
-    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.05, boost.code),
+    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.85, boost.code),
+    sidebarBg: retint(NEUTRAL_SIDEBAR[mode], v.cardBackground, 0.85, boost.sidebar),
   };
 }
 
 export function colorSchemeCss(scheme: ColorScheme): string {
   const toCss = (v: SchemeSurfaceVars) =>
-    `--accent:${v.accent};--bg:${v.bg};--bg-alt:${v.bgAlt};--code-bg:${v.codeBg}`;
+    `--accent:${v.accent};--bg:${v.bg};--bg-alt:${v.bgAlt};--code-bg:${v.codeBg};--sidebar-bg:${v.sidebarBg}`;
   const light = toCss(surfaceVars(scheme.light, "light"));
   const dark = toCss(surfaceVars(scheme.dark, "dark"));
   return `:root{${light}}` +

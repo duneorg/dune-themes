@@ -3,8 +3,8 @@
  * tones and `cardBackground` tints as caravan's `utils/color-schemes.ts`
  * (reused from caravan's `menuBackground`, since both are "a tint of the
  * scheme's hue over a neutral card/panel gray"), plus the same retint()
- * approach for a derived body background *and* a subtly retinted
- * code-block background (mirroring caravan's low-`satT` code treatment) —
+ * approach for a derived body background *and* a hue-matched retinted
+ * code-block background (same satT as other secondary surfaces) —
  * not caravan's fuller sidebar-specific `menuBackground` concept, since
  * Sirocco has no sidebar to tint. Ids stay stable; labels name the hues
  * (Emerald / Indigo / Crimson / Terracotta / Teal, etc.).
@@ -126,9 +126,8 @@ function hslToRgb([h, s, l]: [number, number, number]): [number, number, number]
  * Retint `neutralHex` with `tintHex`'s hue, keeping `neutralHex`'s own
  * lightness (plus `lightnessBoost`) and blending `satT` of the way from
  * `neutralHex`'s own saturation to `tintHex`'s saturation. `satT` near 1
- * (body) picks up close to the scheme's full color; `satT` near 0 (code)
- * keeps it close to neutral, just hue-shifted — same idea as caravan's
- * body/code retint split.
+ * (body) picks up close to the scheme's full color; `satT` near 0.85 (code)
+ * keeps a matched hue so code blocks don't sit as neutral gray on a tinted page.
  *
  * When `tintHex` itself is (near-)achromatic (slate), its hue is
  * mathematically undefined — collapse straight to gray rather than
@@ -175,7 +174,7 @@ function surfaceVars(v: ColorSchemeVariant, mode: "light" | "dark"): SchemeSurfa
     accent: v.accent,
     entry: v.cardBackground,
     theme: retint(NEUTRAL_THEME[mode], v.cardBackground, 1, boost.theme),
-    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.05, boost.code),
+    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.85, boost.code),
   };
 }
 

@@ -15,8 +15,8 @@
  * rotating hue to match `menuBackground`'s hue while keeping each surface's
  * own lightness (see `retint()`), so the whole page reads as one harmonic
  * surface instead of "tinted sidebar, neutral everything else." Body picks
- * up close to `menuBackground`'s own saturation; code stays close to the
- * neutral's low saturation so it still reads as "code," just tinted.
+ * up close to `menuBackground`'s own saturation; code uses the same hue at
+ * a matched secondary-surface satT so it doesn't sit as plain gray.
  *
  * "Slate" is the neutral/monochrome option — its menuBackground is close to
  * the theme's original untinted gray, so its own low saturation keeps the
@@ -154,10 +154,11 @@ function hslToRgb([h, s, l]: [number, number, number]): [number, number, number]
  * lightness (plus `lightnessBoost`) and blending `satT` of the way from
  * `neutralHex`'s own saturation to `menuHex`'s saturation. `satT` near 1
  * (body) makes the surface pick up close to the scheme's full color;
- * `satT` near 0 (code) keeps it close to neutral, just hue-shifted.
+ * `satT` near 0.85 (code) keeps a matched hue so code blocks don't sit as
+ * neutral gray on a tinted page.
  *
  * When `menuHex` itself is (near-)achromatic (slate), its hue is
- * mathematically undefined — blending toward it at a low `satT` would
+ * mathematically undefined — blending toward it at a partial `satT` would
  * otherwise leak the neutral surface's own incidental hue/saturation
  * through (e.g. the shared neutral code background has a faint blue cast)
  * at an arbitrary hue. There's nothing meaningful to partially blend
@@ -208,7 +209,7 @@ function surfaceVars(v: ColorSchemeVariant, mode: "light" | "dark"): SchemeSurfa
     "color-link": v.accent,
     "menu-background": v.menuBackground,
     "body-background": v.bodyBackground ?? retint(neutral.body, v.menuBackground, 1, boost.body),
-    "code-background": v.codeBackground ?? retint(neutral.code, v.menuBackground, 0.05, boost.code),
+    "code-background": v.codeBackground ?? retint(neutral.code, v.menuBackground, 0.85, boost.code),
   };
 }
 

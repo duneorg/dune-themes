@@ -1,6 +1,12 @@
 {
+  "scheme_switcher": "Color scheme",
   "theme.toggle": "Toggle dark mode",
+  "nav.menu": "Menu",
+  "nav.main": "Main",
+  "nav.home": "Home",
+  "sidebar.label": "Documentation",
   "search.title": "Search",
+  "search.docs": "Search documentation",
   "search.placeholder": "Search…",
   "search.submit": "Search",
   "search.empty": "No results found.",

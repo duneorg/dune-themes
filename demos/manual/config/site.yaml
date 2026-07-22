@@ -1,0 +1,7 @@
+title: Manual Demo
+description: Live demo of Manual — a product docs theme for Dune, inspired by Just the Docs
+url: https://themes.getdune.org/manual
+theme:
+  name: manual
+taxonomies:
+  - tag

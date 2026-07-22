@@ -7,7 +7,11 @@ function pageLabel(fm: Record<string, unknown>): string | null {
   return typeof label === "string" ? label : null;
 }
 
-export default function DefaultTemplate(props: TemplateProps & { children?: unknown; Layout?: typeof StaticLayout }) {
+export default function DefaultTemplate(props: TemplateProps & {
+  children?: any;
+  Layout?: typeof StaticLayout;
+  t?: (key: string) => string;
+}) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
   const fm = page.frontmatter as Record<string, unknown>;

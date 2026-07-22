@@ -1,18 +1,22 @@
 /** @jsxImportSource preact */
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
-export default function PostTemplate(props: TemplateProps & { children?: unknown; Layout?: typeof StaticLayout }) {
+export default function PostTemplate(props: TemplateProps & {
+  children?: any;
+  Layout?: typeof StaticLayout;
+}) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? String(fm.date) : "";
   const tags = Array.isArray(fm.tags) ? fm.tags as string[] : [];
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+  const cover = safeHref(fm.cover);
 
   return (
     <LayoutComponent {...props}>
-      <article class="prose">
+      <article class="manual-content prose">
         {cover && <img class="post-cover" src={cover} alt="" />}
         <h1>{page.frontmatter.title}</h1>
         <div class="post-meta">

@@ -1,7 +1,8 @@
 /**
  * Curated color presets for the `color_scheme` config option — same set as
- * sirocco/caravan (stable ids; labels name the hues). Gale maps surfaces onto
- * `--accent` / `--bg` / `--bg-alt` / `--code-bg`.
+ * sirocco/caravan/ink/gale/salon/syntax/herald/lucid (stable ids; labels name
+ * the hues). Manual maps surfaces onto `--accent` / `--bg` / `--bg-alt` /
+ * `--code-bg` / `--sidebar-bg`.
  */
 export interface ColorSchemeVariant {
   accent: string;
@@ -32,7 +33,7 @@ export const COLOR_SCHEMES: Record<string, ColorScheme> = {
   },
   purple: {
     label: "Indigo",
-    light: { accent: "#6d28d9", cardBackground: "#d9d7e5" },
+    light: { accent: "#7253ed", cardBackground: "#e4dff0" },
     dark: { accent: "#a78bfa", cardBackground: "#262336" },
   },
   amber: {
@@ -57,17 +58,19 @@ export const COLOR_SCHEMES: Record<string, ColorScheme> = {
   },
 };
 
-/** Teal is Gale's brand accent. */
-export const DEFAULT_COLOR_SCHEME = "teal";
+/** Just the Docs purple is Manual's brand accent (stored as scheme id `purple`). */
+export const DEFAULT_COLOR_SCHEME = "purple";
 
 export function resolveColorScheme(id: unknown): ColorScheme {
   if (typeof id === "string" && COLOR_SCHEMES[id]) return COLOR_SCHEMES[id];
   return COLOR_SCHEMES[DEFAULT_COLOR_SCHEME];
 }
 
-const NEUTRAL_BG = { light: "#f7faf9", dark: "#0b1412" };
-const NEUTRAL_ALT = { light: "#eef5f3", dark: "#12201c" };
-const NEUTRAL_CODE = { light: "#eef5f3", dark: "#1a2a26" };
+/** Neutrals from static/style.css — retinted toward each scheme's card tint. */
+const NEUTRAL_BG = { light: "#ffffff", dark: "#1c1d1f" };
+const NEUTRAL_ALT = { light: "#f5f5f5", dark: "#27282a" };
+const NEUTRAL_CODE = { light: "#f0f0f0", dark: "#27282a" };
+const NEUTRAL_SIDEBAR = { light: "#f8f9fa", dark: "#222326" };
 
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16);
@@ -137,8 +140,8 @@ function retint(
 }
 
 const LIGHTNESS_BOOST = {
-  light: { bg: -0.04, alt: -0.02, code: -0.08 },
-  dark: { bg: 0.004, alt: 0.008, code: 0.01 },
+  light: { bg: -0.02, alt: -0.01, code: -0.04, sidebar: -0.015 },
+  dark: { bg: 0.004, alt: 0.008, code: 0.01, sidebar: 0.006 },
 };
 
 export interface SchemeSurfaceVars {
@@ -146,6 +149,7 @@ export interface SchemeSurfaceVars {
   bg: string;
   bgAlt: string;
   codeBg: string;
+  sidebarBg: string;
 }
 
 function surfaceVars(
@@ -158,12 +162,13 @@ function surfaceVars(
     bg: retint(NEUTRAL_BG[mode], v.cardBackground, 1, boost.bg),
     bgAlt: retint(NEUTRAL_ALT[mode], v.cardBackground, 0.85, boost.alt),
     codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.85, boost.code),
+    sidebarBg: retint(NEUTRAL_SIDEBAR[mode], v.cardBackground, 0.85, boost.sidebar),
   };
 }
 
 export function colorSchemeCss(scheme: ColorScheme): string {
   const toCss = (v: SchemeSurfaceVars) =>
-    `--accent:${v.accent};--bg:${v.bg};--bg-alt:${v.bgAlt};--code-bg:${v.codeBg}`;
+    `--accent:${v.accent};--bg:${v.bg};--bg-alt:${v.bgAlt};--code-bg:${v.codeBg};--sidebar-bg:${v.sidebarBg}`;
   const light = toCss(surfaceVars(scheme.light, "light"));
   const dark = toCss(surfaceVars(scheme.dark, "dark"));
   return `:root{${light}}` +

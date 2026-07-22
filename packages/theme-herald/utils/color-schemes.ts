@@ -158,7 +158,7 @@ function surfaceVars(
     accent: v.accent,
     bg: retint(NEUTRAL_BG[mode], v.cardBackground, 1, boost.bg),
     bgAlt: retint(NEUTRAL_ALT[mode], v.cardBackground, 0.85, boost.alt),
-    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.05, boost.code),
+    codeBg: retint(NEUTRAL_CODE[mode], v.cardBackground, 0.85, boost.code),
   };
 }
 
