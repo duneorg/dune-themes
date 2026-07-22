@@ -9,7 +9,8 @@
   --heading: #0f172a;
   --muted: #64748b;
   --border: #e2e8f0;
-  --card-bg: #ffffff;
+  /* Follow scheme-tinted --bg-alt (set by colorSchemeCss / applyScheme). */
+  --card-bg: var(--bg-alt);
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
   --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.05);
   --code-bg: #f1f5f9;
@@ -22,7 +23,6 @@
   --heading: #f1f5f9;
   --muted: #94a3b8;
   --border: #334155;
-  --card-bg: #1e293b;
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.5);
   --code-bg: #1e293b;
