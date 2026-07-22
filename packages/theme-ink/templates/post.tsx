@@ -2,32 +2,37 @@
 import { formatDate } from "@dune/core/theme-helpers";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default async function PostTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: any;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, themeConfig } = props;
+  const { page, children, themeConfig, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const fm = page.frontmatter as Record<string, unknown>;
   const meta = (fm.metadata ?? {}) as Record<string, unknown>;
   const date = fm.date ? new Date(String(fm.date)).getTime() : undefined;
   const tags: string[] = (fm.taxonomy as Record<string, string[]>)?.tag ??
     (fm.taxonomy as Record<string, string[]>)?.tags ??
     (Array.isArray(fm.tags) ? fm.tags as string[] : []);
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-  const author = typeof fm.author === "string" ? fm.author : (themeConfig?.author_name as string) ?? "";
+  const cover = safeHref(fm.cover);
+  const author = typeof fm.author === "string"
+    ? fm.author
+    : (themeConfig?.author_name as string) ?? "";
 
-  let readingTime = "";
+  let readingMins = 0;
   if (themeConfig?.show_reading_time !== false) {
     const text = (await page.html()).replace(/<[^>]+>/g, " ");
     const words = text.split(/\s+/).filter(Boolean).length;
-    readingTime = `${Math.max(1, Math.round(words / 200))} min read`;
+    readingMins = Math.max(1, Math.round(words / 200));
   }
 
   const authorBio = (themeConfig?.author_bio as string) ?? "";
-  const authorAvatar = (themeConfig?.author_avatar as string) ?? "";
+  const authorAvatar = safeHref(themeConfig?.author_avatar);
 
   return (
     <LayoutComponent {...props}>
@@ -39,10 +44,18 @@ export default async function PostTemplate(props: TemplateProps & {
           <div class="post-meta">
             {date && (
               <time datetime={new Date(date).toISOString()}>
-                {formatDate(date, page.language ?? "en", { day: "numeric", month: "long", year: "numeric" })}
+                {formatDate(date, page.language ?? "en", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </time>
             )}
-            {readingTime && <span>&nbsp;·&nbsp;{readingTime}</span>}
+            {readingMins > 0 && (
+              <span>
+                &nbsp;·&nbsp;{readingMins} {tr("post.reading_time", "min read")}
+              </span>
+            )}
             {author && <span>&nbsp;·&nbsp;{author}</span>}
           </div>
         </header>
@@ -50,8 +63,10 @@ export default async function PostTemplate(props: TemplateProps & {
         {tags.length > 0 && (
           <footer class="post-footer">
             <ul class="post-tags">
-              {tags.map((t) => (
-                <li key={t}><a href={`/tag:${encodeURIComponent(t)}`}>{t}</a></li>
+              {tags.map((tag) => (
+                <li key={tag}>
+                  <a href={`/tag:${encodeURIComponent(tag)}`}>{tag}</a>
+                </li>
               ))}
             </ul>
           </footer>

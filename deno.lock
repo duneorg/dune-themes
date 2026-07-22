@@ -1725,6 +1725,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/ink": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/landed": {
         "dependencies": [
           "jsr:@dune/core@0.28",

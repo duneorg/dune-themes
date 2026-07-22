@@ -1,5 +1,8 @@
 {
   "theme.toggle": "Toggle dark mode",
+  "nav.menu": "Menu",
+  "social.x": "X",
+  "social.github": "GitHub",
   "search.title": "Search",
   "search.placeholder": "Search…",
   "search.submit": "Search",
@@ -8,5 +11,7 @@
   "error.home": "Back to home",
   "post.reading_time": "min read",
   "blog.newer": "Newer",
-  "blog.older": "Older"
+  "blog.older": "Older",
+  "blog.read": "Read",
+  "blog.pagination": "Pagination"
 }

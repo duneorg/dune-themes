@@ -1,0 +1,7 @@
+title: Ink Demo
+description: Live demo of Ink — a long-form writing theme for Dune, inspired by Ghost Attila
+url: https://themes.getdune.org/ink
+theme:
+  name: ink
+taxonomies:
+  - tag

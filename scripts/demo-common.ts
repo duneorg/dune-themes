@@ -60,6 +60,7 @@ export const DEMO_SLUGS = [
   "book",
   "starlight",
   "blox",
+  "ink",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -103,6 +104,7 @@ const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight"]);
 const DEMO_FIXTURE_EXCLUDE: Partial<Record<DemoSlug, string[]>> = {
   sirocco: ["03.about"],
   papermod: ["03.about"],
+  ink: ["03.about"],
 };
 
 /** Directory name of the fixture's homepage, by convention across all shared fixtures. */

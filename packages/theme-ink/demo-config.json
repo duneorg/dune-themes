@@ -1,0 +1,12 @@
+{
+  "ink": {
+    "accent_color": "#c0392b",
+    "default_dark": false,
+    "show_reading_time": true,
+    "home_subtitle": "Long-form writing for Dune — serif typography, a quiet masthead, and an author box at the end of every post.",
+    "author_name": "Ink Demo",
+    "author_bio": "This author box is seeded from theme config so the demo shows what a finished Ink site looks like.",
+    "twitter_url": "https://x.com/zumbrunn",
+    "github_url": "https://github.com/duneorg/dune-themes/tree/main/packages/theme-ink"
+  }
+}

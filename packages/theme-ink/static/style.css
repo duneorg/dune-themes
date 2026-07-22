@@ -109,6 +109,34 @@ html.dark {
   --border-dark: #3d3830;
 }
 
+/* No-JS / first-visit OS preference when html.light isn't forced */
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    --bg: var(--bg-dark, #1a1814);
+    --bg-alt: var(--bg-alt-dark, #252219);
+    --text: var(--text-dark, #e8e4dc);
+    --muted: var(--muted-dark, #a09888);
+    --border: var(--border-dark, #3d3830);
+    --header-bg: var(--header-bg-dark, var(--bg-alt-dark, #252219));
+  }
+}
+
+.archive-year { margin-top: 2rem; }
+.archive-year h2 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; }
+.archive-month { margin: 1rem 0 1.5rem; }
+.archive-month h3 {
+  font-family: 'Lato', system-ui, sans-serif; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.5rem;
+}
+.archive-posts { list-style: none; margin: 0; padding: 0; }
+.archive-posts li {
+  display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+  padding: 0.35rem 0; border-bottom: 1px solid var(--border);
+}
+.archive-posts a { color: var(--text); text-decoration: none; }
+.archive-posts a:hover { color: var(--accent); }
+.archive-posts time { color: var(--muted); font-size: 0.85rem; white-space: nowrap; font-family: 'Lato', system-ui, sans-serif; }
+
 body { font-size: 1.125rem; line-height: 1.85; }
 .site-header.ink-header {
   flex-direction: column; align-items: stretch; text-align: center;
