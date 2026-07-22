@@ -1,0 +1,10 @@
+{
+  "starlight": {
+    "sidebar_section": "*",
+    "search": true,
+    "pagination": true,
+    "credits": true,
+    "language_labels": "name",
+    "social": "[{\"icon\":\"github\",\"label\":\"GitHub\",\"href\":\"https://github.com/duneorg/dune-themes/tree/main/packages/theme-starlight\"},{\"icon\":\"external\",\"label\":\"Demo\",\"href\":\"https://themes.getdune.org/starlight\"}]"
+  }
+}

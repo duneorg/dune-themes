@@ -397,6 +397,10 @@
 			});
 
 			// Dune deviation: query /api/search instead of Pagefind.
+			// basePath comes from data-base-path on <site-search> (or <html>)
+			// so the modal works under themes.getdune.org/{slug}/ path-prefix hosting.
+			const basePath = (this.dataset.basePath || document.documentElement.dataset.basePath || '').replace(/\/$/, '');
+			const join = (path) => (basePath + path).replace(/([^:]\/)\/+/g, '$1');
 			const input = this.querySelector('input[type="search"]');
 			const results = this.querySelector('.search-results');
 			const message = this.querySelector('.search-message');
@@ -408,7 +412,8 @@
 					for (const item of items) {
 						const li = document.createElement('li');
 						const a = document.createElement('a');
-						a.href = item.url ?? item.route ?? '#';
+						const route = item.url ?? item.route ?? '#';
+						a.href = route.startsWith('/') ? join(route) : route;
 						a.textContent = item.title ?? a.href;
 						if (item.excerpt) {
 							const span = document.createElement('span');
@@ -431,14 +436,16 @@
 					timer = setTimeout(async () => {
 						const current = ++seq;
 						try {
-							const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+							const res = await fetch(join(`/api/search?q=${encodeURIComponent(q)}`));
 							const data = await res.json();
 							if (current !== seq) return;
 							const items = data.items ?? data.results ?? [];
 							render(items);
 							message.textContent = items.length ? '' : this.dataset.noResults || 'No results';
 						} catch {
-							if (current === seq) message.textContent = 'Search failed';
+							if (current === seq) {
+								message.textContent = this.dataset.searchFailed || 'Search failed';
+							}
 						}
 					}, 150);
 				});

@@ -4,6 +4,7 @@
   "search.ctrlKey": "Ctrl",
   "search.cancelLabel": "Cancel",
   "search.noResults": "No results",
+  "search.failed": "Search failed",
   "themeSelect.accessibleLabel": "Select theme",
   "themeSelect.dark": "Dark",
   "themeSelect.light": "Light",

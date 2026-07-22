@@ -11,6 +11,8 @@ export default function SearchTemplate(props: TemplateProps) {
   const Frame = (props.Layout ?? Layout) as typeof Layout;
   const query = props.searchQuery ?? "";
   const results = props.searchResults ?? [];
+  const basePath = (props.site as { basePath?: string } | undefined)?.basePath ?? "";
+  const action = `${basePath}/search`.replace(/([^:]\/)\/+/g, "$1") || "/search";
 
   return (
     <Frame {...props}>
@@ -18,13 +20,14 @@ export default function SearchTemplate(props: TemplateProps) {
         <article class="prose prose-slate lg:prose-xl dark:prose-invert">
           <h1>{t("search")}</h1>
         </article>
-        <form action="/search" method="get" class="my-6 flex gap-3">
+        <form action={action} method="get" class="my-6 flex gap-3">
           <input
             type="search"
             name="q"
             value={query}
             placeholder={`${t("search")}...`}
             class="flex-1 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-2 text-gray-900 dark:text-gray-100 outline-none focus:ring-2 focus:ring-primary-500"
+            autofocus
           />
           <button
             type="submit"

@@ -5,6 +5,7 @@
  */
 import { h, Fragment } from "preact";
 import type { ComponentChildren } from "preact";
+import { safeHref } from "../../utils/safe-url.ts";
 
 const ASSETS = "/themes/book/static";
 
@@ -68,12 +69,13 @@ export function Columns({ children }: { children?: ComponentChildren }) {
 
 /** {{< button href="..." >}} */
 export function Button(
-  { href, children }: { href: string; children?: ComponentChildren },
+  { href, children }: { href?: string; children?: ComponentChildren },
 ) {
-  const isRemote = /^[a-z]+:\/\//.test(href);
+  const safe = safeHref(href);
+  const isRemote = !!safe && /^https?:\/\//i.test(safe);
   return (
     <a
-      href={href}
+      href={safe}
       class="book-btn"
       {...(isRemote ? { target: "_blank", rel: "noopener" } : {})}
     >

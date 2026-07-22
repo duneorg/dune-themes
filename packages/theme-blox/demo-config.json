@@ -1,0 +1,13 @@
+{
+  "blox": {
+    "title": "Ada Lovelace",
+    "theme_mode": "system",
+    "theme_toggle": true,
+    "search": true,
+    "sticky_header": true,
+    "language_labels": "name",
+    "menu": "[{\"name\":\"Publications\",\"url\":\"/publications/\"},{\"name\":\"Blog\",\"url\":\"/blog/\"},{\"name\":\"Using Blox\",\"url\":\"/theme-docs/\"}]",
+    "cta": "{\"text\":\"Publications\",\"url\":\"/publications/\"}",
+    "footer_text": "Hugo Blox for Dune — faithful Academic CV port"
+  }
+}

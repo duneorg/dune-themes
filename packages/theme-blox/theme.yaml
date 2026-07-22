@@ -7,6 +7,7 @@ description: >
 version: 1.0.0
 author: Hugo Blox contributors (port by Dune)
 license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-blox
 
 config_schema:
   - id: title

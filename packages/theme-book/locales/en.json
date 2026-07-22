@@ -1,5 +1,6 @@
 {
   "Search": "Search",
+  "No results": "No results",
   "Edit this page": "Edit this page",
   "Last modified by": "Last modified by",
   "Menu": "Menu",
@@ -7,5 +8,10 @@
   "Expand": "Expand",
   "Backward": "Backward",
   "Forward": "Forward",
-  "Languages": "Languages"
+  "Languages": "Languages",
+  "Page": "Page",
+  "Not": "Not",
+  "Found": "Found",
+  "Server": "Server",
+  "Error": "Error"
 }

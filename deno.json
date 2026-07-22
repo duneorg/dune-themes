@@ -14,7 +14,7 @@
     "screenshot": "deno run -A scripts/capture-screenshot.ts",
     "sha256": "deno run -A scripts/update-registry-sha256.ts",
     "release": "deno run -A scripts/release-theme.ts",
-    "check": "deno check scripts/*.ts packages/theme-*/templates/*.tsx packages/theme-*/components/*.tsx"
+    "check": "deno check scripts/*.ts packages/theme-*/templates/*.tsx packages/theme-*/components/**/*.tsx"
   },
   "imports": {
     "@std/path": "jsr:@std/path@^1",

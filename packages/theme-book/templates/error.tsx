@@ -45,15 +45,22 @@ const NOT_FOUND_CSS = `
 `;
 
 export default function ErrorTemplate(props: any) {
-  const { page, site, dir } = props;
+  const { page, site, dir, themeConfig, t } = props;
   const status = page?.frontmatter?.statusCode ?? 404;
-  const words = status === 404 ? ["Page", "Not", "Found"] : ["Server", "Error", String(status)];
+  const bookTheme = (themeConfig?.book_theme as string) ?? "auto";
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const words = status === 404
+    ? [tr("Page", "Page"), tr("Not", "Not"), tr("Found", "Found")]
+    : [tr("Server", "Server"), tr("Error", "Error"), String(status)];
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/` || "/";
 
   return (
-    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
+    <html lang={page?.language ?? "en"} dir={dir ?? "ltr"} data-book-theme={bookTheme}>
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="light dark" />
         <title>{page?.frontmatter?.title ?? `${status}`}</title>
         <link rel="stylesheet" href="/themes/book/static/book.css" />
         <style dangerouslySetInnerHTML={{ __html: NOT_FOUND_CSS }} />
@@ -61,10 +68,10 @@ export default function ErrorTemplate(props: any) {
       <body class="not-found flex justify-center align-center">
         <main class="text-center">
           <h1>
-            {words.map((w, i) => [i > 0 ? " " : "", <span key={w}>{w}</span>])}
+            {words.map((w, i) => [i > 0 ? " " : "", <span key={`${w}-${i}`}>{w}</span>])}
           </h1>
           <h3>
-            <a href="/">{site?.title}</a>
+            <a href={homeHref}>{site?.title}</a>
           </h3>
         </main>
       </body>

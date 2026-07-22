@@ -9,6 +9,7 @@ import "./custom-elements.ts";
 import { cloneElement, type ComponentChildren, h, toChildArray, type VNode } from "preact";
 import Icon from "./icon.tsx";
 import { Icons } from "./icons.ts";
+import { safeHref } from "../utils/safe-url.ts";
 export { default as Icon } from "./icon.tsx";
 export { default as LinkButton } from "./link-button.tsx";
 
@@ -79,7 +80,7 @@ export function CardGrid(
 }
 
 export function LinkCard(
-  { title, description, ...attributes }: {
+  { title, description, href, ...attributes }: {
     title: string;
     description?: string;
     href?: string;
@@ -89,7 +90,7 @@ export function LinkCard(
   return (
     <div class="sl-link-card">
       <span class="sl-flex stack">
-        <a {...attributes}>
+        <a href={safeHref(href)} {...attributes}>
           <span class="title" dangerouslySetInnerHTML={{ __html: title }} />
         </a>
         {description && (

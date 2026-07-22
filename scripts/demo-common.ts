@@ -57,19 +57,25 @@ export const DEMO_SLUGS = [
   "verti",
   "caravan",
   "sirocco",
+  "book",
+  "starlight",
+  "blox",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
 
 /**
  * Shared content fixture each demo symlinks `content` to (under
- * `demos/_shared/`). Defaults to "blog" — docs-family themes (caravan, and
- * later book/lucid/manual) use "docs" instead; landing/portfolio themes
- * should get their own fixture here once those are built (see
- * notes/RELEASE-PLAN.md).
+ * `demos/_shared/`). Defaults to "blog" — docs-family themes (caravan, book,
+ * starlight, and later lucid/manual) use "docs"; portfolio/academic themes
+ * (blox, later fennec/oasis) use "portfolio". Landing-only fixtures may land
+ * later (see notes/RELEASE-PLAN.md).
  */
 const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   caravan: "docs",
+  book: "docs",
+  starlight: "docs",
+  blox: "portfolio",
 };
 
 function contentFixtureFor(slug: string): string {
@@ -84,7 +90,7 @@ function contentFixtureFor(slug: string): string {
  * (blog, portfolio, landing) where the homepage's job is to demonstrate
  * the theme's actual design, and README prose would bury that.
  */
-const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan"]);
+const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight"]);
 
 /**
  * Top-level fixture directories a theme's demo skips folding in — for
@@ -333,7 +339,11 @@ async function readReadmeMarkdown(packageDir: string): Promise<ReadmeContent | u
   }
 
   const body = lines.join("\n").replace(
-    /\[([^\]]+)\]\((?!https?:\/\/|#)[^)]+\)/g,
+    // Drop repo-relative links (LICENSE, sibling paths) that 404 on a
+    // deployed demo. Keep http(s), fragments, and site-root paths
+    // (`/themes/.../screenshot.png`) so README images and in-site links
+    // survive when the README is reused as demo content.
+    /\[([^\]]+)\]\((?!https?:\/\/|#|\/)[^)]+\)/g,
     "$1",
   );
 

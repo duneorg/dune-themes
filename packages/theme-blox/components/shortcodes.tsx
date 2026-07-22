@@ -10,6 +10,7 @@
  */
 import type { ComponentChildren } from "preact";
 import { Icon } from "./icon.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 // ── Callout ─────────────────────────────────────────────────────────────────
 
@@ -98,7 +99,7 @@ const BUTTON_ALIGN: Record<string, string> = {
 };
 
 export function Button(props: {
-  url: string;
+  url?: string;
   text?: string;
   new_tab?: boolean;
   style?: string;
@@ -109,13 +110,14 @@ export function Button(props: {
   rounded?: string;
   children?: ComponentChildren;
 }) {
-  const external = /^https?:\/\//.test(props.url);
+  const url = safeHref(props.url);
+  const external = !!url && /^https?:\/\//.test(url);
   const newTab = props.new_tab === true;
   const iconEl = props.icon ? <span class="flex-shrink-0"><Icon name={props.icon} class="w-4 h-4" /></span> : null;
   return (
     <div class={BUTTON_ALIGN[props.align ?? "left"] ?? "text-left"}>
       <a
-        href={props.url}
+        href={url}
         target={newTab ? "_blank" : undefined}
         rel={newTab ? (external ? "noopener noreferrer" : "noopener") : external ? "noreferrer" : undefined}
         class={`${BUTTON_BASE} ${BUTTON_STYLES[props.style ?? "primary"] ?? BUTTON_STYLES.primary} ${

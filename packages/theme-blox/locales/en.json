@@ -34,5 +34,20 @@
   "pub_paper_conference": "Conference paper",
   "pub_article_journal": "Journal article",
   "pub_preprint": "Preprint",
-  "status": "Status"
+  "status": "Status",
+  "block_contact_title": "Contact Us",
+  "block_contact_visit_title": "Visit Us",
+  "block_contact_connect_title": "Connect",
+  "block_contact_connect_title_single": "Let's Connect",
+  "block_contact_office_hours": "Office Hours",
+  "block_contact_view_on_map": "View on Map",
+  "block_contact_follow_me": "Find me on",
+  "block_contact_prospective_title": "Prospective Members",
+  "block_contact_form_title": "Send us a Message",
+  "block_contact_form_name": "Name",
+  "block_contact_form_email": "Email",
+  "block_contact_form_subject": "Subject",
+  "block_contact_form_message": "Message",
+  "block_contact_form_submit": "Send Message",
+  "block_contact_default_text": "I'm always open to discussing new projects, opportunities, or just having a chat."
 }

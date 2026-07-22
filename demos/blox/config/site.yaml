@@ -1,0 +1,7 @@
+title: Ada Lovelace
+description: Live demo of Hugo Blox for Dune — faithful Academic CV port
+url: https://themes.getdune.org/blox
+theme:
+  name: blox
+taxonomies:
+  - tag

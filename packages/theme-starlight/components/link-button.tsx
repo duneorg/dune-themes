@@ -2,10 +2,11 @@
 /** Port of user-components/LinkButton.astro. */
 import { h } from "preact";
 import Icon from "./icon.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function LinkButton(
   { href, icon, iconPlacement = "end", variant = "primary", class: cls, children, ...attrs }: {
-    href: string;
+    href?: string;
     icon?: string;
     iconPlacement?: "start" | "end";
     variant?: "primary" | "secondary" | "minimal";
@@ -16,7 +17,7 @@ export default function LinkButton(
 ) {
   const classes = ["sl-link-button", "not-content", variant, cls].filter(Boolean).join(" ");
   return (
-    <a href={href} class={classes} {...attrs}>
+    <a href={safeHref(href)} class={classes} {...attrs}>
       {icon && iconPlacement === "start" && <Icon name={icon} size="1.5rem" />}
       {children}
       {icon && iconPlacement === "end" && <Icon name={icon} size="1.5rem" />}

@@ -23,6 +23,7 @@ import {
   prevNext,
   type TocItem,
 } from "../utils/starlight.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 const ASSETS = "/themes/starlight/static";
 
@@ -70,23 +71,35 @@ function parseSocial(value: unknown): SocialLink[] {
 }
 
 function SiteTitle(
-  { site, themeConfig }: {
+  { site, themeConfig, basePath }: {
     site: Record<string, unknown> | undefined;
     themeConfig: Record<string, unknown>;
+    basePath: string;
   },
 ) {
-  const logo = (themeConfig?.logo as string) || null;
+  // Logo is an <img src>, not an href — allow http(s) and site-root paths only.
+  const logoSrc = typeof themeConfig?.logo === "string" &&
+      (themeConfig.logo.startsWith("/") || /^https?:\/\//i.test(themeConfig.logo))
+    ? themeConfig.logo
+    : null;
+  const home = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   return (
-    <a href="/" class="site-title sl-flex">
-      {logo && <img alt="" src={logo} />}
+    <a href={home} class="site-title sl-flex">
+      {logoSrc && <img alt="" src={logoSrc} />}
       <span {...{ translate: "no" } as Record<string, unknown>}>{site?.title as string}</span>
     </a>
   );
 }
 
-function Search({ t }: { t: (k: string) => string }) {
+function Search(
+  { t, basePath }: { t: (k: string) => string; basePath: string },
+) {
   return (
-    <site-search data-no-results={t("search.noResults")}>
+    <site-search
+      data-no-results={t("search.noResults")}
+      data-search-failed={t("search.failed")}
+      data-base-path={basePath}
+    >
       <button
         data-open-modal
         disabled
@@ -125,12 +138,16 @@ function Search({ t }: { t: (k: string) => string }) {
 function SocialIcons({ links }: { links: SocialLink[] }) {
   return (
     <Fragment>
-      {links.map(({ label, href, icon }) => (
-        <a href={href} rel="me" class="sl-flex">
-          <span class="sr-only">{label}</span>
-          <Icon name={icon} />
-        </a>
-      ))}
+      {links.map(({ label, href, icon }) => {
+        const safe = safeHref(href);
+        if (!safe) return null;
+        return (
+          <a href={safe} rel="me" class="sl-flex">
+            <span class="sr-only">{label}</span>
+            <Icon name={icon} />
+          </a>
+        );
+      })}
     </Fragment>
   );
 }
@@ -234,8 +251,11 @@ export default function Layout(props: LayoutProps) {
   const banner = (fm.banner as { content?: string } | undefined)?.content;
   const social = parseSocial(tc.social);
   const translations = props.translations ?? [];
-  const currentPath = pathname ?? (page?.route as string) ?? "/";
+  // Prefer the page's own route for nav matching — homepage is reachable at
+  // both "/" and its directory route (same dual-route bug class as caravan/book).
+  const currentPath = (page?.route as string) ?? pathname ?? "/";
   const section = (tc.sidebar_section as string) ?? "*";
+  const basePath = (site?.basePath as string) ?? "";
   // Starlight's sidebar lists docs pages only — leave out splash pages
   // (the landing page) like upstream.
   const navAll = (props.navAll ?? []).filter(
@@ -251,6 +271,7 @@ export default function Layout(props: LayoutProps) {
       lang={lang}
       dir={dir as "ltr" | "rtl"}
       data-theme="dark"
+      data-base-path={basePath || undefined}
       data-has-toc={toc ? "" : undefined}
       data-has-sidebar={hasSidebar ? "" : undefined}
       data-has-hero={hero ? "" : undefined}
@@ -285,10 +306,10 @@ export default function Layout(props: LayoutProps) {
           <header class="header">
             <div class="header">
               <div class="title-wrapper sl-flex">
-                <SiteTitle site={site} themeConfig={tc} />
+                <SiteTitle site={site} themeConfig={tc} basePath={basePath} />
               </div>
               <div class="sl-flex print:hidden">
-                {tc.search !== false && <Search t={t} />}
+                {tc.search !== false && <Search t={t} basePath={basePath} />}
               </div>
               <div class="sl-hidden md:sl-flex print:hidden right-group">
                 <div class="sl-flex social-icons">

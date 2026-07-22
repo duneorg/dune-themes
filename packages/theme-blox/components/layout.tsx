@@ -7,6 +7,7 @@ import type { ComponentChildren } from "preact";
 import type { PageIndex, PageTranslation, TemplateProps } from "@dune/core/content/types";
 import { Icon } from "./icon.tsx";
 import { linkTarget, type MenuItem, normalizeRoute, parseMenu, str } from "../utils/blox.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 /* Runs before paint: applies stored/system theme to <html> (upstream hb-head.js). */
 const THEME_INIT_JS = `
@@ -43,7 +44,9 @@ function parseCta(value: unknown): Cta | null {
   try {
     const obj = JSON.parse(value);
     if (obj && typeof obj === "object" && obj.text && obj.url) {
-      return { text: String(obj.text), url: String(obj.url) };
+      const url = safeHref(obj.url);
+      if (!url) return null;
+      return { text: String(obj.text), url };
     }
   } catch { /* ignore malformed config */ }
   return null;
@@ -83,15 +86,26 @@ export default function Layout(props: LayoutProps) {
   const translations: PageTranslation[] = props.translations ?? [];
   const currentLang = page?.language ?? "en";
   const others = translations.filter((tr) => tr.lang !== currentLang);
+  const basePath = (props.site as { basePath?: string } | undefined)?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
 
   const isActive = (url: string) => normalizeRoute(url) === normalizeRoute(pathname);
+
+  // Sanitize menu URLs (config-supplied JSON can carry any scheme).
+  const safeMenu = menu
+    .map((item) => {
+      const url = safeHref(item.url);
+      return url ? { ...item, url } : null;
+    })
+    .filter((item): item is MenuItem => item !== null);
 
   return (
     <html
       lang={currentLang}
       dir={props.dir}
       data-wc-theme-default={mode}
-      data-hbb-relurl="/"
+      data-hbb-relurl={homeHref}
+      data-base-path={basePath || undefined}
     >
       <head>
         <meta charSet="utf-8" />
@@ -113,7 +127,7 @@ export default function Layout(props: LayoutProps) {
           <header id="site-header" class="header">
             <nav class="navbar px-3 flex justify-start">
               <div class="order-0 h-full">
-                <a class="navbar-brand" href="/" title={siteTitle}>
+                <a class="navbar-brand" href={homeHref} title={siteTitle}>
                   {siteTitle}
                 </a>
               </div>
@@ -142,7 +156,7 @@ export default function Layout(props: LayoutProps) {
                 id="nav-menu"
                 class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-start"
               >
-                {menu.map((item) => (
+                {safeMenu.map((item) => (
                   <li class="nav-item" key={item.url}>
                     <a
                       class={`nav-link ${isActive(item.url) ? "active" : ""}`}
@@ -272,9 +286,9 @@ export default function Layout(props: LayoutProps) {
 
         <div class="page-footer">
           <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
-            {menu.length > 0 && (
+            {safeMenu.length > 0 && (
               <nav class="flex flex-wrap justify-center gap-x-8 gap-y-2 py-4">
-                {menu.map((item) => (
+                {safeMenu.map((item) => (
                   <a
                     href={item.url}
                     class="text-base font-medium text-gray-500 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-300"
@@ -308,7 +322,7 @@ export default function Layout(props: LayoutProps) {
           </footer>
         </div>
 
-        {showSearch && <SearchModal />}
+        {showSearch && <SearchModal t={t} />}
         <script src="/themes/blox/static/blox.js" defer></script>
       </body>
     </html>
@@ -316,11 +330,12 @@ export default function Layout(props: LayoutProps) {
 }
 
 /** Search modal shell — upstream markup, driven by static/blox.js over /api/search. */
-function SearchModal() {
+function SearchModal({ t }: { t: (k: string) => string }) {
   return (
     <div
       id="hb-search-modal"
       class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm hidden"
+      data-no-results={t("search.noResults")}
     >
       <div class="absolute inset-0" data-search-close></div>
       <div class="relative mx-auto mt-[10vh] max-w-3xl search-modal-enter">

@@ -9,7 +9,9 @@ homeInfo:
     pixel-for-pixel upstream and what had to adapt to Dune.
   social:
     - name: GitHub
-      url: https://github.com/duneorg/dune-themes
+      url: https://github.com/duneorg/dune-themes/tree/main/packages/theme-papermod
+    - name: X
+      url: https://x.com/zumbrunn
     - name: Dune
       url: https://getdune.org
 collection:

@@ -5,17 +5,19 @@ import { h } from "preact";
 import Layout from "../components/layout.tsx";
 
 export default function SearchTemplate(props: any) {
-  const { t } = props;
+  const { t, site } = props;
   const tr = t ?? ((k: string) => k);
   const results: Array<{ title?: string; url?: string; route?: string; excerpt?: string }> =
     props.searchResults ?? [];
   const query: string = props.searchQuery ?? "";
+  const basePath = site?.basePath ?? "";
+  const action = `${basePath}/search`.replace(/([^:]\/)\/+/g, "$1") || "/search";
 
   return (
     <Layout {...props} hasSidebar={false} tocItems={null}>
       <h2>{tr("search.label")}{query ? `: ${query}` : ""}</h2>
-      <form action="/search" method="get">
-        <input type="search" name="q" value={query} placeholder={tr("search.label")} />
+      <form action={action} method="get">
+        <input type="search" name="q" value={query} placeholder={tr("search.label")} autofocus />
       </form>
       <div id="starlight__search">
         <ul class="search-results">

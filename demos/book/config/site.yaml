@@ -1,0 +1,7 @@
+title: Book for Dune
+description: Live demo of Book — a faithful hugo-book port for Dune
+url: https://themes.getdune.org/book
+theme:
+  name: book
+taxonomies:
+  - tag

@@ -1,0 +1,7 @@
+title: Starlight for Dune
+description: Live demo of Starlight — a faithful Astro Starlight port for Dune
+url: https://themes.getdune.org/starlight
+theme:
+  name: starlight
+taxonomies:
+  - tag

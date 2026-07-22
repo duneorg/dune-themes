@@ -5,6 +5,7 @@
 import { h } from "preact";
 import Icon from "./icon.tsx";
 import { navLabel, type NavPage } from "../utils/starlight.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function Footer(
   { page, prev, next, dir, t, themeConfig }: {
@@ -18,7 +19,7 @@ export default function Footer(
 ) {
   const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
   const isRtl = dir === "rtl";
-  const editBase = (themeConfig?.edit_link_base as string) || "";
+  const editBase = safeHref(themeConfig?.edit_link_base) ?? "";
   const editUrl = editBase && page?.path
     ? editBase.replace(/\/$/, "") + "/" + String(page.path).replace(/^\//, "")
     : null;
