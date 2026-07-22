@@ -1,5 +1,10 @@
 {
-  "theme.toggle": "Toggle dark mode",
+  "nav.main": "Site",
+  "intro.continue": "Continue",
+  "credit.design": "Design",
+  "post.full_story": "Full Story",
+  "pagination.previous": "Previous",
+  "pagination.next": "Next",
   "search.title": "Search",
   "search.placeholder": "Search…",
   "search.submit": "Search",

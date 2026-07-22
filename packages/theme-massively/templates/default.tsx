@@ -1,16 +1,17 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 
 export default function DefaultTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
   const fm = page.frontmatter as Record<string, unknown>;
-  const subtitle = (fm.metadata as Record<string, unknown> | undefined)?.description ??
-    fm.description;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const subtitle = meta.description ?? fm.description;
 
   return (
     <LayoutComponent {...props} hideIntro>

@@ -1,11 +1,18 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
   /** When true, omit the home intro (e.g. blog index under /blog). */
   hideIntro?: boolean;
+  t?: (key: string) => string;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -19,26 +26,36 @@ export default function Layout({
   children,
   themeConfig,
   hideIntro,
+  t,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "massively";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Massively";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || currentPath === "/";
   const showIntro = isHome && !hideIntro && themeConfig?.show_intro !== false;
   const introTitle = (themeConfig?.intro_title as string) || site?.title || "Massively";
   const introSubtitle = (themeConfig?.intro_subtitle as string) || site?.description ||
     "A responsive blog theme for Dune CMS";
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const wrapperClass = showIntro ? "fade-in" : "";
+  const creditHref = safeHref("https://html5up.net/massively") ?? "https://html5up.net/massively";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -54,7 +71,7 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-massively archetype-blog">
         <div id="wrapper" class={wrapperClass || undefined}>
           {showIntro && (
             <div id="intro">
@@ -62,22 +79,24 @@ export default function Layout({
               <p>{introSubtitle}</p>
               <ul class="actions">
                 <li>
-                  <a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a>
+                  <a href="#header" class="button icon solid solo fa-arrow-down scrolly">
+                    {tr("intro.continue", "Continue")}
+                  </a>
                 </li>
               </ul>
             </div>
           )}
 
           <header id="header">
-            <a href="/" class="logo">{site?.title ?? "Massively"}</a>
+            <a href={homeHref} class="logo">{site?.title ?? "Massively"}</a>
           </header>
 
-          <nav id="nav">
+          <nav id="nav" aria-label={tr("nav.main", "Site")}>
             <ul class="links">
               {navItems.map((item) => (
                 <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
-                  <a href={item.route}>
-                    {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                  <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                    {item.navTitle ?? item.title ?? item.route}
                   </a>
                 </li>
               ))}
@@ -86,19 +105,22 @@ export default function Layout({
 
           <div id="main">{children}</div>
 
-          {showCredit && (
-            <div id="copyright">
-              <ul>
-                <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+          <div id="copyright">
+            <ul>
+              <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+              {showCredit && (
                 <li>
-                  Design: <a href="https://html5up.net/massively">HTML5 UP</a>
+                  {tr("credit.design", "Design")}:{" "}
+                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
                 </li>
-              </ul>
-            </div>
-          )}
+              )}
+            </ul>
+          </div>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function(){
             window.addEventListener('load',function(){
               setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
@@ -114,7 +136,9 @@ export default function Layout({
               });
             });
           })();
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
