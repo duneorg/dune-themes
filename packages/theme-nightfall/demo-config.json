@@ -1,0 +1,9 @@
+{
+  "nightfall": {
+    "color_scheme": "purple",
+    "scheme_switcher": true,
+    "default_dark": true,
+    "github_url": "https://github.com/duneorg/dune-themes/tree/main/packages/theme-nightfall",
+    "tagline": "Dark-first docs for Dune"
+  }
+}

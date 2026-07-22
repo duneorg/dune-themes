@@ -1,0 +1,7 @@
+title: Nightfall Demo
+description: Live demo of Nightfall — a dark-first docs theme for Dune, inspired by Astro Starlight
+url: https://themes.getdune.org/nightfall
+theme:
+  name: nightfall
+taxonomies:
+  - tag

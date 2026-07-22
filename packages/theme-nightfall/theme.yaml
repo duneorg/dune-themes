@@ -1,21 +1,34 @@
 name: nightfall
-description: "Nightfall — a dark-first documentation theme with sidebar and on-page TOC, inspired by Astro Starlight"
-author: "Dune Theme Library (design inspired by Starlight by the Astro team)"
-version: "1.0.0"
+version: 1.0.0
+description: "Dark-first documentation theme inspired by Astro Starlight — Dune-native, not a port."
+author: Dune Themes
+license: MIT
+source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-nightfall
+attribution: "Design inspired by Starlight (MIT) — Dune-native theme, not a port"
 config_schema:
-  accent_color:
-    type: color
-    label: "Accent colour"
-    default: "#3b82f6"
+  color_scheme:
+    type: select
+    label: Color scheme
+    options: [blue, slate, green, purple, amber, rose, terracotta, teal]
+    default: purple
+    help: "Accent colour for links and active nav — each preset has a matched light/dark pair. Default purple is Starlight-adjacent violet."
+  scheme_switcher:
+    type: toggle
+    label: Let visitors switch the color scheme
+    default: false
   default_dark:
     type: toggle
-    label: "Default to dark mode"
+    label: Default to dark mode
     default: true
   github_url:
     type: text
-    label: "GitHub URL (header icon)"
+    label: GitHub URL (header icon)
     default: ""
   tagline:
     type: text
-    label: "Hero tagline (splash template)"
+    label: Hero tagline (splash template)
+    default: ""
+  footer_text:
+    type: text
+    label: Footer text (unused in header chrome; reserved)
     default: ""

@@ -68,6 +68,7 @@ export const DEMO_SLUGS = [
   "lucid",
   "manual",
   "fennec",
+  "nightfall",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -87,6 +88,7 @@ const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   fennec: "portfolio",
   lucid: "docs",
   manual: "docs",
+  nightfall: "docs",
 };
 
 function contentFixtureFor(slug: string): string {
@@ -101,7 +103,7 @@ function contentFixtureFor(slug: string): string {
  * (blog, portfolio, landing) where the homepage's job is to demonstrate
  * the theme's actual design, and README prose would bury that.
  */
-const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight", "lucid", "manual"]);
+const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight", "lucid", "manual", "nightfall"]);
 
 /** True when the theme README replaces the demo homepage (see DEMO_README_AS_HOME). */
 export function isReadmeAsHome(slug: string): boolean {

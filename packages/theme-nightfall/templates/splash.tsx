@@ -1,15 +1,10 @@
 /** @jsxImportSource preact */
-import { h } from "preact";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 /**
- * Splash / landing template — Starlight's hero layout without the sidebar.
- * Frontmatter options:
- *   hero:
- *     tagline: "..."
- *     actions:
- *       - { text: "Get Started", link: "/docs", variant: "primary" }
- *       - { text: "GitHub", link: "https://...", variant: "minimal" }
+ * Splash / landing — hero without sidebar.
+ * Frontmatter: hero.tagline, hero.actions[{ text, link, variant }]
  */
 export default function SplashTemplate(props: any) {
   const { page, children, Layout, themeConfig, site } = props;
@@ -20,21 +15,29 @@ export default function SplashTemplate(props: any) {
 
   return (
     <LayoutComponent {...props} hideSidebar>
-      <div class="sl-splash">
-        <section class="sl-hero">
+      <div class="nf-splash">
+        <section class="nf-hero">
           <h1>{hero.title ?? page.frontmatter.title}</h1>
-          {tagline && <p class="sl-tagline">{tagline}</p>}
+          {tagline && <p class="nf-tagline">{tagline}</p>}
           {actions.length > 0 && (
-            <div class="sl-actions">
-              {actions.map((a: any) => (
-                <a key={a.link} href={a.link} class={`sl-btn ${a.variant === "primary" ? "primary" : "minimal"}`}>
-                  {a.text}
-                </a>
-              ))}
+            <div class="nf-actions">
+              {actions.map((a: any) => {
+                const href = safeHref(a.link);
+                if (!href) return null;
+                return (
+                  <a
+                    key={href}
+                    href={href}
+                    class={`nf-btn ${a.variant === "primary" ? "primary" : "minimal"}`}
+                  >
+                    {a.text}
+                  </a>
+                );
+              })}
             </div>
           )}
         </section>
-        <section class="sl-splash-content">
+        <section class="nf-splash-content">
           {children}
         </section>
       </div>

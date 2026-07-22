@@ -1,9 +1,46 @@
 # Nightfall
 
-Original Dune theme, design inspired by [Starlight](https://starlight.astro.build) — Astro's documentation theme.
+Dark-first documentation theme for Dune — design inspired by
+[Starlight](https://starlight.astro.build), Dune-native (not a port).
 
-**Templates**: `default` (docs page with client-generated "On this page" TOC + scroll-spy) · `splash` (sidebar-less hero landing; `hero.tagline` / `hero.actions` frontmatter)
+![Nightfall screenshot](https://themes.getdune.org/nightfall/themes/nightfall/static/screenshot.png)
 
-**Config schema**: `accent_color`, `default_dark`, `github_url`, `tagline`
+**Demo**: https://themes.getdune.org/nightfall
 
-Fixed header with search (`/api/search`), sidebar nav, light/dark toggle, gradient hero on splash pages.
+**Tags**: dune-theme, docs, dark, inspired
+
+## Install
+
+```bash
+dune theme:install jsr:@dune/theme-nightfall@1.0.0 --activate
+```
+
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: nightfall
+    src: jsr:@dune/theme-nightfall@1.0.0
+
+theme:
+  name: nightfall
+  src: jsr:@dune/theme-nightfall@1.0.0
+```
+
+Fixed header with live search, nested sidebar, on-page TOC, optional splash
+landing, and dark-first light/dark with OS fallback. Config covers
+`color_scheme` (default purple), optional `scheme_switcher`, `github_url`,
+and `tagline` — see the [live demo](https://themes.getdune.org/nightfall).
+
+## Templates
+
+| Template | Notes |
+|---|---|
+| `default` | Docs page + client TOC / scroll-spy |
+| `section` | Section index with child links |
+| `splash` | Sidebar-less hero (`hero.tagline` / `hero.actions`) |
+| `search` | Form search over Dune `/api/search` |
+| `error` | Themed 404 / 500 |
+
+Not a port of Starlight. For the faithful Starlight port, see **Starlight**;
+for Hextra-inspired modern docs, see **Lucid**.

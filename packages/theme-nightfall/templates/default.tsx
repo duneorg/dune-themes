@@ -1,33 +1,35 @@
 /** @jsxImportSource preact */
-import { h } from "preact";
 import StaticLayout from "../components/layout.tsx";
 
 /**
- * Standard docs page: content column plus a right-hand "On this page" TOC
- * built client-side from the rendered h2/h3 headings.
+ * Docs page with right-hand "On this page" TOC built client-side from h2/h3.
  */
 export default function DefaultTemplate(props: any) {
-  const { page, children, Layout } = props;
+  const { page, children, Layout, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+
   return (
     <LayoutComponent {...props}>
-      <div class="sl-doc-grid">
-        <article class="sl-content" id="sl-article">
+      <div class="nf-doc-grid">
+        <article class="nf-content" id="nf-article">
           <h1>{page.frontmatter.title}</h1>
           {children}
         </article>
-        <aside class="sl-toc" aria-label="On this page">
-          <h2>On this page</h2>
-          <ul id="sl-toc-list"></ul>
+        <aside class="nf-toc" aria-label={tr("toc.label", "On this page")}>
+          <h2>{tr("toc.label", "On this page")}</h2>
+          <ul id="nf-toc-list"></ul>
         </aside>
       </div>
-      <script dangerouslySetInnerHTML={{ __html: `
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
         (function(){
-          var article=document.getElementById('sl-article');
-          var list=document.getElementById('sl-toc-list');
+          var article=document.getElementById('nf-article');
+          var list=document.getElementById('nf-toc-list');
           if(!article||!list)return;
           var heads=article.querySelectorAll('h2, h3');
-          if(!heads.length){var toc=list.closest('.sl-toc');if(toc)toc.style.display='none';return}
+          if(!heads.length){var toc=list.closest('.nf-toc');if(toc)toc.style.display='none';return}
           heads.forEach(function(h2,i){
             if(!h2.id)h2.id='h-'+i+'-'+h2.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
             var li=document.createElement('li');
@@ -46,7 +48,9 @@ export default function DefaultTemplate(props: any) {
           },{rootMargin:'-80px 0px -70% 0px'});
           heads.forEach(function(h2){obs.observe(h2)});
         })();
-      ` }} />
+      `,
+        }}
+      />
     </LayoutComponent>
   );
 }
