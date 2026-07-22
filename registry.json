@@ -89,7 +89,7 @@
       "screenshotUrl": "https://themes.getdune.org/nightfall/themes/nightfall/static/screenshot.png",
       "jsr": "jsr:@dune/theme-nightfall@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/nightfall-v1.0.0/nightfall-1.0.0.zip",
-      "sha256": "",
+      "sha256": "5e8cc18c9cdcf5f87a7ef4d727364e4a311603e79d4c614349f339ccfdfddf6c",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -112,7 +112,7 @@
       "screenshotUrl": "https://themes.getdune.org/oasis/themes/oasis/static/screenshot.png",
       "jsr": "jsr:@dune/theme-oasis@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/oasis-v1.0.0/oasis-1.0.0.zip",
-      "sha256": "",
+      "sha256": "9581b737cc92f967c74d0e5f3b26c3c4dcd69ea11dcc1b0097ee297401f5489f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -136,7 +136,7 @@
       "screenshotUrl": "https://themes.getdune.org/ink/themes/ink/static/screenshot.png",
       "jsr": "jsr:@dune/theme-ink@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ink-v1.0.0/ink-1.0.0.zip",
-      "sha256": "",
+      "sha256": "3828974dd20267e4f2c34eb7d51788edd4916f7c389838fa20b94b44d469f213",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -159,7 +159,7 @@
       "screenshotUrl": "https://themes.getdune.org/gale/themes/gale/static/screenshot.png",
       "jsr": "jsr:@dune/theme-gale@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/gale-v1.0.0/gale-1.0.0.zip",
-      "sha256": "",
+      "sha256": "d516f18a323c18e1eae6a87b54d1c5f23008c1a24155883efe7b14c14d7e50bf",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -182,7 +182,7 @@
       "screenshotUrl": "https://themes.getdune.org/salon/themes/salon/static/screenshot.png",
       "jsr": "jsr:@dune/theme-salon@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/salon-v1.0.0/salon-1.0.0.zip",
-      "sha256": "",
+      "sha256": "6e9c816526d4fcb48f1a3791bb87509cf462ffad4035acdba61d839c3be8953e",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -205,7 +205,7 @@
       "screenshotUrl": "https://themes.getdune.org/syntax/themes/syntax/static/screenshot.png",
       "jsr": "jsr:@dune/theme-syntax@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/syntax-v1.0.0/syntax-1.0.0.zip",
-      "sha256": "",
+      "sha256": "e485cf206f7bd9a71855d89dd4de149174f121857307d1bcf9bdb7e5f4d86dd9",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -228,7 +228,7 @@
       "screenshotUrl": "https://themes.getdune.org/herald/themes/herald/static/screenshot.png",
       "jsr": "jsr:@dune/theme-herald@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/herald-v1.0.0/herald-1.0.0.zip",
-      "sha256": "",
+      "sha256": "ce335f0070647f3c11b27e98b8f4ef8fe1013dd30b6665e011f0374a22a55a9b",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -251,7 +251,7 @@
       "screenshotUrl": "https://themes.getdune.org/lucid/themes/lucid/static/screenshot.png",
       "jsr": "jsr:@dune/theme-lucid@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lucid-v1.0.0/lucid-1.0.0.zip",
-      "sha256": "",
+      "sha256": "da9787cb77fd2fa7403060be4afcb9414e682cfdc995ded3dfcc62661cf2f909",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -274,7 +274,7 @@
       "screenshotUrl": "https://themes.getdune.org/manual/themes/manual/static/screenshot.png",
       "jsr": "jsr:@dune/theme-manual@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/manual-v1.0.0/manual-1.0.0.zip",
-      "sha256": "",
+      "sha256": "7aaeb7a3d808ec101abaddc657c2af4b9c2a251e34a867b4bd235bd75956f7a2",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -320,7 +320,7 @@
       "screenshotUrl": "https://themes.getdune.org/book/themes/book/static/screenshot.png",
       "jsr": "jsr:@dune/theme-book@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/book-v1.0.0/book-1.0.0.zip",
-      "sha256": "",
+      "sha256": "2ea379f88227507f8af33ca2389eaa8679d510ef8c8412db0034cbdf82687dab",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -343,7 +343,7 @@
       "screenshotUrl": "https://themes.getdune.org/starlight/themes/starlight/static/screenshot.png",
       "jsr": "jsr:@dune/theme-starlight@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/starlight-v1.0.0/starlight-1.0.0.zip",
-      "sha256": "",
+      "sha256": "34b73a742a095118229ac3e63c08a313235406045f4a611550d352c29d2954bd",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -366,7 +366,7 @@
       "screenshotUrl": "https://themes.getdune.org/blox/themes/blox/static/screenshot.png",
       "jsr": "jsr:@dune/theme-blox@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/blox-v1.0.0/blox-1.0.0.zip",
-      "sha256": "",
+      "sha256": "7fd69e67d43a58721cd7ecabd80ec53f246e926c32c8d1f8eb82e7e5b38a800d",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
