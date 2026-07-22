@@ -62,6 +62,9 @@ export const DEMO_SLUGS = [
   "blox",
   "ink",
   "gale",
+  "salon",
+  "syntax",
+  "herald",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -107,6 +110,9 @@ const DEMO_FIXTURE_EXCLUDE: Partial<Record<DemoSlug, string[]>> = {
   papermod: ["03.about"],
   ink: ["03.about"],
   gale: ["03.about"],
+  salon: ["03.about"],
+  syntax: ["03.about"],
+  herald: ["03.about"],
 };
 
 /** Directory name of the fixture's homepage, by convention across all shared fixtures. */

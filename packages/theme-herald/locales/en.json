@@ -1,9 +1,16 @@
 {
+  "scheme_switcher": "Color scheme",
   "theme.toggle": "Toggle dark mode",
+  "nav.menu": "Menu",
+  "hero.subtitle": "Thoughts, stories and ideas.",
   "search.title": "Search",
   "search.placeholder": "Search…",
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "blog.latest": "Latest",
+  "blog.newer": "Newer",
+  "blog.older": "Older",
+  "blog.pagination": "Pagination"
 }

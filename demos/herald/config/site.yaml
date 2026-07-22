@@ -1,0 +1,7 @@
+title: Herald Demo
+description: Live demo of Herald — a publication-style blog theme for Dune, inspired by Ghost Casper
+url: https://themes.getdune.org/herald
+theme:
+  name: herald
+taxonomies:
+  - tag

@@ -1,0 +1,7 @@
+title: Syntax Demo
+description: Live demo of Syntax — a technical blog theme for Dune, inspired by Jekyll Chirpy
+url: https://themes.getdune.org/syntax
+theme:
+  name: syntax
+taxonomies:
+  - tag

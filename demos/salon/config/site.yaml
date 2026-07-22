@@ -1,0 +1,7 @@
+title: Salon Demo
+description: Live demo of Salon — a magazine-style blog theme for Dune, inspired by Ghost Liebling
+url: https://themes.getdune.org/salon
+theme:
+  name: salon
+taxonomies:
+  - tag

@@ -2,34 +2,48 @@
 import { formatDate } from "@dune/core/theme-helpers";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
-export default function PostTemplate(props: TemplateProps & { children?: unknown; Layout?: typeof StaticLayout }) {
+export default function PostTemplate(props: TemplateProps & {
+  children?: any;
+  Layout?: typeof StaticLayout;
+  site?: { basePath?: string };
+}) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children } = props;
+  const { page, children, site } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? new Date(String(fm.date)).getTime() : undefined;
   const tags: string[] = (fm.taxonomy as Record<string, string[]>)?.tag ??
     (Array.isArray(fm.tags) ? fm.tags as string[] : []);
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+  const cover = safeHref(fm.cover);
   const primaryTag = tags[0];
+  const basePath = site?.basePath ?? "";
+  const tagHref = (tag: string) =>
+    `${basePath}/tags/${encodeURIComponent(tag)}/`.replace(/([^:]\/)\/+/g, "$1");
 
   return (
     <LayoutComponent {...props}>
       <header class="salon-post-header">
-        {primaryTag && <a class="tag" href={`/tags/${encodeURIComponent(primaryTag)}/`}>{primaryTag}</a>}
+        {primaryTag && (
+          <a class="tag" href={tagHref(primaryTag)}>{primaryTag}</a>
+        )}
         <h1>{String(fm.title ?? page.frontmatter.title)}</h1>
         <div class="salon-post-meta">
           {date && (
             <time datetime={new Date(date).toISOString()}>
-              {formatDate(date, page.language ?? "en", { day: "numeric", month: "long", year: "numeric" })}
+              {formatDate(date, page.language ?? "en", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </time>
           )}
           {fm.author && <span>&nbsp;·&nbsp;{String(fm.author)}</span>}
         </div>
         {tags.length > 1 && (
           <div class="salon-post-tags">
-            {tags.slice(1).map((t) => (
-              <a class="tag" key={t} href={`/tags/${encodeURIComponent(t)}/`} style="background:color-mix(in srgb, var(--accent) 15%, transparent);color:var(--accent)">{t}</a>
+            {tags.slice(1).map((tag) => (
+              <a class="tag tag-quiet" key={tag} href={tagHref(tag)}>{tag}</a>
             ))}
           </div>
         )}

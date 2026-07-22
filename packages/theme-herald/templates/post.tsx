@@ -2,9 +2,10 @@
 import { formatDate } from "@dune/core/theme-helpers";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function PostTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: any;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
 }) {
@@ -12,9 +13,11 @@ export default function PostTemplate(props: TemplateProps & {
   const { page, children, themeConfig } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? new Date(String(fm.date)).getTime() : undefined;
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-  const author = typeof fm.author === "string" ? fm.author : (themeConfig?.default_author as string) ?? "";
-  const avatar = typeof fm.avatar === "string" ? fm.avatar : (themeConfig?.default_avatar as string) ?? "";
+  const cover = safeHref(fm.cover);
+  const author = typeof fm.author === "string"
+    ? fm.author
+    : (themeConfig?.default_author as string) ?? "";
+  const avatar = safeHref(fm.avatar) ?? safeHref(themeConfig?.default_avatar) ?? "";
 
   return (
     <LayoutComponent {...props}>
@@ -26,14 +29,18 @@ export default function PostTemplate(props: TemplateProps & {
           {author && <span>{author}</span>}
           {date && (
             <>
-              {author && <span>·</span>}
+              {author && <span aria-hidden="true">·</span>}
               <time datetime={new Date(date).toISOString()}>
-                {formatDate(date, page.language ?? "en", { day: "numeric", month: "long", year: "numeric" })}
+                {formatDate(date, page.language ?? "en", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </time>
             </>
           )}
         </div>
-        <div class="herald-post-content prose">{children}</div>
+        <div class="herald-post-content prose" data-dune-body>{children}</div>
       </article>
     </LayoutComponent>
   );

@@ -1,0 +1,11 @@
+{
+  "herald": {
+    "color_scheme": "blue",
+    "scheme_switcher": true,
+    "default_dark": false,
+    "hero_title": "Herald",
+    "hero_subtitle": "Thoughts, stories and ideas — a publication-style blog for Dune.",
+    "hero_image": "/themes/herald/static/demo/hero.jpg",
+    "default_author": "Herald Demo"
+  }
+}

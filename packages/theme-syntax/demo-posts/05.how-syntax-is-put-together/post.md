@@ -1,0 +1,41 @@
+---
+title: How Syntax is put together
+date: 2026-07-10
+template: post
+published: true
+summary: Templates, the date-column index, and CSS variables worth knowing.
+taxonomy:
+  tag: [customization, syntax]
+---
+
+Everything so far has been about `config_schema`. This post is for the
+rest: what Syntax's templates actually do, and a couple of things you can
+override from your own stylesheet.
+
+## Templates
+
+- **`default`** — a plain page: title, then the markdown body.
+- **`post`** — title, date, reading time, tags, optional pin badge.
+- **`blog`** — date-column list driven by a `collection:` block. Used for
+  home (with a `limit`) and the full `/blog` archive.
+- **`archives`** — every post grouped by year and month.
+- **`search`** / **`error`** — themed search form and 404/500 pages.
+
+## Frontmatter extras
+
+Set `pinned: true` on a post to show a pin badge in the index and post
+header. Tags come from `taxonomy.tag` (or `tags`).
+
+## CSS variables
+
+Syntax's look is mostly a few custom properties on `:root`:
+
+- `--font` / `--font-mono` — system UI for body, mono for dates and logo
+- `--max-width` — reading column (default `760px`)
+- `--accent` / `--bg` / `--bg-alt` / `--code-bg` — from the active
+  `color_scheme` (light and dark variants)
+- `--text`, `--muted`, `--border` — light palette; dark mode swaps
+  via `data-theme` (and a `prefers-color-scheme` fallback)
+
+Override any of these from a site stylesheet loaded after the theme to
+re-skin without forking the package.

@@ -6,10 +6,17 @@ license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-syntax
 attribution: "Design inspired by jekyll-theme-chirpy (MIT) — Dune-native theme, not a port"
 config_schema:
-  accent_color:
-    type: color
-    label: Accent colour
-    default: "#0969da"
+  color_scheme:
+    type: select
+    label: Color scheme
+    options: [blue, slate, green, purple, amber, rose, terracotta, teal]
+    default: blue
+    help: "Accent colour for links and tags — each preset has a matched light/dark pair, with tinted page and code-block backgrounds."
+  scheme_switcher:
+    type: toggle
+    label: Let visitors switch the color scheme
+    default: false
+    help: "Adds a dropdown next to the dark-mode toggle so visitors can preview other color_scheme presets (persists in their browser). Off by default — useful for a theme showcase/demo."
   default_dark:
     type: toggle
     label: Default to dark mode
