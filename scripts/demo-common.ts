@@ -65,6 +65,7 @@ export const DEMO_SLUGS = [
   "salon",
   "syntax",
   "herald",
+  "lucid",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -81,6 +82,7 @@ const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   book: "docs",
   starlight: "docs",
   blox: "portfolio",
+  lucid: "docs",
 };
 
 function contentFixtureFor(slug: string): string {
@@ -95,7 +97,7 @@ function contentFixtureFor(slug: string): string {
  * (blog, portfolio, landing) where the homepage's job is to demonstrate
  * the theme's actual design, and README prose would bury that.
  */
-const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight"]);
+const DEMO_README_AS_HOME = new Set<DemoSlug>(["caravan", "book", "starlight", "lucid"]);
 
 /**
  * Top-level fixture directories a theme's demo skips folding in — for

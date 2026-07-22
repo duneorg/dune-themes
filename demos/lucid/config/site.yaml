@@ -1,0 +1,7 @@
+title: Lucid Demo
+description: Live demo of Lucid — a modern docs theme for Dune, inspired by Hugo Hextra
+url: https://themes.getdune.org/lucid
+theme:
+  name: lucid
+taxonomies:
+  - tag

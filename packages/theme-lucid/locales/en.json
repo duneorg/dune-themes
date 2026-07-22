@@ -1,5 +1,11 @@
 {
+  "scheme_switcher": "Color scheme",
   "theme.toggle": "Toggle dark mode",
+  "nav.menu": "Menu",
+  "nav.home": "Home",
+  "nav.breadcrumb": "Breadcrumb",
+  "sidebar.label": "Documentation",
+  "edit.page": "Edit this page",
   "search.title": "Search",
   "search.placeholder": "Search…",
   "search.submit": "Search",

@@ -1,0 +1,9 @@
+{
+  "lucid": {
+    "color_scheme": "purple",
+    "scheme_switcher": true,
+    "default_dark": false,
+    "sidebar_label": "Documentation",
+    "edit_url": "https://github.com/duneorg/dune-themes/edit/main/packages/theme-lucid/docs"
+  }
+}
