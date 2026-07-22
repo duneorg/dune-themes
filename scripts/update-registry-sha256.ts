@@ -6,7 +6,7 @@
  */
 
 import { join } from "@std/path";
-import { buildRegistryJson } from "./catalog.ts";
+import { buildRegistryJson, CATALOG } from "./catalog.ts";
 import { ROOT } from "./demo-common.ts";
 
 async function sha256Hex(bytes: Uint8Array<ArrayBuffer>): Promise<string> {
@@ -47,6 +47,14 @@ const registry = JSON.parse(await Deno.readTextFile(registryPath)) as ReturnType
 
 const entry = registry.themes.find((t: { slug: string }) => t.slug === slug);
 if (!entry) {
+  // Base-tier themes (e.g. dune-minimal) are JSR-only inheritance bases —
+  // deliberately excluded from the marketplace registry (buildRegistryJson
+  // filters tier === "base"), so having no entry here isn't an error.
+  const catalogEntry = CATALOG.find((e) => e.slug === slug);
+  if (catalogEntry?.tier === "base") {
+    console.log(`  ⏭  "${slug}" is a base theme (not marketplace-listed) — skipping registry.json`);
+    Deno.exit(0);
+  }
   console.error(`Slug "${slug}" not in registry.json`);
   Deno.exit(1);
 }
