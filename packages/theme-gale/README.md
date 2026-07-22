@@ -1,15 +1,37 @@
-# Gale
+# Gale for Dune
 
-Original Dune theme, design inspired by [AstroWind](https://github.com/onwidget/astrowind) — SaaS landing page plus blog.
+Landing and blog theme inspired by [AstroWind](https://github.com/onwidget/astrowind)
+— Dune-native, not a port.
 
-**Templates**: `default` · `post` · `blog` · `search` · `error` (home hero and feature grid are in the layout)
+![Gale screenshot](https://themes.getdune.org/gale/themes/gale/static/screenshot.png)
 
-**Config schema**: `accent_color`, `default_dark`, hero CTAs, three feature columns, header CTA, `home_subtitle`, `footer_text`
+**Demo**: https://themes.getdune.org/gale
 
-Sticky header with CTA pill, gradient hero on `/`, card blog grid, dark mode toggle.
+**Tags**: dune-theme, landing, blog, inspired
+
+## Install
 
 ```bash
 dune theme:install jsr:@dune/theme-gale@1.0.0 --activate
 ```
 
-Not a port of AstroWind.
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: gale
+    src: jsr:@dune/theme-gale@1.0.0
+
+theme:
+  name: gale
+  src: jsr:@dune/theme-gale@1.0.0
+```
+
+Sticky header with CTA, hero + feature grid on the homepage, card blog
+grid, archives, search, and light/dark with an OS preference fallback.
+Config covers `color_scheme` (blue/slate/green/purple/amber/rose/terracotta/teal), optional
+`scheme_switcher`, hero copy/CTAs, three feature columns, and footer text —
+see the [live demo](https://themes.getdune.org/gale) posts for a walkthrough.
+
+**Templates**: `default` · `post` · `blog` · `archives` · `search` · `error`
+(home hero and feature grid live in the layout)

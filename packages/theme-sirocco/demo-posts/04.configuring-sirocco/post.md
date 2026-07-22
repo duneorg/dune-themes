@@ -14,7 +14,9 @@ the result of these values right now, not a description of them.
 
 ## `color_scheme`
 
-Six curated presets — blue, slate, green, purple, amber, rose — rather
+Eight curated presets — blue, slate, green, purple, amber, rose,
+terracotta, teal (UI labels: Cobalt, Emerald, Indigo, Crimson, Terracotta, Teal,
+etc.) — rather
 than a freeform color picker. This demo uses the schema default, blue.
 Each preset drives the accent color (link color, the active nav item's
 text and underline, blockquote borders, pagination and search-result

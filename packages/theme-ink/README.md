@@ -28,8 +28,8 @@ theme:
 ```
 
 Centered serif masthead, dark mode, reading time, author box, and tag
-links (`/tags/{name}/`). Config options live in `theme.yaml` (`accent_color`,
-`default_dark`, `show_reading_time`, `home_subtitle`, author fields,
+links (`/tags/{name}/`). Config options live in `theme.yaml` (`color_scheme`,
+`scheme_switcher`, `default_dark`, `show_reading_time`, `home_subtitle`, author fields,
 social URLs, `footer_text`). Full walkthrough is in the
 [live demo](https://themes.getdune.org/ink)'s Installing / Configuring
 posts.

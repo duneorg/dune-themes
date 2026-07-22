@@ -27,9 +27,10 @@ Ink's look is mostly a few custom properties on `:root`:
 
 - `--font` / `--font-serif` — Libre Baskerville stack for body and titles
 - `--max-width` — reading column (default `680px`)
-- `--accent` — set from `accent_color` at render time
-- `--bg`, `--text`, `--muted`, `--border` — light palette; dark mode swaps
-  via `html.dark` (and a `prefers-color-scheme` fallback)
+- `--accent` / `--bg` / `--bg-alt` / `--code-bg` — from the active
+  `color_scheme` (light and dark variants)
+- `--text`, `--muted`, `--border` — light palette; dark mode swaps
+  via `data-theme` (and a `prefers-color-scheme` fallback)
 
 Override any of these from a site stylesheet loaded after the theme to
 re-skin without forking the package.

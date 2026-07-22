@@ -44,7 +44,7 @@ export interface ColorScheme {
 
 export const COLOR_SCHEMES: Record<string, ColorScheme> = {
   blue: {
-    label: "Blue",
+    label: "Cobalt",
     light: { accent: "#1d4ed8", menuBackground: "#d3dae9" },
     dark: { accent: "#60a5fa", menuBackground: "#1b2336" },
   },
@@ -59,12 +59,12 @@ export const COLOR_SCHEMES: Record<string, ColorScheme> = {
     },
   },
   green: {
-    label: "Green",
+    label: "Emerald",
     light: { accent: "#15803d", menuBackground: "#d6e7dd" },
     dark: { accent: "#4ade80", menuBackground: "#1c3024" },
   },
   purple: {
-    label: "Purple",
+    label: "Indigo",
     light: { accent: "#6d28d9", menuBackground: "#d9d7e5" },
     dark: { accent: "#a78bfa", menuBackground: "#262336" },
   },
@@ -74,9 +74,19 @@ export const COLOR_SCHEMES: Record<string, ColorScheme> = {
     dark: { accent: "#fbbf24", menuBackground: "#332e1e" },
   },
   rose: {
-    label: "Rose",
+    label: "Crimson",
     light: { accent: "#be123c", menuBackground: "#e7d6de" },
     dark: { accent: "#fb7185", menuBackground: "#331e28" },
+  },
+  terracotta: {
+    label: "Terracotta",
+    light: { accent: "#c0392b", menuBackground: "#e8d5c8" },
+    dark: { accent: "#e07a5f", menuBackground: "#33241e" },
+  },
+  teal: {
+    label: "Teal",
+    light: { accent: "#0d9488", menuBackground: "#d0e8e4" },
+    dark: { accent: "#2dd4bf", menuBackground: "#1a302c" },
   },
 };
 

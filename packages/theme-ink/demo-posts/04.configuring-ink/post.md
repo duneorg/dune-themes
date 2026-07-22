@@ -12,10 +12,19 @@ Ink keeps its `theme.yaml` config_schema to a handful of blog-shaped
 options. Here's what each one does, and what this demo site actually has
 set — you're reading the result of these values right now.
 
-## `accent_color`
+## `color_scheme`
 
-Freeform colour (default `#c0392b`). Drives links, active nav, and a few
-accents in the layout. This demo uses the schema default.
+One of eight curated presets (blue, slate, green, purple, amber, rose,
+terracotta, teal — labels Cobalt / Emerald / Indigo / Crimson / Terracotta / Teal,
+etc.). Default **terracotta**. Each sets a matched light/dark accent plus
+tinted page and code-block backgrounds. This demo uses terracotta with the
+visitor scheme switcher on so you can try the others.
+
+## `scheme_switcher`
+
+On in this demo. Adds a swatch dropdown next to the dark-mode toggle;
+the choice persists in `localStorage` for this browser only and does not
+change the site's configured scheme.
 
 ## `default_dark`
 

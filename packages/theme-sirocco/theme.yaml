@@ -7,7 +7,7 @@ config_schema:
   color_scheme:
     type: select
     label: "Color scheme"
-    options: [blue, slate, green, purple, amber, rose]
+    options: [blue, slate, green, purple, amber, rose, terracotta, teal]
     default: blue
     help: "Accent color for links, the active nav underline, and blockquote borders — each has a matched light/dark-mode pair."
   scheme_switcher:

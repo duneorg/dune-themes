@@ -1,6 +1,7 @@
 {
   "ink": {
-    "accent_color": "#c0392b",
+    "color_scheme": "terracotta",
+    "scheme_switcher": true,
     "default_dark": false,
     "show_reading_time": true,
     "home_subtitle": "Long-form writing for Dune — serif typography, a quiet masthead, and an author box at the end of every post.",

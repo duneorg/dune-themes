@@ -6,10 +6,17 @@ license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-gale
 attribution: "Design inspired by AstroWind (MIT) — Dune-native theme, not a port"
 config_schema:
-  accent_color:
-    type: color
-    label: Accent colour
-    default: "#6366f1"
+  color_scheme:
+    type: select
+    label: Color scheme
+    options: [blue, slate, green, purple, amber, rose, terracotta, teal]
+    default: teal
+    help: "Accent colour for CTAs, links, and hero glow — each preset has a matched light/dark pair, with tinted page and code-block backgrounds."
+  scheme_switcher:
+    type: toggle
+    label: Let visitors switch the color scheme
+    default: false
+    help: "Adds a dropdown next to the dark-mode toggle so visitors can preview other color_scheme presets (persists in their browser). Off by default — useful for a theme showcase/demo."
   default_dark:
     type: toggle
     label: Default to dark mode
@@ -33,7 +40,7 @@ config_schema:
   hero_primary_url:
     type: text
     label: Primary CTA URL
-    default: "/blog"
+    default: "/blog/"
   hero_secondary_label:
     type: text
     label: Secondary CTA label
@@ -41,7 +48,7 @@ config_schema:
   hero_secondary_url:
     type: text
     label: Secondary CTA URL
-    default: "/about"
+    default: "/about-theme/"
   header_cta_label:
     type: text
     label: Header CTA label
@@ -49,7 +56,7 @@ config_schema:
   header_cta_url:
     type: text
     label: Header CTA URL
-    default: "/blog"
+    default: "/blog/"
   feature_1_title:
     type: text
     label: Feature 1 title

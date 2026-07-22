@@ -28,7 +28,7 @@ theme:
 
 **Templates**: `default` (docs page) · `section` (page body + linked child-page list via a `collection` block) · `search` (dedicated `/search` results page — the sidebar's live search covers the common case, this covers direct/bookmarked/no-JS navigation) · `error` (404/500, kept inside the docs layout so a lost reader can navigate straight back into the sidebar)
 
-**Config schema**: `color_scheme` (blue/slate/green/purple/amber/rose — curated
+**Config schema**: `color_scheme` (blue/slate/green/purple/amber/rose/terracotta/teal — curated
 light/dark-mode accent + sidebar-tint pairs, see `utils/color-schemes.ts`),
 `scheme_switcher` (adds a sidebar dropdown so visitors can preview the other
 presets client-side via `localStorage` — doesn't touch the site's actual

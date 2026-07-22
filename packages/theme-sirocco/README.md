@@ -28,7 +28,7 @@ theme:
 
 **Templates**: `default` (plain page) · `post` (date, reading time, author, tags) · `blog` (card list, also works as a shorter home teaser via a collection `limit`) · `archives` (every post grouped by year and month). `search` and `error` aren't in Sirocco's own `templates/` — they're inherited from the `dune-minimal` base theme declared as `parent` in `theme.yaml`.
 
-**Config schema**: `color_scheme` (blue/slate/green/purple/amber/rose —
+**Config schema**: `color_scheme` (blue/slate/green/purple/amber/rose/terracotta/teal —
 curated light/dark-mode presets, each driving the accent color — links,
 the active nav item (text and underline), blockquote borders, pagination/
 search-result hovers — plus a tinted card background (post entries, search

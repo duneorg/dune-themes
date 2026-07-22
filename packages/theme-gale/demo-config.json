@@ -1,0 +1,24 @@
+{
+  "gale": {
+    "color_scheme": "teal",
+    "scheme_switcher": true,
+    "default_dark": false,
+    "hero_badge": "Gale for Dune",
+    "hero_title": "Landing pages that ship with a blog",
+    "hero_subtitle": "A Dune-native theme inspired by AstroWind — sticky header, hero CTAs, feature grid, and a card blog. Not a port.",
+    "hero_primary_label": "Read the blog",
+    "hero_primary_url": "/blog/",
+    "hero_secondary_label": "Install Gale",
+    "hero_secondary_url": "/blog/installing-gale/",
+    "header_cta_label": "Get started",
+    "header_cta_url": "/blog/installing-gale/",
+    "feature_1_title": "Fast by default",
+    "feature_1_text": "Static-first pages with a light CSS footprint — no framework bundle required for the public site.",
+    "feature_2_title": "Configurable",
+    "feature_2_text": "Hero copy, CTAs, and feature columns live in theme config so demos and real sites stay in sync.",
+    "feature_3_title": "Blog included",
+    "feature_3_text": "The same theme that sells the product also lists posts — card grid on home and /blog/.",
+    "home_subtitle": "Recent posts from the demo blog.",
+    "footer_text": ""
+  }
+}

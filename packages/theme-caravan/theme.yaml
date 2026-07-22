@@ -6,7 +6,7 @@ config_schema:
   color_scheme:
     type: select
     label: "Color scheme"
-    options: [blue, slate, green, purple, amber, rose]
+    options: [blue, slate, green, purple, amber, rose, terracotta, teal]
     default: blue
     help: "Accent color for links and the active sidebar item; each has a matched light/dark-mode pair (see utils/color-schemes.ts)"
   scheme_switcher:

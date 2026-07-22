@@ -1,0 +1,7 @@
+title: Gale Demo
+description: Live demo of Gale — a landing and blog theme for Dune, inspired by AstroWind
+url: https://themes.getdune.org/gale
+theme:
+  name: gale
+taxonomies:
+  - tag
