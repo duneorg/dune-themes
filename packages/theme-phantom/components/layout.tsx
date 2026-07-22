@@ -1,9 +1,16 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -16,22 +23,32 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "phantom";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Phantom";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const navItems = (nav ?? []).slice(0, 10);
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
-  const logoUrl = (themeConfig?.logo_url as string) ||
+  const logoUrl = safeHref(themeConfig?.logo_url) ||
     `/themes/${themeName}/static/html5up/images/logo.svg`;
+  const creditHref = safeHref("https://html5up.net/phantom") ?? "https://html5up.net/phantom";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -50,29 +67,29 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-phantom archetype-blog">
         <div id="wrapper">
           <header id="header">
             <div class="inner">
-              <a href="/" class="logo">
+              <a href={homeHref} class="logo">
                 <span class="symbol"><img src={logoUrl} alt="" /></span>
                 <span class="title">{site?.title ?? "Phantom"}</span>
               </a>
               <nav>
                 <ul>
-                  <li><a href="#menu">Menu</a></li>
+                  <li><a href="#menu">{tr("nav.menu", "Menu")}</a></li>
                 </ul>
               </nav>
             </div>
           </header>
 
-          <nav id="menu">
-            <h2>Menu</h2>
+          <nav id="menu" aria-label={tr("nav.main", "Site")}>
+            <h2>{tr("nav.menu", "Menu")}</h2>
             <ul>
               {navItems.map((item) => (
                 <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
-                  <a href={item.route}>
-                    {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                  <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                    {item.navTitle ?? item.title ?? item.route}
                   </a>
                 </li>
               ))}
@@ -83,19 +100,24 @@ export default function Layout({
             <div class="inner">{children}</div>
           </div>
 
-          {showCredit && (
-            <footer id="footer">
-              <div class="inner">
-                <ul class="copyright">
-                  <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
-                  <li>Design: <a href="https://html5up.net/phantom">HTML5 UP</a></li>
-                </ul>
-              </div>
-            </footer>
-          )}
+          <footer id="footer">
+            <div class="inner">
+              <ul class="copyright">
+                <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+                {showCredit && (
+                  <li>
+                    {tr("credit.design", "Design")}:{" "}
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          </footer>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function(){
             window.addEventListener('load',function(){
               setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
@@ -119,7 +141,9 @@ export default function Layout({
               if(e.key==='Escape') body.classList.remove('is-menu-visible');
             });
           })();
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
