@@ -1,23 +1,38 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { themeImage } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
+
+function withBase(basePath: string, path: string): string {
+  const joined = `${basePath}${path.startsWith("/") ? path : `/${path}`}`;
+  return joined.replace(/([^:]\/)\/+/g, "$1") || "/";
+}
+
 
 export default function DefaultTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   config?: { theme?: { name?: string } };
+  themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, pathname, config } = props;
+  const { page, children, pathname, config, site, themeConfig, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const basePath = site?.basePath ?? "";
   const fm = page.frontmatter as Record<string, unknown>;
   const subtitle = (fm.metadata as Record<string, unknown> | undefined)?.description ??
     fm.description;
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const cover = safeHref(fm.cover);
+  const isHome = (() => { const r = pathname ?? page?.route ?? "/"; const n = r !== "/" && r.endsWith("/") ? r.slice(0, -1) : r; return n === "/" || n === "/home"; })();
   const themeName = config?.theme?.name ?? "stellar";
   const img = (file: string) => themeImage(themeName, file);
+  const showCredit = themeConfig?.show_html5up_credit !== false;
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const creditHref = safeHref("https://html5up.net/stellar") ?? "https://html5up.net/stellar";
 
   if (isHome) {
     return (
@@ -29,10 +44,11 @@ export default function DefaultTemplate(props: TemplateProps & {
                 <header class="major"><h2>Ipsum sed adipiscing</h2></header>
                 <p>
                   {page.frontmatter.title ?? "Stellar for Dune"} — adapted from{" "}
-                  <a href="https://html5up.net/stellar">HTML5 UP</a> with blog, search, and archives.
+                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>{" "}
+                  with blog, search, and archives.
                 </p>
                 {children && <div data-dune-body>{children}</div>}
-                <ul class="actions"><li><a href="/blog" class="button">Learn More</a></li></ul>
+                <ul class="actions"><li><a href={withBase(basePath, "/blog")} class="button">{tr("cta.learn_more", "Learn More")}</a></li></ul>
               </div>
               <span class="image"><img src={img("pic01.jpg")} alt="" /></span>
             </div>
@@ -43,22 +59,22 @@ export default function DefaultTemplate(props: TemplateProps & {
             <ul class="features">
               <li>
                 <span class="icon solid major style1 fa-code"></span>
-                <h3><a href="/blog">Blog &amp; posts</a></h3>
+                <h3><a href={withBase(basePath, "/blog")}>Blog &amp; posts</a></h3>
                 <p>Collection-driven blog listing with dated posts and markdown samples.</p>
               </li>
               <li>
                 <span class="icon major style3 fa-copy"></span>
-                <h3><a href="/search">Search</a></h3>
+                <h3><a href={withBase(basePath, "/search")}>Search</a></h3>
                 <p>Query demo pages through Dune&apos;s search template.</p>
               </li>
               <li>
                 <span class="icon major style5 fa-gem"></span>
-                <h3><a href="/archives">Archives</a></h3>
+                <h3><a href={withBase(basePath, "/archives")}>Archives</a></h3>
                 <p>Posts grouped by year in a chronological index.</p>
               </li>
             </ul>
             <footer class="major">
-              <ul class="actions special"><li><a href="/blog" class="button">Learn More</a></li></ul>
+              <ul class="actions special"><li><a href={withBase(basePath, "/blog")} class="button">{tr("cta.learn_more", "Learn More")}</a></li></ul>
             </footer>
           </section>
 
@@ -74,7 +90,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <li class="style4"><span class="icon solid fa-laptop"></span><strong>100</strong> Responsive</li>
             </ul>
             <footer class="major">
-              <ul class="actions special"><li><a href="/about" class="button">About</a></li></ul>
+              <ul class="actions special"><li><a href={withBase(basePath, "/about")} class="button">{tr("cta.about", "About")}</a></li></ul>
             </footer>
           </section>
 
@@ -85,8 +101,8 @@ export default function DefaultTemplate(props: TemplateProps & {
             </header>
             <footer class="major">
               <ul class="actions special">
-                <li><a href="/blog" class="button primary">Get Started</a></li>
-                <li><a href="/about" class="button">Learn More</a></li>
+                <li><a href={withBase(basePath, "/blog")} class="button primary">{tr("cta.get_started", "Get Started")}</a></li>
+                <li><a href={withBase(basePath, "/about")} class="button">{tr("cta.learn_more", "Learn More")}</a></li>
               </ul>
             </footer>
           </section>
@@ -96,17 +112,26 @@ export default function DefaultTemplate(props: TemplateProps & {
           <section>
             <h2>Aliquam sed mauris</h2>
             <p>Design by HTML5 UP (CC BY 3.0). Keep visible attribution on live sites.</p>
-            <ul class="actions"><li><a href="/blog" class="button">Learn More</a></li></ul>
+            <ul class="actions"><li><a href={withBase(basePath, "/blog")} class="button">{tr("cta.learn_more", "Learn More")}</a></li></ul>
           </section>
           <section>
             <h2>Explore</h2>
             <ul class="icons">
-              <li><a href="/blog" class="icon solid fa-th alt"><span class="label">Blog</span></a></li>
-              <li><a href="/search" class="icon solid fa-search alt"><span class="label">Search</span></a></li>
-              <li><a href="/archives" class="icon solid fa-archive alt"><span class="label">Archives</span></a></li>
+              <li><a href={withBase(basePath, "/blog")} class="icon solid fa-th alt"><span class="label">Blog</span></a></li>
+              <li><a href={withBase(basePath, "/search")} class="icon solid fa-search alt"><span class="label">Search</span></a></li>
+              <li><a href={withBase(basePath, "/archives")} class="icon solid fa-archive alt"><span class="label">Archives</span></a></li>
             </ul>
           </section>
-          <p class="copyright">&copy; {new Date().getFullYear()} Stellar Demo. Design: <a href="https://html5up.net/stellar">HTML5 UP</a>.</p>
+          <p class="copyright">
+            &copy; {new Date().getFullYear()} {copyrightName}
+            {showCredit && (
+              <>
+                . {tr("credit.design", "Design")}:{" "}
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+              </>
+            )}
+            {!showCredit && "."}
+          </p>
         </footer>
       </LayoutComponent>
     );

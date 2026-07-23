@@ -1,10 +1,17 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -17,22 +24,37 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "stellar";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Stellar";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
+  const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const tagline = site?.description ||
     "Just another free, fully responsive site template built for Dune CMS.";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
-  const img = (file: string) => `/themes/${themeName}/static/html5up/images/${file}`;
+  const logoSrc = safeHref(themeConfig?.logo_url) ||
+    `/themes/${themeName}/static/html5up/images/logo.svg`;
+  const creditHref = safeHref("https://html5up.net/stellar") ?? "https://html5up.net/stellar";
+
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -51,21 +73,21 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-stellar archetype-landing">
         <div id="wrapper">
           {isLanding ? (
             <>
               <header id="header" class="alt">
-                <span class="logo"><img src={img("logo.svg")} alt="" /></span>
-                <h1>{site?.title ?? "Stellar"}</h1>
+                <span class="logo"><img src={logoSrc} alt="" /></span>
+                <h1><a href={homeHref}>{site?.title ?? "Stellar"}</a></h1>
                 <p>{tagline}</p>
               </header>
-              <nav id="nav">
+              <nav id="nav" aria-label={tr("nav.main", "Site")}>
                 <ul>
                   {navItems.map((item) => (
-                    <li key={item.route}>
-                      <a href={item.route}>
-                        {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
+                      <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                        {item.navTitle ?? item.title ?? item.route}
                       </a>
                     </li>
                   ))}
@@ -81,17 +103,25 @@ export default function Layout({
 
           {children}
 
-          {showCredit && !isLanding && (
+          {!isLanding && (
             <footer id="footer">
               <p class="copyright">
-                &copy; {new Date().getFullYear()} {site?.title ?? "Stellar"}. Design:{" "}
-                <a href="https://html5up.net/stellar">HTML5 UP</a>.
+                &copy; {new Date().getFullYear()} {copyrightName}
+                {showCredit && (
+                  <>
+                    . {tr("credit.design", "Design")}:{" "}
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+                  </>
+                )}
+                {!showCredit && "."}
               </p>
             </footer>
           )}
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
@@ -105,7 +135,9 @@ export default function Layout({
               el.scrollIntoView({behavior:'smooth'});
             });
           });
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
