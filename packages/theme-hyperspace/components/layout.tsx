@@ -1,9 +1,16 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -16,25 +23,36 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "hyperspace";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Hyperspace";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const navItems = (nav ?? []).slice(0, 8);
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const showIntro = isHome && themeConfig?.show_intro !== false;
   const introTitle = (themeConfig?.intro_title as string) || site?.title || "Hyperspace";
   const introSubtitle = (themeConfig?.intro_subtitle as string) || site?.description ||
     "A responsive site template for Dune CMS";
+  const creditHref = safeHref("https://html5up.net/hyperspace") ??
+    "https://html5up.net/hyperspace";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -53,15 +71,15 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-hyperspace archetype-landing">
         <section id="sidebar">
           <div class="inner">
-            <nav>
+            <nav aria-label={tr("nav.main", "Site")}>
               <ul>
                 {navItems.map((item) => (
                   <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
-                    <a href={item.route}>
-                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                      {item.navTitle ?? item.title ?? item.route}
                     </a>
                   </li>
                 ))}
@@ -74,10 +92,14 @@ export default function Layout({
           {showIntro && (
             <section id="intro" class="wrapper style1 fullscreen fade-up">
               <div class="inner">
-                <h1>{introTitle}</h1>
+                <h1><a href={homeHref}>{introTitle}</a></h1>
                 <p>{introSubtitle}</p>
                 <ul class="actions">
-                  <li><a href="#content" class="button scrolly">Learn more</a></li>
+                  <li>
+                    <a href="#content" class="button scrolly">
+                      {tr("cta.learn_more", "Learn more")}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </section>
@@ -87,19 +109,24 @@ export default function Layout({
             <div class="inner">{children}</div>
           </section>
 
-          {showCredit && (
-            <footer id="footer" class="wrapper style1-alt">
-              <div class="inner">
-                <ul class="menu">
-                  <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
-                  <li>Design: <a href="https://html5up.net/hyperspace">HTML5 UP</a></li>
-                </ul>
-              </div>
-            </footer>
-          )}
+          <footer id="footer" class="wrapper style1-alt">
+            <div class="inner">
+              <ul class="menu">
+                <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+                {showCredit && (
+                  <li>
+                    {tr("credit.design", "Design")}:{" "}
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          </footer>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function(){
             window.addEventListener('load',function(){
               setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
@@ -115,7 +142,9 @@ export default function Layout({
               });
             });
           })();
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
