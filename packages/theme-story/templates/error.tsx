@@ -10,8 +10,11 @@ export default function ErrorTemplate(props: TemplateProps & {
   themeConfig?: Record<string, unknown>;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const tr = props.t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) =>
+    (props.t ? props.t(key) : undefined) ?? fallback;
   const code = (props.page?.frontmatter as Record<string, unknown>)?.errorCode ?? 404;
+  const basePath = props.site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const themeName = props.config?.theme?.name ?? "story";
   const img = (file: string) => themeImage(themeName, file);
   const showCredit = props.themeConfig?.show_html5up_credit !== false;
@@ -21,14 +24,14 @@ export default function ErrorTemplate(props: TemplateProps & {
       <section class="banner style1 orient-left content-align-left image-position-right">
         <div class="content">
           <h1>{String(code)}</h1>
-          <p class="major">{tr("error.notfound")}</p>
+          <p class="major">{tr("error.notfound", "This page could not be found.")}</p>
         </div>
         <div class="image"><img src={img("banner.jpg")} alt="" /></div>
       </section>
       <section class="wrapper style1 align-center">
         <div class="inner error-page">
           <ul class="actions stacked special">
-            <li><a href="/" class="button wide">{tr("error.home")}</a></li>
+            <li><a href={homeHref} class="button wide">{tr("error.home", "Back to home")}</a></li>
           </ul>
         </div>
       </section>

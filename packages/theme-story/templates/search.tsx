@@ -14,7 +14,7 @@ export default function SearchTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, searchQuery, searchResults, t, config, themeConfig } = props;
-  const tr = t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const action = getSearchUrl("").split("?")[0];
   const themeName = config?.theme?.name ?? "story";
   const img = (file: string) => themeImage(themeName, file);
@@ -23,7 +23,7 @@ export default function SearchTemplate(props: TemplateProps & {
   return (
     <LayoutComponent {...props} landing={false}>
       <section class="banner style1 orient-left content-align-left image-position-right">
-        <div class="content"><h1>{page.frontmatter.title ?? tr("search.title")}</h1></div>
+        <div class="content"><h1>{tr("search.title", "Search")}</h1></div>
         <div class="image"><img src={img("spotlight03.jpg")} alt="" /></div>
       </section>
       <section class="wrapper style1 align-center">
@@ -31,18 +31,18 @@ export default function SearchTemplate(props: TemplateProps & {
           <form class="search-form" action={action} method="get" role="search">
             <div class="fields">
               <div class="field">
-                <label for="q">{tr("search.placeholder")}</label>
+                <label for="q">{tr("search.placeholder", "Search…")}</label>
                 <input type="search" name="q" id="q" value={searchQuery ?? ""} />
               </div>
             </div>
             <ul class="actions special">
-              <li><input type="submit" value={tr("search.submit")} class="button wide" /></li>
+              <li><input type="submit" value={tr("search.submit", "Search")} class="button wide" /></li>
             </ul>
           </form>
           {searchQuery && (
             <section class="search-results" aria-live="polite">
               {(searchResults ?? []).length === 0
-                ? <p>{tr("search.empty")}</p>
+                ? <p>{tr("search.empty", "No results found.")}</p>
                 : (
                   <ul>
                     {searchResults!.map((r) => (

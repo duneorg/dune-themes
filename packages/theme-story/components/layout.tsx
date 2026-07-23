@@ -1,10 +1,16 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -15,15 +21,25 @@ export default function Layout({
   pathname,
   dir,
   children,
-  themeConfig,
+  t,
 }: LayoutProps) {
+  // Story chrome lives in templates; layout still normalizes paths / i18n for parity.
+  const _tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "story";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Story";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
+  void homeHref;
+  void isHome;
+  void _tr;
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -42,9 +58,11 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-story archetype-landing">
         <div id="wrapper" class="divided">{children}</div>
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
@@ -58,7 +76,9 @@ export default function Layout({
               el.scrollIntoView({behavior:'smooth'});
             });
           });
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
