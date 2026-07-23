@@ -1,10 +1,17 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -17,26 +24,37 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "minimaxing";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Minimaxing";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
   const bannerTitle = (themeConfig?.banner_title as string) || "Put something cool here!";
   const bannerSubtitle = (themeConfig?.tagline as string) || site?.description ||
     "And put something almost as cool here, but a bit longer …";
+  const creditHref = safeHref("https://html5up.net/minimaxing") ??
+    "https://html5up.net/minimaxing";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -52,22 +70,23 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body>
+      <body class="theme-minimaxing archetype-landing">
         <div id="page-wrapper">
           <div id="header-wrapper">
             <div class="container">
               <div class="row">
                 <div class="col-12">
                   <header id="header">
-                    <h1><a href="/" id="logo">{site?.title ?? "Minimaxing"}</a></h1>
-                    <nav id="nav">
+                    <h1><a href={homeHref} id="logo">{site?.title ?? "Minimaxing"}</a></h1>
+                    <nav id="nav" aria-label={tr("nav.main", "Site")}>
                       {navItems.map((item) => (
                         <a
                           key={item.route}
                           href={item.route}
                           class={isActive(item.route) ? "current-page-item" : undefined}
+                          aria-current={isActive(item.route) ? "page" : undefined}
                         >
-                          {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                          {item.navTitle ?? item.title ?? item.route}
                         </a>
                       ))}
                     </nav>
@@ -90,20 +109,25 @@ export default function Layout({
 
           {children}
 
-          {showCredit && (
-            <div id="footer-wrapper">
-              <div class="container">
-                <div class="row">
-                  <div class="col-12">
-                    <div id="copyright">
-                      &copy; {new Date().getFullYear()} {copyrightName}. All rights reserved. |
-                      Design: <a href="https://html5up.net/minimaxing">HTML5 UP</a>
-                    </div>
+          <div id="footer-wrapper">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div id="copyright">
+                    &copy; {new Date().getFullYear()} {copyrightName}. All rights reserved.
+                    {showCredit && (
+                      <>
+                        {" "}| {tr("credit.design", "Design")}:{" "}
+                        <a href={creditHref} target="_blank" rel="noopener noreferrer">
+                          HTML5 UP
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </body>
     </html>
