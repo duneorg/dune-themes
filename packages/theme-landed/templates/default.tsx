@@ -1,29 +1,51 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { themeImage } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+}
+
+function withBase(basePath: string, path: string): string {
+  const joined = `${basePath}${path.startsWith("/") ? path : `/${path}`}`;
+  return joined.replace(/([^:]\/)\/+/g, "$1") || "/";
+}
 
 export default function DefaultTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   config?: { theme?: { name?: string } };
   themeConfig?: Record<string, unknown>;
-  site?: { title?: string; description?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, pathname, config, themeConfig, site } = props;
-  const fm = page.frontmatter as Record<string, unknown>;
+  const { page, children, pathname, config, themeConfig, site, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
   const subtitle = (fm.metadata as Record<string, unknown> | undefined)?.description ??
     fm.description;
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const cover = safeHref(fm.cover);
+  const route = stripSlash(pathname ?? page?.route ?? "/");
+  const isHome = route === "/" || route === "/home";
   const themeName = config?.theme?.name ?? "landed";
+  const basePath = site?.basePath ?? "";
   const img = (file: string) => themeImage(themeName, file);
+  const blogHref = withBase(basePath, "/blog");
+  const aboutHref = withBase(basePath, "/about");
+  const searchHref = withBase(basePath, "/search");
+  const archivesHref = withBase(basePath, "/archives");
   const bannerTitle = (themeConfig?.banner_title as string) || "The future has landed";
   const bannerSubtitle = (themeConfig?.tagline as string) || site?.description ||
     "And there are no hoverboards or flying cars. Just apps. Lots of mother flipping apps.";
+  const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
+  const creditHref = safeHref("https://html5up.net/landed") ?? "https://html5up.net/landed";
+  const getStarted = tr("cta.get_started", "Get Started");
+  const learnMore = tr("post.read_more", "Read More");
 
   if (isHome) {
     return (
@@ -46,14 +68,14 @@ export default function DefaultTemplate(props: TemplateProps & {
               <div class="row">
                 <div class="col-4 col-12-medium">
                   <header>
-                    <h2>{page.frontmatter.title ?? site?.title ?? "Landed"} for Dune</h2>
+                    <h2>{String(fm.title ?? site?.title ?? "Landed")} for Dune</h2>
                     <p>Adapted from HTML5 UP with blog, search, and archives</p>
                   </header>
                 </div>
                 <div class="col-4 col-12-medium">
                   <p>
-                    Collection-driven blog listing at <a href="/blog">/blog</a> with dated posts,
-                    pagination, and taxonomy support from Dune CMS.
+                    Collection-driven blog listing at <a href={blogHref}>/blog</a> with dated
+                    posts, pagination, and taxonomy support from Dune CMS.
                   </p>
                 </div>
                 <div class="col-4 col-12-medium">
@@ -78,9 +100,12 @@ export default function DefaultTemplate(props: TemplateProps & {
               <h2>Read the blog</h2>
               <p>Sample posts with markdown, code blocks, and tags</p>
             </header>
-            <p>Browse the shared demo content or start with the welcome post to see how posts render in the Landed shell.</p>
+            <p>
+              Browse the shared demo content or start with the welcome post to see how posts
+              render in the Landed shell.
+            </p>
             <ul class="actions">
-              <li><a href="/blog" class="button">Learn More</a></li>
+              <li><a href={blogHref} class="button">{learnMore}</a></li>
             </ul>
           </div>
           <a href="#three" class="goto-next scrolly">Next</a>
@@ -93,10 +118,13 @@ export default function DefaultTemplate(props: TemplateProps & {
               <h2>Search &amp; archives</h2>
               <p>Query demo pages or browse posts by year</p>
             </header>
-            <p>Dune templates for search results and year-grouped archives use the upstream no-sidebar layout.</p>
+            <p>
+              Dune templates for search results and year-grouped archives use the upstream
+              no-sidebar layout.
+            </p>
             <ul class="actions">
-              <li><a href="/search" class="button">Search</a></li>
-              <li><a href="/archives" class="button">Archives</a></li>
+              <li><a href={searchHref} class="button">{tr("search.title", "Search")}</a></li>
+              <li><a href={archivesHref} class="button">{learnMore}</a></li>
             </ul>
           </div>
           <a href="#four" class="goto-next scrolly">Next</a>
@@ -113,7 +141,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                 <section class="col-4 col-6-medium col-12-xsmall">
                   <span class="icon solid alt major fa-comment"></span>
                   <h3>Blog &amp; posts</h3>
-                  <p>Collection-driven listing at <a href="/blog">/blog</a> with dated posts.</p>
+                  <p>Collection-driven listing at <a href={blogHref}>/blog</a> with dated posts.</p>
                 </section>
                 <section class="col-4 col-6-medium col-12-xsmall">
                   <span class="icon solid alt major fa-search"></span>
@@ -129,7 +157,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             </div>
             <footer class="major">
               <ul class="actions special">
-                <li><a href="/blog" class="button">Get Started</a></li>
+                <li><a href={blogHref} class="button">{getStarted}</a></li>
               </ul>
             </footer>
           </div>
@@ -142,8 +170,8 @@ export default function DefaultTemplate(props: TemplateProps & {
               <p>Start with the blog or browse the about page for more on this demo site.</p>
             </header>
             <ul class="actions special">
-              <li><a href="/blog" class="button primary">Proceed</a></li>
-              <li><a href="/about" class="button">About</a></li>
+              <li><a href={blogHref} class="button primary">{getStarted}</a></li>
+              <li><a href={aboutHref} class="button">{learnMore}</a></li>
             </ul>
           </div>
         </section>
@@ -151,7 +179,12 @@ export default function DefaultTemplate(props: TemplateProps & {
         <footer id="footer">
           <ul class="copyright">
             <li>&copy; {new Date().getFullYear()} {copyrightName}. All rights reserved.</li>
-            <li>Design: <a href="https://html5up.net/landed">HTML5 UP</a></li>
+            {showCredit && (
+              <li>
+                {tr("credit.design", "Design")}:{" "}
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+              </li>
+            )}
           </ul>
         </footer>
       </LayoutComponent>
@@ -163,7 +196,7 @@ export default function DefaultTemplate(props: TemplateProps & {
       <div id="main" class="wrapper style1">
         <div class="container">
           <header class="major">
-            <h2>{page.frontmatter.title}</h2>
+            <h2>{String(fm.title ?? "")}</h2>
             {subtitle && <p>{String(subtitle)}</p>}
           </header>
           <section id="content">

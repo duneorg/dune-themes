@@ -11,7 +11,7 @@ export default function SearchTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { searchQuery, searchResults, t } = props;
-  const tr = t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const action = getSearchUrl("").split("?")[0];
 
   return (
@@ -19,7 +19,7 @@ export default function SearchTemplate(props: TemplateProps & {
       <div id="main" class="wrapper style1">
         <div class="container">
           <header class="major">
-            <h2>{tr("search.title")}</h2>
+            <h2>{tr("search.title", "Search")}</h2>
           </header>
           <section id="content">
             <form action={action} method="get" role="search" class="search-form">
@@ -29,13 +29,13 @@ export default function SearchTemplate(props: TemplateProps & {
                     type="search"
                     name="q"
                     value={searchQuery ?? ""}
-                    placeholder={tr("search.placeholder")}
-                    aria-label={tr("search.placeholder")}
+                    placeholder={tr("search.placeholder", "Search…")}
+                    aria-label={tr("search.placeholder", "Search…")}
                   />
                 </div>
                 <div class="col-4 col-12-small">
                   <ul class="actions">
-                    <li><input type="submit" value={tr("search.submit")} class="primary" /></li>
+                    <li><input type="submit" value={tr("search.submit", "Search")} class="primary" /></li>
                   </ul>
                 </div>
               </div>
@@ -43,7 +43,7 @@ export default function SearchTemplate(props: TemplateProps & {
             {searchQuery && (
               <section class="search-results" aria-live="polite">
                 {(searchResults ?? []).length === 0
-                  ? <p>{tr("search.empty")}</p>
+                  ? <p>{tr("search.empty", "No results found.")}</p>
                   : (
                     <ul class="alt">
                       {searchResults!.map((r) => (
