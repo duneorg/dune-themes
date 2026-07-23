@@ -75,11 +75,10 @@ export const DEMO_SLUGS = [
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
 
 /**
- * Shared content fixture each demo symlinks `content` to (under
- * `demos/_shared/`). Defaults to "blog" — docs-family themes (caravan, book,
- * starlight, and later lucid/manual) use "docs"; portfolio/academic themes
- * (blox, fennec, later oasis) use "portfolio". Landing-only fixtures may land
- * later (see notes/RELEASE-PLAN.md).
+ * Shared content fixture each demo copies into `content/` (under
+ * `demos/_shared/`). Defaults to "blog" — docs-family themes use "docs";
+ * portfolio/academic themes use "portfolio"; HTML5 UP + gale landings use
+ * "landing" (hero home + thin CTA destinations).
  */
 const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   caravan: "docs",
@@ -91,6 +90,37 @@ const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   lucid: "docs",
   manual: "docs",
   nightfall: "docs",
+  // Inspired hybrid landing + blog
+  gale: "landing",
+  // HTML5 UP landing (28)
+  aerial: "landing",
+  alpha: "landing",
+  arcana: "landing",
+  "big-picture": "landing",
+  dimension: "landing",
+  directive: "landing",
+  "escape-velocity": "landing",
+  ethereal: "landing",
+  eventually: "landing",
+  forty: "landing",
+  halcyonic: "landing",
+  helios: "landing",
+  highlights: "landing",
+  hyperspace: "landing",
+  landed: "landing",
+  minimaxing: "landing",
+  multiverse: "landing",
+  "paradigm-shift": "landing",
+  prologue: "landing",
+  "solid-state": "landing",
+  spectral: "landing",
+  stellar: "landing",
+  story: "landing",
+  telephasic: "landing",
+  tessellate: "landing",
+  twenty: "landing",
+  verti: "landing",
+  zerofour: "landing",
 };
 
 function contentFixtureFor(slug: string): string {
@@ -275,14 +305,14 @@ export async function linkDemo(slug: string): Promise<void> {
     // theme has no style-guide/ folder — fine, not every theme needs one
   }
 
-  // A blog-archetype theme's own demo-posts/ (real, dated posts that
-  // dogfood its config options and typography while also being ordinary
-  // readable content) merge directly into the blog fixture's own posts
-  // collection, so they appear inline in the listing next to the generic
-  // fixture posts — not as a separate top-level page the way
-  // docs/style-guide are for docs-archetype themes, since a blog theme has
-  // no sidebar/section concept to hang a separate page off of.
-  if (fixture === "blog") {
+  // A blog- or landing-archetype theme's own demo-posts/ (real, dated posts
+  // that dogfood its config options and typography while also being ordinary
+  // readable content) merge directly into the fixture's posts collection,
+  // so they appear inline in the listing next to the generic fixture posts —
+  // not as a separate top-level page the way docs/style-guide are for
+  // docs-archetype themes. Landing fixtures keep a thin /blog for CTA
+  // destinations (and for hybrids like gale).
+  if (fixture === "blog" || fixture === "landing") {
     const demoPostsDir = join(packageDir, "demo-posts");
     try {
       await Deno.stat(demoPostsDir);
