@@ -4,6 +4,7 @@
  */
 
 import { HTML5UP_TEMPLATES, html5UpThemeDef } from "./html5up-defs.ts";
+import { jsrPackageName } from "./theme-package.ts";
 
 export type CatalogTier = "inspired" | "faithful" | "html5up" | "base";
 
@@ -216,7 +217,7 @@ export function buildRegistryJson(catalog: CatalogEntry[] = MARKETPLACE_CATALOG)
       ...(e.inspiredBy ? { inspiredBy: e.inspiredBy } : {}),
       demoUrl: `https://themes.getdune.org/${e.slug}`,
       screenshotUrl: `https://themes.getdune.org/${e.slug}/themes/${e.slug}/static/screenshot.png`,
-      jsr: `jsr:@dune/theme-${e.slug}@${e.version}`,
+      jsr: `jsr:@dune/${jsrPackageName(e.slug)}@${e.version}`,
       downloadUrl:
         `https://github.com/duneorg/dune-themes/releases/download/${e.slug}-v${e.version}/${e.slug}-${e.version}.zip`,
       sha256: "",

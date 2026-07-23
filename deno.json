@@ -14,6 +14,8 @@
     "screenshot": "deno run -A scripts/capture-screenshot.ts",
     "sha256": "deno run -A scripts/update-registry-sha256.ts",
     "release": "deno run -A scripts/release-theme.ts",
+    "sync:admin-registry": "deno run -A scripts/sync-admin-registry.ts",
+    "ensure:jsr-packages": "deno run -A scripts/ensure-jsr-packages.ts",
     "check": "deno check scripts/*.ts packages/theme-*/templates/*.tsx packages/theme-*/components/**/*.tsx"
   },
   "imports": {

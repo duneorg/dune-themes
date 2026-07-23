@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-escape-velocity@1.0.0 --activate
+dune theme:install jsr:@dune/theme-escape-vel@1.0.0 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: escape-velocity
-    src: jsr:@dune/theme-escape-velocity@1.0.0
+    src: jsr:@dune/theme-escape-vel@1.0.0
 
 theme:
   name: escape-velocity
-  src: jsr:@dune/theme-escape-velocity@1.0.0
+  src: jsr:@dune/theme-escape-vel@1.0.0
 ```
 
 Homepage intro/main/highlights with no-sidebar inner pages. See the

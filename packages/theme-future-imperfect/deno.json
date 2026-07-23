@@ -1,5 +1,5 @@
 {
-  "name": "@dune/theme-future-imperfect",
+  "name": "@dune/theme-future-imp",
   "version": "1.0.0",
   "license": "MIT",
   "exports": "./mod.ts",

@@ -11,7 +11,7 @@ taxonomy:
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-escape-velocity@1.0.0 --activate
+dune theme:install jsr:@dune/theme-escape-vel@1.0.0 --activate
 ```
 
 ## From a ZIP

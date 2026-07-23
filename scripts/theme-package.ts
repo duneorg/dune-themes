@@ -9,6 +9,21 @@ export const THEME_PACKAGE_MOD_TS = `/**
 export {};
 `;
 
+/**
+ * JSR package names are limited to 20 characters. Slugs that would push
+ * `theme-{slug}` over that limit use a stable shortened package name.
+ * Install docs / registry `jsr` fields must use this helper (not raw slug).
+ */
+const JSR_PACKAGE_NAME_OVERRIDES: Record<string, string> = {
+  "escape-velocity": "theme-escape-vel",
+  "future-imperfect": "theme-future-imp",
+};
+
+/** JSR package name without scope (e.g. `theme-striped`). */
+export function jsrPackageName(slug: string): string {
+  return JSR_PACKAGE_NAME_OVERRIDES[slug] ?? `theme-${slug}`;
+}
+
 export interface ThemePackageManifestOptions {
   slug: string;
   version?: string;
@@ -18,7 +33,7 @@ export interface ThemePackageManifestOptions {
 export function themeDenoJson(options: ThemePackageManifestOptions): string {
   const { slug, version = "1.0.0" } = options;
   return JSON.stringify({
-    name: `@dune/theme-${slug}`,
+    name: `@dune/${jsrPackageName(slug)}`,
     version,
     license: "MIT",
     exports: "./mod.ts",

@@ -5,7 +5,7 @@
     {
       "slug": "sirocco",
       "name": "Sirocco",
-      "description": "Fast, clean minimalist blog inspired by Hugo PaperMod — Dune-native, not a port.",
+      "description": "Fast, clean minimalist blog inspired by Hugo PaperMod \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.2.1",
       "license": "MIT",
@@ -28,7 +28,7 @@
     {
       "slug": "caravan",
       "name": "Caravan",
-      "description": "Sidebar documentation theme inspired by hugo-book — Dune-native, not a port.",
+      "description": "Sidebar documentation theme inspired by hugo-book \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.1.2",
       "license": "MIT",
@@ -51,7 +51,7 @@
     {
       "slug": "fennec",
       "name": "Fennec",
-      "description": "Personal portfolio and blog theme inspired by Astrofy — Dune-native, not a port.",
+      "description": "Personal portfolio and blog theme inspired by Astrofy \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -74,7 +74,7 @@
     {
       "slug": "nightfall",
       "name": "Nightfall",
-      "description": "Dark-first documentation theme inspired by Astro Starlight — Dune-native, not a port.",
+      "description": "Dark-first documentation theme inspired by Astro Starlight \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -97,7 +97,7 @@
     {
       "slug": "oasis",
       "name": "Oasis",
-      "description": "Landing and academic résumé theme inspired by Hugo Blox — Dune-native, not a port.",
+      "description": "Landing and academic r\u00e9sum\u00e9 theme inspired by Hugo Blox \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -120,7 +120,7 @@
     {
       "slug": "ink",
       "name": "Ink",
-      "description": "Long-form writing theme inspired by Ghost Attila — Dune-native, not a port.",
+      "description": "Long-form writing theme inspired by Ghost Attila \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -144,7 +144,7 @@
     {
       "slug": "gale",
       "name": "Gale",
-      "description": "Landing and blog theme inspired by AstroWind — Dune-native, not a port.",
+      "description": "Landing and blog theme inspired by AstroWind \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -167,7 +167,7 @@
     {
       "slug": "salon",
       "name": "Salon",
-      "description": "Magazine-style blog inspired by Ghost Liebling — Dune-native, not a port.",
+      "description": "Magazine-style blog inspired by Ghost Liebling \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -190,7 +190,7 @@
     {
       "slug": "syntax",
       "name": "Syntax",
-      "description": "Technical blog theme inspired by Jekyll Chirpy — Dune-native, not a port.",
+      "description": "Technical blog theme inspired by Jekyll Chirpy \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -213,7 +213,7 @@
     {
       "slug": "herald",
       "name": "Herald",
-      "description": "Publication-style blog inspired by Ghost Casper — Dune-native, not a port.",
+      "description": "Publication-style blog inspired by Ghost Casper \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -236,7 +236,7 @@
     {
       "slug": "lucid",
       "name": "Lucid",
-      "description": "Modern docs theme inspired by Hugo Hextra — Dune-native, not a port.",
+      "description": "Modern docs theme inspired by Hugo Hextra \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -259,7 +259,7 @@
     {
       "slug": "manual",
       "name": "Manual",
-      "description": "Product documentation theme inspired by Just the Docs — Dune-native, not a port.",
+      "description": "Product documentation theme inspired by Just the Docs \u2014 Dune-native, not a port.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -374,7 +374,7 @@
     {
       "slug": "aerial",
       "name": "Aerial",
-      "description": "Aerial — responsive site theme adapted from HTML5 UP for Dune. Fullscreen landing.",
+      "description": "Aerial \u2014 responsive site theme adapted from HTML5 UP for Dune. Fullscreen landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -397,7 +397,7 @@
     {
       "slug": "alpha",
       "name": "Alpha",
-      "description": "Alpha — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
+      "description": "Alpha \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -420,7 +420,7 @@
     {
       "slug": "arcana",
       "name": "Arcana",
-      "description": "Arcana — responsive site theme adapted from HTML5 UP for Dune. Corporate site.",
+      "description": "Arcana \u2014 responsive site theme adapted from HTML5 UP for Dune. Corporate site.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -443,7 +443,7 @@
     {
       "slug": "astral",
       "name": "Astral",
-      "description": "Astral — responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
+      "description": "Astral \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -466,7 +466,7 @@
     {
       "slug": "big-picture",
       "name": "Big Picture",
-      "description": "Big Picture — responsive site theme adapted from HTML5 UP for Dune. Scroll-driven gallery.",
+      "description": "Big Picture \u2014 responsive site theme adapted from HTML5 UP for Dune. Scroll-driven gallery.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -489,7 +489,7 @@
     {
       "slug": "dimension",
       "name": "Dimension",
-      "description": "Dimension — responsive site theme adapted from HTML5 UP for Dune. Modal panel navigation.",
+      "description": "Dimension \u2014 responsive site theme adapted from HTML5 UP for Dune. Modal panel navigation.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -512,7 +512,7 @@
     {
       "slug": "directive",
       "name": "Directive",
-      "description": "Directive — responsive site theme adapted from HTML5 UP for Dune. Simple landing.",
+      "description": "Directive \u2014 responsive site theme adapted from HTML5 UP for Dune. Simple landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -535,7 +535,7 @@
     {
       "slug": "dopetrope",
       "name": "Dopetrope",
-      "description": "Dopetrope — responsive site theme adapted from HTML5 UP for Dune. Magazine blog.",
+      "description": "Dopetrope \u2014 responsive site theme adapted from HTML5 UP for Dune. Magazine blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -558,7 +558,7 @@
     {
       "slug": "editorial",
       "name": "Editorial",
-      "description": "Editorial — responsive site theme adapted from HTML5 UP for Dune. Editorial magazine.",
+      "description": "Editorial \u2014 responsive site theme adapted from HTML5 UP for Dune. Editorial magazine.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -581,7 +581,7 @@
     {
       "slug": "escape-velocity",
       "name": "Escape Velocity",
-      "description": "Escape Velocity — responsive site theme adapted from HTML5 UP for Dune. Marketing site.",
+      "description": "Escape Velocity \u2014 responsive site theme adapted from HTML5 UP for Dune. Marketing site.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -594,7 +594,7 @@
       "inspiredBy": "HTML5 UP Escape Velocity",
       "demoUrl": "https://themes.getdune.org/escape-velocity",
       "screenshotUrl": "https://themes.getdune.org/escape-velocity/themes/escape-velocity/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-escape-velocity@1.0.0",
+      "jsr": "jsr:@dune/theme-escape-vel@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/escape-velocity-v1.0.0/escape-velocity-1.0.0.zip",
       "sha256": "186e012e7c0137b97bdf8ba19696291720822e015d26074b61d72a5eeabc5d11",
       "verified": true,
@@ -604,7 +604,7 @@
     {
       "slug": "ethereal",
       "name": "Ethereal",
-      "description": "Ethereal — responsive site theme adapted from HTML5 UP for Dune. Elegant landing.",
+      "description": "Ethereal \u2014 responsive site theme adapted from HTML5 UP for Dune. Elegant landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -627,7 +627,7 @@
     {
       "slug": "eventually",
       "name": "Eventually",
-      "description": "Eventually — responsive site theme adapted from HTML5 UP for Dune. Coming soon.",
+      "description": "Eventually \u2014 responsive site theme adapted from HTML5 UP for Dune. Coming soon.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -650,7 +650,7 @@
     {
       "slug": "forty",
       "name": "Forty",
-      "description": "Forty — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Forty \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -673,7 +673,7 @@
     {
       "slug": "fractal",
       "name": "Fractal",
-      "description": "Fractal — responsive site theme adapted from HTML5 UP for Dune. Portfolio showcase.",
+      "description": "Fractal \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio showcase.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -696,7 +696,7 @@
     {
       "slug": "future-imperfect",
       "name": "Future Imperfect",
-      "description": "Future Imperfect — responsive site theme adapted from HTML5 UP for Dune. Blog with sidebar.",
+      "description": "Future Imperfect \u2014 responsive site theme adapted from HTML5 UP for Dune. Blog with sidebar.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -709,7 +709,7 @@
       "inspiredBy": "HTML5 UP Future Imperfect",
       "demoUrl": "https://themes.getdune.org/future-imperfect",
       "screenshotUrl": "https://themes.getdune.org/future-imperfect/themes/future-imperfect/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-future-imperfect@1.0.0",
+      "jsr": "jsr:@dune/theme-future-imp@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/future-imperfect-v1.0.0/future-imperfect-1.0.0.zip",
       "sha256": "df854f60a23a335afdc893f5c692f2455ce29650d0928f2a89922bc7ef61e7ff",
       "verified": true,
@@ -719,7 +719,7 @@
     {
       "slug": "halcyonic",
       "name": "Halcyonic",
-      "description": "Halcyonic — responsive site theme adapted from HTML5 UP for Dune. Business layout.",
+      "description": "Halcyonic \u2014 responsive site theme adapted from HTML5 UP for Dune. Business layout.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -742,7 +742,7 @@
     {
       "slug": "helios",
       "name": "Helios",
-      "description": "Helios — responsive site theme adapted from HTML5 UP for Dune. Multipurpose site.",
+      "description": "Helios \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose site.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -765,7 +765,7 @@
     {
       "slug": "highlights",
       "name": "Highlights",
-      "description": "Highlights — responsive site theme adapted from HTML5 UP for Dune. Photo landing.",
+      "description": "Highlights \u2014 responsive site theme adapted from HTML5 UP for Dune. Photo landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -788,7 +788,7 @@
     {
       "slug": "hyperspace",
       "name": "Hyperspace",
-      "description": "Hyperspace — responsive site theme adapted from HTML5 UP for Dune. Sidebar landing.",
+      "description": "Hyperspace \u2014 responsive site theme adapted from HTML5 UP for Dune. Sidebar landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -811,7 +811,7 @@
     {
       "slug": "landed",
       "name": "Landed",
-      "description": "Landed — responsive site theme adapted from HTML5 UP for Dune. Product landing.",
+      "description": "Landed \u2014 responsive site theme adapted from HTML5 UP for Dune. Product landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -834,7 +834,7 @@
     {
       "slug": "lens",
       "name": "Lens",
-      "description": "Lens — responsive site theme adapted from HTML5 UP for Dune. Fullscreen gallery.",
+      "description": "Lens \u2014 responsive site theme adapted from HTML5 UP for Dune. Fullscreen gallery.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -857,7 +857,7 @@
     {
       "slug": "massively",
       "name": "Massively",
-      "description": "Massively — responsive site theme adapted from HTML5 UP for Dune. Hero blog.",
+      "description": "Massively \u2014 responsive site theme adapted from HTML5 UP for Dune. Hero blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -880,7 +880,7 @@
     {
       "slug": "minimaxing",
       "name": "Minimaxing",
-      "description": "Minimaxing — responsive site theme adapted from HTML5 UP for Dune. Compact landing.",
+      "description": "Minimaxing \u2014 responsive site theme adapted from HTML5 UP for Dune. Compact landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -903,7 +903,7 @@
     {
       "slug": "miniport",
       "name": "Miniport",
-      "description": "Miniport — responsive site theme adapted from HTML5 UP for Dune. Minimal portfolio.",
+      "description": "Miniport \u2014 responsive site theme adapted from HTML5 UP for Dune. Minimal portfolio.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -926,7 +926,7 @@
     {
       "slug": "multiverse",
       "name": "Multiverse",
-      "description": "Multiverse — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Multiverse \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -949,7 +949,7 @@
     {
       "slug": "paradigm-shift",
       "name": "Paradigm Shift",
-      "description": "Paradigm Shift — responsive site theme adapted from HTML5 UP for Dune. Split layout landing.",
+      "description": "Paradigm Shift \u2014 responsive site theme adapted from HTML5 UP for Dune. Split layout landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -972,7 +972,7 @@
     {
       "slug": "parallelism",
       "name": "Parallelism",
-      "description": "Parallelism — responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
+      "description": "Parallelism \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -995,7 +995,7 @@
     {
       "slug": "phantom",
       "name": "Phantom",
-      "description": "Phantom — responsive site theme adapted from HTML5 UP for Dune. Minimal blog.",
+      "description": "Phantom \u2014 responsive site theme adapted from HTML5 UP for Dune. Minimal blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1018,7 +1018,7 @@
     {
       "slug": "photon",
       "name": "Photon",
-      "description": "Photon — responsive site theme adapted from HTML5 UP for Dune. Single-page portfolio.",
+      "description": "Photon \u2014 responsive site theme adapted from HTML5 UP for Dune. Single-page portfolio.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1041,7 +1041,7 @@
     {
       "slug": "prologue",
       "name": "Prologue",
-      "description": "Prologue — responsive site theme adapted from HTML5 UP for Dune. Intro landing.",
+      "description": "Prologue \u2014 responsive site theme adapted from HTML5 UP for Dune. Intro landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1064,7 +1064,7 @@
     {
       "slug": "read-only",
       "name": "Read Only",
-      "description": "Read Only — responsive site theme adapted from HTML5 UP for Dune. Read-only blog.",
+      "description": "Read Only \u2014 responsive site theme adapted from HTML5 UP for Dune. Read-only blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1087,7 +1087,7 @@
     {
       "slug": "solid-state",
       "name": "Solid State",
-      "description": "Solid State — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
+      "description": "Solid State \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1110,7 +1110,7 @@
     {
       "slug": "spectral",
       "name": "Spectral",
-      "description": "Spectral — responsive site theme adapted from HTML5 UP for Dune. Event landing.",
+      "description": "Spectral \u2014 responsive site theme adapted from HTML5 UP for Dune. Event landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1133,7 +1133,7 @@
     {
       "slug": "stellar",
       "name": "Stellar",
-      "description": "Stellar — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Stellar \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1156,7 +1156,7 @@
     {
       "slug": "story",
       "name": "Story",
-      "description": "Story — responsive site theme adapted from HTML5 UP for Dune. Scroll narrative.",
+      "description": "Story \u2014 responsive site theme adapted from HTML5 UP for Dune. Scroll narrative.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1179,7 +1179,7 @@
     {
       "slug": "strata",
       "name": "Strata",
-      "description": "Strata — responsive site theme adapted from HTML5 UP for Dune. Portfolio + contact.",
+      "description": "Strata \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio + contact.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1202,7 +1202,7 @@
     {
       "slug": "striped",
       "name": "Striped",
-      "description": "Striped — responsive site theme adapted from HTML5 UP for Dune. Sidebar blog.",
+      "description": "Striped \u2014 responsive site theme adapted from HTML5 UP for Dune. Sidebar blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1225,7 +1225,7 @@
     {
       "slug": "strongly-typed",
       "name": "Strongly Typed",
-      "description": "Strongly Typed — responsive site theme adapted from HTML5 UP for Dune. Typography blog.",
+      "description": "Strongly Typed \u2014 responsive site theme adapted from HTML5 UP for Dune. Typography blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1248,7 +1248,7 @@
     {
       "slug": "telephasic",
       "name": "Telephasic",
-      "description": "Telephasic — responsive site theme adapted from HTML5 UP for Dune. Business site.",
+      "description": "Telephasic \u2014 responsive site theme adapted from HTML5 UP for Dune. Business site.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1271,7 +1271,7 @@
     {
       "slug": "tessellate",
       "name": "Tessellate",
-      "description": "Tessellate — responsive site theme adapted from HTML5 UP for Dune. Grid landing.",
+      "description": "Tessellate \u2014 responsive site theme adapted from HTML5 UP for Dune. Grid landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1294,7 +1294,7 @@
     {
       "slug": "twenty",
       "name": "Twenty",
-      "description": "Twenty — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Twenty \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1317,7 +1317,7 @@
     {
       "slug": "txt",
       "name": "TXT",
-      "description": "TXT — responsive site theme adapted from HTML5 UP for Dune. Text-forward portfolio.",
+      "description": "TXT \u2014 responsive site theme adapted from HTML5 UP for Dune. Text-forward portfolio.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1340,7 +1340,7 @@
     {
       "slug": "verti",
       "name": "Verti",
-      "description": "Verti — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
+      "description": "Verti \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1363,7 +1363,7 @@
     {
       "slug": "zerofour",
       "name": "Zerofour",
-      "description": "Zerofour — responsive site theme adapted from HTML5 UP for Dune. 404 / minimal page.",
+      "description": "Zerofour \u2014 responsive site theme adapted from HTML5 UP for Dune. 404 / minimal page.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",

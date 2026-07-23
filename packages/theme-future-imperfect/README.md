@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-future-imperfect@1.0.0 --activate
+dune theme:install jsr:@dune/theme-future-imp@1.0.0 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: future-imperfect
-    src: jsr:@dune/theme-future-imperfect@1.0.0
+    src: jsr:@dune/theme-future-imp@1.0.0
 
 theme:
   name: future-imperfect
-  src: jsr:@dune/theme-future-imperfect@1.0.0
+  src: jsr:@dune/theme-future-imp@1.0.0
 ```
 
 Header nav with flyout menu and search, magazine post cards with author
