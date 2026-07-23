@@ -1,10 +1,17 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -17,20 +24,28 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "paradigm-shift";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Paradigm Shift";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
+  const creditHref = safeHref("https://html5up.net/paradigm-shift") ??
+    "https://html5up.net/paradigm-shift";
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -46,16 +61,16 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-paradigm-shift archetype-landing">
         <div id="wrapper">
           {!isLanding && navItems.length > 0 && (
-            <nav class="dune-nav">
+            <nav class="dune-nav" aria-label={tr("nav.main", "Site")}>
               <ul class="actions">
-                <li><a href="/" class="button">Home</a></li>
-                {navItems.filter((i) => i.route !== "/").map((item) => (
+                <li><a href={homeHref} class="button">{tr("nav.home", "Home")}</a></li>
+                {navItems.filter((i) => stripSlash(i.route) !== "/").map((item) => (
                   <li key={item.route}>
                     <a href={item.route} class="button">
-                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                      {item.navTitle ?? item.title ?? item.route}
                     </a>
                   </li>
                 ))}
@@ -72,19 +87,26 @@ export default function Layout({
             </section>
           )}
 
-          {showCredit && !isLanding && (
+          {!isLanding && (
             <section class="dune-credit">
               <div class="content">
                 <p>
-                  &copy; {new Date().getFullYear()} {copyrightName}. Design:{" "}
-                  <a href="https://html5up.net/paradigm-shift">HTML5 UP</a>
+                  &copy; {new Date().getFullYear()} {copyrightName}.
+                  {showCredit && (
+                    <>
+                      {" "}{tr("credit.design", "Design")}:{" "}
+                      <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                    </>
+                  )}
                 </p>
               </div>
             </section>
           )}
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
@@ -98,7 +120,9 @@ export default function Layout({
               el.scrollIntoView({behavior:'smooth'});
             });
           });
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
