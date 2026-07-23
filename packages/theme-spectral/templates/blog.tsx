@@ -1,19 +1,28 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatSpectralDate, postExcerpt } from "../utils/content.ts";
 
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+}
+
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, pathname } = props;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const { page, children, collection, pagination, pathname, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const route = stripSlash(pathname ?? page?.route ?? "/");
+  const isHome = route === "/" || route === "/home";
   const items = collection?.items ?? [];
+  const readMore = tr("post.read_more", "Read More");
 
   if (isHome) {
     return <LayoutComponent {...props} landing />;
@@ -39,7 +48,9 @@ export default function BlogTemplate(props: TemplateProps & {
                       <h3><a href={post.route}>{String(fm.title ?? post.route)}</a></h3>
                       {date && <p><time datetime={date}>{formatSpectralDate(date)}</time></p>}
                       {excerpt && <p>{excerpt}</p>}
-                      <ul class="actions"><li><a href={post.route} class="button">Learn More</a></li></ul>
+                      <ul class="actions">
+                        <li><a href={post.route} class="button">{readMore}</a></li>
+                      </ul>
                     </section>
                   </div>
                 );
@@ -47,8 +58,20 @@ export default function BlogTemplate(props: TemplateProps & {
             </div>
             {(pagination?.newer || pagination?.older) && (
               <ul class="actions">
-                {pagination.older && <li><a href={pagination.older} class="button">← Older</a></li>}
-                {pagination.newer && <li><a href={pagination.newer} class="button">Newer →</a></li>}
+                {pagination.older && (
+                  <li>
+                    <a href={pagination.older} class="button">
+                      ← {tr("pagination.older", "Older")}
+                    </a>
+                  </li>
+                )}
+                {pagination.newer && (
+                  <li>
+                    <a href={pagination.newer} class="button">
+                      {tr("pagination.newer", "Newer")} →
+                    </a>
+                  </li>
+                )}
               </ul>
             )}
           </div>
