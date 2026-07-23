@@ -1,11 +1,18 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
   /** When true, show landing header only (home). */
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -18,15 +25,21 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "dimension";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Dimension";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const navItems = (nav ?? []).slice(0, 6);
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
@@ -34,11 +47,21 @@ export default function Layout({
   const headerSubtitle = (themeConfig?.header_subtitle as string) || site?.description ||
     "A fully responsive site template for Dune CMS";
   const logoIcon = (themeConfig?.logo_icon as string) || "fa-gem";
-  const isLanding = landing ?? currentPath === "/";
-  const bodyClass = isLanding ? "is-preload" : "is-preload is-article-visible";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
+  const isLanding = landing ?? isHome;
+  const bodyClass = [
+    isLanding ? "is-preload" : "is-preload is-article-visible",
+    "theme-dimension",
+    "archetype-landing",
+  ].join(" ");
+  const creditHref = safeHref("https://html5up.net/dimension") ?? "https://html5up.net/dimension";
+  const closeLabel = tr("cta.close", "Close");
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -69,12 +92,12 @@ export default function Layout({
                 <p>{headerSubtitle}</p>
               </div>
             </div>
-            <nav>
+            <nav aria-label={tr("nav.main", "Site")}>
               <ul>
                 {navItems.map((item) => (
                   <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
-                    <a href={item.route}>
-                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                      {item.navTitle ?? item.title ?? item.route}
                     </a>
                   </li>
                 ))}
@@ -90,18 +113,26 @@ export default function Layout({
 
           {isLanding && children}
 
-          {showCredit && (
-            <footer id="footer">
-              <p class="copyright">
-                &copy; {new Date().getFullYear()} {copyrightName}. Design:{" "}
-                <a href="https://html5up.net/dimension">HTML5 UP</a>.
-              </p>
-            </footer>
-          )}
+          <footer id="footer">
+            <p class="copyright">
+              &copy; {new Date().getFullYear()} {copyrightName}
+              {showCredit && (
+                <>
+                  . {tr("credit.design", "Design")}:{" "}
+                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+                </>
+              )}
+              {!showCredit && "."}
+            </p>
+          </footer>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function(){
+            var homeHref=${JSON.stringify(homeHref)};
+            var closeLabel=${JSON.stringify(closeLabel)};
             window.addEventListener('load',function(){
               setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
               var nav=document.querySelector('#header nav');
@@ -112,19 +143,21 @@ export default function Layout({
               }
             });
             document.querySelector('#main article.active')?.insertAdjacentHTML('afterbegin',
-              '<div class="close"><a href="/">Close</a></div>');
+              '<div class="close"><a href="'+homeHref+'">'+closeLabel+'</a></div>');
             document.body.addEventListener('click',function(e){
               if(!document.body.classList.contains('is-article-visible'))return;
               var main=document.getElementById('main');
-              if(main&&!main.contains(e.target)) location.href='/';
+              if(main&&!main.contains(e.target)) location.href=homeHref;
             });
             document.addEventListener('keydown',function(e){
               if(e.key==='Escape'&&document.body.classList.contains('is-article-visible')){
-                location.href='/';
+                location.href=homeHref;
               }
             });
           })();
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
