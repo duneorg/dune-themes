@@ -61,3 +61,12 @@ hold a separate [Pixelarity](https://pixelarity.com) license.
 
 Themes we implement from Pixelarity are **bespoke client projects only** (agency-licensed;
 not part of the public Dune theme catalog). [Contact us →](https://getdune.org/services)
+
+## Deviations from upstream
+
+- **Routes** use Dune fixtures (`/blog`, `/search`, `/archives`, `/about`) instead of static HTML5 UP page files.
+- **Search** is server-side `/api/search` via the theme's `search` template, not a client-only index.
+- **Contact / forms** from the upstream demo are not wired to a mail backend.
+- **No dark mode / no color-scheme presets** — upstream Massively is a single design; a Dune dark or multi-scheme lift may land later as an optional enhancement, not as fidelity work.
+- **CC BY credit** remains visible when `show_html5up_credit` is on (compare [https://html5up.net/massively](https://html5up.net/massively)).
+
