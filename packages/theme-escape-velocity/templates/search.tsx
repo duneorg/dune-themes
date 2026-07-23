@@ -11,13 +11,13 @@ export default function SearchTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, searchQuery, searchResults, t } = props;
-  const tr = t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const action = getSearchUrl("").split("?")[0];
 
   return (
     <LayoutComponent {...props} landing={false}>
       <div id="main" class="wrapper style2">
-        <div class="title">{page.frontmatter.title ?? tr("search.title")}</div>
+        <div class="title">{tr("search.title", "Search")}</div>
         <div class="container">
           <div id="content">
             <article class="box post">
@@ -28,13 +28,13 @@ export default function SearchTemplate(props: TemplateProps & {
                       type="search"
                       name="q"
                       value={searchQuery ?? ""}
-                      placeholder={tr("search.placeholder")}
-                      aria-label={tr("search.placeholder")}
+                      placeholder={tr("search.placeholder", "Search…")}
+                      aria-label={tr("search.placeholder", "Search…")}
                     />
                   </div>
                   <div class="col-4 col-12-small">
                     <ul class="actions">
-                      <li><input type="submit" class="style1" value={tr("search.submit")} /></li>
+                      <li><input type="submit" class="style1" value={tr("search.submit", "Search")} /></li>
                     </ul>
                   </div>
                 </div>
@@ -42,7 +42,7 @@ export default function SearchTemplate(props: TemplateProps & {
               {searchQuery && (
                 <section class="search-results" aria-live="polite">
                   {(searchResults ?? []).length === 0
-                    ? <p>{tr("search.empty")}</p>
+                    ? <p>{tr("search.empty", "No results found.")}</p>
                     : (
                       <ul class="link-list last-child">
                         {searchResults!.map((r) => (
