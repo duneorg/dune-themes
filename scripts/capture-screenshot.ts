@@ -78,13 +78,32 @@ async function waitForServer(url: string, attempts = 40): Promise<void> {
   throw new Error(`Demo server did not respond at ${url}`);
 }
 
+async function launchBrowser() {
+  const { chromium } = await import("npm:playwright@^1.45");
+  const candidates = [
+    Deno.env.get("PW_EXE"),
+    `${Deno.env.get("HOME")}/Library/Caches/ms-playwright/chromium-1232/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`,
+    `${Deno.env.get("HOME")}/Library/Caches/ms-playwright/chromium-1228/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`,
+    "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  ].filter(Boolean) as string[];
+  for (const executablePath of candidates) {
+    try {
+      await Deno.stat(executablePath);
+      return await chromium.launch({ executablePath, headless: true });
+    } catch {
+      /* try next */
+    }
+  }
+  return await chromium.launch({ headless: true });
+}
+
 async function capture(
   url: string,
   path: string,
   opts: { twoPass: boolean; slug: string },
 ): Promise<void> {
-  const { chromium } = await import("npm:playwright@^1.45");
-  const browser = await chromium.launch();
+  const browser = await launchBrowser();
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
     // Not "networkidle": the dev server's live-reload connection
