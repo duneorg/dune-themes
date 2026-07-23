@@ -1,18 +1,21 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatDirectiveDate, postExcerpt } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, pathname } = props;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const { page, children, collection, pagination, pathname, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const isHome = (() => { const r = pathname ?? page?.route ?? "/"; const n = r !== "/" && r.endsWith("/") ? r.slice(0, -1) : r; return n === "/" || n === "/home"; })();
   const items = collection?.items ?? [];
 
   if (isHome) {
@@ -38,7 +41,7 @@ export default function BlogTemplate(props: TemplateProps & {
                   {date && <p><time datetime={date}>{formatDirectiveDate(date)}</time></p>}
                   {excerpt && <p>{excerpt}</p>}
                   <ul class="actions">
-                    <li><a href={post.route} class="button alt">Read More</a></li>
+                    <li><a href={post.route} class="button alt">{tr("post.read_more", "Read More")}</a></li>
                   </ul>
                 </div>
               </section>
@@ -48,10 +51,10 @@ export default function BlogTemplate(props: TemplateProps & {
         {(pagination?.newer || pagination?.older) && (
           <ul class="actions special pagination">
             {pagination.older && (
-              <li><a href={pagination.older} class="button alt">← Older</a></li>
+              <li><a href={pagination.older} class="button alt">← {tr("pagination.older", "Older")}</a></li>
             )}
             {pagination.newer && (
-              <li><a href={pagination.newer} class="button alt">Newer →</a></li>
+              <li><a href={pagination.newer} class="button alt">{tr("pagination.newer", "Newer")} →</a></li>
             )}
           </ul>
         )}

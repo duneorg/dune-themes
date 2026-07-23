@@ -1,21 +1,32 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { themeImage } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
+
+function withBase(basePath: string, path: string): string {
+  const joined = `${basePath}${path.startsWith("/") ? path : `/${path}`}`;
+  return joined.replace(/([^:]\/)\/+/g, "$1") || "/";
+}
+
 
 export default function DefaultTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   config?: { theme?: { name?: string } };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, pathname, config } = props;
+  const { page, children, pathname, config, site, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const basePath = site?.basePath ?? "";
   const fm = page.frontmatter as Record<string, unknown>;
   const subtitle = (fm.metadata as Record<string, unknown> | undefined)?.description ??
     fm.description;
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const cover = safeHref(fm.cover);
+  const isHome = (() => { const r = pathname ?? page?.route ?? "/"; const n = r !== "/" && r.endsWith("/") ? r.slice(0, -1) : r; return n === "/" || n === "/home"; })();
   const themeName = config?.theme?.name ?? "directive";
   const img = (file: string) => themeImage(themeName, file);
 
@@ -33,7 +44,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <img src={img("pic01.jpg")} alt="" />
             </span>
             <div class="content">
-              <h3><a href="/blog">The Blog</a></h3>
+              <h3><a href={withBase(basePath, "/blog")}>The Blog</a></h3>
               <p>Collection-driven posts with markdown, code samples, and taxonomy tags.</p>
             </div>
           </section>
@@ -42,7 +53,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <img src={img("pic02.jpg")} alt="" />
             </span>
             <div class="content">
-              <h3><a href="/search">Search</a></h3>
+              <h3><a href={withBase(basePath, "/search")}>Search</a></h3>
               <p>Query demo pages through Dune&apos;s search template and API endpoint.</p>
             </div>
           </section>
@@ -51,7 +62,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <img src={img("pic03.jpg")} alt="" />
             </span>
             <div class="content">
-              <h3><a href="/archives">Archives</a></h3>
+              <h3><a href={withBase(basePath, "/archives")}>Archives</a></h3>
               <p>Browse all posts grouped by year in a chronological index.</p>
             </div>
           </section>
@@ -61,8 +72,8 @@ export default function DefaultTemplate(props: TemplateProps & {
           <h3>Ready to explore?</h3>
           <p>Start with the blog or browse the about page for more on this demo site.</p>
           <ul class="actions special">
-            <li><a href="/blog" class="button">Read the Blog</a></li>
-            <li><a href="/about" class="button alt">About</a></li>
+            <li><a href={withBase(basePath, "/blog")} class="button">{tr("cta.read_blog", "Read the Blog")}</a></li>
+            <li><a href={withBase(basePath, "/about")} class="button alt">{tr("cta.about", "About")}</a></li>
           </ul>
         </footer>
       </LayoutComponent>
