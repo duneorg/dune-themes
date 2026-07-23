@@ -1,3 +1,5 @@
+import { safeHref } from "./safe-url.ts";
+
 export function formatAstralDate(raw: string): string {
   const d = new Date(raw);
   if (Number.isNaN(d.getTime())) return raw;
@@ -10,7 +12,7 @@ export function postExcerpt(fm: Record<string, unknown>): string | undefined {
 }
 
 export function navIconClass(route: string): string {
-  if (route === "/") return "icon solid fa-home";
+  if (route === "/" || route.endsWith("/home")) return "icon solid fa-home";
   if (route.includes("blog")) return "icon solid fa-folder";
   if (route.includes("search")) return "icon solid fa-search";
   if (route.includes("archiv")) return "icon solid fa-archive";
@@ -18,11 +20,15 @@ export function navIconClass(route: string): string {
   return "icon solid fa-link";
 }
 
+export function themeImage(themeName: string, file: string): string {
+  return `/themes/${themeName}/static/html5up/images/${file}`;
+}
+
 const PIC_COUNT = 12;
 
 export function defaultPicUrl(themeName: string, index: number): string {
   const n = String((index % PIC_COUNT) + 1).padStart(2, "0");
-  return `/themes/${themeName}/static/html5up/images/pic${n}.jpg`;
+  return themeImage(themeName, `pic${n}.jpg`);
 }
 
 export function postPicUrl(
@@ -30,5 +36,5 @@ export function postPicUrl(
   themeName: string,
   index: number,
 ): string {
-  return typeof fm.cover === "string" ? fm.cover : defaultPicUrl(themeName, index);
+  return safeHref(fm.cover) ?? defaultPicUrl(themeName, index);
 }
