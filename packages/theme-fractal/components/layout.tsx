@@ -1,9 +1,23 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+  /** When true, show the phone mockup hero header. */
+  landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+}
+
+function withBase(basePath: string, path: string): string {
+  const joined = `${basePath}${path.startsWith("/") ? path : `/${path}`}`;
+  return joined.replace(/([^:]\/)\/+/g, "$1") || "/";
 }
 
 export default function Layout({
@@ -11,25 +25,40 @@ export default function Layout({
   pageTitle,
   site,
   config,
+  nav,
   pathname,
   dir,
   children,
   themeConfig,
+  t,
+  landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "fractal";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Fractal";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const headerTitle = (themeConfig?.header_title as string) || site?.title || "Fractal";
   const headerSubtitle = (themeConfig?.header_subtitle as string) || site?.description ||
     "A responsive portfolio theme for Dune CMS";
-  const phoneImage = (themeConfig?.phone_image as string) ||
+  const phoneImage = safeHref(themeConfig?.phone_image) ||
     `/themes/${themeName}/static/html5up/images/screen.jpg`;
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
+  const isLanding = landing ?? isHome;
+  const blogRoute = nav?.find((item) => item.route !== "/" && item.route.endsWith("/blog"))?.route ??
+    nav?.find((item) => item.route.includes("blog"))?.route ??
+    withBase(basePath, "/blog");
+  const creditHref = safeHref("https://html5up.net/fractal") ?? "https://html5up.net/fractal";
+  const getStarted = tr("cta.get_started", "Get Started");
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -48,35 +77,51 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
-        <header id="header">
-          <div class="content">
-            <h1><a href="/">{headerTitle}</a></h1>
-            <p>{headerSubtitle}</p>
-          </div>
-          <div class="image phone">
-            <div class="inner">
-              <img src={phoneImage} alt="" />
+      <body class="is-preload theme-fractal archetype-portfolio">
+        {isLanding && (
+          <header id="header">
+            <div class="content">
+              <h1><a href={homeHref}>{headerTitle}</a></h1>
+              <p>{headerSubtitle}</p>
+              <ul class="actions">
+                <li>
+                  <a href={blogRoute} class="button primary icon solid fa-download">
+                    {getStarted}
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
-        </header>
+            <div class="image phone">
+              <div class="inner">
+                <img src={phoneImage} alt="" />
+              </div>
+            </div>
+          </header>
+        )}
 
         {children}
 
-        {showCredit && (
-          <footer id="footer">
-            <p class="copyright">
-              &copy; {new Date().getFullYear()} {copyrightName}. Design:{" "}
-              <a href="https://html5up.net/fractal">HTML5 UP</a>.
-            </p>
-          </footer>
-        )}
+        <footer id="footer">
+          <p class="copyright">
+            &copy; {new Date().getFullYear()} {copyrightName}.
+            {showCredit && (
+              <>
+                {" "}{tr("credit.design", "Design")}:{" "}
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+              </>
+            )}
+          </p>
+        </footer>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+import { safeHref } from "./safe-url.ts";
+
 export function formatFractalDate(raw: string): string {
   const d = new Date(raw);
   if (Number.isNaN(d.getTime())) return raw;
@@ -9,11 +11,15 @@ export function postExcerpt(fm: Record<string, unknown>): string | undefined {
   return meta?.description ? String(meta.description) : undefined;
 }
 
+export function themeImage(themeName: string, file: string): string {
+  return `/themes/${themeName}/static/html5up/images/${file}`;
+}
+
 const PIC_COUNT = 5;
 
 export function defaultPicUrl(themeName: string, index: number): string {
   const n = String((index % PIC_COUNT) + 1).padStart(2, "0");
-  return `/themes/${themeName}/static/html5up/images/pic${n}.jpg`;
+  return themeImage(themeName, `pic${n}.jpg`);
 }
 
 export function postPicUrl(
@@ -21,5 +27,5 @@ export function postPicUrl(
   themeName: string,
   index: number,
 ): string {
-  return typeof fm.cover === "string" ? fm.cover : defaultPicUrl(themeName, index);
+  return safeHref(fm.cover) ?? defaultPicUrl(themeName, index);
 }

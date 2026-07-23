@@ -1,10 +1,12 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatFractalDate } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
 
 export default function PostTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   config?: { theme?: { name?: string } };
 }) {
@@ -12,7 +14,7 @@ export default function PostTemplate(props: TemplateProps & {
   const { page, children, config } = props;
   const fm = page.frontmatter as Record<string, unknown>;
   const date = fm.date ? String(fm.date) : "";
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+  const cover = safeHref(fm.cover);
   const themeName = config?.theme?.name ?? "fractal";
 
   return (
