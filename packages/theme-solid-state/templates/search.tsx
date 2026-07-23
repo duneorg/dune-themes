@@ -11,7 +11,7 @@ export default function SearchTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, searchQuery, searchResults, t } = props;
-  const tr = t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const action = getSearchUrl("").split("?")[0];
 
   return (
@@ -19,7 +19,7 @@ export default function SearchTemplate(props: TemplateProps & {
       <section id="wrapper">
         <header>
           <div class="inner">
-            <h2>{page.frontmatter.title ?? tr("search.title")}</h2>
+            <h2>{tr("search.title", "Search")}</h2>
           </div>
         </header>
         <div class="wrapper">
@@ -27,18 +27,18 @@ export default function SearchTemplate(props: TemplateProps & {
             <form class="search-form" action={action} method="get" role="search">
               <div class="fields">
                 <div class="field">
-                  <label for="q">{tr("search.placeholder")}</label>
+                  <label for="q">{tr("search.placeholder", "Search…")}</label>
                   <input type="search" name="q" id="q" value={searchQuery ?? ""} />
                 </div>
               </div>
               <ul class="actions">
-                <li><input type="submit" value={tr("search.submit")} /></li>
+                <li><input type="submit" value={tr("search.submit", "Search")} /></li>
               </ul>
             </form>
             {searchQuery && (
               <section class="search-results" aria-live="polite">
                 {(searchResults ?? []).length === 0
-                  ? <p>{tr("search.empty")}</p>
+                  ? <p>{tr("search.empty", "No results found.")}</p>
                   : (
                     <ul>
                       {searchResults!.map((r) => (

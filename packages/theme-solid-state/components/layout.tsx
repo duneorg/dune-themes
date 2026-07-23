@@ -1,27 +1,50 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+  /** When true, alt header; landing template owns the full footer section. */
   landing?: boolean;
 }
 
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+}
+
 const MENU_SCRIPT = `
-window.addEventListener('load',function(){
-  setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-});
-document.querySelectorAll('a[href="#menu"]').forEach(function(a){
-  a.addEventListener('click',function(e){ e.preventDefault(); document.body.classList.add('is-menu-visible'); });
-});
-document.querySelectorAll('#menu .close').forEach(function(a){
-  a.addEventListener('click',function(e){ e.preventDefault(); document.body.classList.remove('is-menu-visible'); });
-});
-document.querySelector('#page-wrapper')?.addEventListener('click',function(e){
-  if(document.body.classList.contains('is-menu-visible')&&!e.target.closest('#menu')&&!e.target.closest('a[href="#menu"]')){
-    document.body.classList.remove('is-menu-visible');
-  }
-});
+(function(){
+  window.addEventListener('load',function(){
+    setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+  });
+  var body=document.body;
+  document.querySelectorAll('a[href="#menu"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      body.classList.add('is-menu-visible');
+    });
+  });
+  document.querySelectorAll('#menu .close').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      body.classList.remove('is-menu-visible');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!body.classList.contains('is-menu-visible'))return;
+    var menu=document.getElementById('menu');
+    var header=document.getElementById('header');
+    if(menu&&header&&!menu.contains(e.target)&&!header.contains(e.target)){
+      body.classList.remove('is-menu-visible');
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') body.classList.remove('is-menu-visible');
+  });
+})();
 `;
 
 export default function Layout({
@@ -34,23 +57,34 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "solid-state";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Solid State";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
+  const creditHref = safeHref("https://html5up.net/solid-state") ??
+    "https://html5up.net/solid-state";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -69,21 +103,27 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-solid-state archetype-landing">
         <div id="page-wrapper">
           <header id="header" class={isLanding ? "alt" : undefined}>
-            <h1><a href="/">{site?.title ?? "Solid State"}</a></h1>
-            <nav><a href="#menu">Menu</a></nav>
+            <h1><a href={homeHref}>{site?.title ?? "Solid State"}</a></h1>
+            <nav>
+              <a href="#menu">{tr("nav.menu", "Menu")}</a>
+            </nav>
           </header>
 
-          <nav id="menu">
+          <nav id="menu" aria-label={tr("nav.main", "Site")}>
             <div class="inner">
-              <h2>Menu</h2>
+              <h2>{tr("nav.menu", "Menu")}</h2>
               <ul class="links">
                 {navItems.map((item) => (
                   <li key={item.route}>
-                    <a href={item.route} class={isActive(item.route) ? "active" : undefined}>
-                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    <a
+                      href={item.route}
+                      class={isActive(item.route) ? "active" : undefined}
+                      aria-current={isActive(item.route) ? "page" : undefined}
+                    >
+                      {item.navTitle ?? item.title ?? item.route}
                     </a>
                   </li>
                 ))}
@@ -94,12 +134,17 @@ export default function Layout({
 
           {children}
 
-          {showCredit && !isLanding && (
+          {!isLanding && (
             <section id="footer">
               <div class="inner">
                 <ul class="copyright">
                   <li>&copy; {new Date().getFullYear()} {copyrightName}. All rights reserved.</li>
-                  <li>Design: <a href="https://html5up.net/solid-state">HTML5 UP</a></li>
+                  {showCredit && (
+                    <li>
+                      {tr("credit.design", "Design")}:{" "}
+                      <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                    </li>
+                  )}
                 </ul>
               </div>
             </section>
