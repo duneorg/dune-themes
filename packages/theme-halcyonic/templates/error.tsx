@@ -7,17 +7,20 @@ export default function ErrorTemplate(props: TemplateProps & {
   t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const tr = props.t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) =>
+    (props.t ? props.t(key) : undefined) ?? fallback;
   const code = (props.page?.frontmatter as Record<string, unknown>)?.errorCode ?? 404;
+  const basePath = props.site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
 
   return (
     <LayoutComponent {...props} landing={false}>
       <section class="error-page">
         <header>
           <h2>{String(code)}</h2>
-          <p>{tr("error.notfound")}</p>
+          <p>{tr("error.notfound", "This page could not be found.")}</p>
         </header>
-        <p><a href="/" class="button-large">{tr("error.home")}</a></p>
+        <p><a href={homeHref} class="button-large">{tr("error.home", "Back to home")}</a></p>
       </section>
     </LayoutComponent>
   );
