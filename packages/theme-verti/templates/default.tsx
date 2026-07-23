@@ -1,21 +1,33 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { themeImage } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
+
+function withBase(basePath: string, path: string): string {
+  const joined = `${basePath}${path.startsWith("/") ? path : `/${path}`}`;
+  return joined.replace(/([^:]\/)\/+/g, "$1") || "/";
+}
+
 
 export default function DefaultTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   config?: { theme?: { name?: string } };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, pathname, config } = props;
+  const { page, children, pathname, config, site, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const basePath = site?.basePath ?? "";
+  const creditHref = safeHref("https://html5up.net/verti") ?? "https://html5up.net/verti";
   const fm = page.frontmatter as Record<string, unknown>;
   const subtitle = (fm.metadata as Record<string, unknown> | undefined)?.description ??
     fm.description;
-  const cover = typeof fm.cover === "string" ? fm.cover : undefined;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const cover = safeHref(fm.cover);
+  const isHome = (() => { const r = pathname ?? page?.route ?? "/"; const n = r !== "/" && r.endsWith("/") ? r.slice(0, -1) : r; return n === "/" || n === "/home"; })();
   const themeName = config?.theme?.name ?? "verti";
   const img = (file: string) => themeImage(themeName, file);
 
@@ -27,7 +39,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             <div class="row">
               <div class="col-4 col-12-medium">
                 <section class="box feature">
-                  <a href="/blog" class="image featured"><img src={img("pic01.jpg")} alt="" /></a>
+                  <a href={withBase(basePath, "/blog")} class="image featured"><img src={img("pic01.jpg")} alt="" /></a>
                   <div class="inner">
                     <header>
                       <h2>Blog &amp; posts</h2>
@@ -39,7 +51,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               </div>
               <div class="col-4 col-12-medium">
                 <section class="box feature">
-                  <a href="/search" class="image featured"><img src={img("pic02.jpg")} alt="" /></a>
+                  <a href={withBase(basePath, "/search")} class="image featured"><img src={img("pic02.jpg")} alt="" /></a>
                   <div class="inner">
                     <header>
                       <h2>Search</h2>
@@ -51,7 +63,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               </div>
               <div class="col-4 col-12-medium">
                 <section class="box feature">
-                  <a href="/archives" class="image featured"><img src={img("pic03.jpg")} alt="" /></a>
+                  <a href={withBase(basePath, "/archives")} class="image featured"><img src={img("pic03.jpg")} alt="" /></a>
                   <div class="inner">
                     <header>
                       <h2>Archives</h2>
@@ -74,13 +86,13 @@ export default function DefaultTemplate(props: TemplateProps & {
                     <h3>Quick links</h3>
                     <div class="grid">
                       <div class="row gtr-50">
-                        <div class="col-6"><a href="/blog" class="image fit"><img src={img("pic04.jpg")} alt="" /></a></div>
-                        <div class="col-6"><a href="/about" class="image fit"><img src={img("pic05.jpg")} alt="" /></a></div>
-                        <div class="col-6"><a href="/search" class="image fit"><img src={img("pic06.jpg")} alt="" /></a></div>
-                        <div class="col-6"><a href="https://html5up.net/verti" class="image fit"><img src={img("pic07.jpg")} alt="" /></a></div>
+                        <div class="col-6"><a href={withBase(basePath, "/blog")} class="image fit"><img src={img("pic04.jpg")} alt="" /></a></div>
+                        <div class="col-6"><a href={withBase(basePath, "/about")} class="image fit"><img src={img("pic05.jpg")} alt="" /></a></div>
+                        <div class="col-6"><a href={withBase(basePath, "/search")} class="image fit"><img src={img("pic06.jpg")} alt="" /></a></div>
+                        <div class="col-6"><a href={creditHref} class="image fit"><img src={img("pic07.jpg")} alt="" /></a></div>
                       </div>
                     </div>
-                    <a href="/blog" class="button icon solid fa-file-alt">Read the blog</a>
+                    <a href={withBase(basePath, "/blog")} class="button icon solid fa-file-alt">{tr("cta.read_blog", "Read the blog")}</a>
                   </section>
                 </div>
               </div>
@@ -90,7 +102,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                     <h2>So what&apos;s this all about?</h2>
                     <p>
                       <strong>Verti</strong> is a business landing theme adapted from{" "}
-                      <a href="https://html5up.net/verti">HTML5 UP</a> for Dune CMS — banner,
+                      <a href={creditHref}>HTML5 UP</a> for Dune CMS — banner,
                       feature boxes, sidebar thumbnails, and widget footer preserved from upstream.
                     </p>
                     <p>
@@ -98,7 +110,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                       upstream license.
                     </p>
                     {children && <div data-dune-body>{children}</div>}
-                    <a href="/about" class="button icon solid fa-arrow-circle-right">Continue reading</a>
+                    <a href={withBase(basePath, "/about")} class="button icon solid fa-arrow-circle-right">{tr("post.continue", "Continue reading")}</a>
                   </section>
                 </div>
               </div>

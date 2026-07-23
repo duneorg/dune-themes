@@ -1,11 +1,52 @@
 # Verti
 
-Dune theme adapted from [HTML5 UP Verti](https://html5up.net/verti) by [HTML5 UP](https://html5up.net).
+Business landing with banner, feature boxes, and content sidebar. Adapted from
+[HTML5 UP Verti](https://html5up.net/verti) (CC BY 3.0).
 
-**License:** Design by HTML5 UP (CC BY 3.0). Keep visible design credit on live sites.
+![Verti screenshot](https://themes.getdune.org/verti/themes/verti/static/screenshot.png)
 
-**Templates:** `default` · `post` · `blog` · `search` · `error` · `archives` — banner landing with feature boxes, sidebar thumbnails, widget footer, and no-sidebar inner pages.
+**Demo**: https://themes.getdune.org/verti
+
+**Tags**: dune-theme, landing, html5up, business
+
+**License:** Design by [HTML5 UP](https://html5up.net) (CC BY 3.0). Sites
+using this theme must keep visible design credit per the
+[Creative Commons Attribution 3.0 License](https://html5up.net/license).
+
+## Install
 
 ```bash
 dune theme:install jsr:@dune/theme-verti@1.0.0 --activate
 ```
+
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: verti
+    src: jsr:@dune/theme-verti@1.0.0
+
+theme:
+  name: verti
+  src: jsr:@dune/theme-verti@1.0.0
+```
+
+Business landing with banner, feature boxes, and content sidebar. See the
+[live demo](https://themes.getdune.org/verti).
+
+## Templates
+
+| Template | Role |
+|---|---|
+| `default` | Feature + sidebar landing on home; article pages elsewhere |
+| `blog` | Post listing |
+| `post` | Single post |
+| `archives` | Year-grouped post list |
+| `search` | Form search |
+| `error` | Themed 404 / 500 |
+
+## Attribution on live sites
+
+Visible HTML5 UP credit is on by default (`show_html5up_credit`). Do not
+remove upstream design credit unless you hold a separate
+[Pixelarity](https://pixelarity.com) license.
