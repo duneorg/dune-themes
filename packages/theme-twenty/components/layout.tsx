@@ -1,10 +1,18 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+  /** When true, index body + alt header; landing template owns the footer. */
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -17,26 +25,40 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "twenty";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Twenty";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const tagline = (themeConfig?.tagline as string) || "by HTML5 UP";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
   const blogRoute = nav?.find((item) => item.route !== "/" && item.route.endsWith("/blog"))?.route ??
-    nav?.find((item) => item.route.includes("blog"))?.route ?? "/blog";
+    nav?.find((item) => item.route.includes("blog"))?.route ??
+    `${basePath}/blog`.replace(/([^:]\/)\/+/g, "$1");
+  const creditHref = safeHref("https://html5up.net/twenty") ?? "https://html5up.net/twenty";
+  const bodyClass = isLanding
+    ? "index is-preload theme-twenty archetype-landing"
+    : "no-sidebar is-preload theme-twenty archetype-landing";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -55,43 +77,70 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class={isLanding ? "index is-preload" : "no-sidebar is-preload"}>
+      <body class={bodyClass}>
         <div id="page-wrapper">
           <header id="header" class={isLanding ? "alt" : undefined}>
             <h1 id="logo">
-              <a href="/">{site?.title ?? "Twenty"} <span>{tagline}</span></a>
+              <a href={homeHref}>{site?.title ?? "Twenty"} <span>{tagline}</span></a>
             </h1>
-            <nav id="nav">
+            <nav id="nav" aria-label={tr("nav.main", "Site")}>
               <ul>
                 {navItems.map((item) => (
                   <li key={item.route} class={isActive(item.route) ? "current" : undefined}>
-                    <a href={item.route}>
-                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                      {item.navTitle ?? item.title ?? item.route}
                     </a>
                   </li>
                 ))}
-                <li><a href={blogRoute} class="button primary">Blog</a></li>
+                {blogRoute && (
+                  <li>
+                    <a href={blogRoute} class="button primary">
+                      {tr("cta.get_started", "Get Started")}
+                    </a>
+                  </li>
+                )}
               </ul>
             </nav>
           </header>
 
           {children}
 
-          {showCredit && !isLanding && (
+          {!isLanding && (
             <footer id="footer">
               <ul class="copyright">
                 <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
-                <li>Design: <a href="https://html5up.net/twenty">HTML5 UP</a></li>
+                {showCredit && (
+                  <li>
+                    {tr("credit.design", "Design")}:{" "}
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                  </li>
+                )}
               </ul>
             </footer>
           )}
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.addEventListener('load',function(){
-            setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
-          });
-        ` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function(){
+            window.addEventListener('load',function(){
+              setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
+            });
+            document.querySelectorAll('a.scrolly[href^="#"]').forEach(function(a){
+              a.addEventListener('click',function(e){
+                var id=a.getAttribute('href');
+                if(!id||id==='#')return;
+                var el=document.querySelector(id);
+                if(!el)return;
+                e.preventDefault();
+                el.scrollIntoView({behavior:'smooth'});
+              });
+            });
+          })();
+        `,
+          }}
+        />
       </body>
     </html>
   );
