@@ -1217,7 +1217,7 @@
       "screenshotUrl": "https://themes.getdune.org/striped/themes/striped/static/screenshot.png",
       "jsr": "jsr:@dune/theme-striped@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/striped-v1.0.0/striped-1.0.0.zip",
-      "sha256": "37c8639a1922b702f7f9ca2900131599285205067e2579469d69c362b78e934d",
+      "sha256": "7d5bd2c1fac2dc298fbf7eaf8dd03a8cfe1cca88bc7e755a1ec891da2d394421",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
