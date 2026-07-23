@@ -1,18 +1,21 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatEventuallyDate, postExcerpt } from "../utils/content.ts";
 
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, pathname } = props;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const { page, children, collection, pagination, pathname, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const isHome = (() => { const r = pathname ?? page?.route ?? "/"; const n = r !== "/" && r.endsWith("/") ? r.slice(0, -1) : r; return n === "/" || n === "/home"; })();
   const items = collection?.items ?? [];
 
   if (isHome) {
@@ -43,8 +46,8 @@ export default function BlogTemplate(props: TemplateProps & {
       </ul>
       {(pagination?.newer || pagination?.older) && (
         <nav class="pagination" aria-label="Pagination">
-          {pagination.newer && <a href={pagination.newer}>← Newer</a>}
-          {pagination.older && <a href={pagination.older}>Older →</a>}
+          {pagination.newer && <a href={pagination.newer}>← {tr("pagination.newer", "Newer")}</a>}
+          {pagination.older && <a href={pagination.older}>{tr("pagination.older", "Older")} →</a>}
         </nav>
       )}
     </LayoutComponent>

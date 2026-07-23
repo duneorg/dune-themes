@@ -28,7 +28,7 @@ export function iconForUrl(href: string): string {
 }
 
 export function socialLinksFromNav(
-  nav: Array<{ route: string; navTitle?: string; frontmatter?: { title?: string } }> | undefined,
+  nav: Array<{ route: string; navTitle?: string; title?: string; frontmatter?: { title?: string } }> | undefined,
 ): SocialLink[] {
   return (nav ?? [])
     .filter((item) => item.route && item.route !== "/")
@@ -36,6 +36,6 @@ export function socialLinksFromNav(
     .map((item) => ({
       href: item.route,
       icon: iconForUrl(item.route),
-      label: item.navTitle ?? item.frontmatter?.title ?? item.route,
+      label: item.navTitle ?? item.title ?? item.frontmatter?.title ?? item.route,
     }));
 }
