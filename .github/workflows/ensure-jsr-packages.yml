@@ -1,0 +1,39 @@
+name: Ensure JSR packages
+
+# Creates missing @dune/theme-* packages and links them to this repo so
+# publish-jsr.yml OIDC can publish versions. Requires repository secret
+# JSR_TOKEN (jsr.io account token with `all` permission).
+#
+#   gh workflow run ensure-jsr-packages.yml
+
+on:
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: "Comma-separated slugs (empty = all HTML5 UP)"
+        required: false
+        default: ""
+
+jobs:
+  ensure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Ensure packages exist
+        env:
+          JSR_TOKEN: ${{ secrets.JSR_TOKEN }}
+        run: |
+          if [ -z "$JSR_TOKEN" ]; then
+            echo "JSR_TOKEN secret is not set on this repository."
+            echo "Create a token at https://jsr.io/account/tokens (permission: all),"
+            echo "add it as repo secret JSR_TOKEN, then re-run this workflow."
+            exit 1
+          fi
+          if [ -n "${{ inputs.slugs }}" ]; then
+            deno run -A scripts/ensure-jsr-packages.ts --slugs=${{ inputs.slugs }}
+          else
+            deno run -A scripts/ensure-jsr-packages.ts
+          fi
