@@ -9,6 +9,10 @@ export function postExcerpt(fm: Record<string, unknown>): string | undefined {
   return meta?.description ? String(meta.description) : undefined;
 }
 
+export function themeImage(themeName: string, file: string): string {
+  return `/themes/${themeName}/static/html5up/images/${file}`;
+}
+
 const BOX_ICONS = [
   "fa-comments",
   "fa-camera-retro",

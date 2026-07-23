@@ -1,4 +1,5 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { getSearchUrl } from "@dune/core/theme-helpers";
@@ -11,7 +12,7 @@ export default function SearchTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { searchQuery, searchResults, t } = props;
-  const tr = t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const action = getSearchUrl("").split("?")[0];
 
   return (
@@ -19,24 +20,24 @@ export default function SearchTemplate(props: TemplateProps & {
       <article class="wrapper style2">
         <div class="container">
           <header>
-            <h2>{tr("search.title")}</h2>
+            <h2>{tr("search.title", "Search")}</h2>
           </header>
           <form class="search-form" action={action} method="get" role="search">
             <input
               type="search"
               name="q"
               value={searchQuery ?? ""}
-              placeholder={tr("search.placeholder")}
-              aria-label={tr("search.placeholder")}
+              placeholder={tr("search.placeholder", "Search…")}
+              aria-label={tr("search.placeholder", "Search…")}
             />
             <ul class="actions">
-              <li><button type="submit" class="button">{tr("search.submit")}</button></li>
+              <li><button type="submit" class="button">{tr("search.submit", "Search")}</button></li>
             </ul>
           </form>
           {searchQuery && (
             <section class="search-results" aria-live="polite">
               {(searchResults ?? []).length === 0
-                ? <p>{tr("search.empty")}</p>
+                ? <p>{tr("search.empty", "No results found.")}</p>
                 : (
                   <ul class="alt">
                     {searchResults!.map((r) => (
