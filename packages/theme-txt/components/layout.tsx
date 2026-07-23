@@ -1,9 +1,16 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -16,25 +23,35 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "txt";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "TXT";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
-  const navItems = (nav ?? []).slice(0, 8);
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const tagline = (themeConfig?.tagline as string) || site?.description ||
     "A responsive site template for Dune CMS";
-  const isHome = currentPath === "/";
-  const bannerTitle = site?.title ?? "TXT";
-  const bannerText = tagline;
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
+  const navItems = (nav ?? []).slice(0, 8);
+  const siteTitle = site?.title ?? "TXT";
+  const creditHref = safeHref("https://html5up.net/txt") ?? "https://html5up.net/txt";
+  const letsGo = tr("cta.lets_go", "Alright let's go");
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -50,23 +67,25 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body class={isHome ? "homepage is-preload" : "is-preload"}>
+      <body class={isHome ? "homepage is-preload theme-txt archetype-portfolio" : "is-preload theme-txt archetype-portfolio"}>
         <div id="page-wrapper">
           <header id="header">
             <div class="logo container">
               <div>
-                <h1><a href="/" id="logo">{site?.title ?? "TXT"}</a></h1>
+                <h1>
+                  <a href={homeHref} id="logo">{siteTitle}</a>
+                </h1>
                 <p>{tagline}</p>
               </div>
             </div>
           </header>
 
-          <nav id="nav">
+          <nav id="nav" aria-label={tr("nav.main", "Site")}>
             <ul>
               {navItems.map((item) => (
                 <li key={item.route} class={isActive(item.route) ? "current" : undefined}>
-                  <a href={item.route}>
-                    {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                  <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                    {item.navTitle ?? item.title ?? item.route}
                   </a>
                 </li>
               ))}
@@ -76,9 +95,11 @@ export default function Layout({
           {isHome && (
             <section id="banner">
               <div class="content">
-                <h2>Welcome to {bannerTitle}</h2>
-                <p>{bannerText}</p>
-                <a href="#main" class="button scrolly">Alright let's go</a>
+                <h2>
+                  {tr("banner.welcome", "Welcome to")} {siteTitle}
+                </h2>
+                <p>{tagline}</p>
+                <a href="#main" class="button scrolly">{letsGo}</a>
               </div>
             </section>
           )}
@@ -87,21 +108,29 @@ export default function Layout({
             <div class="container">{children}</div>
           </section>
 
-          {showCredit && (
-            <footer id="footer">
-              <div class="container">
-                <div id="copyright">
-                  <ul class="menu">
-                    <li>&copy; {new Date().getFullYear()} {copyrightName}. All rights reserved</li>
-                    <li>Design: <a href="https://html5up.net/txt">HTML5 UP</a></li>
-                  </ul>
-                </div>
+          <footer id="footer">
+            <div class="container">
+              <div id="copyright">
+                <ul class="menu">
+                  <li>
+                    &copy; {new Date().getFullYear()} {copyrightName}.{" "}
+                    {tr("footer.rights", "All rights reserved")}
+                  </li>
+                  {showCredit && (
+                    <li>
+                      {tr("credit.design", "Design")}:{" "}
+                      <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                    </li>
+                  )}
+                </ul>
               </div>
-            </footer>
-          )}
+            </div>
+          </footer>
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function(){
             window.addEventListener('load',function(){
               setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
@@ -117,7 +146,9 @@ export default function Layout({
               });
             });
           })();
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );

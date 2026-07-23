@@ -1,21 +1,62 @@
 # TXT
 
-Dune theme adapted from [HTML5 UP TXT](https://html5up.net/txt) by [HTML5 UP](https://html5up.net).
+Text-forward portfolio with a homepage banner. Adapted from
+[HTML5 UP TXT](https://html5up.net/txt) (CC BY 3.0).
 
-**License:** Design by HTML5 UP (CC BY 3.0). Keep visible design credit on live sites.
+![TXT screenshot](https://themes.getdune.org/txt/themes/txt/static/screenshot.png)
 
-**Templates:** `default` · `post` · `blog` · `search` · `error` · `archives` — page-wrapper portfolio with home banner and feature-grid blog.
+**Demo**: https://themes.getdune.org/txt
+
+**Tags**: dune-theme, portfolio, html5up, gallery
+
+**License:** Design by [HTML5 UP](https://html5up.net) (CC BY 3.0). Sites
+using this theme must keep visible design credit per the
+[Creative Commons Attribution 3.0 License](https://html5up.net/license).
+
+## Install
 
 ```bash
 dune theme:install jsr:@dune/theme-txt@1.0.0 --activate
 ```
 
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: txt
+    src: jsr:@dune/theme-txt@1.0.0
+
+theme:
+  name: txt
+  src: jsr:@dune/theme-txt@1.0.0
+```
+
+Homepage banner, feature-grid explore tiles, and boxed blog cards. See the
+[live demo](https://themes.getdune.org/txt).
+
+## Templates
+
+| Template | Role |
+|---|---|
+| `default` | Banner + feature grid on home; plain pages elsewhere |
+| `blog` | Feature-card post listing |
+| `post` | Single post |
+| `archives` | Year-grouped post list |
+| `search` | Form search |
+| `error` | Themed 404 / 500 |
+
+## Attribution on live sites
+
+Visible HTML5 UP credit is on by default (`show_html5up_credit`). Do not
+remove upstream design credit unless you hold a separate
+[Pixelarity](https://pixelarity.com) license.
+
 ## From template to your site
 
 1. Choose a starting design — this theme, another [HTML5 UP](https://html5up.net) template,
-   or a [Pixelarity](https://pixelarity.com) design (including Pixelarity-only templates)
+   or a [Pixelarity](https://pixelarity.com) design
 2. We adapt structure, styling, and Dune configuration to your content
 3. You get a deployed, maintained Dune site — not a redistributable theme package
 
-Themes we implement from Pixelarity are **bespoke client projects only** (agency-licensed;
-not part of the public Dune theme catalog). [Contact us →](https://getdune.org/services)
+Themes we implement from Pixelarity are **bespoke client projects only**.
+[Contact us →](https://getdune.org/services)
