@@ -1,10 +1,11 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatAerialDate } from "../utils/content.ts";
 
 export default function PostTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;

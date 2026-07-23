@@ -1,23 +1,62 @@
 # Aerial
 
-Dune theme adapted from [HTML5 UP Aerial](https://html5up.net/aerial) by [HTML5 UP](https://html5up.net).
+Fullscreen landing with icon nav over a fixed background. Adapted from
+[HTML5 UP Aerial](https://html5up.net/aerial) (CC BY 3.0).
 
-**License:** Design by HTML5 UP (CC BY 3.0). Keep visible design credit on live sites.
+![Aerial screenshot](https://themes.getdune.org/aerial/themes/aerial/static/screenshot.png)
 
-**Templates:** `default` · `post` · `blog` · `search` · `error` · `archives` — fullscreen landing with icon nav; inner pages scroll inside the fixed viewport.
+**Demo**: https://themes.getdune.org/aerial
 
-Nav items (excluding home) appear as social-style icon links in the hero. Up to five routes are shown.
+**Tags**: dune-theme, landing, html5up, fullscreen
+
+**License:** Design by [HTML5 UP](https://html5up.net) (CC BY 3.0). Sites
+using this theme must keep visible design credit per the
+[Creative Commons Attribution 3.0 License](https://html5up.net/license).
+
+## Install
 
 ```bash
 dune theme:install jsr:@dune/theme-aerial@1.0.0 --activate
 ```
 
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: aerial
+    src: jsr:@dune/theme-aerial@1.0.0
+
+theme:
+  name: aerial
+  src: jsr:@dune/theme-aerial@1.0.0
+```
+
+Fullscreen landing with icon nav over a fixed background. See the
+[live demo](https://themes.getdune.org/aerial).
+
+## Templates
+
+| Template | Role |
+|---|---|
+| `default` | Fullscreen hero on home; scroll content elsewhere |
+| `blog` | Post listing |
+| `post` | Single post |
+| `archives` | Year-grouped post list |
+| `search` | Form search |
+| `error` | Themed 404 / 500 |
+
+## Attribution on live sites
+
+Visible HTML5 UP credit is on by default (`show_html5up_credit`). Do not
+remove upstream design credit unless you hold a separate
+[Pixelarity](https://pixelarity.com) license.
+
 ## From template to your site
 
 1. Choose a starting design — this theme, another [HTML5 UP](https://html5up.net) template,
-   or a [Pixelarity](https://pixelarity.com) design (including Pixelarity-only templates)
+   or a [Pixelarity](https://pixelarity.com) design
 2. We adapt structure, styling, and Dune configuration to your content
 3. You get a deployed, maintained Dune site — not a redistributable theme package
 
-Themes we implement from Pixelarity are **bespoke client projects only** (agency-licensed;
-not part of the public Dune theme catalog). [Contact us →](https://getdune.org/services)
+Themes we implement from Pixelarity are **bespoke client projects only**.
+[Contact us →](https://getdune.org/services)
