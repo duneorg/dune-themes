@@ -1,10 +1,17 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -17,26 +24,38 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "multiverse";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Multiverse";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
   const siteTitle = site?.title ?? "Multiverse";
   const blogRoute = nav?.find((item) => item.route !== "/" && item.route.endsWith("/blog"))?.route ??
-    nav?.find((item) => item.route.includes("blog"))?.route ?? "/blog";
+    nav?.find((item) => item.route.includes("blog"))?.route ??
+    `${basePath}/blog`.replace(/([^:]\/)\/+/g, "$1");
+  const creditHref = safeHref("https://html5up.net/multiverse") ??
+    "https://html5up.net/multiverse";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -55,21 +74,29 @@ export default function Layout({
           <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/css/noscript.css`} />
         </noscript>
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-multiverse archetype-landing">
         <div id="wrapper">
           <header id="header">
-            <h1><a href="/"><strong>{siteTitle}</strong> for Dune</a></h1>
-            <nav>
+            <h1>
+              <a href={homeHref}>
+                <strong>{siteTitle}</strong> for Dune
+              </a>
+            </h1>
+            <nav aria-label={tr("nav.main", "Site")}>
               <ul>
                 {navItems.map((item) => (
                   <li key={item.route} class={isActive(item.route) ? "active" : undefined}>
-                    <a href={item.route}>
-                      {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                    <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
+                      {item.navTitle ?? item.title ?? item.route}
                     </a>
                   </li>
                 ))}
                 {!navItems.some((i) => i.route === blogRoute) && (
-                  <li><a href={blogRoute} class="icon solid fa-info-circle">Blog</a></li>
+                  <li>
+                    <a href={blogRoute} class="icon solid fa-info-circle">
+                      {tr("nav.blog", "Blog")}
+                    </a>
+                  </li>
                 )}
               </ul>
             </nav>
@@ -81,21 +108,30 @@ export default function Layout({
             </div>
           )}
 
-          {showCredit && !isLanding && (
+          {!isLanding && (
             <footer id="footer" class="panel dune-footer-compact">
               <p class="copyright">
-                &copy; {new Date().getFullYear()} {copyrightName}. Design:{" "}
-                <a href="https://html5up.net/multiverse">HTML5 UP</a>
+                &copy; {new Date().getFullYear()} {copyrightName}.
+                {showCredit && (
+                  <>
+                    {" "}{tr("credit.design", "Design")}:{" "}
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                  </>
+                )}
               </p>
             </footer>
           )}
         </div>
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
