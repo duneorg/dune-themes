@@ -1,19 +1,29 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatHeliosDate, postExcerpt } from "../utils/content.ts";
+import { safeHref } from "../utils/safe-url.ts";
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+}
 
 export default function BlogTemplate(props: TemplateProps & {
-  children?: unknown;
+  children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
+  t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, pathname } = props;
-  const isHome = (pathname ?? page?.route ?? "/") === "/";
+  const { page, children, collection, pagination, pathname, t } = props;
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const route = stripSlash(pathname ?? page?.route ?? "/");
+  const isHome = route === "/" || route === "/home";
   const items = collection?.items ?? [];
+  const continueReading = tr("post.continue", "Continue Reading");
 
   if (isHome) {
     return <LayoutComponent {...props} landing />;
@@ -33,7 +43,7 @@ export default function BlogTemplate(props: TemplateProps & {
                 const fm = post.frontmatter;
                 const date = fm.date ? String(fm.date) : "";
                 const excerpt = postExcerpt(fm);
-                const cover = typeof fm.cover === "string" ? fm.cover : undefined;
+                const cover = safeHref(fm.cover);
                 return (
                   <div class="col-6 col-12-medium" key={post.route}>
                     <section class="special">
@@ -48,7 +58,7 @@ export default function BlogTemplate(props: TemplateProps & {
                       </header>
                       {excerpt && <p>{excerpt}</p>}
                       <footer>
-                        <a href={post.route} class="button">Continue Reading</a>
+                        <a href={post.route} class="button">{continueReading}</a>
                       </footer>
                     </section>
                   </div>
@@ -58,10 +68,14 @@ export default function BlogTemplate(props: TemplateProps & {
             {(pagination?.newer || pagination?.older) && (
               <footer class="pagination">
                 {pagination.older && (
-                  <a href={pagination.older} class="button">← Older</a>
+                  <a href={pagination.older} class="button">
+                    ← {tr("pagination.older", "Older")}
+                  </a>
                 )}
                 {pagination.newer && (
-                  <a href={pagination.newer} class="button">Newer →</a>
+                  <a href={pagination.newer} class="button">
+                    {tr("pagination.newer", "Newer")} →
+                  </a>
                 )}
               </footer>
             )}
