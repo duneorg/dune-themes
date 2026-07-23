@@ -77,8 +77,8 @@ export type DemoSlug = (typeof DEMO_SLUGS)[number];
 /**
  * Shared content fixture each demo copies into `content/` (under
  * `demos/_shared/`). Defaults to "blog" — docs-family themes use "docs";
- * portfolio/academic themes use "portfolio"; HTML5 UP + gale landings use
- * "landing" (hero home + thin CTA destinations).
+ * academic portfolio themes use "portfolio"; HTML5 UP + gale landings use
+ * "landing"; HTML5 UP gallery/portfolio themes use "gallery".
  */
 const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   caravan: "docs",
@@ -121,6 +121,15 @@ const DEMO_CONTENT_FIXTURE: Partial<Record<DemoSlug, string>> = {
   twenty: "landing",
   verti: "landing",
   zerofour: "landing",
+  // HTML5 UP gallery / portfolio (8)
+  astral: "gallery",
+  fractal: "gallery",
+  lens: "gallery",
+  miniport: "gallery",
+  parallelism: "gallery",
+  photon: "gallery",
+  strata: "gallery",
+  txt: "gallery",
 };
 
 function contentFixtureFor(slug: string): string {
@@ -305,14 +314,14 @@ export async function linkDemo(slug: string): Promise<void> {
     // theme has no style-guide/ folder — fine, not every theme needs one
   }
 
-  // A blog- or landing-archetype theme's own demo-posts/ (real, dated posts
-  // that dogfood its config options and typography while also being ordinary
-  // readable content) merge directly into the fixture's posts collection,
-  // so they appear inline in the listing next to the generic fixture posts —
-  // not as a separate top-level page the way docs/style-guide are for
-  // docs-archetype themes. Landing fixtures keep a thin /blog for CTA
-  // destinations (and for hybrids like gale).
-  if (fixture === "blog" || fixture === "landing") {
+  // A blog-, landing-, or gallery-archetype theme's own demo-posts/ (real,
+  // dated posts that dogfood its config options and typography while also
+  // being ordinary readable content) merge directly into the fixture's posts
+  // collection, so they appear inline in the listing next to the generic
+  // fixture posts — not as a separate top-level page the way docs/style-guide
+  // are for docs-archetype themes. Landing and gallery fixtures keep a thin
+  // /blog for CTA destinations (and for hybrids like gale).
+  if (fixture === "blog" || fixture === "landing" || fixture === "gallery") {
     const demoPostsDir = join(packageDir, "demo-posts");
     try {
       await Deno.stat(demoPostsDir);
