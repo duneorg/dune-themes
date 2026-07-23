@@ -1,4 +1,5 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 
@@ -7,19 +8,22 @@ export default function ErrorTemplate(props: TemplateProps & {
   t?: (key: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const tr = props.t ?? ((k: string) => k);
+  const tr = (key: string, fallback: string) =>
+    (props.t ? props.t(key) : undefined) ?? fallback;
   const code = (props.page?.frontmatter as Record<string, unknown>)?.errorCode ?? 404;
+  const basePath = props.site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
 
   return (
     <LayoutComponent {...props}>
       <div class="items">
         <div class="item intro span-2">
           <h1>{String(code)}</h1>
-          <p>{tr("error.notfound")}</p>
+          <p>{tr("error.notfound", "This page could not be found.")}</p>
         </div>
         <article class="item prose span-1">
           <ul class="actions">
-            <li><a href="/" class="button">{tr("error.home")}</a></li>
+            <li><a href={homeHref} class="button">{tr("error.home", "Back to home")}</a></li>
           </ul>
         </article>
       </div>

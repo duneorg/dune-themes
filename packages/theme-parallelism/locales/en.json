@@ -1,9 +1,21 @@
 {
-  "theme.toggle": "Toggle dark mode",
   "search.title": "Search",
   "search.placeholder": "Search…",
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "nav.main": "Site",
+  "nav.menu": "Menu",
+  "nav.blog": "Blog",
+  "credit.design": "Design",
+  "cta.get_started": "Get Started",
+  "cta.see_work": "See my work",
+  "footer.this_is": "This is",
+  "footer.by": "a responsive portfolio theme by",
+  "footer.adapted": "adapted for",
+  "pagination.newer": "Newer",
+  "pagination.older": "Older",
+  "post.read_more": "Read More",
+  "post.continue": "Continue Reading"
 }
