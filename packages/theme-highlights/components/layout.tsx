@@ -1,10 +1,18 @@
 /** @jsxImportSource preact */
+import type { ComponentChildren } from "preact";
 import type { TemplateProps } from "@dune/core/content/types";
+import { safeHref } from "../utils/safe-url.ts";
 
 interface LayoutProps extends TemplateProps {
-  children?: unknown;
+  children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
+  t?: (key: string) => string;
+  /** When true, render fullscreen landing shell (children own header/footer). */
   landing?: boolean;
+}
+
+function stripSlash(p: string) {
+  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
 }
 
 export default function Layout({
@@ -17,23 +25,33 @@ export default function Layout({
   dir,
   children,
   themeConfig,
+  t,
   landing,
 }: LayoutProps) {
+  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
   const themeName = config?.theme?.name ?? "highlights";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
+  const basePath = site?.basePath ?? "";
+  const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";
   const currentPath = pathname ?? page?.route ?? "/";
+  const normalizedPath = stripSlash(page?.route ?? currentPath);
   const canonicalUrl = siteUrl ? `${siteUrl}${currentPath}` : currentPath;
   const title = pageTitle || site?.title || "Highlights";
-  const description = (page?.frontmatter as Record<string, unknown>)?.metadata?.description ??
-    (page?.frontmatter as Record<string, unknown>)?.description ?? site?.description ?? "";
+  const fm = (page?.frontmatter ?? {}) as Record<string, unknown>;
+  const meta = (fm.metadata ?? {}) as Record<string, unknown>;
+  const description = meta.description ?? fm.description ?? site?.description ?? "";
   const showCredit = themeConfig?.show_html5up_credit !== false;
   const copyrightName = (themeConfig?.footer_text as string) || site?.title || "Untitled";
   const navItems = (nav ?? []).slice(0, 8);
-  const isHome = currentPath === "/";
+  const isHome = normalizedPath === "/" || normalizedPath === "/home";
   const isLanding = landing ?? isHome;
+  const creditHref = safeHref("https://html5up.net/highlights") ?? "https://html5up.net/highlights";
 
-  const isActive = (route: string) =>
-    currentPath === route || (route !== "/" && currentPath.startsWith(route + "/"));
+  const isActive = (route: string) => {
+    const itemPath = stripSlash(route);
+    return normalizedPath === itemPath ||
+      (itemPath !== "/" && normalizedPath.startsWith(itemPath + "/"));
+  };
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>
@@ -49,12 +67,12 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
       </head>
-      <body class="is-preload">
+      <body class="is-preload theme-highlights archetype-landing">
         {isLanding ? children : (
           <>
             <section id="header">
               <header class="major">
-                <h1><a href="/">{site?.title ?? "Highlights"}</a></h1>
+                <h1><a href={homeHref}>{site?.title ?? "Highlights"}</a></h1>
                 {site?.description && <p>{site.description}</p>}
               </header>
               {navItems.length > 0 && (
@@ -65,8 +83,9 @@ export default function Layout({
                         <a
                           href={item.route}
                           class={`button${isActive(item.route) ? " primary" : ""}`}
+                          aria-current={isActive(item.route) ? "page" : undefined}
                         >
-                          {item.navTitle ?? item.frontmatter?.title ?? item.route}
+                          {item.navTitle ?? item.title ?? item.route}
                         </a>
                       </li>
                     ))}
@@ -79,20 +98,25 @@ export default function Layout({
                 <div class="content">{children}</div>
               </div>
             </section>
-            {showCredit && (
-              <section id="footer">
-                <footer>
-                  <ul class="copyright">
-                    <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
-                    <li>Design: <a href="https://html5up.net/highlights">HTML5 UP</a></li>
-                  </ul>
-                </footer>
-              </section>
-            )}
+            <section id="footer">
+              <footer>
+                <ul class="copyright">
+                  <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
+                  {showCredit && (
+                    <li>
+                      {tr("credit.design", "Design")}:{" "}
+                      <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                    </li>
+                  )}
+                </ul>
+              </footer>
+            </section>
           </>
         )}
 
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
@@ -106,7 +130,9 @@ export default function Layout({
               el.scrollIntoView({behavior:'smooth'});
             });
           });
-        ` }} />
+        `,
+          }}
+        />
       </body>
     </html>
   );
