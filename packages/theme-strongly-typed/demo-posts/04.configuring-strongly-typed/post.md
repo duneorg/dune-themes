@@ -3,19 +3,33 @@ title: Configuring Strongly Typed
 date: 2026-03-08
 template: post
 published: true
-summary: Theme options for the Strongly Typed demo — still a single upstream design.
+summary: What each option changes on the live Strongly Typed demo.
 taxonomy:
   tag: [config, strongly-typed]
 ---
 
-| Option | Notes |
-|--------|--------|
-| `header_tagline` | see `theme.yaml` |
-| `show_banner` | see `theme.yaml` |
-| `banner_text` | see `theme.yaml` |
-| `show_html5up_credit` | see `theme.yaml` |
-| `footer_text` | see `theme.yaml` |
+Strongly Typed keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
 
-**No dark mode / no color-scheme presets.** Upstream Strongly Typed is one design;
-a Dune lift may land later as an optional enhancement, not as fidelity work.
-Keep `show_html5up_credit` on unless you hold a separate Pixelarity license.
+## `header_tagline`
+
+See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Strongly Typed’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+
+## `show_banner`
+
+When on, the landing shows the banner block before tiles/sections. Turn off only if you’re deliberately testing a bannerless home — most fidelity checks want it on.
+
+## `banner_text`
+
+See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Strongly Typed’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+
+## `show_html5up_credit`
+
+On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+
+## `footer_text`
+
+Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+
+
+There is **no** dark mode or color-scheme preset in this port. Upstream Strongly Typed is a single design; a Dune lift may land later as an enhancement, not as fidelity.
+

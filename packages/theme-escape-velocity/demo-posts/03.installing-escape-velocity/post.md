@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-escape-vel@1.0.0 --activate
 Grab `escape-velocity-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/escape-velocity/`, then set `theme.name: escape-velocity` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

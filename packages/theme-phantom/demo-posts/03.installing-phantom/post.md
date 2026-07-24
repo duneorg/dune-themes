@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-phantom@1.0.0 --activate
 Grab `phantom-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/phantom/`, then set `theme.name: phantom` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

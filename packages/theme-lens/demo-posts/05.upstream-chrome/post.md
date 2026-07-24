@@ -1,20 +1,22 @@
 ---
-title: Upstream chrome on Dune
+title: Lens chrome on Dune
 date: 2026-03-15
 template: post
 published: true
-summary: What this port preserves from HTML5 UP Lens, and what Dune changes.
+summary: Theme-specific fidelity notes for Lens — not a generic clone.
 taxonomy:
   tag: [chrome, lens, fidelity]
 ---
 
-This demo exercises: fullscreen viewer / gallery chrome over image sets.
+Upstream Lens is known for **viewer chrome**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
 
-Honest deviations from the static HTML5 UP demo:
+Fullscreen viewer / gallery chrome over image sets.
 
-- Multi-page HTML files become Dune routes (`/blog`, `/search`, `/archives`, `/about`)
-- Search uses server-side `/api/search`
-- Contact forms are not wired to a mail backend
-- Vendored CSS/JS under `static/html5up/` stay close to upstream; behavior is adapted only where Dune's architecture requires it
+Compare side-by-side with [html5up.net/lens](https://html5up.net/lens):
 
-Compare side-by-side with [https://html5up.net/lens](https://html5up.net/lens) when QA'ing visual parity.
+- Hero / banner / first viewport should feel like the same family
+- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
+- Footer credit stays visible when `show_html5up_credit` is on
+
+Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
+

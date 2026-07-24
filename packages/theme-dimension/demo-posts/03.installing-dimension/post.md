@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-dimension@1.0.0 --activate
 Grab `dimension-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/dimension/`, then set `theme.name: dimension` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

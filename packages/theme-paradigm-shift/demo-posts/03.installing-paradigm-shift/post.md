@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-paradigm-shift@1.0.0 --activate
 Grab `paradigm-shift-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/paradigm-shift/`, then set `theme.name: paradigm-shift` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

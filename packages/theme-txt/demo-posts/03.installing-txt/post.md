@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-txt@1.0.0 --activate
 Grab `txt-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/txt/`, then set `theme.name: txt` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

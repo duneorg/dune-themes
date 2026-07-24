@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-hyperspace@1.0.0 --activate
 Grab `hyperspace-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/hyperspace/`, then set `theme.name: hyperspace` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

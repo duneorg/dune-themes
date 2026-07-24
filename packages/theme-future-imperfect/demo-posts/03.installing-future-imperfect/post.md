@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-future-imp@1.0.0 --activate
 Grab `future-imperfect-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/future-imperfect/`, then set `theme.name: future-imperfect` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+

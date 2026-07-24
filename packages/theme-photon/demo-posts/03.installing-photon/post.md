@@ -8,8 +8,14 @@ taxonomy:
   tag: [install, photon]
 ---
 
+## From JSR
+
 ```bash
 dune theme:install jsr:@dune/theme-photon@1.0.0 --activate
 ```
 
-Or vendor `photon-1.0.0.zip` under `themes/photon/` and set `theme.name: photon`.
+## From a ZIP
+
+Extract `photon-1.0.0.zip` into `themes/photon/` and set `theme.name: photon`.
+Same package either way — hero, icon grid, and gallery-style project tiles
+over vendored HTML5 UP images.

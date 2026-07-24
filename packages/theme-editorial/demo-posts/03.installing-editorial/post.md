@@ -19,3 +19,6 @@ dune theme:install jsr:@dune/theme-editorial@1.0.0 --activate
 Grab `editorial-1.0.0.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/editorial/`, then set `theme.name: editorial` in `site.yaml`.
+
+Same package either way. JSR is easier to keep updated.
+
