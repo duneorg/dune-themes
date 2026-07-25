@@ -3,22 +3,28 @@ title: Installing Arcana
 date: 2026-03-01
 template: post
 published: true
-summary: Add Arcana to a Dune site from JSR or a release ZIP.
+summary: Add Arcana — HTML5 UP’s corporate landing — to Dune.
 taxonomy:
   tag: [install, arcana]
 ---
 
+Arcana sits next to Alpha in spirit (corporate landing) but with its own
+logo/banner treatment and multi-slot footer. Install it the same two ways
+as every other Dune theme package.
+
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-arcana@1.0.0 --activate
+dune theme:install jsr:@dune/theme-arcana@1.0.1 --activate
 ```
+
+Pins the package; `dune lockfile:sync` picks up the import-map change.
 
 ## From a ZIP
 
-Grab `arcana-1.0.0.zip` from
-[dune-themes releases](https://github.com/duneorg/dune-themes/releases),
-extract into `themes/arcana/`, then set `theme.name: arcana` in `site.yaml`.
+Extract `arcana-1.0.1.zip` under `themes/arcana/` and set
+`theme.name: arcana` in `site.yaml`.
 
-Same package either way. JSR is easier to keep updated.
-
+Then open `/` for the banner and `/blog` for dogfood posts — including
+this install note. Prefer JSR when you want updates without re-fetching
+ZIPs.

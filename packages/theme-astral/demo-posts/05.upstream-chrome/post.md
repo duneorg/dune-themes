@@ -1,22 +1,26 @@
 ---
-title: Astral chrome on Dune
+title: Intro panel, icon nav, and project tiles
 date: 2026-03-15
 template: post
 published: true
-summary: Theme-specific fidelity notes for Astral — not a generic clone.
+summary: How Astral’s panel UI maps onto Dune blog and search routes.
 taxonomy:
   tag: [chrome, astral, fidelity]
 ---
 
-Upstream Astral is known for **panel widgets**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
+Astral’s home is an `#home.panel.intro` with a chevron jumplink into
+projects, plus further panels that tile toward Blog / About / Search /
+Archives. Icon nav (from the layout) switches “rooms” the way upstream
+switches panels.
 
-Panel/widget dashboard-style chrome.
+On Dune:
 
-Compare side-by-side with [html5up.net/astral](https://html5up.net/astral):
+- “See my work” lands on `/blog` (fixture + project posts)
+- Panel images come from vendored `pic0N.jpg` / avatar assets
+- Search is themed `/search` → `/api/search`, not a fake panel
+- Covered project leaves keep the grid from looking like empty chrome
 
-- Hero / banner / first viewport should feel like the same family
-- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
-- Footer credit stays visible when `show_html5up_credit` is on
-
-Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
-
+Compare with [html5up.net/astral](https://html5up.net/astral). You’re
+looking for the intro portrait rhythm, icon rail, and panel padding. If
+project tiles look empty, add covered posts (this demo ships three) —
+chrome without leaves fails the depth bar even when coverage is green.

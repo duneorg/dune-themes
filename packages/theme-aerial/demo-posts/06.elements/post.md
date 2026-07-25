@@ -1,35 +1,44 @@
 ---
-title: Elements — Aerial typography
+title: Elements — type inside Aerial’s content panel
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Aerial’s post chrome.
+summary: Headings, lists, quotes, and code once you leave the fullscreen shell.
 taxonomy:
   tag: [elements, typography, aerial]
 ---
 
+The landing is intentionally quiet. This post exists so `/blog` CTAs land
+on something that exercises the **content panel** typography, not another
+marketing paragraph.
+
 ## Headings
 
-## Section heading (h2)
+## Section (h2)
 
 ### Subsection (h3)
 
-Aerial’s landing chrome (fullscreen overlay) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Aerial’s post chrome is calmer than business landings like Alpha — keep
+hierarchy shallow. If you need a fourth level, split the article.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Unordered lists share body line-height
+- Nested items indent without shrinking type
+  - Like this nested item
+1. Ordered lists use the same rhythm
+2. Numbers don’t invent a second stylesheet
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> Blockquotes should read as citation against the dark-adjacent panel,
+> not as neon callouts.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: aerial`, and a fence:
 
 ```ts
-export const demo = "Aerial";
+const shell = { bg: true, overlay: true, contentPanel: !isHome };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, hit [Home](/) and confirm the fullscreen shell returns —
+that round-trip is the fidelity check this Elements page supports.

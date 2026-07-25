@@ -3,22 +3,28 @@ title: Installing Astral
 date: 2026-03-01
 template: post
 published: true
-summary: Add Astral to a Dune site from JSR or a release ZIP.
+summary: Add Astral’s icon-nav portfolio panels to a Dune site.
 taxonomy:
   tag: [install, astral]
 ---
 
+Astral is a portfolio shell: icon navigation, an intro panel with a
+portrait jumplink, and additional panels for projects and links. On Dune
+those panels deep-link to real routes instead of static HTML fragments from
+the upstream zip.
+
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-astral@1.0.0 --activate
+dune theme:install jsr:@dune/theme-astral@1.0.1 --activate
 ```
+
+Pins the package in the import map; `dune lockfile:sync` afterward.
 
 ## From a ZIP
 
-Grab `astral-1.0.0.zip` from
-[dune-themes releases](https://github.com/duneorg/dune-themes/releases),
-extract into `themes/astral/`, then set `theme.name: astral` in `site.yaml`.
+Extract `astral-1.0.1.zip` into `themes/astral/` and set
+`theme.name: astral`.
 
-Same package either way. JSR is easier to keep updated.
-
+Visit `/` for the intro panel and `/blog` for project leaves with covers.
+Prefer JSR when you want versioned updates without re-extracting archives.

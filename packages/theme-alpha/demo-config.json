@@ -1,5 +1,7 @@
 {
-  "tagline": "Alpha for Dune",
-  "banner_title": "Welcome to Alpha",
-  "show_html5up_credit": true
+  "tagline": "Business landing for Dune",
+  "banner_title": "Alpha for Dune",
+  "show_banner": true,
+  "show_html5up_credit": true,
+  "footer_text": "Alpha Demo"
 }

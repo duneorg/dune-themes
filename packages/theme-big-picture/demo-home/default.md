@@ -1,12 +1,17 @@
 ---
-title: Big Picture
+title: What I Do
 template: default
 published: true
 description: >
-  Big Picture adapted from HTML5 UP for Dune — landing banner/sections from upstream, with CTAs pointed at Dune fixtures.
-  Single upstream design; no dark mode or color-scheme presets in this port.
+  Scroll-driven gallery landing for Dune — fullscreen intro, alternating
+  sections, and a six-thumb gallery. One upstream design; no dark mode.
 ---
 
-A faithful-adjacent port of [HTML5 UP Big Picture](https://html5up.net/big-picture) for Dune.
-Home chrome stays template-driven; Blog / About / Search / Archives exist so
-upstream-style CTAs resolve to real Dune routes.
+Big Picture is a vertical story. After **Hey.** you land in this section
+(`#one`): what the site is for, then a down button into **Built for Dune**,
+the gallery, and explore actions.
+
+Scroll the whole reel before judging the port — the gallery and CTAs only
+exist on home. Inner posts use the quiet content box. Compare with
+[html5up.net/big-picture](https://html5up.net/big-picture), then open
+[Blog](/blog) for install and chrome notes.

@@ -1,22 +1,26 @@
 ---
-title: Arcana chrome on Dune
+title: Logo header, banner, and corporate footer
 date: 2026-03-15
 template: post
 published: true
-summary: Theme-specific fidelity notes for Arcana — not a generic clone.
+summary: Arcana’s landing structure on Dune — what to compare upstream.
 taxonomy:
   tag: [chrome, arcana, fidelity]
 ---
 
-Upstream Arcana is known for **sidebar landing**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
+Arcana’s `#page-wrapper` stacks `#header` (logo + `#nav`), an optional
+`#banner`, main content, and a multi-slot `#footer`. On Dune:
 
-Sidebar + content landing pattern.
-
-Compare side-by-side with [html5up.net/arcana](https://html5up.net/arcana):
-
-- Hero / banner / first viewport should feel like the same family
-- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
+- Logo home link respects `site.basePath` (critical under
+  `themes.getdune.org/arcana/`)
+- Banner CTA points at the blog route when present
+- Nav items are capped so the bar doesn’t overflow on narrow widths
 - Footer credit stays visible when `show_html5up_credit` is on
 
-Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
+Compare with [html5up.net/arcana](https://html5up.net/arcana): logo weight,
+banner copy block, and footer columns. We don’t port every static HTML
+subpage — Blog / About / Search / Archives cover the CTAs. Contact forms
+stay unwired; search is `/api/search`.
 
+Mobile: confirm `#nav` remains usable and the banner doesn’t clip the
+headline. That’s the class of bug CI never sees and browser QA is for.

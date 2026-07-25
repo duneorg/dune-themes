@@ -1,35 +1,43 @@
 ---
-title: Elements — Alpha typography
+title: Elements — Alpha’s container typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Alpha’s post chrome.
+summary: Headings, lists, quotes, and code in Alpha’s post template.
 taxonomy:
   tag: [elements, typography, alpha]
 ---
 
+Business landings often hide weak post chrome behind big banners. This
+leaf forces `#main.container` styles to earn their keep so `/blog` CTAs
+land on something that isn’t another marketing paragraph.
+
 ## Headings
 
-## Section heading (h2)
+## Section h2
 
-### Subsection (h3)
+### Subsection h3
 
-Alpha’s landing chrome (classic landing) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Alpha’s type is sturdy and slightly boxy — don’t fight it with decorative
+heading stacks. If you need a fourth level, split the article.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
-
+- Feature rows on home use the landing layout
+- Posts use ordinary markdown lists
+  - Nesting stays quiet
 1. Ordered lists share the same rhythm
-2. Keep them short
+2. Numbers don’t invent a second stylesheet
 
-> Blockquotes should read as citation, not promo stickers.
+> Quotes get a clear edge; treat them as citations, not testimonials
+> widgets (those belong in landing sections if you add them later).
 
-```ts
-export const demo = "Alpha";
+## Code
+
+Inline `theme.name: alpha`, and a fence:
+
+```bash
+dune theme:install jsr:@dune/theme-alpha@1.0.1 --activate
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+Return to [Home](/) for the banner, or keep browsing [Blog](/blog).

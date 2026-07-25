@@ -1,3 +1,7 @@
 {
-  "show_html5up_credit": true
+  "header_title": "Dimension",
+  "header_subtitle": "A modal-panel landing for Dune — open a nav item to reveal an article.",
+  "logo_icon": "fa-gem",
+  "show_html5up_credit": true,
+  "footer_text": "Dimension Demo"
 }

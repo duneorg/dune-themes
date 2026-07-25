@@ -1,22 +1,28 @@
 ---
-title: Big Picture chrome on Dune
+title: Intro, scroll sections, and gallery
 date: 2026-03-15
 template: post
 published: true
-summary: Theme-specific fidelity notes for Big Picture — not a generic clone.
+summary: How Big Picture’s scroll chrome maps onto Dune home vs posts.
 taxonomy:
   tag: [chrome, big-picture, fidelity]
 ---
 
-Upstream Big Picture is known for **fullscreen slides**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
+Upstream Big Picture is a vertical reel. This port keeps the reel on home
+and uses a quieter `main style1` content box on every other route.
 
-Big visual sections that scroll like slides.
+On home you should see:
 
-Compare side-by-side with [html5up.net/big-picture](https://html5up.net/big-picture):
+1. `#intro` — fullscreen, “Hey.”, down button to `#one`
+2. `#one` / `#two` — alternating right/left fullscreen sections
+3. `#work` — six-thumb gallery from vendored `thumbs/0N.jpg`
+4. Explore actions toward Blog and About
 
-- Hero / banner / first viewport should feel like the same family
-- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
-- Footer credit stays visible when `show_html5up_credit` is on
+The down buttons use `scrollIntoView` — if `#one` is missing, the first
+CTA is a no-op and the demo feels broken. Compare with
+[html5up.net/big-picture](https://html5up.net/big-picture) for section
+rhythm and gallery density.
 
-Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
-
+Inner pages (this post): no fullscreen stack — just the content box and
+header/footer. That’s intentional. Don’t expect the gallery on `/blog`.
+Search is `/api/search`; upstream contact forms stay unwired.

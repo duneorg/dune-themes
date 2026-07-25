@@ -3,10 +3,14 @@ title: Alpha
 template: default
 published: true
 description: >
-  Alpha adapted from HTML5 UP for Dune — landing banner/sections from upstream, with CTAs pointed at Dune fixtures.
-  Single upstream design; no dark mode or color-scheme presets in this port.
+  Business landing for Dune — alt header, banner, and container main.
+  One upstream design; no dark mode or color-scheme presets.
 ---
 
-A faithful-adjacent port of [HTML5 UP Alpha](https://html5up.net/alpha) for Dune.
-Home chrome stays template-driven; Blog / About / Search / Archives exist so
-upstream-style CTAs resolve to real Dune routes.
+Alpha’s first viewport is the banner: headline, tagline, and a path into
+real Dune routes. The `alt` header on home matches upstream; inner pages
+use the solid header and `#main.container`.
+
+This demo seeds **Alpha for Dune** / **Business landing for Dune** so the
+banner isn’t empty schema defaults. Start at [Blog](/blog) for install,
+config, chrome notes, and Elements.

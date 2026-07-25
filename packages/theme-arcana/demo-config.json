@@ -1,5 +1,7 @@
 {
-  "tagline": "Arcana for Dune",
-  "banner_title": "Welcome to Arcana",
-  "show_html5up_credit": true
+  "tagline": "Corporate landing for Dune",
+  "banner_title": "Arcana for Dune",
+  "show_banner": true,
+  "show_html5up_credit": true,
+  "footer_text": "Arcana Demo"
 }

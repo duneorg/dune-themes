@@ -3,10 +3,14 @@ title: Arcana
 template: default
 published: true
 description: >
-  Arcana adapted from HTML5 UP for Dune — landing banner/sections from upstream, with CTAs pointed at Dune fixtures.
-  Single upstream design; no dark mode or color-scheme presets in this port.
+  Corporate landing for Dune — logo header, banner, and multi-slot footer.
+  One upstream design; no dark mode or color-scheme presets.
 ---
 
-A faithful-adjacent port of [HTML5 UP Arcana](https://html5up.net/arcana) for Dune.
-Home chrome stays template-driven; Blog / About / Search / Archives exist so
-upstream-style CTAs resolve to real Dune routes.
+Arcana leads with a logo wordmark and `#banner`, then ordinary content and
+a corporate footer. On Dune the banner CTA and nav point at Blog / About /
+Search / Archives under this site’s `basePath`.
+
+Seeded headline: **Arcana for Dune**. Compare structure with
+[html5up.net/arcana](https://html5up.net/arcana), then read the
+[blog](/blog) for how the port is wired.

@@ -3,10 +3,14 @@ title: Aerial
 template: default
 published: true
 description: >
-  Aerial adapted from HTML5 UP for Dune — fullscreen background video/image shell with overlay nav.
-  Single upstream design; no dark mode or color-scheme presets in this port.
+  Fullscreen landing for Dune — fixed background, overlay, and icon nav.
+  One upstream design; no dark mode or color-scheme presets.
 ---
 
-A faithful-adjacent port of [HTML5 UP Aerial](https://html5up.net/aerial) for Dune.
-Home chrome stays template-driven; Blog / About / Search / Archives exist so
-upstream-style CTAs resolve to real Dune routes.
+Aerial is almost all atmosphere: `#bg`, `#overlay`, and a sparse header.
+This Dune port keeps that first impression on `/` and `/home`, then opens a
+content panel for Blog, About, Search, and Archives.
+
+Compare the live shell with [html5up.net/aerial](https://html5up.net/aerial).
+You’re checking overlay contrast, icon hit targets, and that leaving home
+doesn’t leave you without a way back.

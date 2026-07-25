@@ -1,14 +1,18 @@
 ---
-title: On location — last light
+title: Panel study — evening amber
 date: 2026-03-22
 template: post
 published: true
-summary: Project leaf 3 for the Astral gallery demo.
+summary: Third covered project — warm rim light for variety.
 taxonomy:
   tag: [project, astral]
 cover: /themes/astral/static/html5up/images/pic03.jpg
 ---
 
-Warm rim light so masonry/columns don’t read as one muddy block.
+Three projects is enough to exercise the panel grid and `/blog` without
+turning the demo into a fake agency archive. Warm rim light here contrasts
+the daylight and window-light leaves so the mosaic reads as intentional
+variety, not three copies of one mood.
 
-Part of the Astral demo’s project set — covers point at vendored images so the listing shows variety without shipping binaries outside the theme package.
+When you replace imagery, keep filenames stable or update every cover
+frontmatter in the same pass — broken covers look like broken chrome.

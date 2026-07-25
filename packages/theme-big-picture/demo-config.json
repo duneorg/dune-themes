@@ -1,5 +1,7 @@
 {
-  "tagline": "Big Picture for Dune",
-  "banner_title": "Welcome to Big Picture",
-  "show_html5up_credit": true
+  "tagline": "Scroll the picture.",
+  "banner_title": "Hey.",
+  "show_banner": true,
+  "show_html5up_credit": true,
+  "footer_text": "Big Picture Demo"
 }

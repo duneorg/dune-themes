@@ -1,35 +1,40 @@
 ---
-title: Elements — Astral typography
+title: Elements — typography inside Astral panels
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Astral’s post chrome.
+summary: Headings, lists, quotes, and code on Astral’s post template.
 taxonomy:
   tag: [elements, typography, astral]
 ---
 
+Panels are visual; posts still need readable type. This leaf is the
+Elements check for Astral — a normal `/blog` route the project tiles can
+reach, not a separate style-guide page.
+
 ## Headings
 
-## Section heading (h2)
+## Section h2
 
-### Subsection (h3)
+### Subsection h3
 
-Astral’s landing chrome (panel widgets) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Keep headings flatter than the intro panel’s display size — posts aren’t
+a second hero.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Project posts carry covers
+- Elements posts carry structure
+  - Nesting stays light
+1. Ordered lists share body rhythm
+2. Numbers don’t fight the panel chrome
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> Quotes should sit quietly in the panel article chrome.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
 
 ```ts
-export const demo = "Astral";
+const panel = { id: "home", class: "panel intro" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+Jump back to [Projects](/blog) or the [intro](/).
