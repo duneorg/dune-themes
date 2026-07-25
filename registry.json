@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-23",
+  "updatedAt": "2026-07-25",
   "themes": [
     {
       "slug": "sirocco",
@@ -376,7 +376,7 @@
       "name": "Aerial",
       "description": "Aerial \u2014 responsive site theme adapted from HTML5 UP for Dune. Fullscreen landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -389,7 +389,7 @@
       "screenshotUrl": "https://themes.getdune.org/aerial/themes/aerial/static/screenshot.png",
       "jsr": "jsr:@dune/theme-aerial@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/aerial-v1.0.0/aerial-1.0.0.zip",
-      "sha256": "2bf6955ca5817266ffd2bd45c8a466a7497434ae84209b05e309cf1e73ac6086",
+      "sha256": "8b5150ca8212d92ef71c971c5de790920c6163d575b691b4eaecab506b0d8c62",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -399,7 +399,7 @@
       "name": "Alpha",
       "description": "Alpha \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -412,7 +412,7 @@
       "screenshotUrl": "https://themes.getdune.org/alpha/themes/alpha/static/screenshot.png",
       "jsr": "jsr:@dune/theme-alpha@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/alpha-v1.0.0/alpha-1.0.0.zip",
-      "sha256": "5d6a2c6c0b53dd87fe0630c4d59fc9a6d46ee17c1cab0ba9178ae9a8c8a6898c",
+      "sha256": "41ba36499ec3f61d83d708cd2e6e7de09e792c3b5faae53036b8759767ce6b49",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -422,7 +422,7 @@
       "name": "Arcana",
       "description": "Arcana \u2014 responsive site theme adapted from HTML5 UP for Dune. Corporate site.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -435,7 +435,7 @@
       "screenshotUrl": "https://themes.getdune.org/arcana/themes/arcana/static/screenshot.png",
       "jsr": "jsr:@dune/theme-arcana@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/arcana-v1.0.0/arcana-1.0.0.zip",
-      "sha256": "12a17b48ca2cfb20ed219f2730a4d417bb89ff4399f75f7f8184663880d655e1",
+      "sha256": "9df3ea7d7cd0f694a93944284e598d152340b0c40ad3bc7eaf1bc386c4b64fa6",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -445,7 +445,7 @@
       "name": "Astral",
       "description": "Astral \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -458,7 +458,7 @@
       "screenshotUrl": "https://themes.getdune.org/astral/themes/astral/static/screenshot.png",
       "jsr": "jsr:@dune/theme-astral@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/astral-v1.0.0/astral-1.0.0.zip",
-      "sha256": "a7a1e2fe2e4107608ed0725c5b7d4f22f8189dad9a58a108a147aeae4c2a1b23",
+      "sha256": "a6f0d724408b39754073a0f35dccf8c55245a71eec8f123f8f5178a4f4043a18",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -468,7 +468,7 @@
       "name": "Big Picture",
       "description": "Big Picture \u2014 responsive site theme adapted from HTML5 UP for Dune. Scroll-driven gallery.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -481,7 +481,7 @@
       "screenshotUrl": "https://themes.getdune.org/big-picture/themes/big-picture/static/screenshot.png",
       "jsr": "jsr:@dune/theme-big-picture@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/big-picture-v1.0.0/big-picture-1.0.0.zip",
-      "sha256": "3435761ff7b68b8e090118ab970ec35db7e4a6c6e1e594a5ad808af0fd8c98fa",
+      "sha256": "8d8539a3d91709ea323566e734218db3658f173084dc9e3f4e91ad6bf589a670",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -491,7 +491,7 @@
       "name": "Dimension",
       "description": "Dimension \u2014 responsive site theme adapted from HTML5 UP for Dune. Modal panel navigation.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -504,7 +504,7 @@
       "screenshotUrl": "https://themes.getdune.org/dimension/themes/dimension/static/screenshot.png",
       "jsr": "jsr:@dune/theme-dimension@1.0.0",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dimension-v1.0.0/dimension-1.0.0.zip",
-      "sha256": "55ac109dac0cddb860a9bdd769d8284633bf1700a0a9cfe4eee0f8d1eaa6462a",
+      "sha256": "763c2b24a8d96c530e529740d7f57aad0599e19cca7e5a19ae81de56e4a78192",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
