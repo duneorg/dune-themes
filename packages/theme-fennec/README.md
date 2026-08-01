@@ -12,7 +12,7 @@ Personal portfolio and blog theme for Dune — design inspired by
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-fennec@1.0.0 --activate
+dune theme:install jsr:@dune/theme-fennec@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: fennec
-    src: jsr:@dune/theme-fennec@1.0.0
+    src: jsr:@dune/theme-fennec@1.0.1
 
 theme:
   name: fennec
-  src: jsr:@dune/theme-fennec@1.0.0
+  src: jsr:@dune/theme-fennec@1.0.1
 ```
 
 Persistent sidebar with optional avatar, bold home greeting, DaisyUI-style

@@ -12,7 +12,7 @@ Landing and blog theme inspired by [AstroWind](https://github.com/onwidget/astro
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-gale@1.0.0 --activate
+dune theme:install jsr:@dune/theme-gale@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: gale
-    src: jsr:@dune/theme-gale@1.0.0
+    src: jsr:@dune/theme-gale@1.0.1
 
 theme:
   name: gale
-  src: jsr:@dune/theme-gale@1.0.0
+  src: jsr:@dune/theme-gale@1.0.1
 ```
 
 Sticky header with CTA, hero + feature grid on the homepage, card blog

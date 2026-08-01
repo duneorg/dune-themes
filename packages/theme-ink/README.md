@@ -12,7 +12,7 @@ Long-form writing theme for Dune — design inspired by
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-ink@1.0.0 --activate
+dune theme:install jsr:@dune/theme-ink@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: ink
-    src: jsr:@dune/theme-ink@1.0.0
+    src: jsr:@dune/theme-ink@1.0.1
 
 theme:
   name: ink
-  src: jsr:@dune/theme-ink@1.0.0
+  src: jsr:@dune/theme-ink@1.0.1
 ```
 
 Centered serif masthead, dark mode, reading time, author box, and tag

@@ -13,7 +13,7 @@ Product documentation theme for Dune — design inspired by
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-manual@1.0.0 --activate
+dune theme:install jsr:@dune/theme-manual@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -21,11 +21,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: manual
-    src: jsr:@dune/theme-manual@1.0.0
+    src: jsr:@dune/theme-manual@1.0.1
 
 theme:
   name: manual
-  src: jsr:@dune/theme-manual@1.0.0
+  src: jsr:@dune/theme-manual@1.0.1
 ```
 
 Full-height sidebar with brand + tagline, live search against `/api/search`,

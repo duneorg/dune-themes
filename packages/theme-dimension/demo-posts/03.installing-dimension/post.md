@@ -16,7 +16,7 @@ routes; the panel chrome still opens with `is-article-visible`.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-dimension@1.0.1 --activate
+dune theme:install jsr:@dune/theme-dimension@1.0.2 --activate
 ```
 
 ## From a ZIP

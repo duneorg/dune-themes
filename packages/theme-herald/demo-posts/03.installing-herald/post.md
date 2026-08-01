@@ -15,7 +15,7 @@ two install paths.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-herald@1.0.0 --activate
+dune theme:install jsr:@dune/theme-herald@1.0.1 --activate
 ```
 
 Pins an exact version in your site's import map — `dune lockfile:sync`

@@ -13,7 +13,7 @@ Two install paths — same theme either way.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-gale@1.0.0 --activate
+dune theme:install jsr:@dune/theme-gale@1.0.1 --activate
 ```
 
 ## From a ZIP

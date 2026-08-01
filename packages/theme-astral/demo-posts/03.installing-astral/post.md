@@ -16,7 +16,7 @@ the upstream zip.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-astral@1.0.1 --activate
+dune theme:install jsr:@dune/theme-astral@1.0.2 --activate
 ```
 
 Pins the package in the import map; `dune lockfile:sync` afterward.

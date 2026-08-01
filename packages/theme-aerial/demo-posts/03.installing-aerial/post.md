@@ -15,7 +15,7 @@ not a static HTML unzip.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-aerial@1.0.1 --activate
+dune theme:install jsr:@dune/theme-aerial@1.0.2 --activate
 ```
 
 Pins an exact version in the site import map. After install, `dune

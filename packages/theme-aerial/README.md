@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-aerial@1.0.1 --activate
+dune theme:install jsr:@dune/theme-aerial@1.0.2 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: aerial
-    src: jsr:@dune/theme-aerial@1.0.1
+    src: jsr:@dune/theme-aerial@1.0.2
 
 theme:
   name: aerial
-  src: jsr:@dune/theme-aerial@1.0.1
+  src: jsr:@dune/theme-aerial@1.0.2
 ```
 
 Fullscreen landing with icon nav over a fixed background. See the

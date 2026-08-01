@@ -35,7 +35,7 @@ articles.
 ## Code
 
 ```bash
-dune theme:install jsr:@dune/theme-big-picture@1.0.1 --activate
+dune theme:install jsr:@dune/theme-big-picture@1.0.2 --activate
 ```
 
 Scroll home again from [Home](/), or stay in [Blog](/blog).

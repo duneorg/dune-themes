@@ -12,7 +12,7 @@ Magazine-style blog theme for Dune — design inspired by
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-salon@1.0.0 --activate
+dune theme:install jsr:@dune/theme-salon@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: salon
-    src: jsr:@dune/theme-salon@1.0.0
+    src: jsr:@dune/theme-salon@1.0.1
 
 theme:
   name: salon
-  src: jsr:@dune/theme-salon@1.0.0
+  src: jsr:@dune/theme-salon@1.0.1
 ```
 
 Featured lead post on the blog index, card grid for remaining posts, cover

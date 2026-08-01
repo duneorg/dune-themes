@@ -12,7 +12,7 @@ Faithful port of [hugo-book](https://github.com/alex-shpak/hugo-book)
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-book@1.0.0 --activate
+dune theme:install jsr:@dune/theme-book@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: book
-    src: jsr:@dune/theme-book@1.0.0
+    src: jsr:@dune/theme-book@1.0.1
 
 theme:
   name: book
-  src: jsr:@dune/theme-book@1.0.0
+  src: jsr:@dune/theme-book@1.0.1
 ```
 
 The stylesheet is the upstream SCSS bundle compiled as-is (defaults,

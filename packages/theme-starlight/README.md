@@ -13,7 +13,7 @@ theme.
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-starlight@1.0.0 --activate
+dune theme:install jsr:@dune/theme-starlight@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -21,11 +21,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: starlight
-    src: jsr:@dune/theme-starlight@1.0.0
+    src: jsr:@dune/theme-starlight@1.0.1
 
 theme:
   name: starlight
-  src: jsr:@dune/theme-starlight@1.0.0
+  src: jsr:@dune/theme-starlight@1.0.1
 ```
 
 The stylesheet bundles the upstream global CSS verbatim (cascade layers,

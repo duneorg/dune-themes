@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-big-picture@1.0.1 --activate
+dune theme:install jsr:@dune/theme-big-picture@1.0.2 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: big-picture
-    src: jsr:@dune/theme-big-picture@1.0.1
+    src: jsr:@dune/theme-big-picture@1.0.2
 
 theme:
   name: big-picture
-  src: jsr:@dune/theme-big-picture@1.0.1
+  src: jsr:@dune/theme-big-picture@1.0.2
 ```
 
 Fullscreen intro, alternating content panels, and gallery grid. See the

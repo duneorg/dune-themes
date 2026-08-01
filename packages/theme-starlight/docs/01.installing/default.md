@@ -10,7 +10,7 @@ metadata:
 Install from JSR and activate:
 
 ```bash
-dune theme:install jsr:@dune/theme-starlight@1.0.0 --activate
+dune theme:install jsr:@dune/theme-starlight@1.0.1 --activate
 ```
 
 Or pin it by hand in `config/site.yaml`:
@@ -18,11 +18,11 @@ Or pin it by hand in `config/site.yaml`:
 ```yaml
 themes:
   - name: starlight
-    src: jsr:@dune/theme-starlight@1.0.0
+    src: jsr:@dune/theme-starlight@1.0.1
 
 theme:
   name: starlight
-  src: jsr:@dune/theme-starlight@1.0.0
+  src: jsr:@dune/theme-starlight@1.0.1
 ```
 
 For local development against this monorepo:

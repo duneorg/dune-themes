@@ -15,7 +15,7 @@ routes — blog, search, archives — instead of dead HTML anchors.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-big-picture@1.0.1 --activate
+dune theme:install jsr:@dune/theme-big-picture@1.0.2 --activate
 ```
 
 ## From a ZIP

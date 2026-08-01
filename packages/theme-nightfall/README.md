@@ -12,7 +12,7 @@ Dark-first documentation theme for Dune — design inspired by
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-nightfall@1.0.0 --activate
+dune theme:install jsr:@dune/theme-nightfall@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -20,11 +20,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: nightfall
-    src: jsr:@dune/theme-nightfall@1.0.0
+    src: jsr:@dune/theme-nightfall@1.0.1
 
 theme:
   name: nightfall
-  src: jsr:@dune/theme-nightfall@1.0.0
+  src: jsr:@dune/theme-nightfall@1.0.1
 ```
 
 Fixed header with live search, nested sidebar, on-page TOC, optional splash

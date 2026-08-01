@@ -13,7 +13,7 @@ Dune-native (not a port).
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-syntax@1.0.0 --activate
+dune theme:install jsr:@dune/theme-syntax@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -21,11 +21,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: syntax
-    src: jsr:@dune/theme-syntax@1.0.0
+    src: jsr:@dune/theme-syntax@1.0.1
 
 theme:
   name: syntax
-  src: jsr:@dune/theme-syntax@1.0.0
+  src: jsr:@dune/theme-syntax@1.0.1
 ```
 
 Date-column blog index, tag chips, reading time, pinned posts, archives,
