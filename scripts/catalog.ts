@@ -23,6 +23,23 @@ export interface CatalogEntry {
 /** Slugs managed by scripts/scaffold-themes.ts (THEME_DEFS). Empty when all themes are hand-maintained. */
 export const SCAFFOLD_SLUGS = new Set<string>([]);
 
+/**
+ * Real in-tree version for a package, read straight from its theme.yaml —
+ * not hardcoded, so a patch to one HTML5 UP theme (e.g. arcana 1.0.1) is
+ * reflected in its own registry.json `version`/`jsr`/`downloadUrl` instead
+ * of every entry in that tier silently staying pinned to "1.0.0" forever.
+ */
+function readVersionSync(slug: string): string {
+  const path = new URL(`../packages/theme-${slug}/theme.yaml`, import.meta.url);
+  try {
+    const text = Deno.readTextFileSync(path);
+    const m = text.match(/^version:\s*["']?([^"'\n]+)/m);
+    return m?.[1]?.trim() ?? "1.0.0";
+  } catch {
+    return "1.0.0";
+  }
+}
+
 function html5UpCatalogEntries(): CatalogEntry[] {
   return HTML5UP_TEMPLATES.map((t) => {
     const def = html5UpThemeDef(t);
@@ -33,7 +50,7 @@ function html5UpCatalogEntries(): CatalogEntry[] {
       description: def.description,
       inspiredBy: def.upstream,
       tags: def.tags,
-      version: "1.0.0",
+      version: readVersionSync(t.slug),
     };
   });
 }

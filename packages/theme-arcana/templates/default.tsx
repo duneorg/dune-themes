@@ -23,8 +23,23 @@ export default function DefaultTemplate(props: TemplateProps & {
   const route = stripSlash(pathname ?? page?.route ?? "/");
   const isHome = route === "/" || route === "/home";
 
+  // Upstream Arcana never drops body into #page-wrapper bare — every band
+  // after #banner is section.wrapper.styleN > .container (> #content).
+  // Home demo markdown uses the same shell; banner already carries the brand.
   if (isHome) {
-    return <LayoutComponent {...props} />;
+    return (
+      <LayoutComponent {...props}>
+        {children && (
+          <section class="wrapper style1">
+            <div class="container">
+              <div id="content">
+                <div data-dune-body>{children}</div>
+              </div>
+            </div>
+          </section>
+        )}
+      </LayoutComponent>
+    );
   }
 
   return (

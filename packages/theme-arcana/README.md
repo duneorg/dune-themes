@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-arcana@1.0.1 --activate
+dune theme:install jsr:@dune/theme-arcana@1.0.2 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: arcana
-    src: jsr:@dune/theme-arcana@1.0.1
+    src: jsr:@dune/theme-arcana@1.0.2
 
 theme:
   name: arcana
-  src: jsr:@dune/theme-arcana@1.0.1
+  src: jsr:@dune/theme-arcana@1.0.2
 ```
 
 Logo header, optional home banner, and wrapper pages. See the

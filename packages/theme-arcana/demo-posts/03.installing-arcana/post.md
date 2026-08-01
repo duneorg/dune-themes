@@ -15,14 +15,14 @@ as every other Dune theme package.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-arcana@1.0.1 --activate
+dune theme:install jsr:@dune/theme-arcana@1.0.2 --activate
 ```
 
 Pins the package; `dune lockfile:sync` picks up the import-map change.
 
 ## From a ZIP
 
-Extract `arcana-1.0.1.zip` under `themes/arcana/` and set
+Extract `arcana-1.0.2.zip` under `themes/arcana/` and set
 `theme.name: arcana` in `site.yaml`.
 
 Then open `/` for the banner and `/blog` for dogfood posts — including
