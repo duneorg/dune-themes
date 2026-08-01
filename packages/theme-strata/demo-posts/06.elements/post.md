@@ -3,10 +3,14 @@ title: Elements — Strata typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Strata’s post chrome.
+summary: Headings, lists, quotes, and code inside Strata's scrolling body.
 taxonomy:
   tag: [elements, typography, strata]
 ---
+
+The avatar header and thumbnail grid are the loud part of Strata. This post exists so
+`/blog` links land on something that exercises ordinary post typography instead of another
+thumbnail caption.
 
 ## Headings
 
@@ -14,22 +18,27 @@ taxonomy:
 
 ### Subsection (h3)
 
-Strata’s landing chrome (avatar + thumbs) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Strata's `#main` body already carries a `major` header style for section titles — keep
+in-post hierarchy shallow so it doesn't compete with that. A fourth level usually means the
+post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Avatars, thumbnails, and work-item tiles belong on home; posts read as plain markdown
+- Nested lists indent without borrowing a heading's type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan on mobile
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a client testimonial, not a marketing callout.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: strata`, and a fence:
 
 ```ts
-export const demo = "Strata";
+const header = { avatar: "avatar.jpg", tagline: "A visual studio built for Dune demos" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you're done, return to [Home](/) and confirm the icon footer still highlights the right
+route (trailing-slash safe).

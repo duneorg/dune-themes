@@ -3,33 +3,43 @@ title: Configuring Helios
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Helios demo.
+summary: Tagline, banner, credit, and copyright — what this live demo has set.
 taxonomy:
   tag: [config, helios]
 ---
 
-Helios keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Helios has the widest config surface in this batch of ports, because the
+upstream design has both a header tagline and a separate home banner headline
+to seed.
 
 ## `tagline`
 
-Branding line in the chrome visitors see on every page. This demo sets a short Helios-specific string via `demo-config.json` when present so the hero/sidebar doesn’t fall back to empty defaults. Change it when the demo should read as your product.
+The line under the site title in the page-wrapper header, shown on every
+route when set. This demo sets **"A carousel landing for Dune demos"** so the
+header never falls back to the raw site description mid-QA.
 
 ## `banner_title`
 
-Home banner headline. Empty uses the theme’s upstream-style default. Seed a concrete line in the demo so side-by-side QA against html5up.net/helios isn’t comparing against a placeholder.
+Home banner headline, rendered inside `#banner` above the carousel reel. Empty
+falls back to `Hi. You're looking at {site title}.` — this demo seeds the
+same phrasing explicitly so a side-by-side check against
+[html5up.net/helios](https://html5up.net/helios) isn't comparing against a
+generated placeholder.
 
 ## `show_banner`
 
-When on, the landing shows the banner block before tiles/sections. Turn off only if you’re deliberately testing a bannerless home — most fidelity checks want it on.
+On here. Turning it off skips straight to the carousel reel — useful for
+testing a bannerless variant, but most fidelity passes want the banner
+visible since it's most of Helios's first viewport.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On. Gates the visible HTML5 UP credit line in the footer (CC BY). Leave it on
+unless you hold a separate Pixelarity license.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name — **Helios Demo** here, so the footer stays short regardless
+of the configured site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Helios is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+No dark mode in this port; upstream Helios is a single design.

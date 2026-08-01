@@ -1,3 +1,7 @@
 {
-  "show_html5up_credit": true
+  "show_intro": true,
+  "intro_title": "Massively",
+  "intro_subtitle": "A full-screen intro for Dune, before the post cards begin.",
+  "show_html5up_credit": true,
+  "footer_text": "Massively Demo"
 }

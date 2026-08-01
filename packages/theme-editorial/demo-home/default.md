@@ -16,5 +16,9 @@ taxonomy:
   tag: [demo, blog, editorial]
 ---
 
-A faithful-adjacent port of [HTML5 UP Editorial](https://html5up.net/editorial) for Dune.
-Posts below cover install, config, and how upstream chrome maps to Dune.
+Editorial's layout is two columns everywhere, not just on home: `#main`
+carries the article on the left, and a persistent `#sidebar` — search,
+menu, recent posts, and an about blurb — sits on the right on every
+route. This demo names that sidebar copy explicitly instead of leaving
+it to the site description; open a post below to see the same sidebar
+follow you off the listing page.

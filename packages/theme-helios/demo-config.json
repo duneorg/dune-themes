@@ -1,5 +1,7 @@
 {
-  "tagline": "Helios for Dune",
-  "banner_title": "Welcome to Helios",
-  "show_html5up_credit": true
+  "tagline": "A carousel landing for Dune demos",
+  "banner_title": "Hi. You're looking at Helios.",
+  "show_banner": true,
+  "show_html5up_credit": true,
+  "footer_text": "Helios Demo"
 }

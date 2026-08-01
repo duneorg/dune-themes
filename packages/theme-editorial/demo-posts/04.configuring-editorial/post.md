@@ -3,29 +3,46 @@ title: Configuring Editorial
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Editorial demo.
+summary: Logo suffix, sidebar blurb, and credit — what this live demo has set.
 taxonomy:
   tag: [config, editorial]
 ---
 
-Editorial keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Editorial’s config surface is small, but every key affects the sidebar
+that follows you across every route. This demo sets all four keys away
+from their schema defaults in `demo-config.json`.
 
 ## `logo_suffix`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Editorial’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Set to **“by HTML5 UP”**. It renders right after the bold site title
+inside the `#header` logo link, at the top of `#main`, so the header
+reads “**Editorial** by HTML5 UP” instead of just the bare site title.
+Empty omits the suffix entirely — there’s no fallback text, so leaving
+it blank is a legitimate choice for a plain wordmark.
 
 ## `sidebar_blurb`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Editorial’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Set to **“A magazine-style Dune blog with a persistent sidebar for
+search, recent posts, and a short about note.”** instead of falling
+back to the site description. It fills the “About” section near the
+bottom of `#sidebar`, under the recent-posts mini-list — the last thing
+a reader sees before the `#footer` copyright line. If this and the site
+description are both empty, that About section doesn’t render at all.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+Set to `true`. The `#footer` paragraph inside `#sidebar` appends
+“Design: HTML5 UP”, linking to
+[html5up.net/editorial](https://html5up.net/editorial), required under
+CC BY. The toggle gates that single credit line — turn it off only with
+a separate Pixelarity license.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Set to **“Editorial Demo”**, replacing the site title in the `#footer`
+copyright paragraph inside `#sidebar` so a long product name doesn’t
+crowd that narrow column.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Editorial is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+There is **no** dark mode or color-scheme preset in this port. Upstream
+Editorial is a single design; a Dune dark lift may land later as an
+enhancement, not as fidelity work.

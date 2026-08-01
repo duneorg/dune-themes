@@ -14,22 +14,29 @@ taxonomy:
 
 ### Subsection (h3)
 
-Massively’s landing chrome (hero + cards) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Massively’s `#intro` (full-screen title) and card grid are louder than
+post bodies. This Elements leaf lives under `/blog` so its CTAs stay
+real routes — it checks that an inner article, reached from a card,
+still gets a readable type scale once you’re past the intro.
 
 ## Lists
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
+- Buttons, icons, and card tiles belong on `#intro` and `#main`’s grid;
+  posts use ordinary markdown lists instead
 - Nested lists should indent without inventing a fourth heading level
   - Like this
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short — Massively’s card excerpts are short too
 
-> Blockquotes should read as citation, not promo stickers.
+> Blockquotes should read as citation, not as one of `#intro`’s promo
+> buttons.
 
 ```ts
-export const demo = "Massively";
+export const demo = { theme: "massively", introTitle: "Massively" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
+When you’re done, return to [Blog](/blog) or [Home](/) and confirm
+`#nav`’s active item still highlights correctly (trailing-slash safe),
+and that `#intro` reappears if you navigate back to `/`.
 

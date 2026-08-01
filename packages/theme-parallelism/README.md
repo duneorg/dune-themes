@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-parallelism@1.0.0 --activate
+dune theme:install jsr:@dune/theme-parallelism@1.0.1 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: parallelism
-    src: jsr:@dune/theme-parallelism@1.0.0
+    src: jsr:@dune/theme-parallelism@1.0.1
 
 theme:
   name: parallelism
-  src: jsr:@dune/theme-parallelism@1.0.0
+  src: jsr:@dune/theme-parallelism@1.0.1
 ```
 
 Horizontal masonry on home and blog, wheel/keyboard scroll, and edge

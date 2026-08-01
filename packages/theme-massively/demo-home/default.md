@@ -16,5 +16,8 @@ taxonomy:
   tag: [demo, blog, massively]
 ---
 
-A faithful-adjacent port of [HTML5 UP Massively](https://html5up.net/massively) for Dune.
-Posts below cover install, config, and how upstream chrome maps to Dune.
+Massively opens on `#intro`: a full-screen title, a one-line subtitle, and
+a scroll-down arrow that reveals the `#header` logo and card grid below.
+This demo keeps that intro on (`show_intro: true`) so the fold isn’t just
+a bare header. Scroll past it, or jump straight into a post below, to see
+the card-based blog listing upstream ships instead of static HTML pages.

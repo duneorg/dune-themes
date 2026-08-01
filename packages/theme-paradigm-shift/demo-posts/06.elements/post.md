@@ -3,33 +3,44 @@ title: Elements — Paradigm Shift typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Paradigm Shift’s post chrome.
+summary: Headings, lists, quotes, and code inside Paradigm Shift's plain content section.
 taxonomy:
   tag: [elements, typography, paradigm-shift]
 ---
+
+Home is a stack of full-bleed sections with icons and galleries. Inner posts
+render as a single plain `content` block, so this page exists to prove that
+block still typesets cleanly without any section chrome around it.
 
 ## Headings
 
 ## Section heading (h2)
 
-### Subsection (h3)
+### Subsection heading (h3)
 
-Paradigm Shift’s landing chrome (alternating spotlights) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Paradigm Shift's home sections already use large section-level `<h2>`s — post
+bodies should read one size calmer. Keep to two levels of hierarchy; a third
+usually means the post should split into two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Feature icons, the gallery, and the arrow-scroll cue belong to home; posts
+  use ordinary markdown lists
+- Nested items indent without picking up a `feature-icons` icon
+  - like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Short numbered steps read best inside the plain content column
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read as citation, not as an intro-section
+> headline — Paradigm Shift already spent its visual drama on the stack.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `class="dune-nav"`, and a fence:
 
 ```ts
-export const demo = "Paradigm Shift";
+const isLanding = landing ?? isHome;
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you're done, return to [Home](/) and confirm the intro, section stack,
+and closing credit still render top to bottom without a stuck scroll anchor.

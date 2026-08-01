@@ -3,25 +3,34 @@ title: Configuring Phantom
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Phantom demo.
+summary: Logo, credit, and copyright — what this live demo has set.
 taxonomy:
   tag: [config, phantom]
 ---
 
-Phantom keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Phantom's config surface is three fields wide, and this demo sets two of them
+so the tile grid and footer read as a finished site rather than a schema
+table.
 
 ## `logo_url`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Phantom’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Left empty on this demo, which falls back to the vendored
+`static/html5up/images/logo.svg` symbol mark in the header. Point it at your
+own square-ish image when you want the header logo to carry brand identity —
+Phantom's header is compact, so oversized images get cropped by the symbol
+container rather than resized.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On here. The footer credit is required under CC BY when the toggle is on.
+Flip it off only with a separate Pixelarity license; the gate should hide the
+credit list item in the footer entirely, not just visually mute it.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name. This demo uses **Phantom Demo** so a long site title doesn't
+crowd the compact footer row. Empty falls back to the site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Phantom is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+There is no dark mode or color-scheme preset in this port — upstream Phantom
+ships one design, and this demo shows exactly that design with real values
+in every slot, not placeholders.

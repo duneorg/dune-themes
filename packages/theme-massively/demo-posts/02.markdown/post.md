@@ -49,6 +49,8 @@ function formatDate(ms: number, lang: string) {
 | Option | Type | Default |
 | --- | --- | --- |
 | `show_intro` | toggle | `true` |
+| `intro_title` | text | *(site title)* |
+| `intro_subtitle` | text | *(site description)* |
 | `show_html5up_credit` | toggle | `true` |
 | `footer_text` | text | *(empty)* |
 

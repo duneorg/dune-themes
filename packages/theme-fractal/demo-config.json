@@ -1,3 +1,7 @@
 {
-  "show_html5up_credit": true
+  "header_title": "Fractal",
+  "header_subtitle": "A phone-first portfolio for Dune demos",
+  "phone_image": "/themes/fractal/static/html5up/images/screen.jpg",
+  "show_html5up_credit": true,
+  "footer_text": "Fractal Demo"
 }

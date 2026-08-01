@@ -3,29 +3,41 @@ title: Configuring Future Imperfect
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Future Imperfect demo.
+summary: Author byline, avatar, credit, and copyright — what this live demo has set.
 taxonomy:
   tag: [config, future-imperfect]
 ---
 
-Future Imperfect keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Future Imperfect's config surface exists to brand the magazine chrome, not
+to invent settings upstream never had. Here's what this demo actually sets,
+and why.
 
 ## `author_name`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Future Imperfect’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+This demo sets **“Mara Solis”** via `demo-config.json`. It shows up next to
+the avatar in every card's meta row on `/`, right under the post title —
+the same slot upstream Future Imperfect reserves for a byline. Leaving it
+at the schema default of "Author" would make every card look
+machine-generated instead of like a real magazine feed.
 
 ## `author_avatar`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Future Imperfect’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Left at the theme default (an empty string), which falls back to the
+vendored `static/html5up/images/avatar.jpg` placeholder headshot. A real
+site would point this at a hosted image; the demo keeps the stock art so
+the meta row still renders a face instead of a broken `<img>`.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On. This gates the visible **HTML5 UP** design credit inside `#menu`'s
+footer, required under CC BY whenever the toggle is on. Turn it off only
+with a separate Pixelarity license — it should hide every credit surface
+at once, not orphan one in the flyout while leaving another live.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Set to **“Future Imperfect Demo”** so the copyright line under the credit
+reads as a demo, not a real publication borrowing the site's own title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Future Imperfect is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+No dark mode or color-scheme preset here — upstream Future Imperfect is one
+design, and a Dune lift stays a future enhancement, not part of fidelity.

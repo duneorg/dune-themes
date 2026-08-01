@@ -1,3 +1,7 @@
 {
-  "show_html5up_credit": true
+  "show_intro": true,
+  "intro_title": "Hyperspace",
+  "intro_subtitle": "A responsive sidebar landing for Dune demos",
+  "show_html5up_credit": true,
+  "footer_text": "Hyperspace Demo"
 }

@@ -3,10 +3,13 @@ title: Elements — Miniport typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Miniport’s post chrome.
+summary: Headings, lists, quotes, and code once you leave the portrait-led home.
 taxonomy:
   tag: [elements, typography, miniport]
 ---
+
+The home route is one portrait and a headline — this post exists so `/blog` links land on
+something that actually exercises post typography instead of another photo caption.
 
 ## Headings
 
@@ -14,22 +17,26 @@ taxonomy:
 
 ### Subsection (h3)
 
-Miniport’s landing chrome (scrolly articles) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Miniport's landing chrome is louder than its post chrome on purpose. Keep article headings
+shallow; a fourth level usually means the post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Tiles, portraits, and scrolly anchors belong on home; posts read as plain markdown
+- Nested lists indent without borrowing a heading's type size
+  - Like this nested item
+1. Ordered lists share the same line-height as unordered ones
+2. Don't renumber mid-list just to make a point
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a caption pulled from a shoot, not a pull-quote banner.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: miniport`, and a fence:
 
 ```ts
-export const demo = "Miniport";
+const hero = { image: "pic00.jpg", headline: "Field Notes Studio" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you're done, return to [Home](/) and confirm the portrait-led shell comes back with no
+leftover post chrome.

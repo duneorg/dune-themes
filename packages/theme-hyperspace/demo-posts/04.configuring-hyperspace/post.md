@@ -3,33 +3,44 @@ title: Configuring Hyperspace
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Hyperspace demo.
+summary: Intro toggle, headline, subtitle, credit, and copyright — what this demo has set.
 taxonomy:
   tag: [config, hyperspace]
 ---
 
-Hyperspace keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Hyperspace's config surface is entirely about the full-screen intro on
+`/` — whether it shows, and what it says.
 
 ## `show_intro`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Hyperspace’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+On in this demo. Renders `#intro` as a fullscreen fade-up section above
+`#content` on the home route only; every inner page skips straight to the
+content section. Turning this off is a legitimate choice for a site that
+wants Hyperspace's sidebar chrome without the scroll-to-reveal intro.
 
 ## `intro_title`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Hyperspace’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Set to **“Hyperspace”**, the `<h1>` inside `#intro`. Empty falls back to
+the site title — reasonable for a real deployment, but the demo names the
+theme explicitly so the intro always matches what's being evaluated.
 
 ## `intro_subtitle`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Hyperspace’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Set to **“A responsive sidebar landing for Dune demos”**, the line under
+the headline. A blank subtitle next to a full-screen title reads as
+unfinished, since upstream Hyperspace always pairs the two.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On. Gates the visible **HTML5 UP** credit inside `#footer`'s menu list,
+required under CC BY when the toggle is on. Turn it off only alongside a
+separate Pixelarity license — the switch should hide the credit surface
+entirely, not leave it half-visible.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Set to **“Hyperspace Demo”** so the copyright line reads as a demo rather
+than quietly reusing the site's own title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Hyperspace is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+No dark mode — upstream Hyperspace is a single design; a Dune scheme lift
+stays a future enhancement, not part of fidelity.

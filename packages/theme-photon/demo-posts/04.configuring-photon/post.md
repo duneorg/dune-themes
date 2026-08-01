@@ -9,21 +9,35 @@ taxonomy:
 ---
 
 Photon’s config is intentionally thin so the upstream single-page portfolio
-shell stays intact.
+shell stays intact. Three of its four keys are non-default in this demo’s
+`demo-config.json`.
 
 ## `tagline`
 
-Hero supporting copy under the title. This demo sets **“A gallery-style
-portfolio for Dune”** via `demo-config.json`. Empty falls back to the site
-description — if both are empty the hero feels unfinished, so seed one.
+Hero supporting copy that continues the `#header` headline. Upstream
+Photon’s `h1` reads “Hi, I’m &lt;Name&gt;” — this port appends the
+tagline right after the comma, so this demo’s value, **“a gallery-style
+portfolio for Dune”**, renders as “Hi, I’m Photon, a gallery-style
+portfolio for Dune.” It’s lowercase on purpose to keep that sentence
+readable. Empty falls back to the site description; if both are empty
+the headline trails off mid-sentence, so seed one before you screenshot.
 
 ## `avatar`
 
-Optional image URL for themes that surface a portrait in the header. Leave
-empty to keep the default Photon treatment; set an absolute or site-relative
-URL when the demo should feel branded to a person or studio.
+Optional image URL reserved for a future portrait treatment in the
+header. Left empty in this demo — the current `#header` markup doesn’t
+render it yet, so setting a URL here has no visible effect until that
+lands; leave it blank rather than seeding a value nothing displays.
 
 ## `show_html5up_credit`
 
-On here. Footer credit stays visible for CC BY. No dark mode or schemes —
-Photon upstream is one light portfolio design.
+Set to `true`. The `#footer` copyright list appends a “Design: HTML5 UP”
+line, linking to [html5up.net/photon](https://html5up.net/photon),
+which is required while this port stays under CC BY. No dark mode or
+color schemes — Photon upstream is one light portfolio design.
+
+## `footer_text`
+
+Set to **“Photon Demo”**, replacing the site title in the `#footer`
+copyright line so a long product name doesn’t crowd the single-page
+footer next to the credit link.

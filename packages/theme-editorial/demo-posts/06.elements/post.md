@@ -14,22 +14,30 @@ taxonomy:
 
 ### Subsection (h3)
 
-Editorial’s landing chrome (editorial sidebar) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Editorial’s `#sidebar` — search, `#menu`, recent posts, about blurb —
+is louder and busier than a post body. This Elements leaf lives under
+`/blog` next to that sidebar, so it checks that `#main`’s article column
+still gets a readable, calm type scale beside all that chrome.
 
 ## Lists
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
+- The sidebar’s recent-posts mini-list and `#menu` use their own
+  markup; posts use ordinary markdown lists instead
 - Nested lists should indent without inventing a fourth heading level
   - Like this
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short — the sidebar’s About blurb is short too
 
-> Blockquotes should read as citation, not promo stickers.
+> Blockquotes should read as citation, not as one of the sidebar’s
+> boxed sections.
 
 ```ts
-export const demo = "Editorial";
+export const demo = { theme: "editorial", logoSuffix: "by HTML5 UP" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
+When you’re done, return to [Blog](/blog) or [Home](/) and confirm
+`#menu`’s active item still highlights correctly (trailing-slash safe),
+and that the sidebar’s About section still shows `sidebar_blurb`
+rather than falling back silently to an empty description.
 

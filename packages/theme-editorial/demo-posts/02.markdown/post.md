@@ -46,6 +46,8 @@ function formatDate(ms: number, lang: string) {
 
 ## Tables
 
+| Option | Type | Default |
+| --- | --- | --- |
 | `logo_suffix` | text | *(empty)* |
 | `sidebar_blurb` | text | *(site description)* |
 | `show_html5up_credit` | toggle | `true` |

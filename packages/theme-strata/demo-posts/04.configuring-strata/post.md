@@ -3,29 +3,37 @@ title: Configuring Strata
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Strata demo.
+summary: Avatar, tagline, credit, and copyright — what this live demo has set.
 taxonomy:
   tag: [config, strata]
 ---
 
-Strata keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Strata's config surface stays close to what upstream actually exposes: an avatar, a tagline
+next to the site name, and the credit/copyright pair every HTML5 UP port needs.
 
 ## `avatar`
 
-Optional portrait URL. Empty keeps the theme default treatment; set a URL when the demo should feel like a personal studio.
+Round portrait in `#header`. This demo leaves it at the theme default
+(`static/html5up/images/avatar.jpg`) so the header renders without depending on an external
+URL staying online. Set a URL when the demo should feel like your own studio.
 
 ## `tagline`
 
-Branding line in the chrome visitors see on every page. This demo sets a short Strata-specific string via `demo-config.json` when present so the hero/sidebar doesn’t fall back to empty defaults. Change it when the demo should read as your product.
+Appended after the site title inside `<h1>` — `{Site Title}, {tagline}`. This demo sets
+**"A visual studio built for Dune demos"** via `demo-config.json` so the header reads as a
+real byline instead of falling back to the site description. Change it when the demo should
+sound like your product.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On here. The footer link back to HTML5 UP is required under CC BY while the toggle is on;
+turn it off only alongside a separate Pixelarity license, and hide every credit surface
+together, not just the footer line.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name. This demo uses **Strata Demo** so the footer stays short instead of
+repeating a long site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Strata is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+There is no dark mode or color-scheme preset in this port — Strata upstream ships one
+design, and a Dune lift may land later as an enhancement, not as fidelity.

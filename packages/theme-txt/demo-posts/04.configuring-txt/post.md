@@ -3,29 +3,37 @@ title: Configuring TXT
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live TXT demo.
+summary: Avatar, tagline, credit, and copyright — what this live demo has set.
 taxonomy:
   tag: [config, txt]
 ---
 
-TXT keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+TXT's config surface stays close to what upstream actually exposes: an optional avatar, a
+tagline under the logo, and the credit/copyright pair every HTML5 UP port needs.
 
 ## `avatar`
 
-Optional portrait URL. Empty keeps the theme default treatment; set a URL when the demo should feel like a personal studio.
+Optional portrait URL used where the theme's layout calls for one. This demo leaves it
+empty and keeps the theme default treatment, since TXT's header is text-only by design —
+set a URL only if your fork of the layout adds an image slot.
 
 ## `tagline`
 
-Branding line in the chrome visitors see on every page. This demo sets a short TXT-specific string via `demo-config.json` when present so the hero/sidebar doesn’t fall back to empty defaults. Change it when the demo should read as your product.
+The line under the logo in `#header`, and inside the scrolly `#banner` on home. This demo
+sets **"Notes, essays, and short-form writing on Dune"** via `demo-config.json` so both
+spots read as a real byline instead of the schema's generic fallback. Empty falls back to
+the site description.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On here. The footer link back to HTML5 UP is required under CC BY while the toggle is on;
+turn it off only alongside a separate Pixelarity license, and hide every credit surface
+together, not just the footer line.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name. This demo uses **TXT Demo** so the footer stays short instead of repeating
+a long site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream TXT is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+There is no dark mode or color-scheme preset in this port — TXT upstream ships one design,
+and a Dune lift may land later as an enhancement, not as fidelity.

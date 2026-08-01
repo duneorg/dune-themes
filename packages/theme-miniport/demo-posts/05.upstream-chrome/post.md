@@ -3,20 +3,28 @@ title: Miniport chrome on Dune
 date: 2026-03-15
 template: post
 published: true
-summary: Theme-specific fidelity notes for Miniport — not a generic clone.
+summary: How Miniport's portrait-led scrolly home maps onto Dune templates.
 taxonomy:
   tag: [chrome, miniport, fidelity]
 ---
 
-Upstream Miniport is known for **scrolly articles**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
-
-One-page scrolly sections with article tiles.
+Upstream Miniport pairs a fullbleed portrait with a headline, a short intro, and a single
+scrolly CTA, then drops into an icon-tile grid pointing at the rest of the site. On this
+Dune port that shell lives in `templates/default.tsx`, styled entirely by the vendored
+`static/html5up/` CSS — this post exists so the demo explains what you're seeing instead of
+shipping a generic clone.
 
 Compare side-by-side with [html5up.net/miniport](https://html5up.net/miniport):
 
-- Hero / banner / first viewport should feel like the same family
-- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
-- Footer credit stays visible when `show_html5up_credit` is on
+- The portrait + headline pairing (`hero_image` / `home_headline`) should feel like the same
+  family as upstream's photo-led hero
+- The four-box tile row below it (Blog, Search, Archives, About) stands in for upstream's
+  project grid — icons come from a small rotation, not per-tile uploads
+- Footer credit (`#copyright`) stays visible under `article.wrapper.style4` whenever
+  `show_html5up_credit` is on
+- Active nav in the top bar highlights correctly at mobile widths, trailing-slash safe
 
-Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
-
+Honest Dune deviations: upstream's per-project detail pages become ordinary blog posts under
+`/blog`; search is server-side `/api/search`, not a static filter; contact links have no
+mail backend behind them. No dark mode — Miniport upstream is one design; a Dune lift may
+land later as an enhancement, not as fidelity.

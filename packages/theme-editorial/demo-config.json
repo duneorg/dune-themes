@@ -1,3 +1,6 @@
 {
-  "show_html5up_credit": true
+  "logo_suffix": "by HTML5 UP",
+  "sidebar_blurb": "A magazine-style Dune blog with a persistent sidebar for search, recent posts, and a short about note.",
+  "show_html5up_credit": true,
+  "footer_text": "Editorial Demo"
 }
