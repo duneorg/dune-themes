@@ -5,7 +5,7 @@ import { clientSchemeTable, colorSchemeCss, COLOR_SCHEMES, resolveColorScheme } 
 export default function Layout(
   { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
 ) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "sirocco";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const canonicalPath = pathname ?? page?.route ?? "/";

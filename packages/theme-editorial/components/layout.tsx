@@ -8,7 +8,7 @@ interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
   recentPosts?: Array<{ route: string; title: string; excerpt?: string; cover?: string }>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }
 
 function stripSlash(p: string) {
@@ -28,7 +28,7 @@ export default function Layout({
   recentPosts,
   t,
 }: LayoutProps) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "editorial";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

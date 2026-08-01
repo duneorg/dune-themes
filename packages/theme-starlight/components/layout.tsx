@@ -227,7 +227,7 @@ export interface LayoutProps {
   dir?: string;
   pathname?: string;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   navAll?: NavPage[];
   translations?: Array<{ lang: string; route: string; url: string }>;
   /** Nested ToC items, or null for pages without a ToC. */

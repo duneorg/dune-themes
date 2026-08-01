@@ -5,29 +5,19 @@ import StaticLayout from "../components/layout.tsx";
 import { formatAlphaDate, postExcerpt } from "../utils/content.ts";
 import { safeHref } from "../utils/safe-url.ts";
 
-function stripSlash(p: string) {
-  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
-}
-
 export default function BlogTemplate(props: TemplateProps & {
   children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, pathname, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
-  const route = stripSlash(pathname ?? page?.route ?? "/");
-  const isHome = route === "/" || route === "/home";
+  const { page, children, collection, pagination, t } = props;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const items = collection?.items ?? [];
   const learnMore = tr("cta.learn_more", "Learn More");
-
-  if (isHome) {
-    return <LayoutComponent {...props} />;
-  }
 
   return (
     <LayoutComponent {...props}>

@@ -20,7 +20,7 @@ function stripSlash(p: string) {
 export default function Layout(
   { children, site, config, nav, navAll, page, pageTitle, pathname, dir, themeConfig, hideSidebar, t }: any,
 ) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "nightfall";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

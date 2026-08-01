@@ -6,7 +6,7 @@ import { buildNavTree, isRouteWithin, navLabel, type NavNode } from "../utils/na
 export default function Layout(
   { children, site, config, nav, navAll, page, pageTitle, pathname, dir, themeConfig, t }: any,
 ) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "caravan";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const canonicalPath = pathname ?? page?.route ?? "/";

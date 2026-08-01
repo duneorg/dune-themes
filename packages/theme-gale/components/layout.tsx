@@ -12,7 +12,7 @@ import {
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }
 
 function stripSlash(p: string) {
@@ -36,7 +36,7 @@ export default function Layout({
   themeConfig,
   t,
 }: LayoutProps) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "gale";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = (site as { basePath?: string } | undefined)?.basePath ?? "";

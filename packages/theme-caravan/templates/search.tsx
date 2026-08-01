@@ -9,7 +9,7 @@ import StaticLayout from "../components/layout.tsx";
 
 export default function SearchTemplate(props: any) {
   const { Layout, searchQuery, searchResults, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const LayoutComponent = Layout ?? StaticLayout;
   const results = searchResults ?? [];
 

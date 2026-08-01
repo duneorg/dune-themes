@@ -6,7 +6,7 @@ import StaticLayout from "../components/layout.tsx";
 export default function BlogTemplate(props: any) {
   const { page, children, Layout, collection, themeConfig, t, pathname } = props;
   const LayoutComponent = Layout ?? StaticLayout;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   // page.route is the page's own folder-derived route (e.g. "/home/"); the
   // homepage is served for request path "/" regardless of what that is —
   // pathname is the actual request path, route is not.

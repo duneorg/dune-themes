@@ -5,7 +5,7 @@ import StaticLayout from "../components/layout.tsx";
 export default function ArchivesTemplate(props: any) {
   const { page, children, Layout, collection, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const fm = page.frontmatter;
   const lang = page.language ?? "en";
 

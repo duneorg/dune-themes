@@ -6,12 +6,12 @@ import { themeImage } from "../utils/content.ts";
 export default function ErrorTemplate(props: TemplateProps & {
   Layout?: typeof StaticLayout;
   config?: { theme?: { name?: string } };
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   themeConfig?: Record<string, unknown>;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const tr = (key: string, fallback: string) =>
-    (props.t ? props.t(key) : undefined) ?? fallback;
+    props.t ? props.t(key, fallback) : fallback;
   const code = (props.page?.frontmatter as Record<string, unknown>)?.errorCode ?? 404;
   const basePath = props.site?.basePath ?? "";
   const homeHref = `${basePath}/`.replace(/([^:]\/)\/+/g, "$1") || "/";

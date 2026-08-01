@@ -12,5 +12,8 @@
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "cta.learn_more": "Learn More",
+  "nav.blog": "The Blog",
+  "cta.read_blog": "Read the Blog"
 }

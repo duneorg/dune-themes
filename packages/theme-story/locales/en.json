@@ -12,5 +12,16 @@
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "cta.learn_more": "Learn More",
+  "nav.blog": "Blog",
+  "nav.archives": "Archives",
+  "home.read_blog": "Read the blog",
+  "home.search_demo": "Search demo",
+  "home.browse_archives": "Browse archives",
+  "home.gallery_title": "Massa sed condimentum",
+  "home.ready": "Ready to explore?",
+  "home.ready_sub": "Start with the blog or browse the about page for more on this demo site.",
+  "cta.read_blog": "Read the Blog",
+  "nav.about": "About"
 }

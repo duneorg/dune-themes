@@ -17,11 +17,11 @@ export default function BlogTemplate(props: TemplateProps & {
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, collection, pagination, pathname, config, themeConfig, t, site } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const route = stripSlash(pathname ?? page?.route ?? "/");
   const isHome = route === "/" || route === "/home";
   const items = collection?.items ?? [];

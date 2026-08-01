@@ -44,7 +44,7 @@ export default function Layout(props: any) {
   const { page, pageTitle, site, dir, pathname, themeConfig, t, children } = props;
   const fm = page?.frontmatter ?? {};
   const tc = themeConfig ?? {};
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
 
   const bookTheme = (tc.book_theme as string) ?? "auto";
   const searchEnabled = tc.book_search !== false;

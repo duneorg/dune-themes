@@ -11,11 +11,11 @@ export default function BlogTemplate(props: TemplateProps & {
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, collection, pagination, themeConfig, config, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const items = collection?.items ?? [];
   const themeName = config?.theme?.name ?? "future-imperfect";
   const authorName = (themeConfig?.author_name as string) || "Author";

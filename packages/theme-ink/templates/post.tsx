@@ -8,11 +8,11 @@ export default async function PostTemplate(props: TemplateProps & {
   children?: any;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, themeConfig, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const fm = page.frontmatter as Record<string, unknown>;
   const meta = (fm.metadata ?? {}) as Record<string, unknown>;
   const date = fm.date ? new Date(String(fm.date)).getTime() : undefined;

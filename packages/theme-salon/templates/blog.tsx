@@ -17,7 +17,7 @@ export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   site?: { basePath?: string };
   collection?: {
     items?: Array<{ route: string; frontmatter: Record<string, unknown>; excerpt?: string }>;
@@ -28,7 +28,7 @@ export default function BlogTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, collection, themeConfig, t, site } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const basePath = site?.basePath ?? "";
   const items = collection?.items ?? [];
   const [featured, ...rest] = items;

@@ -7,7 +7,7 @@ import StaticLayout from "../components/layout.tsx";
 export default function DefaultTemplate(props: any) {
   const { page, children, Layout, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
 
   return (
     <LayoutComponent {...props}>

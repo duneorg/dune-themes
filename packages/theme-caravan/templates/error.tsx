@@ -9,7 +9,7 @@ import StaticLayout from "../components/layout.tsx";
 
 export default function ErrorTemplate(props: any) {
   const { page, Layout, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const LayoutComponent = Layout ?? StaticLayout;
   const status = page?.frontmatter?.statusCode ?? 404;
   const message = page?.frontmatter?.message;

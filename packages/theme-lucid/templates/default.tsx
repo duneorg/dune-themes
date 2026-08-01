@@ -7,11 +7,11 @@ export default function DefaultTemplate(props: TemplateProps & {
   children?: any;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, themeConfig, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const editBase = safeHref(themeConfig?.edit_url) ?? "";
   const editHref = editBase
     ? `${editBase.replace(/\/$/, "")}${page.route}`.replace(/\/$/, "") + ".md"

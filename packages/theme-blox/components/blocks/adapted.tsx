@@ -487,7 +487,7 @@ export function PortfolioBlock(
             {...linkTarget(archiveLink!)}
             class="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-800 dark:text-white bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-white/20 transition-all duration-300"
           >
-            <span>{str(archive.text) || t("portfolio_view_all") || t("more_pages") || "View All Projects"}</span>
+            <span>{str(archive.text) || t("portfolio_view_all", "View All Projects")}</span>
             <Icon name="arrow-right" class="w-4 h-4" />
           </a>
         </div>

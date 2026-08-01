@@ -6,7 +6,7 @@ import { safeHref } from "../utils/safe-url.ts";
 interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   /** When true, landing chrome (alt header); footer lives in the landing template. */
   landing?: boolean;
 }
@@ -70,7 +70,7 @@ export default function Layout({
   t,
   landing,
 }: LayoutProps) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "spectral";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

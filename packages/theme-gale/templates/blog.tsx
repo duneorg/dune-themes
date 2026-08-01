@@ -7,7 +7,7 @@ export default function BlogTemplate(props: TemplateProps & {
   children?: unknown;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   collection?: {
     items?: Array<{ route: string; frontmatter: Record<string, unknown>; excerpt?: string }>;
     hasPrev?: boolean;
@@ -17,7 +17,7 @@ export default function BlogTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, collection, themeConfig, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const subtitle = (themeConfig?.home_subtitle as string) ||
     ((page.frontmatter.metadata as Record<string, unknown>)?.description as string | undefined);
 

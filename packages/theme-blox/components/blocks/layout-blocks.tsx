@@ -1044,7 +1044,7 @@ export function DevHero(
   const showStatus = content.show_status === true;
   const showScroll = content.show_scroll_indicator === true;
 
-  const name = str(content.name) || str(content.title) || t("developer") || "Developer";
+  const name = str(content.name) || str(content.title) || t("developer", "Developer");
   const role = str(content.role) || str(content.tagline);
   const bio = str(content.bio);
   const avatar = str(content.avatar);
@@ -1269,7 +1269,7 @@ export function DevHero(
           <a
             href={scrollTarget}
             class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer group"
-            aria-label={t("scroll_to_content") || "Scroll to content"}
+            aria-label={t("scroll_to_content", "Scroll to content")}
           >
             <div class="w-6 h-10 rounded-full border-2 border-gray-300 dark:border-white/20 group-hover:border-primary-400/50 flex items-start justify-center p-2 transition-colors">
               <div class="w-1 h-2 bg-gray-400 dark:bg-white/40 group-hover:bg-primary-400 rounded-full animate-pulse transition-colors" />

@@ -15,7 +15,7 @@ function stripSlash(p: string) {
 export default function Layout(
   { children, site, config, nav, page, pageTitle, pathname, dir, themeConfig, t }: any,
 ) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "fennec";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

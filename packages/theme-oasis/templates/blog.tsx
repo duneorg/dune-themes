@@ -5,7 +5,7 @@ import StaticLayout from "../components/layout.tsx";
 export default function BlogTemplate(props: any) {
   const { page, children, Layout, collection, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
 
   return (
     <LayoutComponent {...props}>

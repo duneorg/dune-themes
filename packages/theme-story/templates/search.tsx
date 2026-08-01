@@ -9,12 +9,12 @@ export default function SearchTemplate(props: TemplateProps & {
   config?: { theme?: { name?: string } };
   searchQuery?: string;
   searchResults?: { route: string; title: string; excerpt?: string }[];
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   themeConfig?: Record<string, unknown>;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, searchQuery, searchResults, t, config, themeConfig } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const action = getSearchUrl("").split("?")[0];
   const themeName = config?.theme?.name ?? "story";
   const img = (file: string) => themeImage(themeName, file);

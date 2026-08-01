@@ -21,11 +21,11 @@ export default function DefaultTemplate(props: TemplateProps & {
   site?: { title?: string; description?: string; basePath?: string };
   config?: { theme?: { name?: string } };
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, pathname, site, config, themeConfig, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const fm = page.frontmatter as Record<string, unknown>;
   const cover = safeHref(fm.cover);
   const route = stripSlash(pathname ?? page?.route ?? "/");

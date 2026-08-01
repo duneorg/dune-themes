@@ -8,7 +8,7 @@ export default function BlogTemplate(props: TemplateProps & {
   children?: any;
   Layout?: typeof StaticLayout;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   collection?: {
     items?: Array<{ route: string; frontmatter: Record<string, unknown>; excerpt?: string }>;
     hasPrev?: boolean;
@@ -18,7 +18,7 @@ export default function BlogTemplate(props: TemplateProps & {
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, collection, themeConfig, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const defaultAuthor = (themeConfig?.default_author as string) ?? "";
   const defaultAvatar = safeHref(themeConfig?.default_avatar) ?? "";
 

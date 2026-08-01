@@ -5,7 +5,7 @@ import type { TemplateProps } from "@dune/core/content/types";
 interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   landing?: boolean;
 }
 
@@ -21,10 +21,8 @@ export default function Layout({
   pathname,
   dir,
   children,
-  t,
 }: LayoutProps) {
-  // Story chrome lives in templates; layout still normalizes paths / i18n for parity.
-  const _tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  // Story chrome lives in templates; layout still normalizes paths for parity.
   const themeName = config?.theme?.name ?? "story";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";
@@ -39,7 +37,6 @@ export default function Layout({
   const isHome = normalizedPath === "/" || normalizedPath === "/home";
   void homeHref;
   void isHome;
-  void _tr;
 
   return (
     <html lang={page?.language ?? "en"} dir={dir ?? "ltr"}>

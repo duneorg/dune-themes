@@ -6,7 +6,7 @@ import { safeHref } from "../utils/safe-url.ts";
 interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
   /** When true, render fullscreen landing shell (no inner content box). */
   landing?: boolean;
 }
@@ -28,7 +28,7 @@ export default function Layout({
   t,
   landing,
 }: LayoutProps) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "big-picture";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

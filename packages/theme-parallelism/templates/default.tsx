@@ -19,11 +19,11 @@ export default function DefaultTemplate(props: TemplateProps & {
   pathname?: string;
   config?: { theme?: { name?: string } };
   site?: { title?: string; description?: string; basePath?: string };
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, pathname, config, site, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const route = stripSlash(pathname ?? page?.route ?? "/");
   const isHome = route === "/" || route === "/home";
   const themeName = config?.theme?.name ?? "parallelism";

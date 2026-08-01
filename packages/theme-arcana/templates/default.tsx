@@ -12,7 +12,7 @@ export default function DefaultTemplate(props: TemplateProps & {
   children?: ComponentChildren;
   Layout?: typeof StaticLayout;
   pathname?: string;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, pathname } = props;

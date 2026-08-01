@@ -7,7 +7,7 @@ export default function SearchTemplate(props: TemplateProps & {
   Layout?: typeof StaticLayout;
   searchQuery?: string;
   searchResults?: { route: string; title: string; excerpt?: string }[];
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { searchQuery, searchResults, t } = props;

@@ -354,7 +354,7 @@ function SearchModal({ t }: { t: (k: string) => string }) {
               <input
                 id="hb-search-input"
                 type="text"
-                placeholder="Search..."
+                placeholder={`${t("search")}...`}
                 class="flex-1 bg-transparent text-lg outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400"
                 autocomplete="off"
               />

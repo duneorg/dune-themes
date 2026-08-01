@@ -7,11 +7,11 @@ export default function SearchTemplate(props: TemplateProps & {
   Layout?: typeof StaticLayout;
   searchQuery?: string;
   searchResults?: { route: string; title: string; excerpt?: string }[];
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, searchQuery, searchResults, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const action = getSearchUrl("").split("?")[0];
 
   return (

@@ -92,7 +92,7 @@ export default function Layout(props: any) {
             <div class="logo">
               <a href="/" accesskey="h" title={`${site?.title} (Alt + H)`}>{site?.title}</a>
               <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title={tr("theme_toggle_title")} aria-label={tr("theme_toggle_aria")}>
                   <MoonIcon />
                   <SunIcon />
                 </button>

@@ -8,7 +8,7 @@ interface LayoutProps extends TemplateProps {
   themeConfig?: Record<string, unknown>;
   /** When true, omit the home intro (e.g. blog index under /blog). */
   hideIntro?: boolean;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }
 
 function stripSlash(p: string) {
@@ -28,7 +28,7 @@ export default function Layout({
   hideIntro,
   t,
 }: LayoutProps) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "massively";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

@@ -16,7 +16,7 @@ import { safeHref } from "../utils/safe-url.ts";
 export default function LandingTemplate(props: any) {
   const { page, children, Layout, themeConfig, collection, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const hero = page.frontmatter.hero ?? {};
   const avatar = safeHref(hero.avatar ?? themeConfig?.avatar_url) ?? "";
   const role = hero.role ?? themeConfig?.role ?? "";

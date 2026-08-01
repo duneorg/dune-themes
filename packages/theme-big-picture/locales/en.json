@@ -12,5 +12,18 @@
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "home.what_i_do": "What I Do",
+  "cta.next": "Next",
+  "home.built_for": "Built for Dune",
+  "nav.blog": "blog",
+  "nav.archives": "archives",
+  "home.gallery": "Gallery",
+  "home.gallery_sub": "Sample imagery from the upstream Big Picture template.",
+  "home.explore": "Explore",
+  "home.explore_sub": "Start with the blog or browse the about page for more on this demo site.",
+  "cta.read_blog": "Read the Blog",
+  "nav.about": "About",
+  "intro.welcome": "Welcome to",
+  "cta.more": "More"
 }

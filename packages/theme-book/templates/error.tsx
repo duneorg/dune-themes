@@ -48,7 +48,7 @@ export default function ErrorTemplate(props: any) {
   const { page, site, dir, themeConfig, t } = props;
   const status = page?.frontmatter?.statusCode ?? 404;
   const bookTheme = (themeConfig?.book_theme as string) ?? "auto";
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const words = status === 404
     ? [tr("Page", "Page"), tr("Not", "Not"), tr("Found", "Found")]
     : [tr("Server", "Server"), tr("Error", "Error"), String(status)];

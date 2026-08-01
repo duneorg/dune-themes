@@ -8,5 +8,7 @@
   "code_copy": "copy",
   "code_copied": "copied!",
   "search.title": "Search",
-  "translations": "Translations"
+  "translations": "Translations",
+  "theme_toggle_title": "(Alt + T)",
+  "theme_toggle_aria": "Toggle theme"
 }

@@ -20,7 +20,7 @@ function isHomePath(path: string) {
 export default function Layout(
   { page, pageTitle, site, config, nav, pathname, dir, children, themeConfig, t }: any,
 ) {
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const themeName = config?.theme?.name ?? "herald";
   const siteUrl = (site?.url ?? "").replace(/\/$/, "");
   const basePath = site?.basePath ?? "";

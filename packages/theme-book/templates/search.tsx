@@ -11,7 +11,7 @@ export default function SearchTemplate(props: any) {
   const { Layout, searchQuery, searchResults, t, site } = props;
   const LayoutComponent = Layout ?? StaticLayout;
   const results = searchResults ?? [];
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const basePath = site?.basePath ?? "";
   const action = `${basePath}/search`.replace(/([^:]\/)\/+/g, "$1") || "/search";
 

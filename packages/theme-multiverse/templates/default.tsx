@@ -21,11 +21,11 @@ export default function DefaultTemplate(props: TemplateProps & {
   config?: { theme?: { name?: string } };
   themeConfig?: Record<string, unknown>;
   site?: { title?: string; description?: string; basePath?: string };
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children, pathname, config, themeConfig, site, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const fm = page.frontmatter as Record<string, unknown>;
   const subtitle = (fm.metadata as Record<string, unknown> | undefined)?.description ??
     fm.description;

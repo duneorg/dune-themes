@@ -12,7 +12,7 @@ function postLead(fm: Record<string, any>): string | undefined {
 export default function HomeTemplate(props: any) {
   const { page, children, Layout, themeConfig, collection, t } = props;
   const LayoutComponent = Layout ?? StaticLayout;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const greeting = page.frontmatter.greeting ??
     themeConfig?.hero_greeting ??
     tr("hero.greeting", "Hey there");

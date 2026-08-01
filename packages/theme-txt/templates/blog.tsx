@@ -4,10 +4,6 @@ import type { TemplateProps } from "@dune/core/content/types";
 import StaticLayout from "../components/layout.tsx";
 import { formatTxtDate, postCoverUrl, postExcerpt } from "../utils/content.ts";
 
-function stripSlash(p: string) {
-  return p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
-}
-
 export default function BlogTemplate(props: TemplateProps & {
   children?: ComponentChildren;
   Layout?: typeof StaticLayout;
@@ -15,19 +11,13 @@ export default function BlogTemplate(props: TemplateProps & {
   collection?: { items?: Array<{ route: string; frontmatter: Record<string, unknown> }> };
   pagination?: { newer?: string; older?: string };
   config?: { theme?: { name?: string } };
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
-  const { page, children, collection, pagination, pathname, config, t } = props;
-  const tr = (key: string, fallback: string) => (t ? t(key) : undefined) ?? fallback;
-  const route = stripSlash(pathname ?? page?.route ?? "/");
-  const isHome = route === "/" || route === "/home";
+  const { page, children, collection, pagination, config, t } = props;
+  const tr = (key: string, fallback: string) => t ? t(key, fallback) : fallback;
   const items = collection?.items ?? [];
   const themeName = config?.theme?.name ?? "txt";
-
-  if (isHome) {
-    return <LayoutComponent {...props} />;
-  }
 
   return (
     <LayoutComponent {...props}>

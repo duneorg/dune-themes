@@ -10,7 +10,7 @@ function pageLabel(fm: Record<string, unknown>): string | null {
 export default function DefaultTemplate(props: TemplateProps & {
   children?: any;
   Layout?: typeof StaticLayout;
-  t?: (key: string) => string;
+  t?: (key: string, fallback?: string) => string;
 }) {
   const LayoutComponent = props.Layout ?? StaticLayout;
   const { page, children } = props;
