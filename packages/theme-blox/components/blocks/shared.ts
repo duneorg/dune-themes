@@ -11,7 +11,7 @@ export interface BlockDef {
 
 export interface BlockContext {
   props: TemplateProps;
-  t: (k: string) => string;
+  t: (k: string, fallback?: string) => string;
 }
 
 export interface AuthorProfile {
