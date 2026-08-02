@@ -57,7 +57,10 @@ export default function Layout({
   const blogRoute = nav?.find((item) => item.route !== "/" && item.route.endsWith("/blog"))?.route ??
     nav?.find((item) => item.route.includes("blog"))?.route ??
     `${basePath}/blog`.replace(/([^:]\/)\/+/g, "$1");
-  const getStarted = tr("cta.get_started", "Get Started");
+  // Upstream's circled banner button is sized for a single short word
+  // ("Start") — the generic cta.get_started fallback used elsewhere
+  // overflows this button's fixed circular dimensions.
+  const getStarted = tr("cta.scroll_start", "Start");
   const creditHref = safeHref("https://html5up.net/helios") ?? "https://html5up.net/helios";
 
   const isActive = (route: string) => {
