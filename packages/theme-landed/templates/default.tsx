@@ -58,7 +58,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             </header>
             <span class="image"><img src={img("pic01.jpg")} alt="" /></span>
           </div>
-          <a href="#one" class="goto-next scrolly">Next</a>
+          <a href="#one" class="goto-next scrolly">{tr("nav.next", "Next")}</a>
         </section>
 
         <section id="one" class="spotlight style1 bottom">
@@ -90,7 +90,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               </div>
             </div>
           </div>
-          <a href="#two" class="goto-next scrolly">Next</a>
+          <a href="#two" class="goto-next scrolly">{tr("nav.next", "Next")}</a>
         </section>
 
         <section id="two" class="spotlight style2 right">
@@ -108,7 +108,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <li><a href={blogHref} class="button">{learnMore}</a></li>
             </ul>
           </div>
-          <a href="#three" class="goto-next scrolly">Next</a>
+          <a href="#three" class="goto-next scrolly">{tr("nav.next", "Next")}</a>
         </section>
 
         <section id="three" class="spotlight style3 left">
@@ -127,7 +127,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <li><a href={archivesHref} class="button">{learnMore}</a></li>
             </ul>
           </div>
-          <a href="#four" class="goto-next scrolly">Next</a>
+          <a href="#four" class="goto-next scrolly">{tr("nav.next", "Next")}</a>
         </section>
 
         <section id="four" class="wrapper style1 special fade-up">

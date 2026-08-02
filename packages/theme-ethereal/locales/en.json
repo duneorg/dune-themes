@@ -12,5 +12,16 @@
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "home.welcome": "Welcome",
+  "home.built_for": "Built for Dune",
+  "home.built_for_sub": "Blog posts, search, archives, and inner pages with the Ethereal panel layout.",
+  "nav.blog": "Blog",
+  "nav.archives": "Archives",
+  "nav.about": "About",
+  "home.explore": "Explore the demo",
+  "banner.hello": "Hello, my name",
+  "banner.is": "is",
+  "cta.next": "Next",
+  "nav.home": "Home"
 }

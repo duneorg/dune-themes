@@ -3,6 +3,7 @@
   "nav.menu": "Menu",
   "credit.design": "Design",
   "cta.get_started": "Get Started",
+  "home.get_started_sub": "Start with the blog or browse sample posts from the shared demo content.",
   "pagination.newer": "Newer",
   "pagination.older": "Older",
   "post.read_more": "Read More",
@@ -12,5 +13,11 @@
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "pagination.label": "Pagination",
+  "home.explore": "Explore",
+  "nav.blog": "Blog",
+  "nav.archives": "Archives",
+  "nav.about": "About",
+  "cta.read_blog": "Read the Blog"
 }

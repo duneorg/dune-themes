@@ -12,5 +12,14 @@
   "search.submit": "Search",
   "search.empty": "No results found.",
   "error.notfound": "This page could not be found.",
-  "error.home": "Back to home"
+  "error.home": "Back to home",
+  "cta.begin": "Begin",
+  "cta.read_blog": "Read the Blog",
+  "home.who": "Who we are",
+  "cta.next": "Next",
+  "home.what": "What we do",
+  "nav.blog": "Blog",
+  "nav.archives": "Archives",
+  "nav.about": "About",
+  "home.more": "One more thing"
 }
