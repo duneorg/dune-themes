@@ -70,6 +70,7 @@ export const DEMO_SLUGS = [
   "fennec",
   "nightfall",
   "oasis",
+  "dune-minimal",
 ] as const;
 
 export type DemoSlug = (typeof DEMO_SLUGS)[number];
@@ -162,6 +163,7 @@ export function isReadmeAsHome(slug: string): boolean {
 const DEMO_FIXTURE_EXCLUDE: Partial<Record<DemoSlug, string[]>> = {
   sirocco: ["03.about"],
   papermod: ["03.about"],
+  "dune-minimal": ["03.about", "05.archives"],
   ink: ["03.about"],
   gale: ["03.about"],
   salon: ["03.about"],

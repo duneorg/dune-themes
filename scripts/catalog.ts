@@ -18,6 +18,14 @@ export interface CatalogEntry {
   version: string;
   /** When true, `deno task scaffold` may regenerate packages/theme-{slug}/ */
   scaffold?: boolean;
+  /**
+   * When true, excluded from the marketplace registry regardless of tier.
+   * `tier: "base"` describes what a theme *is* (an inheritance base) — it
+   * doesn't by itself mean "hide this from the listing". A base theme with
+   * its own demo (dune-minimal) should still show up; use this flag for
+   * any theme that genuinely shouldn't be listed.
+   */
+  unlisted?: boolean;
 }
 
 /** Slugs managed by scripts/scaffold-themes.ts (THEME_DEFS). Empty when all themes are hand-maintained. */
@@ -209,14 +217,15 @@ export const CATALOG: CatalogEntry[] = [
     slug: "dune-minimal",
     name: "Dune Minimal",
     tier: "base",
-    description: "Minimal semantic base theme — inherit via parent: dune-minimal",
-    tags: ["base"],
-    version: "1.0.0",
+    description:
+      "Minimal, semantic base theme for Dune — usable standalone, or inherit via parent: dune-minimal.",
+    tags: ["base", "minimal", "inspired"],
+    version: "1.0.1",
   },
 ];
 
-/** Themes published to the marketplace registry (excludes base theme). */
-export const MARKETPLACE_CATALOG = CATALOG.filter((e) => e.tier !== "base");
+/** Themes published to the marketplace registry. */
+export const MARKETPLACE_CATALOG = CATALOG.filter((e) => !e.unlisted);
 
 export function buildRegistryJson(catalog: CatalogEntry[] = MARKETPLACE_CATALOG) {
   return {

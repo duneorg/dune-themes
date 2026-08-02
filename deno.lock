@@ -1682,6 +1682,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/dune-minimal": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/editorial": {
         "dependencies": [
           "jsr:@dune/core@0.28",
@@ -1704,6 +1711,13 @@
         ]
       },
       "demos/eventually": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/fennec": {
         "dependencies": [
           "jsr:@dune/core@0.28",
           "npm:preact-render-to-string@6",
@@ -1752,6 +1766,13 @@
           "npm:preact@10"
         ]
       },
+      "demos/herald": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/highlights": {
         "dependencies": [
           "jsr:@dune/core@0.28",
@@ -1787,6 +1808,20 @@
           "npm:preact@10"
         ]
       },
+      "demos/lucid": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/manual": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
       "demos/massively": {
         "dependencies": [
           "jsr:@dune/core@0.28",
@@ -1809,6 +1844,20 @@
         ]
       },
       "demos/multiverse": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/nightfall": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/oasis": {
         "dependencies": [
           "jsr:@dune/core@0.28",
           "npm:preact-render-to-string@6",
@@ -1858,6 +1907,13 @@
         ]
       },
       "demos/read-only": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/salon": {
         "dependencies": [
           "jsr:@dune/core@0.28",
           "npm:preact-render-to-string@6",
@@ -1921,6 +1977,13 @@
         ]
       },
       "demos/strongly-typed": {
+        "dependencies": [
+          "jsr:@dune/core@0.28",
+          "npm:preact-render-to-string@6",
+          "npm:preact@10"
+        ]
+      },
+      "demos/syntax": {
         "dependencies": [
           "jsr:@dune/core@0.28",
           "npm:preact-render-to-string@6",

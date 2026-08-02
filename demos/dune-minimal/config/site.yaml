@@ -1,0 +1,7 @@
+title: Dune Minimal Demo
+description: Live demo of Dune Minimal — the base theme every other theme in this library either stands on its own against or inherits from
+url: https://themes.getdune.org/dune-minimal
+theme:
+  name: dune-minimal
+taxonomies:
+  - tag

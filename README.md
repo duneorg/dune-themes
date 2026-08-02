@@ -98,7 +98,7 @@ deno task graduate:html5up alpha     # single theme
 
 | Package | Name | Use case |
 |---------|------|----------|
-| `@dune/theme-dune-minimal` | Dune Minimal | Semantic base; inherit via `parent: dune-minimal` |
+| `@dune/theme-dune-minimal` | Dune Minimal | Usable standalone, or inherit via `parent: dune-minimal` |
 
 ## Install
 

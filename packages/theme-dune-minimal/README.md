@@ -9,6 +9,35 @@ name: my-theme
 parent: dune-minimal
 ```
 
+![Dune Minimal screenshot](https://themes.getdune.org/dune-minimal/themes/dune-minimal/static/screenshot.png)
+
+**Demo**: https://themes.getdune.org/dune-minimal
+
+**Tags**: dune-theme, base, minimal, blog
+
+## Install
+
+```bash
+dune theme:install jsr:@dune/theme-dune-minimal@1.0.1 --activate
+```
+
+Or by hand, in `config/site.yaml`:
+
+```yaml
+themes:
+  - name: dune-minimal
+    src: jsr:@dune/theme-dune-minimal@1.0.1
+
+theme:
+  name: dune-minimal
+  src: jsr:@dune/theme-dune-minimal@1.0.1
+```
+
+To inherit from it instead of using it standalone, set `parent: dune-minimal`
+in your own theme's `theme.yaml` (see below) — `dune theme:install` resolves
+and registers it automatically as a dependency when it detects the `parent:`
+declaration on the theme you're installing.
+
 ## What you get by inheriting
 
 Dune resolves the theme chain child → parent for each of these:

@@ -39,12 +39,12 @@ const registry = JSON.parse(await Deno.readTextFile(registryPath)) as ReturnType
 
 const entry = registry.themes.find((t: { slug: string }) => t.slug === slug);
 if (!entry) {
-  // Base-tier themes (e.g. dune-minimal) are JSR-only inheritance bases —
-  // deliberately excluded from the marketplace registry (buildRegistryJson
-  // filters tier === "base"), so having no entry here isn't an error.
+  // Themes marked unlisted are deliberately excluded from the marketplace
+  // registry (buildRegistryJson filters on this flag), so having no entry
+  // here isn't an error — tier alone (e.g. "base") no longer implies that.
   const catalogEntry = CATALOG.find((e) => e.slug === slug);
-  if (catalogEntry?.tier === "base") {
-    console.log(`  ⏭  "${slug}" is a base theme (not marketplace-listed) — skipping registry.json`);
+  if (catalogEntry?.unlisted) {
+    console.log(`  ⏭  "${slug}" is unlisted — skipping registry.json`);
     Deno.exit(0);
   }
   console.error(`Slug "${slug}" not in registry.json`);

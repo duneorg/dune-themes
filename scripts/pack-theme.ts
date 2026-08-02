@@ -70,7 +70,7 @@ async function packSlug(slug: string): Promise<void> {
   console.log(`  ✓ ${outPath}  (${files.length} files, sha256=${hash.slice(0, 16)}…)`);
 }
 
-const packable = CATALOG.filter((e) => e.tier !== "base");
+const packable = CATALOG.filter((e) => !e.unlisted);
 
 const args = Deno.args;
 if (args.includes("--all")) {
