@@ -88,6 +88,7 @@ export default function Layout({
           </div>
 
           <div id="sidebar">
+            <a href="#sidebar" class="toggle">{tr("sidebar.toggle", "Toggle")}</a>
             <div class="inner">
               <section id="search" class="alt">
                 <form method="get" action={searchAction} role="search">
@@ -169,6 +170,33 @@ export default function Layout({
           window.addEventListener('load',function(){
             setTimeout(function(){ document.body.classList.remove('is-preload'); }, 100);
           });
+          (function(){
+            // Below 1280px #sidebar becomes a fixed-position overlay (see
+            // main.css) — upstream Editorial defaults it closed there and
+            // opens it via the .toggle tab; ported without this, the
+            // sidebar rendered as a permanently stuck, non-dismissible
+            // overlay on top of the article on any laptop-or-narrower
+            // viewport.
+            var sidebar = document.getElementById('sidebar');
+            var toggle = sidebar && sidebar.querySelector('.toggle');
+            if (!sidebar || !toggle) return;
+            function sync(){
+              if (window.innerWidth <= 1280) sidebar.classList.add('inactive');
+              else sidebar.classList.remove('inactive');
+            }
+            sync();
+            window.addEventListener('resize', sync);
+            toggle.addEventListener('click', function(e){
+              e.preventDefault();
+              sidebar.classList.toggle('inactive');
+            });
+            document.addEventListener('click', function(e){
+              if (window.innerWidth > 1280) return;
+              if (sidebar.classList.contains('inactive')) return;
+              if (sidebar.contains(e.target)) return;
+              sidebar.classList.add('inactive');
+            });
+          })();
         `,
           }}
         />
