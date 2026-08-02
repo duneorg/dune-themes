@@ -1,9 +1,7 @@
 {
-  "syntax": {
-    "color_scheme": "blue",
-    "scheme_switcher": true,
-    "default_dark": false,
-    "show_reading_time": true,
-    "home_subtitle": "Technical notes for Dune — date-column index, tag chips, and a GitHub-adjacent palette."
-  }
+  "color_scheme": "blue",
+  "scheme_switcher": true,
+  "default_dark": false,
+  "show_reading_time": true,
+  "home_subtitle": "Technical notes for Dune — date-column index, tag chips, and a GitHub-adjacent palette."
 }
