@@ -95,8 +95,19 @@ export default function Layout({
               <h1 id="logo"><a href={homeHref}>{site?.title ?? "Telephasic"}</a></h1>
               <nav id="nav" aria-label={tr("nav.main", "Site")}>
                 <ul>
-                  {navItems.map((item) => (
-                    <li key={item.route} class={isActive(item.route) ? "current" : undefined}>
+                  {navItems.map((item, i) => (
+                    <li
+                      key={item.route}
+                      class={[
+                        isActive(item.route) ? "current" : undefined,
+                        // Upstream's #logo is an absolutely-positioned badge
+                        // centered over #nav — .break pushes everything from
+                        // the middle item onward 20em right, opening a gap
+                        // for it. Without this the logo just overlaps
+                        // whichever nav item happens to land in the center.
+                        i === Math.floor(navItems.length / 2) ? "break" : undefined,
+                      ].filter(Boolean).join(" ") || undefined}
+                    >
                       <a href={item.route} aria-current={isActive(item.route) ? "page" : undefined}>
                         {item.navTitle ?? item.title ?? item.route}
                       </a>
