@@ -82,7 +82,24 @@ async function copyZipEntries(
   return copied;
 }
 
-/** Vendor assets/css, assets/webfonts, and images into static/html5up/. */
+/**
+ * Vendor assets/css, assets/webfonts, and images into static/html5up/.
+ *
+ * Deliberately does NOT flatten assets/css/*.css into a top-level css/
+ * folder (an earlier version did, for a shorter @import path) — main.css's
+ * own background-image url()s are relative to its actual on-disk location
+ * (assets/css/, one level deeper than a flattened css/ would be), and a
+ * byte-identical copy placed one level shallower silently breaks every
+ * such reference: url("images/bg01.png") (0 levels up, correct from
+ * assets/css/) starts pointing at a nonexistent css/images/, while
+ * url("../../images/banner.jpg") (2 levels up, correct from assets/css/)
+ * overshoots past static/html5up/ entirely. Concretely: this broke 38
+ * background-image references in theme-arcana alone (its hero banner
+ * silently rendered as blank space) before being caught by a demo
+ * screenshot review. style-css.ts imports the nested assets/css/ copy
+ * directly instead, which needs no path rewriting since it's still at
+ * the same relative depth from its own images/ as it was in the zip.
+ */
 export async function vendorHtml5UpAssets(slug: string): Promise<VendoredAssets> {
   const dest = join(ROOT, "packages", `theme-${slug}`, "static", "html5up");
   const copied = await copyZipEntries(slug, dest, (rel) => {
@@ -91,33 +108,6 @@ export async function vendorHtml5UpAssets(slug: string): Promise<VendoredAssets>
     if (rel.startsWith("images/")) return true;
     return false;
   });
-
-  // Flatten assets/css → css/ and webfonts → webfonts/ for stable @import paths
-  const cssDir = join(dest, "css");
-  await Deno.mkdir(cssDir, { recursive: true });
-  for (const name of ["main.css", "noscript.css", "fontawesome-all.min.css"] as const) {
-    const nested = join(dest, "assets", "css", name);
-    const flat = join(cssDir, name);
-    try {
-      await Deno.stat(nested);
-      await Deno.copyFile(nested, flat);
-    } catch {
-      // optional file
-    }
-  }
-  const webfontsSrc = join(dest, "assets", "webfonts");
-  const webfontsDest = join(dest, "webfonts");
-  try {
-    await Deno.stat(webfontsSrc);
-    await Deno.mkdir(webfontsDest, { recursive: true });
-    for await (const entry of Deno.readDir(webfontsSrc)) {
-      if (entry.isFile) {
-        await Deno.copyFile(join(webfontsSrc, entry.name), join(webfontsDest, entry.name));
-      }
-    }
-  } catch {
-    // optional
-  }
 
   return {
     main: copied.some((p) => p.endsWith("assets/css/main.css") || p === "assets/css/main.css"),
