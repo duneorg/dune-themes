@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-25",
+  "updatedAt": "2026-08-02",
   "themes": [
     {
       "slug": "sirocco",
       "name": "Sirocco",
-      "description": "Fast, clean minimalist blog inspired by Hugo PaperMod \u2014 Dune-native, not a port.",
+      "description": "Fast, clean minimalist blog inspired by Hugo PaperMod — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "license": "MIT",
       "tags": [
         "blog",
@@ -18,9 +18,9 @@
       "inspiredBy": "hugo-PaperMod",
       "demoUrl": "https://themes.getdune.org/sirocco",
       "screenshotUrl": "https://themes.getdune.org/sirocco/themes/sirocco/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-sirocco@1.2.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/sirocco-v1.2.1/sirocco-1.2.1.zip",
-      "sha256": "b348bdf6a04531dcbbdb4c19fc1960dd6f3c735cfc606915ea3d8a514a7fe559",
+      "jsr": "jsr:@dune/theme-sirocco@1.2.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/sirocco-v1.2.2/sirocco-1.2.2.zip",
+      "sha256": "51c85fffb914cd6b92d848cb0104670c07022bc6b09a096b1754caf56e6b190c",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -28,9 +28,9 @@
     {
       "slug": "caravan",
       "name": "Caravan",
-      "description": "Sidebar documentation theme inspired by hugo-book \u2014 Dune-native, not a port.",
+      "description": "Sidebar documentation theme inspired by hugo-book — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "license": "MIT",
       "tags": [
         "docs",
@@ -41,9 +41,9 @@
       "inspiredBy": "hugo-book",
       "demoUrl": "https://themes.getdune.org/caravan",
       "screenshotUrl": "https://themes.getdune.org/caravan/themes/caravan/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-caravan@1.1.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/caravan-v1.1.2/caravan-1.1.2.zip",
-      "sha256": "4d2b829566ee5a42d11a6599fd64f278dee6cf9146b848761504c2a21662cffa",
+      "jsr": "jsr:@dune/theme-caravan@1.1.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/caravan-v1.1.3/caravan-1.1.3.zip",
+      "sha256": "eeb5129a0159bd5fd02cee733b2b6c3c6b054a8e4337586ffab6277dd188db8d",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -51,9 +51,9 @@
     {
       "slug": "fennec",
       "name": "Fennec",
-      "description": "Personal portfolio and blog theme inspired by Astrofy \u2014 Dune-native, not a port.",
+      "description": "Personal portfolio and blog theme inspired by Astrofy — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "portfolio",
@@ -64,9 +64,9 @@
       "inspiredBy": "Astrofy",
       "demoUrl": "https://themes.getdune.org/fennec",
       "screenshotUrl": "https://themes.getdune.org/fennec/themes/fennec/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-fennec@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fennec-v1.0.0/fennec-1.0.0.zip",
-      "sha256": "59a310c693e60ed40b6a620ce8dbea00bdd76538238fc421c55083546e60ce56",
+      "jsr": "jsr:@dune/theme-fennec@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fennec-v1.0.1/fennec-1.0.1.zip",
+      "sha256": "5c3fd3d5e1c11bbceb60f33cad34bc9860cd978f030c1e960c98cca60915fc71",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -74,9 +74,9 @@
     {
       "slug": "nightfall",
       "name": "Nightfall",
-      "description": "Dark-first documentation theme inspired by Astro Starlight \u2014 Dune-native, not a port.",
+      "description": "Dark-first documentation theme inspired by Astro Starlight — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "docs",
@@ -87,9 +87,9 @@
       "inspiredBy": "Starlight",
       "demoUrl": "https://themes.getdune.org/nightfall",
       "screenshotUrl": "https://themes.getdune.org/nightfall/themes/nightfall/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-nightfall@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/nightfall-v1.0.0/nightfall-1.0.0.zip",
-      "sha256": "5e8cc18c9cdcf5f87a7ef4d727364e4a311603e79d4c614349f339ccfdfddf6c",
+      "jsr": "jsr:@dune/theme-nightfall@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/nightfall-v1.0.1/nightfall-1.0.1.zip",
+      "sha256": "2cab47f61889cb3e7210f38dd702cbc9ba1a482476244f990dc5c216a2b3de3d",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -97,9 +97,9 @@
     {
       "slug": "oasis",
       "name": "Oasis",
-      "description": "Landing and academic r\u00e9sum\u00e9 theme inspired by Hugo Blox \u2014 Dune-native, not a port.",
+      "description": "Landing and academic résumé theme inspired by Hugo Blox — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "landing",
@@ -110,9 +110,9 @@
       "inspiredBy": "Hugo Blox",
       "demoUrl": "https://themes.getdune.org/oasis",
       "screenshotUrl": "https://themes.getdune.org/oasis/themes/oasis/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-oasis@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/oasis-v1.0.0/oasis-1.0.0.zip",
-      "sha256": "9581b737cc92f967c74d0e5f3b26c3c4dcd69ea11dcc1b0097ee297401f5489f",
+      "jsr": "jsr:@dune/theme-oasis@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/oasis-v1.0.1/oasis-1.0.1.zip",
+      "sha256": "2267f5e5b5911c2745a6c28d4e04cd8810558c28a8491e30e527fd79ad88fa0a",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -120,9 +120,9 @@
     {
       "slug": "ink",
       "name": "Ink",
-      "description": "Long-form writing theme inspired by Ghost Attila \u2014 Dune-native, not a port.",
+      "description": "Long-form writing theme inspired by Ghost Attila — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "blog",
@@ -134,9 +134,9 @@
       "inspiredBy": "Attila",
       "demoUrl": "https://themes.getdune.org/ink",
       "screenshotUrl": "https://themes.getdune.org/ink/themes/ink/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-ink@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ink-v1.0.0/ink-1.0.0.zip",
-      "sha256": "3828974dd20267e4f2c34eb7d51788edd4916f7c389838fa20b94b44d469f213",
+      "jsr": "jsr:@dune/theme-ink@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ink-v1.0.1/ink-1.0.1.zip",
+      "sha256": "22eed125f43d2de4a711f992b956acd79f14e9a7abe01e18bd2f2d9baa06b21d",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -144,9 +144,9 @@
     {
       "slug": "gale",
       "name": "Gale",
-      "description": "Landing and blog theme inspired by AstroWind \u2014 Dune-native, not a port.",
+      "description": "Landing and blog theme inspired by AstroWind — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "landing",
@@ -157,9 +157,9 @@
       "inspiredBy": "AstroWind",
       "demoUrl": "https://themes.getdune.org/gale",
       "screenshotUrl": "https://themes.getdune.org/gale/themes/gale/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-gale@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/gale-v1.0.0/gale-1.0.0.zip",
-      "sha256": "d516f18a323c18e1eae6a87b54d1c5f23008c1a24155883efe7b14c14d7e50bf",
+      "jsr": "jsr:@dune/theme-gale@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/gale-v1.0.1/gale-1.0.1.zip",
+      "sha256": "547e6d5ce847a5af3884a79e4a9f128576f2f482f8d3b92675d351a1c8a9d25f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -167,9 +167,9 @@
     {
       "slug": "salon",
       "name": "Salon",
-      "description": "Magazine-style blog inspired by Ghost Liebling \u2014 Dune-native, not a port.",
+      "description": "Magazine-style blog inspired by Ghost Liebling — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "blog",
@@ -180,9 +180,9 @@
       "inspiredBy": "Liebling",
       "demoUrl": "https://themes.getdune.org/salon",
       "screenshotUrl": "https://themes.getdune.org/salon/themes/salon/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-salon@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/salon-v1.0.0/salon-1.0.0.zip",
-      "sha256": "6e9c816526d4fcb48f1a3791bb87509cf462ffad4035acdba61d839c3be8953e",
+      "jsr": "jsr:@dune/theme-salon@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/salon-v1.0.1/salon-1.0.1.zip",
+      "sha256": "53fd83514e86ba9a67f8aa196c536e6475ef2a1d657e05edbd54484a61d346f5",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -190,9 +190,9 @@
     {
       "slug": "syntax",
       "name": "Syntax",
-      "description": "Technical blog theme inspired by Jekyll Chirpy \u2014 Dune-native, not a port.",
+      "description": "Technical blog theme inspired by Jekyll Chirpy — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "blog",
@@ -203,9 +203,9 @@
       "inspiredBy": "jekyll-theme-chirpy",
       "demoUrl": "https://themes.getdune.org/syntax",
       "screenshotUrl": "https://themes.getdune.org/syntax/themes/syntax/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-syntax@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/syntax-v1.0.0/syntax-1.0.0.zip",
-      "sha256": "e485cf206f7bd9a71855d89dd4de149174f121857307d1bcf9bdb7e5f4d86dd9",
+      "jsr": "jsr:@dune/theme-syntax@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/syntax-v1.0.1/syntax-1.0.1.zip",
+      "sha256": "a9f6a01a27291b21d7c5ced12c6e9da3eeb557c77e7ec595160b1c5cd39c18ea",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -213,9 +213,9 @@
     {
       "slug": "herald",
       "name": "Herald",
-      "description": "Publication-style blog inspired by Ghost Casper \u2014 Dune-native, not a port.",
+      "description": "Publication-style blog inspired by Ghost Casper — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "blog",
@@ -226,9 +226,9 @@
       "inspiredBy": "Casper",
       "demoUrl": "https://themes.getdune.org/herald",
       "screenshotUrl": "https://themes.getdune.org/herald/themes/herald/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-herald@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/herald-v1.0.0/herald-1.0.0.zip",
-      "sha256": "ce335f0070647f3c11b27e98b8f4ef8fe1013dd30b6665e011f0374a22a55a9b",
+      "jsr": "jsr:@dune/theme-herald@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/herald-v1.0.1/herald-1.0.1.zip",
+      "sha256": "3066819a8710ddd3d22abf8fa3de796902462da6029a716f95f5c3b2fc3b7a36",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -236,9 +236,9 @@
     {
       "slug": "lucid",
       "name": "Lucid",
-      "description": "Modern docs theme inspired by Hugo Hextra \u2014 Dune-native, not a port.",
+      "description": "Modern docs theme inspired by Hugo Hextra — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "docs",
@@ -249,9 +249,9 @@
       "inspiredBy": "Hextra",
       "demoUrl": "https://themes.getdune.org/lucid",
       "screenshotUrl": "https://themes.getdune.org/lucid/themes/lucid/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-lucid@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lucid-v1.0.0/lucid-1.0.0.zip",
-      "sha256": "da9787cb77fd2fa7403060be4afcb9414e682cfdc995ded3dfcc62661cf2f909",
+      "jsr": "jsr:@dune/theme-lucid@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lucid-v1.0.1/lucid-1.0.1.zip",
+      "sha256": "de3affe3f6ca9c6037beebfd03915f71a3a96eef2728a4cfa73c679e869beb1f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -259,9 +259,9 @@
     {
       "slug": "manual",
       "name": "Manual",
-      "description": "Product documentation theme inspired by Just the Docs \u2014 Dune-native, not a port.",
+      "description": "Product documentation theme inspired by Just the Docs — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "docs",
@@ -272,9 +272,9 @@
       "inspiredBy": "Just the Docs",
       "demoUrl": "https://themes.getdune.org/manual",
       "screenshotUrl": "https://themes.getdune.org/manual/themes/manual/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-manual@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/manual-v1.0.0/manual-1.0.0.zip",
-      "sha256": "7aaeb7a3d808ec101abaddc657c2af4b9c2a251e34a867b4bd235bd75956f7a2",
+      "jsr": "jsr:@dune/theme-manual@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/manual-v1.0.1/manual-1.0.1.zip",
+      "sha256": "fb2584ed2ff903bab2791efc53f397c52b6a4c6c181ca7efb0014c6fe68f1b13",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -284,7 +284,7 @@
       "name": "PaperMod for Dune",
       "description": "Faithful port of Hugo PaperMod for Dune.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "blog",
@@ -295,9 +295,9 @@
       "inspiredBy": "hugo-PaperMod",
       "demoUrl": "https://themes.getdune.org/papermod",
       "screenshotUrl": "https://themes.getdune.org/papermod/themes/papermod/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-papermod@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/papermod-v1.0.2/papermod-1.0.2.zip",
-      "sha256": "9b63be1d114d76fc8437e44a816d2d7c3d94f3100497bdb4b23cd863c0f8b1b2",
+      "jsr": "jsr:@dune/theme-papermod@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/papermod-v1.0.3/papermod-1.0.3.zip",
+      "sha256": "30cfa999cdfafde4936b25e198bdad51c1e9e06d171e74cfed6e12aac057f864",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -307,7 +307,7 @@
       "name": "Hugo Book for Dune",
       "description": "Faithful port of hugo-book for Dune.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "docs",
@@ -318,9 +318,9 @@
       "inspiredBy": "hugo-book",
       "demoUrl": "https://themes.getdune.org/book",
       "screenshotUrl": "https://themes.getdune.org/book/themes/book/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-book@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/book-v1.0.0/book-1.0.0.zip",
-      "sha256": "2ea379f88227507f8af33ca2389eaa8679d510ef8c8412db0034cbdf82687dab",
+      "jsr": "jsr:@dune/theme-book@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/book-v1.0.1/book-1.0.1.zip",
+      "sha256": "ab5a1c951fbd46a0710d598ef233827671b5fc2dc9260e11247cd23b9c1e85e3",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -330,7 +330,7 @@
       "name": "Starlight for Dune",
       "description": "Faithful port of Astro Starlight for Dune.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "docs",
@@ -341,9 +341,9 @@
       "inspiredBy": "Starlight",
       "demoUrl": "https://themes.getdune.org/starlight",
       "screenshotUrl": "https://themes.getdune.org/starlight/themes/starlight/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-starlight@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/starlight-v1.0.0/starlight-1.0.0.zip",
-      "sha256": "34b73a742a095118229ac3e63c08a313235406045f4a611550d352c29d2954bd",
+      "jsr": "jsr:@dune/theme-starlight@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/starlight-v1.0.1/starlight-1.0.1.zip",
+      "sha256": "297e041a53261e8eeeadc7caa7030034c91b9e331146cc14ae26124fa3b82c8d",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -353,7 +353,7 @@
       "name": "Hugo Blox for Dune",
       "description": "Faithful port of Hugo Blox for Dune.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "landing",
@@ -364,9 +364,9 @@
       "inspiredBy": "Hugo Blox",
       "demoUrl": "https://themes.getdune.org/blox",
       "screenshotUrl": "https://themes.getdune.org/blox/themes/blox/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-blox@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/blox-v1.0.0/blox-1.0.0.zip",
-      "sha256": "7fd69e67d43a58721cd7ecabd80ec53f246e926c32c8d1f8eb82e7e5b38a800d",
+      "jsr": "jsr:@dune/theme-blox@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/blox-v1.0.1/blox-1.0.1.zip",
+      "sha256": "d887254a86fbc263b70270bb3645464d6e9b55bcc17f0b3cafcbfeef98866bbf",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -374,9 +374,9 @@
     {
       "slug": "aerial",
       "name": "Aerial",
-      "description": "Aerial \u2014 responsive site theme adapted from HTML5 UP for Dune. Fullscreen landing.",
+      "description": "Aerial — responsive site theme adapted from HTML5 UP for Dune. Fullscreen landing.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -387,9 +387,9 @@
       "inspiredBy": "HTML5 UP Aerial",
       "demoUrl": "https://themes.getdune.org/aerial",
       "screenshotUrl": "https://themes.getdune.org/aerial/themes/aerial/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-aerial@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/aerial-v1.0.0/aerial-1.0.0.zip",
-      "sha256": "8b5150ca8212d92ef71c971c5de790920c6163d575b691b4eaecab506b0d8c62",
+      "jsr": "jsr:@dune/theme-aerial@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/aerial-v1.0.2/aerial-1.0.2.zip",
+      "sha256": "b656cead531d900e5fb8cf58ecbf407f6d90445befd9dfec315cbf8e7333d0a1",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -397,7 +397,7 @@
     {
       "slug": "alpha",
       "name": "Alpha",
-      "description": "Alpha \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
+      "description": "Alpha — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
       "version": "1.0.1",
       "license": "MIT",
@@ -410,8 +410,8 @@
       "inspiredBy": "HTML5 UP Alpha",
       "demoUrl": "https://themes.getdune.org/alpha",
       "screenshotUrl": "https://themes.getdune.org/alpha/themes/alpha/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-alpha@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/alpha-v1.0.0/alpha-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-alpha@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/alpha-v1.0.1/alpha-1.0.1.zip",
       "sha256": "41ba36499ec3f61d83d708cd2e6e7de09e792c3b5faae53036b8759767ce6b49",
       "verified": true,
       "downloads": 0,
@@ -420,9 +420,9 @@
     {
       "slug": "arcana",
       "name": "Arcana",
-      "description": "Arcana \u2014 responsive site theme adapted from HTML5 UP for Dune. Corporate site.",
+      "description": "Arcana — responsive site theme adapted from HTML5 UP for Dune. Corporate site.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -433,9 +433,9 @@
       "inspiredBy": "HTML5 UP Arcana",
       "demoUrl": "https://themes.getdune.org/arcana",
       "screenshotUrl": "https://themes.getdune.org/arcana/themes/arcana/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-arcana@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/arcana-v1.0.0/arcana-1.0.0.zip",
-      "sha256": "9df3ea7d7cd0f694a93944284e598d152340b0c40ad3bc7eaf1bc386c4b64fa6",
+      "jsr": "jsr:@dune/theme-arcana@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/arcana-v1.0.2/arcana-1.0.2.zip",
+      "sha256": "473d320a3e35a033784f5ef59a866cd862df1d91a76de798e3f92be7a50a19d5",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -443,9 +443,9 @@
     {
       "slug": "astral",
       "name": "Astral",
-      "description": "Astral \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
+      "description": "Astral — responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -456,9 +456,9 @@
       "inspiredBy": "HTML5 UP Astral",
       "demoUrl": "https://themes.getdune.org/astral",
       "screenshotUrl": "https://themes.getdune.org/astral/themes/astral/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-astral@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/astral-v1.0.0/astral-1.0.0.zip",
-      "sha256": "a6f0d724408b39754073a0f35dccf8c55245a71eec8f123f8f5178a4f4043a18",
+      "jsr": "jsr:@dune/theme-astral@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/astral-v1.0.2/astral-1.0.2.zip",
+      "sha256": "345713de796d2b9d5f0ccc880446dc7e2058a42503edcc5e435b9ad186358111",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -466,9 +466,9 @@
     {
       "slug": "big-picture",
       "name": "Big Picture",
-      "description": "Big Picture \u2014 responsive site theme adapted from HTML5 UP for Dune. Scroll-driven gallery.",
+      "description": "Big Picture — responsive site theme adapted from HTML5 UP for Dune. Scroll-driven gallery.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -479,9 +479,9 @@
       "inspiredBy": "HTML5 UP Big Picture",
       "demoUrl": "https://themes.getdune.org/big-picture",
       "screenshotUrl": "https://themes.getdune.org/big-picture/themes/big-picture/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-big-picture@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/big-picture-v1.0.0/big-picture-1.0.0.zip",
-      "sha256": "8d8539a3d91709ea323566e734218db3658f173084dc9e3f4e91ad6bf589a670",
+      "jsr": "jsr:@dune/theme-big-picture@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/big-picture-v1.0.2/big-picture-1.0.2.zip",
+      "sha256": "0ade1196719b53c05cbe9ff748a6acba9fc59acb3afbfec0ebc217bb4d31dce5",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -489,9 +489,9 @@
     {
       "slug": "dimension",
       "name": "Dimension",
-      "description": "Dimension \u2014 responsive site theme adapted from HTML5 UP for Dune. Modal panel navigation.",
+      "description": "Dimension — responsive site theme adapted from HTML5 UP for Dune. Modal panel navigation.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -502,9 +502,9 @@
       "inspiredBy": "HTML5 UP Dimension",
       "demoUrl": "https://themes.getdune.org/dimension",
       "screenshotUrl": "https://themes.getdune.org/dimension/themes/dimension/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-dimension@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dimension-v1.0.0/dimension-1.0.0.zip",
-      "sha256": "763c2b24a8d96c530e529740d7f57aad0599e19cca7e5a19ae81de56e4a78192",
+      "jsr": "jsr:@dune/theme-dimension@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dimension-v1.0.2/dimension-1.0.2.zip",
+      "sha256": "39eca88eaa714194fe12979ea6f236fef1650d73a6bfe8729abe2e8f1a2d9ded",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -512,7 +512,7 @@
     {
       "slug": "directive",
       "name": "Directive",
-      "description": "Directive \u2014 responsive site theme adapted from HTML5 UP for Dune. Simple landing.",
+      "description": "Directive — responsive site theme adapted from HTML5 UP for Dune. Simple landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -535,7 +535,7 @@
     {
       "slug": "dopetrope",
       "name": "Dopetrope",
-      "description": "Dopetrope \u2014 responsive site theme adapted from HTML5 UP for Dune. Magazine blog.",
+      "description": "Dopetrope — responsive site theme adapted from HTML5 UP for Dune. Magazine blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -558,9 +558,9 @@
     {
       "slug": "editorial",
       "name": "Editorial",
-      "description": "Editorial \u2014 responsive site theme adapted from HTML5 UP for Dune. Editorial magazine.",
+      "description": "Editorial — responsive site theme adapted from HTML5 UP for Dune. Editorial magazine.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -571,9 +571,9 @@
       "inspiredBy": "HTML5 UP Editorial",
       "demoUrl": "https://themes.getdune.org/editorial",
       "screenshotUrl": "https://themes.getdune.org/editorial/themes/editorial/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-editorial@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/editorial-v1.0.0/editorial-1.0.0.zip",
-      "sha256": "cbc8e1b01625fdb2e5e7a736aafab9b32aaab4c21a546bb548d08a499d2ca555",
+      "jsr": "jsr:@dune/theme-editorial@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/editorial-v1.0.1/editorial-1.0.1.zip",
+      "sha256": "a2d417dbb6ab57cf2643238b4270ee2d994e5d8046578d45940dab552e125850",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -581,7 +581,7 @@
     {
       "slug": "escape-velocity",
       "name": "Escape Velocity",
-      "description": "Escape Velocity \u2014 responsive site theme adapted from HTML5 UP for Dune. Marketing site.",
+      "description": "Escape Velocity — responsive site theme adapted from HTML5 UP for Dune. Marketing site.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -604,7 +604,7 @@
     {
       "slug": "ethereal",
       "name": "Ethereal",
-      "description": "Ethereal \u2014 responsive site theme adapted from HTML5 UP for Dune. Elegant landing.",
+      "description": "Ethereal — responsive site theme adapted from HTML5 UP for Dune. Elegant landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -627,7 +627,7 @@
     {
       "slug": "eventually",
       "name": "Eventually",
-      "description": "Eventually \u2014 responsive site theme adapted from HTML5 UP for Dune. Coming soon.",
+      "description": "Eventually — responsive site theme adapted from HTML5 UP for Dune. Coming soon.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -650,9 +650,9 @@
     {
       "slug": "forty",
       "name": "Forty",
-      "description": "Forty \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Forty — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -663,9 +663,9 @@
       "inspiredBy": "HTML5 UP Forty",
       "demoUrl": "https://themes.getdune.org/forty",
       "screenshotUrl": "https://themes.getdune.org/forty/themes/forty/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-forty@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/forty-v1.0.0/forty-1.0.0.zip",
-      "sha256": "d7cf45dd962c1abba6949c4db6b3320b6b23aee3fda8dcbdb0236f14db4e53a8",
+      "jsr": "jsr:@dune/theme-forty@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/forty-v1.0.1/forty-1.0.1.zip",
+      "sha256": "2878943bfbce72e9d7111eaed6192846f3ed05690b00381e5eea73d5a3ba7107",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -673,9 +673,9 @@
     {
       "slug": "fractal",
       "name": "Fractal",
-      "description": "Fractal \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio showcase.",
+      "description": "Fractal — responsive site theme adapted from HTML5 UP for Dune. Portfolio showcase.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -686,9 +686,9 @@
       "inspiredBy": "HTML5 UP Fractal",
       "demoUrl": "https://themes.getdune.org/fractal",
       "screenshotUrl": "https://themes.getdune.org/fractal/themes/fractal/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-fractal@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fractal-v1.0.0/fractal-1.0.0.zip",
-      "sha256": "818d3a8d7b7934929604aaa3f3a51e083ab9a214002b87b31fb0e004f450fc91",
+      "jsr": "jsr:@dune/theme-fractal@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fractal-v1.0.1/fractal-1.0.1.zip",
+      "sha256": "e6fe2a340c7ce4ba3522262ebe1b9435414792829efc4f7a773cfbd338ef4309",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -696,9 +696,9 @@
     {
       "slug": "future-imperfect",
       "name": "Future Imperfect",
-      "description": "Future Imperfect \u2014 responsive site theme adapted from HTML5 UP for Dune. Blog with sidebar.",
+      "description": "Future Imperfect — responsive site theme adapted from HTML5 UP for Dune. Blog with sidebar.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -709,9 +709,9 @@
       "inspiredBy": "HTML5 UP Future Imperfect",
       "demoUrl": "https://themes.getdune.org/future-imperfect",
       "screenshotUrl": "https://themes.getdune.org/future-imperfect/themes/future-imperfect/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-future-imp@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/future-imperfect-v1.0.0/future-imperfect-1.0.0.zip",
-      "sha256": "df854f60a23a335afdc893f5c692f2455ce29650d0928f2a89922bc7ef61e7ff",
+      "jsr": "jsr:@dune/theme-future-imp@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/future-imperfect-v1.0.1/future-imperfect-1.0.1.zip",
+      "sha256": "96c604f1cf8552e9db5f6aa696734edc87ed63a2e729c8588c9420d1b1264002",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -719,7 +719,7 @@
     {
       "slug": "halcyonic",
       "name": "Halcyonic",
-      "description": "Halcyonic \u2014 responsive site theme adapted from HTML5 UP for Dune. Business layout.",
+      "description": "Halcyonic — responsive site theme adapted from HTML5 UP for Dune. Business layout.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -742,9 +742,9 @@
     {
       "slug": "helios",
       "name": "Helios",
-      "description": "Helios \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose site.",
+      "description": "Helios — responsive site theme adapted from HTML5 UP for Dune. Multipurpose site.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -755,9 +755,9 @@
       "inspiredBy": "HTML5 UP Helios",
       "demoUrl": "https://themes.getdune.org/helios",
       "screenshotUrl": "https://themes.getdune.org/helios/themes/helios/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-helios@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/helios-v1.0.0/helios-1.0.0.zip",
-      "sha256": "78b697f3b40d125c862c981765dee3c176c23ac3d984231c6c90ead805cc8fd2",
+      "jsr": "jsr:@dune/theme-helios@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/helios-v1.0.1/helios-1.0.1.zip",
+      "sha256": "8c2106700ea03b107672f71694049c40d473e0bbe67a8f42c5f675be5b986b88",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -765,7 +765,7 @@
     {
       "slug": "highlights",
       "name": "Highlights",
-      "description": "Highlights \u2014 responsive site theme adapted from HTML5 UP for Dune. Photo landing.",
+      "description": "Highlights — responsive site theme adapted from HTML5 UP for Dune. Photo landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -788,9 +788,9 @@
     {
       "slug": "hyperspace",
       "name": "Hyperspace",
-      "description": "Hyperspace \u2014 responsive site theme adapted from HTML5 UP for Dune. Sidebar landing.",
+      "description": "Hyperspace — responsive site theme adapted from HTML5 UP for Dune. Sidebar landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -801,9 +801,9 @@
       "inspiredBy": "HTML5 UP Hyperspace",
       "demoUrl": "https://themes.getdune.org/hyperspace",
       "screenshotUrl": "https://themes.getdune.org/hyperspace/themes/hyperspace/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-hyperspace@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/hyperspace-v1.0.0/hyperspace-1.0.0.zip",
-      "sha256": "24f67dbc386000f06ab02f6333b1998063e27d4f7ea98b27550a18d00b24b6c0",
+      "jsr": "jsr:@dune/theme-hyperspace@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/hyperspace-v1.0.1/hyperspace-1.0.1.zip",
+      "sha256": "3f42eb3531ee64d6349ede9d692ecde43bdec2c81a4a9d2051fc9a36b07590df",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -811,7 +811,7 @@
     {
       "slug": "landed",
       "name": "Landed",
-      "description": "Landed \u2014 responsive site theme adapted from HTML5 UP for Dune. Product landing.",
+      "description": "Landed — responsive site theme adapted from HTML5 UP for Dune. Product landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -834,9 +834,9 @@
     {
       "slug": "lens",
       "name": "Lens",
-      "description": "Lens \u2014 responsive site theme adapted from HTML5 UP for Dune. Fullscreen gallery.",
+      "description": "Lens — responsive site theme adapted from HTML5 UP for Dune. Fullscreen gallery.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -847,9 +847,9 @@
       "inspiredBy": "HTML5 UP Lens",
       "demoUrl": "https://themes.getdune.org/lens",
       "screenshotUrl": "https://themes.getdune.org/lens/themes/lens/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-lens@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lens-v1.0.0/lens-1.0.0.zip",
-      "sha256": "66524652a452b8a88669703592d425ce312cae927d14bf6da2bf2c1f4bd510ba",
+      "jsr": "jsr:@dune/theme-lens@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lens-v1.0.1/lens-1.0.1.zip",
+      "sha256": "232b46df8f41ea7fe8537acd637d96247bcfd864c2c3422e6656dd616b836287",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -857,9 +857,9 @@
     {
       "slug": "massively",
       "name": "Massively",
-      "description": "Massively \u2014 responsive site theme adapted from HTML5 UP for Dune. Hero blog.",
+      "description": "Massively — responsive site theme adapted from HTML5 UP for Dune. Hero blog.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -870,9 +870,9 @@
       "inspiredBy": "HTML5 UP Massively",
       "demoUrl": "https://themes.getdune.org/massively",
       "screenshotUrl": "https://themes.getdune.org/massively/themes/massively/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-massively@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/massively-v1.0.0/massively-1.0.0.zip",
-      "sha256": "7224f02c81076ddcaf10ac33b5e0c7bc83904727deb31fbd8fb23854c512b2a2",
+      "jsr": "jsr:@dune/theme-massively@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/massively-v1.0.1/massively-1.0.1.zip",
+      "sha256": "434c8de879b3cf311a1815043cf0c77a3011562e02937c3b35c3ba0d6d2104e4",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -880,7 +880,7 @@
     {
       "slug": "minimaxing",
       "name": "Minimaxing",
-      "description": "Minimaxing \u2014 responsive site theme adapted from HTML5 UP for Dune. Compact landing.",
+      "description": "Minimaxing — responsive site theme adapted from HTML5 UP for Dune. Compact landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -903,9 +903,9 @@
     {
       "slug": "miniport",
       "name": "Miniport",
-      "description": "Miniport \u2014 responsive site theme adapted from HTML5 UP for Dune. Minimal portfolio.",
+      "description": "Miniport — responsive site theme adapted from HTML5 UP for Dune. Minimal portfolio.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -916,9 +916,9 @@
       "inspiredBy": "HTML5 UP Miniport",
       "demoUrl": "https://themes.getdune.org/miniport",
       "screenshotUrl": "https://themes.getdune.org/miniport/themes/miniport/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-miniport@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/miniport-v1.0.0/miniport-1.0.0.zip",
-      "sha256": "6ff68a12faaae3b4d1fc3234f72bb0c6d3a151e0856458f7212a2d499181b3e6",
+      "jsr": "jsr:@dune/theme-miniport@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/miniport-v1.0.1/miniport-1.0.1.zip",
+      "sha256": "2950f401ed6382ef9cffcc74f70f964e4a24fa06743dbebf42363c8f1b67cb9a",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -926,7 +926,7 @@
     {
       "slug": "multiverse",
       "name": "Multiverse",
-      "description": "Multiverse \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Multiverse — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -949,9 +949,9 @@
     {
       "slug": "paradigm-shift",
       "name": "Paradigm Shift",
-      "description": "Paradigm Shift \u2014 responsive site theme adapted from HTML5 UP for Dune. Split layout landing.",
+      "description": "Paradigm Shift — responsive site theme adapted from HTML5 UP for Dune. Split layout landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -962,9 +962,9 @@
       "inspiredBy": "HTML5 UP Paradigm Shift",
       "demoUrl": "https://themes.getdune.org/paradigm-shift",
       "screenshotUrl": "https://themes.getdune.org/paradigm-shift/themes/paradigm-shift/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-paradigm-shift@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/paradigm-shift-v1.0.0/paradigm-shift-1.0.0.zip",
-      "sha256": "606841ef58dfe8811494930e14b278fe95d02289c0aa378749e8ec370c862424",
+      "jsr": "jsr:@dune/theme-paradigm-shift@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/paradigm-shift-v1.0.1/paradigm-shift-1.0.1.zip",
+      "sha256": "e865b2f8c8abfe23d93bbe6538684cac72d588db1fb2e04da21043767d2fd228",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -972,9 +972,9 @@
     {
       "slug": "parallelism",
       "name": "Parallelism",
-      "description": "Parallelism \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
+      "description": "Parallelism — responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -985,9 +985,9 @@
       "inspiredBy": "HTML5 UP Parallelism",
       "demoUrl": "https://themes.getdune.org/parallelism",
       "screenshotUrl": "https://themes.getdune.org/parallelism/themes/parallelism/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-parallelism@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/parallelism-v1.0.0/parallelism-1.0.0.zip",
-      "sha256": "6e115bd716b5ea5c4a3dcf57fc2027b3be6346e0622d1277d5da452aec8829cb",
+      "jsr": "jsr:@dune/theme-parallelism@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/parallelism-v1.0.1/parallelism-1.0.1.zip",
+      "sha256": "2717ffe61e75561884cad73a4d926581a576f321f12f3d0e12b195dcbde725ca",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -995,9 +995,9 @@
     {
       "slug": "phantom",
       "name": "Phantom",
-      "description": "Phantom \u2014 responsive site theme adapted from HTML5 UP for Dune. Minimal blog.",
+      "description": "Phantom — responsive site theme adapted from HTML5 UP for Dune. Minimal blog.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1008,9 +1008,9 @@
       "inspiredBy": "HTML5 UP Phantom",
       "demoUrl": "https://themes.getdune.org/phantom",
       "screenshotUrl": "https://themes.getdune.org/phantom/themes/phantom/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-phantom@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/phantom-v1.0.0/phantom-1.0.0.zip",
-      "sha256": "b67d789649b8970bf134a53882db73dbfe39bb1c9cf360ef19c89541ad39f238",
+      "jsr": "jsr:@dune/theme-phantom@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/phantom-v1.0.1/phantom-1.0.1.zip",
+      "sha256": "74ef22fe1fb2e2c7f78e1b639eb05e7b011fbd37c1bcd6ab3ea0e2eb7f0f0f20",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1018,9 +1018,9 @@
     {
       "slug": "photon",
       "name": "Photon",
-      "description": "Photon \u2014 responsive site theme adapted from HTML5 UP for Dune. Single-page portfolio.",
+      "description": "Photon — responsive site theme adapted from HTML5 UP for Dune. Single-page portfolio.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1031,9 +1031,9 @@
       "inspiredBy": "HTML5 UP Photon",
       "demoUrl": "https://themes.getdune.org/photon",
       "screenshotUrl": "https://themes.getdune.org/photon/themes/photon/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-photon@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/photon-v1.0.0/photon-1.0.0.zip",
-      "sha256": "d03de5866fdb4ca9dbe5a7b5384ad21d7926c9b07cf1fa37a441d25fbd597b28",
+      "jsr": "jsr:@dune/theme-photon@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/photon-v1.0.1/photon-1.0.1.zip",
+      "sha256": "82f1c7bacc98810827e2456116c3c447b9589db6c5886816a1fc5441cbf86e87",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1041,7 +1041,7 @@
     {
       "slug": "prologue",
       "name": "Prologue",
-      "description": "Prologue \u2014 responsive site theme adapted from HTML5 UP for Dune. Intro landing.",
+      "description": "Prologue — responsive site theme adapted from HTML5 UP for Dune. Intro landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1064,7 +1064,7 @@
     {
       "slug": "read-only",
       "name": "Read Only",
-      "description": "Read Only \u2014 responsive site theme adapted from HTML5 UP for Dune. Read-only blog.",
+      "description": "Read Only — responsive site theme adapted from HTML5 UP for Dune. Read-only blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1087,9 +1087,9 @@
     {
       "slug": "solid-state",
       "name": "Solid State",
-      "description": "Solid State \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
+      "description": "Solid State — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1100,9 +1100,9 @@
       "inspiredBy": "HTML5 UP Solid State",
       "demoUrl": "https://themes.getdune.org/solid-state",
       "screenshotUrl": "https://themes.getdune.org/solid-state/themes/solid-state/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-solid-state@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/solid-state-v1.0.0/solid-state-1.0.0.zip",
-      "sha256": "91c28aa42bc717871d87bb575bc40a27460ff6bb7904d6c54402014fa135efc4",
+      "jsr": "jsr:@dune/theme-solid-state@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/solid-state-v1.0.1/solid-state-1.0.1.zip",
+      "sha256": "8a13aa89edebfd35830e95dad180223ae4ddd6417526a92964e1a9da720981a4",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1110,9 +1110,9 @@
     {
       "slug": "spectral",
       "name": "Spectral",
-      "description": "Spectral \u2014 responsive site theme adapted from HTML5 UP for Dune. Event landing.",
+      "description": "Spectral — responsive site theme adapted from HTML5 UP for Dune. Event landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1123,9 +1123,9 @@
       "inspiredBy": "HTML5 UP Spectral",
       "demoUrl": "https://themes.getdune.org/spectral",
       "screenshotUrl": "https://themes.getdune.org/spectral/themes/spectral/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-spectral@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/spectral-v1.0.0/spectral-1.0.0.zip",
-      "sha256": "d4128e35706a609818a96e8d4b037d2818cfecf7e1894cfb61fa79264d514493",
+      "jsr": "jsr:@dune/theme-spectral@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/spectral-v1.0.1/spectral-1.0.1.zip",
+      "sha256": "fa680510c3f6d1d86cfdfc048f3a8ff6211b24c81a4d842f224bbac04a258b3e",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1133,7 +1133,7 @@
     {
       "slug": "stellar",
       "name": "Stellar",
-      "description": "Stellar \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Stellar — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1156,9 +1156,9 @@
     {
       "slug": "story",
       "name": "Story",
-      "description": "Story \u2014 responsive site theme adapted from HTML5 UP for Dune. Scroll narrative.",
+      "description": "Story — responsive site theme adapted from HTML5 UP for Dune. Scroll narrative.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1169,9 +1169,9 @@
       "inspiredBy": "HTML5 UP Story",
       "demoUrl": "https://themes.getdune.org/story",
       "screenshotUrl": "https://themes.getdune.org/story/themes/story/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-story@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/story-v1.0.0/story-1.0.0.zip",
-      "sha256": "40210b58a510cdb5481376bc52e03d0493c9f67403d1d589ad5b6610054bc68b",
+      "jsr": "jsr:@dune/theme-story@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/story-v1.0.1/story-1.0.1.zip",
+      "sha256": "54a9e6cf6c12f6da3081587c7975961b55cad7ec84883aca0c973e5ef6c932b9",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1179,9 +1179,9 @@
     {
       "slug": "strata",
       "name": "Strata",
-      "description": "Strata \u2014 responsive site theme adapted from HTML5 UP for Dune. Portfolio + contact.",
+      "description": "Strata — responsive site theme adapted from HTML5 UP for Dune. Portfolio + contact.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1192,9 +1192,9 @@
       "inspiredBy": "HTML5 UP Strata",
       "demoUrl": "https://themes.getdune.org/strata",
       "screenshotUrl": "https://themes.getdune.org/strata/themes/strata/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-strata@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strata-v1.0.0/strata-1.0.0.zip",
-      "sha256": "484622dda4f117b4b017a4ad3882021f3260c6636581e5dcb95ccca777b89133",
+      "jsr": "jsr:@dune/theme-strata@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strata-v1.0.1/strata-1.0.1.zip",
+      "sha256": "ee1e3c389e19c096cb25ca2c4af33207884a1f778a98aa603ae144d67539fc51",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1202,9 +1202,9 @@
     {
       "slug": "striped",
       "name": "Striped",
-      "description": "Striped \u2014 responsive site theme adapted from HTML5 UP for Dune. Sidebar blog.",
+      "description": "Striped — responsive site theme adapted from HTML5 UP for Dune. Sidebar blog.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1215,9 +1215,9 @@
       "inspiredBy": "HTML5 UP Striped",
       "demoUrl": "https://themes.getdune.org/striped",
       "screenshotUrl": "https://themes.getdune.org/striped/themes/striped/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-striped@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/striped-v1.0.0/striped-1.0.0.zip",
-      "sha256": "7d5bd2c1fac2dc298fbf7eaf8dd03a8cfe1cca88bc7e755a1ec891da2d394421",
+      "jsr": "jsr:@dune/theme-striped@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/striped-v1.0.1/striped-1.0.1.zip",
+      "sha256": "8550daf03b6ec6502ede2e81050664ba65372b0bb32378e8fdab634402a06549",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1225,7 +1225,7 @@
     {
       "slug": "strongly-typed",
       "name": "Strongly Typed",
-      "description": "Strongly Typed \u2014 responsive site theme adapted from HTML5 UP for Dune. Typography blog.",
+      "description": "Strongly Typed — responsive site theme adapted from HTML5 UP for Dune. Typography blog.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1248,7 +1248,7 @@
     {
       "slug": "telephasic",
       "name": "Telephasic",
-      "description": "Telephasic \u2014 responsive site theme adapted from HTML5 UP for Dune. Business site.",
+      "description": "Telephasic — responsive site theme adapted from HTML5 UP for Dune. Business site.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1271,7 +1271,7 @@
     {
       "slug": "tessellate",
       "name": "Tessellate",
-      "description": "Tessellate \u2014 responsive site theme adapted from HTML5 UP for Dune. Grid landing.",
+      "description": "Tessellate — responsive site theme adapted from HTML5 UP for Dune. Grid landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1294,9 +1294,9 @@
     {
       "slug": "twenty",
       "name": "Twenty",
-      "description": "Twenty \u2014 responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
+      "description": "Twenty — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1307,9 +1307,9 @@
       "inspiredBy": "HTML5 UP Twenty",
       "demoUrl": "https://themes.getdune.org/twenty",
       "screenshotUrl": "https://themes.getdune.org/twenty/themes/twenty/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-twenty@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/twenty-v1.0.0/twenty-1.0.0.zip",
-      "sha256": "b81e16231d9305b6985c0d9f1dc893a03534fb638bee1ee61ca6badd18982689",
+      "jsr": "jsr:@dune/theme-twenty@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/twenty-v1.0.1/twenty-1.0.1.zip",
+      "sha256": "7393d3c4b3a1b8f374d7f5b1d47521eeba5a5d58d40a5a578d15a27a62485fb3",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1317,9 +1317,9 @@
     {
       "slug": "txt",
       "name": "TXT",
-      "description": "TXT \u2014 responsive site theme adapted from HTML5 UP for Dune. Text-forward portfolio.",
+      "description": "TXT — responsive site theme adapted from HTML5 UP for Dune. Text-forward portfolio.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1330,9 +1330,9 @@
       "inspiredBy": "HTML5 UP TXT",
       "demoUrl": "https://themes.getdune.org/txt",
       "screenshotUrl": "https://themes.getdune.org/txt/themes/txt/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-txt@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/txt-v1.0.0/txt-1.0.0.zip",
-      "sha256": "e19bc09877016b7394e4e44368a7c3537e94c2c676f729281448bd5c80a89c6d",
+      "jsr": "jsr:@dune/theme-txt@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/txt-v1.0.1/txt-1.0.1.zip",
+      "sha256": "9d5e7a8d3c9a4fc89ac309e27537c6758978ecb49e622e8a00a9da94e3799e61",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.28.0"
@@ -1340,7 +1340,7 @@
     {
       "slug": "verti",
       "name": "Verti",
-      "description": "Verti \u2014 responsive site theme adapted from HTML5 UP for Dune. Business landing.",
+      "description": "Verti — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
@@ -1363,7 +1363,7 @@
     {
       "slug": "zerofour",
       "name": "Zerofour",
-      "description": "Zerofour \u2014 responsive site theme adapted from HTML5 UP for Dune. 404 / minimal page.",
+      "description": "Zerofour — responsive site theme adapted from HTML5 UP for Dune. 404 / minimal page.",
       "author": "Dune Themes",
       "version": "1.0.0",
       "license": "MIT",
