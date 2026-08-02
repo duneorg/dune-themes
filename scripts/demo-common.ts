@@ -402,10 +402,16 @@ export async function linkDemo(slug: string): Promise<void> {
   // expect to persist.
   const demoConfigFile = join(packageDir, "demo-config.json");
   try {
-    const demoConfig = await Deno.readTextFile(demoConfigFile);
+    const demoConfig = JSON.parse(await Deno.readTextFile(demoConfigFile));
+    // engine.ts's loadThemeConfig() reads data/theme-config.json namespaced
+    // by theme name ({"photon": {...}}), not the flat shape demo-config.json
+    // is authored in — writing it flat silently produced an empty
+    // themeConfig for every theme (parsed[themeName] was always undefined),
+    // so no demo-config.json setting has ever actually reached a render.
+    const namespaced = { [slug]: demoConfig };
     const dataDir = join(dir, "data");
     await Deno.mkdir(dataDir, { recursive: true });
-    await Deno.writeTextFile(join(dataDir, "theme-config.json"), demoConfig);
+    await Deno.writeTextFile(join(dataDir, "theme-config.json"), JSON.stringify(namespaced, null, 2) + "\n");
   } catch {
     // theme has no demo-config.json — fine, not every theme needs one
   }

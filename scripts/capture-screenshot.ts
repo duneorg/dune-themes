@@ -109,7 +109,12 @@ async function capture(
     // Not "networkidle": the dev server's live-reload connection
     // (/__dune_reload) never settles, so networkidle always times out.
     await page.goto(url, { waitUntil: "load" });
-    await page.waitForTimeout(1500);
+    // Some upstream HTML5 UP templates (e.g. aerial) fade in their header
+    // via a CSS animation with its own multi-second delay after is-preload
+    // is removed (aerial: 2.25s delay + 1s duration = 3.25s) — 1500ms was
+    // catching mid-fade, capturing an empty-looking hero with no visible
+    // title. 4000ms comfortably clears the slowest one found so far.
+    await page.waitForTimeout(4000);
 
     if (opts.twoPass) {
       // Pass 1: hide the self-referential README screenshot so we don't
