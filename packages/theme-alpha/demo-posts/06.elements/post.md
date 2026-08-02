@@ -37,7 +37,7 @@ heading stacks. If you need a fourth level, split the article.
 Inline `theme.name: alpha`, and a fence:
 
 ```bash
-dune theme:install jsr:@dune/theme-alpha@1.0.1 --activate
+dune theme:install jsr:@dune/theme-alpha@1.0.2 --activate
 ```
 
 Return to [Home](/) for the banner, or keep browsing [Blog](/blog).

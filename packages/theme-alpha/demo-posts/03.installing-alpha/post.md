@@ -16,7 +16,7 @@ from the upstream zip.
 ## From JSR (recommended)
 
 ```bash
-dune theme:install jsr:@dune/theme-alpha@1.0.1 --activate
+dune theme:install jsr:@dune/theme-alpha@1.0.2 --activate
 ```
 
 That pins an exact version in the site import map. Run `dune lockfile:sync`
@@ -24,7 +24,7 @@ afterward so the lockfile matches; you should not copy theme files by hand.
 
 ## From a ZIP
 
-Grab `alpha-1.0.1.zip` from
+Grab `alpha-1.0.2.zip` from
 [dune-themes releases](https://github.com/duneorg/dune-themes/releases),
 extract into `themes/alpha/`, then set:
 

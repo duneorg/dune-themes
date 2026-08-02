@@ -16,7 +16,7 @@ using this theme must keep visible design credit per the
 ## Install
 
 ```bash
-dune theme:install jsr:@dune/theme-alpha@1.0.1 --activate
+dune theme:install jsr:@dune/theme-alpha@1.0.2 --activate
 ```
 
 Or by hand, in `config/site.yaml`:
@@ -24,11 +24,11 @@ Or by hand, in `config/site.yaml`:
 ```yaml
 themes:
   - name: alpha
-    src: jsr:@dune/theme-alpha@1.0.1
+    src: jsr:@dune/theme-alpha@1.0.2
 
 theme:
   name: alpha
-  src: jsr:@dune/theme-alpha@1.0.1
+  src: jsr:@dune/theme-alpha@1.0.2
 ```
 
 Page-wrapper chrome with optional home hero banner. See the
