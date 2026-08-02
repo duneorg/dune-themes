@@ -5,6 +5,15 @@ on:
     tags:
       - "*-v*"
 
+concurrency:
+  # registry.json is a single shared file every run in this workflow writes
+  # to — without this, tags pushed close together race on `git push origin
+  # HEAD:main`, and the loser's write is silently dropped by `|| true`.
+  # Queueing (not cancelling) means every release still lands, just one at
+  # a time instead of racing.
+  group: dune-themes-registry-write
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -35,23 +44,52 @@ jobs:
 
       - run: deno task pack ${{ steps.tag.outputs.slug }}
 
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}
+          files: dist/${{ steps.tag.outputs.slug }}-${{ steps.tag.outputs.version }}.zip
+
+      - name: Read the uploaded asset's digest
+        id: digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # This is GitHub's own sha256 of whatever it actually stored for
+          # this release — authoritative regardless of which pack step
+          # produced the bytes (zips aren't byte-reproducible across runs,
+          # so re-hashing a local file here could disagree with what a
+          # visitor actually downloads).
+          DIGEST=$(gh release view "${{ github.ref_name }}" --repo "${{ github.repository }}" \
+            --json assets --jq '.assets[0].digest' | sed 's/^sha256://')
+          if [ -z "$DIGEST" ] || [ "$DIGEST" = "null" ]; then
+            echo "Could not read asset digest for ${{ github.ref_name }}" >&2
+            exit 1
+          fi
+          echo "sha256=$DIGEST" >> "$GITHUB_OUTPUT"
+
       - name: Update registry sha256
-        run: deno run -A scripts/update-registry-sha256.ts ${{ steps.tag.outputs.slug }}
+        run: deno run -A scripts/update-registry-sha256.ts ${{ steps.tag.outputs.slug }} ${{ steps.digest.outputs.sha256 }}
 
       - name: Commit registry sha256
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add registry.json
-          git diff --staged --quiet || git commit -m "Update registry sha256 for ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}"
+          git diff --staged --quiet && exit 0
+          git commit -m "Update registry sha256 for ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}"
           # Tag push checks out a detached HEAD, not a branch — push explicitly to main.
-          git push origin HEAD:main || true
-
-      - uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.ref_name }}
-          name: ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}
-          files: dist/${{ steps.tag.outputs.slug }}-${{ steps.tag.outputs.version }}.zip
+          # The concurrency group above means this should always be a
+          # fast-forward, but retry with a rebase instead of silently
+          # dropping the write if something else touched main in between.
+          for i in 1 2 3 4 5; do
+            git push origin HEAD:main && exit 0
+            git fetch origin main
+            git rebase origin/main
+            sleep $((i * 3))
+          done
+          echo "Failed to push registry.json update for ${{ steps.tag.outputs.slug }} after 5 attempts" >&2
+          exit 1
 
       - run: |
           echo "### Next steps" >> "$GITHUB_STEP_SUMMARY"

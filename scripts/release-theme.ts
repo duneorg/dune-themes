@@ -1,17 +1,25 @@
 #!/usr/bin/env -S deno run -A
 /**
- * Release one theme: pack ZIP → write sha256 into registry.json →
- * git tag {slug}-v{version} → GitHub release with the ZIP attached.
+ * Release one theme: git tag {slug}-v{version} → push. That's it.
  *
  *   deno task release caravan
  *   deno task release caravan --dry-run   # print actions, change nothing remote
  *
- * Idempotent: if the release already exists it stops instead of clobbering.
+ * Idempotent: if the tag already exists it stops instead of re-pushing.
  *
- * This is step 1 of 2. Pushing the tag fires .github/workflows/release-zip.yml
- * (ZIP + GitHub release + registry sha256) but deliberately does NOT publish
- * to JSR. After redeploying the demo and verifying it live, trigger step 2
- * by hand: gh workflow run publish-jsr.yml -f tag={slug}-v{version}
+ * Deliberately does NOT pack a ZIP, write registry.json, or create the
+ * GitHub release itself — pushing the tag fires
+ * .github/workflows/release-zip.yml, which does all three. Previously this
+ * script did its own local pack+release+registry-write *and* pushed the
+ * tag (which triggers that same CI job) — two independent packers racing
+ * for the same release, and since zip archives aren't byte-reproducible
+ * across separate packing runs, the two could (and did) disagree on the
+ * sha256, with whichever finished last silently overwriting the other's
+ * release asset. Now there is exactly one packer: CI.
+ *
+ * This is step 1 of 2 — CI does not publish to JSR. After CI's run
+ * completes, redeploy the demo, verify it live, then trigger step 2 by
+ * hand: gh workflow run publish-jsr.yml -f tag={slug}-v{version}
  */
 
 import { join } from "@std/path";
@@ -48,36 +56,16 @@ async function readThemeVersion(s: string): Promise<string> {
 
 const version = await readThemeVersion(slug);
 const tag = `${slug}-v${version}`;
-const zipName = `${slug}-${version}.zip`;
-const zipPath = join(ROOT, "dist", zipName);
 
 console.log(`Releasing ${slug} ${version} (tag ${tag})${dryRun ? " [dry-run]" : ""}\n`);
 
-// 1. Pack
-console.log("1/4 Packing ZIP…");
-if (dryRun) {
-  console.log(`  would run: deno run -A scripts/pack-theme.ts ${slug} → dist/${zipName}`);
-} else {
-  const pack = await run(["deno", "run", "-A", "scripts/pack-theme.ts", slug]);
-  if (!pack.ok) Deno.exit(1);
-}
-
-// 2. sha256 into registry.json
-console.log("2/4 Writing sha256 into registry.json…");
-if (dryRun) {
-  console.log(`  would run: deno run -A scripts/update-registry-sha256.ts ${slug}`);
-} else {
-  const sha = await run(["deno", "run", "-A", "scripts/update-registry-sha256.ts", slug]);
-  if (!sha.ok) Deno.exit(1);
-}
-
-// 3. Check gh auth + existing release
-console.log("3/4 Checking GitHub state…");
+// Check gh auth + existing release (idempotency: a re-run after CI already
+// completed this tag's release should no-op, not push a duplicate tag).
+console.log("1/2 Checking GitHub state…");
 const auth = await run(["gh", "auth", "status"], { capture: true });
 if (!auth.ok) {
-  console.error("  gh is not authenticated. Run these manually once authenticated:");
+  console.error("  gh is not authenticated. Run this manually once authenticated:");
   console.error(`    git tag ${tag} && git push origin ${tag}`);
-  console.error(`    gh release create ${tag} dist/${zipName} --title "${slug} ${version}" --notes "Theme ${slug} v${version} ZIP for marketplace installs."`);
   Deno.exit(1);
 }
 
@@ -89,13 +77,13 @@ if (existing.ok) {
 
 const tagExists = (await run(["git", "rev-parse", "--verify", "--quiet", `refs/tags/${tag}`], { capture: true })).ok;
 
-// 4. Tag + release
-console.log("4/4 Tagging + creating GitHub release…");
+// Tag + push — this alone triggers release-zip.yml (pack, GitHub release,
+// registry.json sha256), which is the only thing that packs a ZIP now.
+console.log("2/2 Tagging…");
 if (dryRun) {
-  if (tagExists) console.log(`  tag ${tag} already exists locally; would reuse it`);
+  if (tagExists) console.log(`  tag ${tag} already exists locally; would push it`);
   else console.log(`  would run: git tag ${tag} && git push origin ${tag}`);
-  console.log(`  would run: gh release create ${tag} dist/${zipName} --title "${slug} ${version}" --notes …`);
-  console.log("\nDry run complete. Registry/dist untouched, no tags pushed.");
+  console.log("\nDry run complete. No tags pushed.");
   Deno.exit(0);
 }
 
@@ -103,16 +91,9 @@ if (!tagExists) {
   if (!(await run(["git", "tag", tag])).ok) Deno.exit(1);
 }
 if (!(await run(["git", "push", "origin", tag])).ok) Deno.exit(1);
-if (
-  !(await run([
-    "gh", "release", "create", tag, zipPath,
-    "--title", `${slug} ${version}`,
-    "--notes", `Theme ${slug} v${version} ZIP for marketplace installs. sha256 recorded in registry.json.`,
-  ])).ok
-) Deno.exit(1);
 
-console.log(`\n✓ Released ${tag} (ZIP + GitHub release). Remaining manual steps:`);
-console.log("  - commit registry.json (sha256 update) and push");
+console.log(`\n✓ Pushed ${tag}. Remaining steps:`);
+console.log("  - wait for the 'Release ZIP' GitHub Action to finish (packs, creates the release, writes registry.json sha256)");
 console.log("  - deno task screenshot {slug} before releasing if the theme's look changed (ships in static/)");
 console.log("  - redeploy the demo and verify it live at themes.getdune.org/{slug}");
 console.log(`  - only then: gh workflow run publish-jsr.yml -f tag=${tag}`);

@@ -1,45 +1,37 @@
 #!/usr/bin/env -S deno run -A
 /**
- * Pack one theme and write sha256 into registry.json for that slug.
+ * Write sha256 into registry.json for one theme slug.
  *
- *   deno run -A scripts/update-registry-sha256.ts papermod
+ *   deno run -A scripts/update-registry-sha256.ts papermod <sha256>
+ *
+ * The hash must be passed in, not computed locally — zip archives embed
+ * timestamps, so two independent packing runs of identical source (a local
+ * `deno task pack` vs. release-zip.yml's own re-pack, or two concurrent CI
+ * runs) produce different bytes and different hashes even though the theme
+ * content is identical. The only value that can't disagree with what a user
+ * actually downloads is the digest GitHub itself computed for the asset
+ * attached to the release — pull that with:
+ *   gh release view {slug}-v{version} --json assets --jq '.assets[0].digest'
+ * (strip the "sha256:" prefix) and pass it as the second argument. See
+ * release-zip.yml for the full sequence — it uploads the release first, then
+ * calls this script with the digest read back from that upload.
  */
 
 import { join } from "@std/path";
 import { buildRegistryJson, CATALOG } from "./catalog.ts";
 import { ROOT } from "./demo-common.ts";
 
-async function sha256Hex(bytes: Uint8Array<ArrayBuffer>): Promise<string> {
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  return Array.from(new Uint8Array(digest))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-async function readThemeVersion(slug: string): Promise<string> {
-  const yamlPath = join(ROOT, "packages", `theme-${slug}`, "theme.yaml");
-  const text = await Deno.readTextFile(yamlPath);
-  const m = text.match(/^version:\s*["']?([^"'\n]+)/m);
-  return m?.[1]?.trim() ?? "1.0.0";
-}
-
 const slug = Deno.args[0];
-if (!slug) {
-  console.error("Usage: deno run -A scripts/update-registry-sha256.ts <slug>");
+const hash = Deno.args[1];
+if (!slug || !hash) {
+  console.error("Usage: deno run -A scripts/update-registry-sha256.ts <slug> <sha256>");
+  console.error("  <sha256> — read from the uploaded release asset's digest, not computed locally.");
   Deno.exit(1);
 }
-
-const version = await readThemeVersion(slug);
-const zipPath = join(ROOT, "dist", `${slug}-${version}.zip`);
-let zipBytes: Uint8Array<ArrayBuffer>;
-try {
-  zipBytes = await Deno.readFile(zipPath);
-} catch {
-  console.error(`ZIP not found: ${zipPath} — run deno task pack ${slug} first`);
+if (!/^[0-9a-f]{64}$/i.test(hash)) {
+  console.error(`<sha256> doesn't look like a hex sha256 digest: "${hash}"`);
   Deno.exit(1);
 }
-
-const hash = await sha256Hex(zipBytes);
 const registryPath = join(ROOT, "registry.json");
 const registry = JSON.parse(await Deno.readTextFile(registryPath)) as ReturnType<
   typeof buildRegistryJson
