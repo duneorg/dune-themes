@@ -70,6 +70,9 @@ export default function Layout({
         {siteUrl && <meta property="og:url" content={canonicalUrl} />}
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href={`/themes/${themeName}/static/style.css`} />
+        <noscript>
+          <link rel="stylesheet" href={`/themes/${themeName}/static/html5up/assets/css/noscript.css`} />
+        </noscript>
       </head>
       <body class="is-preload theme-massively archetype-blog">
         <div id="wrapper" class={wrapperClass || undefined}>

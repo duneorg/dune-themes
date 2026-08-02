@@ -1,6 +1,5 @@
-@import url("./html5up/css/main.css");
-@import url("./html5up/css/fontawesome-all.min.css");
-@import url("./html5up/css/noscript.css");
+@import url("./html5up/assets/css/main.css");
+@import url("./html5up/assets/css/fontawesome-all.min.css");
 
 .search-results ul.alt { list-style: none; padding: 0; }
 .search-results li { padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }

@@ -1,5 +1,5 @@
-@import url("./html5up/css/main.css");
-@import url("./html5up/css/fontawesome-all.min.css");
+@import url("./html5up/assets/css/main.css");
+@import url("./html5up/assets/css/fontawesome-all.min.css");
 
 .dune-nav { padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); }
 .dune-nav ul.actions { margin: 0; }

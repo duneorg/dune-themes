@@ -1,5 +1,5 @@
-@import url("./html5up/css/main.css");
-@import url("./html5up/css/fontawesome-all.min.css");
+@import url("./html5up/assets/css/main.css");
+@import url("./html5up/assets/css/fontawesome-all.min.css");
 
 .search-form input[type="search"] { width: 100%; max-width: 24rem; }
 .search-results ul.alt { list-style: none; padding: 0; }
