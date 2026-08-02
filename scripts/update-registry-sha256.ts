@@ -37,7 +37,7 @@ const registry = JSON.parse(await Deno.readTextFile(registryPath)) as ReturnType
   typeof buildRegistryJson
 >;
 
-const entry = registry.themes.find((t: { slug: string }) => t.slug === slug);
+let entry = registry.themes.find((t: { slug: string }) => t.slug === slug);
 if (!entry) {
   // Themes marked unlisted are deliberately excluded from the marketplace
   // registry (buildRegistryJson filters on this flag), so having no entry
@@ -47,8 +47,12 @@ if (!entry) {
     console.log(`  ⏭  "${slug}" is unlisted — skipping registry.json`);
     Deno.exit(0);
   }
-  console.error(`Slug "${slug}" not in registry.json`);
-  Deno.exit(1);
+  if (!catalogEntry) {
+    console.error(`Slug "${slug}" not in registry.json or catalog.ts`);
+    Deno.exit(1);
+  }
+  // First release for a theme newly opted into listing (e.g. a "base" theme
+  // that just gained its own demo) — no prior entry to update, so append one.
 }
 
 // Refresh the whole entry from catalog.ts (not just sha256) so fields like
@@ -59,8 +63,14 @@ if (!fresh) {
   console.error(`Slug "${slug}" not in catalog.ts`);
   Deno.exit(1);
 }
-const downloads = entry.downloads;
-Object.assign(entry, fresh, { sha256: hash, downloads });
+if (!entry) {
+  entry = { ...fresh };
+  registry.themes.push(entry);
+} else {
+  const downloads = entry.downloads;
+  Object.assign(entry, fresh, { sha256: hash, downloads });
+}
+entry.sha256 = hash;
 registry.updatedAt = new Date().toISOString().slice(0, 10);
 await Deno.writeTextFile(registryPath, JSON.stringify(registry, null, 2) + "\n");
 console.log(`  ✓ registry.json sha256 for ${slug}: ${hash.slice(0, 16)}…`);
