@@ -3,29 +3,42 @@ title: Configuring Landed
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Landed demo.
+summary: What this config surface actually controls on the live demo.
 taxonomy:
   tag: [config, landed]
 ---
 
-Landed keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
-
-## `tagline`
-
-Branding line in the chrome visitors see on every page. This demo sets a short Landed-specific string via `demo-config.json` when present so the hero/sidebar doesn’t fall back to empty defaults. Change it when the demo should read as your product.
+Landed’s schema brands the banner and the copyright strip. Spotlight copy,
+feature icons, and CTA routes are fixed in `templates/default.tsx`, so there
+is no per-section headline knob to seed here.
 
 ## `banner_title`
 
-Home banner headline. Empty uses the theme’s upstream-style default. Seed a concrete line in the demo so side-by-side QA against html5up.net/landed isn’t comparing against a placeholder.
+`<h2>` inside the home `#banner`. This demo sets **“The future has landed”**
+via `demo-config.json` so fidelity checks match the familiar upstream line.
+Empty keeps that same default string in the template.
+
+## `tagline`
+
+Subtitle paragraph under the banner headline. This demo seeds a short
+Landed-for-Dune sentence so the hero doesn’t fall back to a long site
+description. Empty uses the site description, then the classic upstream apps
+subtitle.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On in this demo. Gates the visible HTML5 UP credit (CC BY) inside `#footer
+.copyright` on both the landing footer and inner-page footer. Leave it on
+unless you hold a separate Pixelarity license — the toggle should hide every
+credit surface together.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name shown as `&copy; {year} {footer_text}`. This demo sets
+**“Landed Demo”** via `demo-config.json` so the footer reads as a short demo
+label instead of falling back to a long site title. Empty falls back to the
+site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Landed is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+Because the schema stops there, Landed’s fidelity comes from the fixed
+spotlight markup and `.scrolly` behavior — see this demo’s chrome post for
+what that markup actually renders.

@@ -1,5 +1,6 @@
 {
-  "tagline": "Highlights for Dune",
   "banner_title": "Welcome to Highlights",
-  "show_html5up_credit": true
+  "tagline": "Highlights for Dune",
+  "show_html5up_credit": true,
+  "footer_text": "Highlights Demo"
 }

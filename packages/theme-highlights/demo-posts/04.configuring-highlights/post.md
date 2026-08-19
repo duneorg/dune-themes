@@ -3,29 +3,37 @@ title: Configuring Highlights
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Highlights demo.
+summary: What each Highlights config key actually changes on the live demo.
 taxonomy:
   tag: [config, highlights]
 ---
 
-Highlights keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
-
-## `tagline`
-
-Branding line in the chrome visitors see on every page. This demo sets a short Highlights-specific string via `demo-config.json` when present so the hero/sidebar doesn’t fall back to empty defaults. Change it when the demo should read as your product.
+Highlights’ schema brands the hero and footer — the three special sections stay
+fixed markup in `templates/default.tsx`. Here’s what this demo sets.
 
 ## `banner_title`
 
-Home banner headline. Empty uses the theme’s upstream-style default. Seed a concrete line in the demo so side-by-side QA against html5up.net/highlights isn’t comparing against a placeholder.
+`<h1>` inside `#header .major`. This demo sets **“Welcome to Highlights”** via
+`demo-config.json`. Empty falls back to the site title, then **“Highlights”**.
+
+## `tagline`
+
+Supporting line under the hero title. This demo sets **“Highlights for Dune”**.
+Empty falls back to a built-in “responsive single-page theme” sentence.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On in this demo. Gates the visible HTML5 UP credit (CC BY) in `#footer` on home
+and in the layout footer on inner pages. Leave it on unless you hold a separate
+Pixelarity license — the toggle should hide every credit surface together.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name in the footer list. This demo sets **“Highlights Demo”** so the
+line reads as a short demo label instead of a long site title. Empty falls back
+to the site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Highlights is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+Section headings (“Who we are”, “What we do”, “One more thing”) are template
+copy, not config keys — see the chrome post for `#one` / `#two` / `#three`.
+There is no dark mode or color-scheme preset in this port; a Dune lift may land
+later as an enhancement, not as fidelity.

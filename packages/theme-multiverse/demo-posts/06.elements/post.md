@@ -3,10 +3,14 @@ title: Elements — Multiverse typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Multiverse’s post chrome.
+summary: Headings, lists, quotes, and code inside Multiverse’s compact inner article.
 taxonomy:
   tag: [elements, typography, multiverse]
 ---
+
+The home route is a twelve-thumb gallery with a footer panel. This post exists
+so `/blog` links land on something that exercises the compact
+`#main.dune-inner` layout instead of another thumb caption.
 
 ## Headings
 
@@ -14,22 +18,28 @@ taxonomy:
 
 ### Subsection (h3)
 
-Multiverse’s landing chrome (lightbox tiles) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Multiverse’s thumb titles and panel headings already carry display weight on
+home — keep in-post hierarchy shallow so it doesn’t compete with that. A fourth
+level usually means the post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Gallery thumbs, lightbox fulls, and panel icons belong on home; posts read as
+  plain markdown
+- Nested lists indent without borrowing a heading’s type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan in the compact article
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a gallery wall note, not a thumb title.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: multiverse`, and a fence:
 
 ```ts
-export const demo = "Multiverse";
+const panel = { icons: ["/blog", "/search", "/archives", "/about"], credit: true };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, return to [Home](/) and confirm the footer panel still opens
+cleanly over the thumb grid before you click through to Blog again.

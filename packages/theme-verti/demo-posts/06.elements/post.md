@@ -3,10 +3,15 @@ title: Elements — Verti typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Verti’s post chrome.
+summary: Headings, lists, quotes, and code inside Verti’s article content column.
 taxonomy:
   tag: [elements, typography, verti]
 ---
+
+Home is a banner plus three feature boxes before the sidebar/content split.
+This post exists so `/blog` links land on something that exercises the plain
+`#main-wrapper` → `#content` → `article` inner layout instead of another
+feature card caption.
 
 ## Headings
 
@@ -14,22 +19,29 @@ taxonomy:
 
 ### Subsection (h3)
 
-Verti’s landing chrome (verti sidebar) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Verti’s landing already uses large feature and banner headings — keep in-post
+hierarchy shallow so it doesn’t compete with that. A fourth level usually means
+the post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Feature boxes, thumbnail grids, and widget footers belong on home; posts read
+  as plain markdown
+- Nested lists indent without borrowing a heading’s type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan in the single-column article
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a client quote pulled for a case study,
+> not a banner slogan.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: verti`, and a fence:
 
 ```ts
-export const demo = "Verti";
+const chrome = { banner: "#banner", features: "#features-wrapper", footer: "#footer" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, return to [Home](/) and confirm the banner’s Blog / About
+buttons still resolve before you scroll the feature row again.

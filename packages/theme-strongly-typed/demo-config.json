@@ -1,3 +1,7 @@
 {
-  "show_html5up_credit": true
+  "header_tagline": "A typography-forward blog shell with an optional home banner strip.",
+  "show_banner": true,
+  "banner_text": "Use this banner for an introduction — or leave it on so fidelity checks still see the strip.",
+  "show_html5up_credit": true,
+  "footer_text": "Strongly Typed Demo"
 }

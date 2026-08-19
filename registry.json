@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-08-02",
+  "updatedAt": "2026-08-19",
   "themes": [
     {
       "slug": "sirocco",
@@ -23,7 +23,7 @@
       "sha256": "51c85fffb914cd6b92d848cb0104670c07022bc6b09a096b1754caf56e6b190c",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "caravan",
@@ -46,7 +46,7 @@
       "sha256": "eeb5129a0159bd5fd02cee733b2b6c3c6b054a8e4337586ffab6277dd188db8d",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "fennec",
@@ -69,7 +69,7 @@
       "sha256": "5c3fd3d5e1c11bbceb60f33cad34bc9860cd978f030c1e960c98cca60915fc71",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "nightfall",
@@ -92,7 +92,7 @@
       "sha256": "2cab47f61889cb3e7210f38dd702cbc9ba1a482476244f990dc5c216a2b3de3d",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "oasis",
@@ -115,7 +115,7 @@
       "sha256": "2267f5e5b5911c2745a6c28d4e04cd8810558c28a8491e30e527fd79ad88fa0a",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "ink",
@@ -139,7 +139,7 @@
       "sha256": "22eed125f43d2de4a711f992b956acd79f14e9a7abe01e18bd2f2d9baa06b21d",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "gale",
@@ -162,7 +162,7 @@
       "sha256": "547e6d5ce847a5af3884a79e4a9f128576f2f482f8d3b92675d351a1c8a9d25f",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "salon",
@@ -185,7 +185,7 @@
       "sha256": "53fd83514e86ba9a67f8aa196c536e6475ef2a1d657e05edbd54484a61d346f5",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "syntax",
@@ -208,7 +208,7 @@
       "sha256": "a9f6a01a27291b21d7c5ced12c6e9da3eeb557c77e7ec595160b1c5cd39c18ea",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "herald",
@@ -231,7 +231,7 @@
       "sha256": "3066819a8710ddd3d22abf8fa3de796902462da6029a716f95f5c3b2fc3b7a36",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "lucid",
@@ -254,7 +254,7 @@
       "sha256": "de3affe3f6ca9c6037beebfd03915f71a3a96eef2728a4cfa73c679e869beb1f",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "manual",
@@ -277,7 +277,7 @@
       "sha256": "fb2584ed2ff903bab2791efc53f397c52b6a4c6c181ca7efb0014c6fe68f1b13",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "papermod",
@@ -300,7 +300,7 @@
       "sha256": "30cfa999cdfafde4936b25e198bdad51c1e9e06d171e74cfed6e12aac057f864",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "book",
@@ -323,7 +323,7 @@
       "sha256": "ab5a1c951fbd46a0710d598ef233827671b5fc2dc9260e11247cd23b9c1e85e3",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "starlight",
@@ -346,7 +346,7 @@
       "sha256": "297e041a53261e8eeeadc7caa7030034c91b9e331146cc14ae26124fa3b82c8d",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "blox",
@@ -369,7 +369,7 @@
       "sha256": "d887254a86fbc263b70270bb3645464d6e9b55bcc17f0b3cafcbfeef98866bbf",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "aerial",
@@ -392,7 +392,7 @@
       "sha256": "b656cead531d900e5fb8cf58ecbf407f6d90445befd9dfec315cbf8e7333d0a1",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "alpha",
@@ -415,7 +415,7 @@
       "sha256": "c8bef4fb00e28a2df65c1ede19f67514673b09a67a59c698fd72a6d207b6133a",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "arcana",
@@ -438,7 +438,7 @@
       "sha256": "473d320a3e35a033784f5ef59a866cd862df1d91a76de798e3f92be7a50a19d5",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "astral",
@@ -461,7 +461,7 @@
       "sha256": "345713de796d2b9d5f0ccc880446dc7e2058a42503edcc5e435b9ad186358111",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "big-picture",
@@ -484,7 +484,7 @@
       "sha256": "0ade1196719b53c05cbe9ff748a6acba9fc59acb3afbfec0ebc217bb4d31dce5",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "dimension",
@@ -507,14 +507,14 @@
       "sha256": "39eca88eaa714194fe12979ea6f236fef1650d73a6bfe8729abe2e8f1a2d9ded",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "directive",
       "name": "Directive",
       "description": "Directive — responsive site theme adapted from HTML5 UP for Dune. Simple landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -525,19 +525,19 @@
       "inspiredBy": "HTML5 UP Directive",
       "demoUrl": "https://themes.getdune.org/directive",
       "screenshotUrl": "https://themes.getdune.org/directive/themes/directive/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-directive@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/directive-v1.0.0/directive-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-directive@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/directive-v1.0.1/directive-1.0.1.zip",
       "sha256": "2837cec45f8b1cc29af9795fe7339b6bae45f1b215b4d97720d9828e6bcdf70a",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "dopetrope",
       "name": "Dopetrope",
       "description": "Dopetrope — responsive site theme adapted from HTML5 UP for Dune. Magazine blog.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -548,12 +548,12 @@
       "inspiredBy": "HTML5 UP Dopetrope",
       "demoUrl": "https://themes.getdune.org/dopetrope",
       "screenshotUrl": "https://themes.getdune.org/dopetrope/themes/dopetrope/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-dopetrope@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dopetrope-v1.0.0/dopetrope-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-dopetrope@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dopetrope-v1.0.1/dopetrope-1.0.1.zip",
       "sha256": "00d766ad603bcca5f63f7b7f2943bb416fddd3269808e0d7ca35e975ad10fc0d",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "editorial",
@@ -576,14 +576,14 @@
       "sha256": "a2d417dbb6ab57cf2643238b4270ee2d994e5d8046578d45940dab552e125850",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "escape-velocity",
       "name": "Escape Velocity",
       "description": "Escape Velocity — responsive site theme adapted from HTML5 UP for Dune. Marketing site.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -594,19 +594,19 @@
       "inspiredBy": "HTML5 UP Escape Velocity",
       "demoUrl": "https://themes.getdune.org/escape-velocity",
       "screenshotUrl": "https://themes.getdune.org/escape-velocity/themes/escape-velocity/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-escape-vel@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/escape-velocity-v1.0.0/escape-velocity-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-escape-vel@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/escape-velocity-v1.0.1/escape-velocity-1.0.1.zip",
       "sha256": "186e012e7c0137b97bdf8ba19696291720822e015d26074b61d72a5eeabc5d11",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "ethereal",
       "name": "Ethereal",
       "description": "Ethereal — responsive site theme adapted from HTML5 UP for Dune. Elegant landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -617,19 +617,19 @@
       "inspiredBy": "HTML5 UP Ethereal",
       "demoUrl": "https://themes.getdune.org/ethereal",
       "screenshotUrl": "https://themes.getdune.org/ethereal/themes/ethereal/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-ethereal@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ethereal-v1.0.0/ethereal-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-ethereal@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ethereal-v1.0.1/ethereal-1.0.1.zip",
       "sha256": "7e8b19295407f3f3c4dffdb5436f5cd93fc3e1a2d527c8261f1a58225d320748",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "eventually",
       "name": "Eventually",
       "description": "Eventually — responsive site theme adapted from HTML5 UP for Dune. Coming soon.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -640,12 +640,12 @@
       "inspiredBy": "HTML5 UP Eventually",
       "demoUrl": "https://themes.getdune.org/eventually",
       "screenshotUrl": "https://themes.getdune.org/eventually/themes/eventually/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-eventually@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/eventually-v1.0.0/eventually-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-eventually@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/eventually-v1.0.1/eventually-1.0.1.zip",
       "sha256": "deed49bba971df0135cc615775c1099f0f844e3b29aca915764b6989f082844b",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "forty",
@@ -668,7 +668,7 @@
       "sha256": "2878943bfbce72e9d7111eaed6192846f3ed05690b00381e5eea73d5a3ba7107",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "fractal",
@@ -691,7 +691,7 @@
       "sha256": "e6fe2a340c7ce4ba3522262ebe1b9435414792829efc4f7a773cfbd338ef4309",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "future-imperfect",
@@ -714,14 +714,14 @@
       "sha256": "96c604f1cf8552e9db5f6aa696734edc87ed63a2e729c8588c9420d1b1264002",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "halcyonic",
       "name": "Halcyonic",
       "description": "Halcyonic — responsive site theme adapted from HTML5 UP for Dune. Business layout.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -732,12 +732,12 @@
       "inspiredBy": "HTML5 UP Halcyonic",
       "demoUrl": "https://themes.getdune.org/halcyonic",
       "screenshotUrl": "https://themes.getdune.org/halcyonic/themes/halcyonic/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-halcyonic@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/halcyonic-v1.0.0/halcyonic-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-halcyonic@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/halcyonic-v1.0.1/halcyonic-1.0.1.zip",
       "sha256": "554b20304d2b4af9b36e443f779e98a8758a598064d7407bdf0c70bf84ae134d",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "helios",
@@ -760,14 +760,14 @@
       "sha256": "8c2106700ea03b107672f71694049c40d473e0bbe67a8f42c5f675be5b986b88",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "highlights",
       "name": "Highlights",
       "description": "Highlights — responsive site theme adapted from HTML5 UP for Dune. Photo landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -778,12 +778,12 @@
       "inspiredBy": "HTML5 UP Highlights",
       "demoUrl": "https://themes.getdune.org/highlights",
       "screenshotUrl": "https://themes.getdune.org/highlights/themes/highlights/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-highlights@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/highlights-v1.0.0/highlights-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-highlights@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/highlights-v1.0.1/highlights-1.0.1.zip",
       "sha256": "9c9700661729935c22294fb7a3da4683ad61e38df181f63d03abe155e3008fbe",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "hyperspace",
@@ -806,14 +806,14 @@
       "sha256": "3f42eb3531ee64d6349ede9d692ecde43bdec2c81a4a9d2051fc9a36b07590df",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "landed",
       "name": "Landed",
       "description": "Landed — responsive site theme adapted from HTML5 UP for Dune. Product landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -824,12 +824,12 @@
       "inspiredBy": "HTML5 UP Landed",
       "demoUrl": "https://themes.getdune.org/landed",
       "screenshotUrl": "https://themes.getdune.org/landed/themes/landed/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-landed@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/landed-v1.0.0/landed-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-landed@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/landed-v1.0.1/landed-1.0.1.zip",
       "sha256": "e9998926e4fc5b2a672e82b1051d5e0d404a8d7b79ea73b4e47b7254aab58746",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "lens",
@@ -852,7 +852,7 @@
       "sha256": "232b46df8f41ea7fe8537acd637d96247bcfd864c2c3422e6656dd616b836287",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "massively",
@@ -875,7 +875,7 @@
       "sha256": "434c8de879b3cf311a1815043cf0c77a3011562e02937c3b35c3ba0d6d2104e4",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "minimaxing",
@@ -898,7 +898,7 @@
       "sha256": "89367a9375f36083a99cdb686f25ced3273d4c59211be4a9fab427c6372e102a",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "miniport",
@@ -921,14 +921,14 @@
       "sha256": "2950f401ed6382ef9cffcc74f70f964e4a24fa06743dbebf42363c8f1b67cb9a",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "multiverse",
       "name": "Multiverse",
       "description": "Multiverse — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -939,12 +939,12 @@
       "inspiredBy": "HTML5 UP Multiverse",
       "demoUrl": "https://themes.getdune.org/multiverse",
       "screenshotUrl": "https://themes.getdune.org/multiverse/themes/multiverse/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-multiverse@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/multiverse-v1.0.0/multiverse-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-multiverse@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/multiverse-v1.0.1/multiverse-1.0.1.zip",
       "sha256": "10e79c91ebe00113c8e27176389743d5bf1c228c9acfa5ba5bd406f41f4ca642",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "paradigm-shift",
@@ -967,7 +967,7 @@
       "sha256": "e865b2f8c8abfe23d93bbe6538684cac72d588db1fb2e04da21043767d2fd228",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "parallelism",
@@ -990,7 +990,7 @@
       "sha256": "2717ffe61e75561884cad73a4d926581a576f321f12f3d0e12b195dcbde725ca",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "phantom",
@@ -1013,7 +1013,7 @@
       "sha256": "74ef22fe1fb2e2c7f78e1b639eb05e7b011fbd37c1bcd6ab3ea0e2eb7f0f0f20",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "photon",
@@ -1036,14 +1036,14 @@
       "sha256": "82f1c7bacc98810827e2456116c3c447b9589db6c5886816a1fc5441cbf86e87",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "prologue",
       "name": "Prologue",
       "description": "Prologue — responsive site theme adapted from HTML5 UP for Dune. Intro landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1054,19 +1054,19 @@
       "inspiredBy": "HTML5 UP Prologue",
       "demoUrl": "https://themes.getdune.org/prologue",
       "screenshotUrl": "https://themes.getdune.org/prologue/themes/prologue/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-prologue@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/prologue-v1.0.0/prologue-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-prologue@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/prologue-v1.0.1/prologue-1.0.1.zip",
       "sha256": "7de8f2233fe2779117652c0e32fb0851283ecc1beb6565224b322bac68318283",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "read-only",
       "name": "Read Only",
       "description": "Read Only — responsive site theme adapted from HTML5 UP for Dune. Read-only blog.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1077,12 +1077,12 @@
       "inspiredBy": "HTML5 UP Read Only",
       "demoUrl": "https://themes.getdune.org/read-only",
       "screenshotUrl": "https://themes.getdune.org/read-only/themes/read-only/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-read-only@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/read-only-v1.0.0/read-only-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-read-only@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/read-only-v1.0.1/read-only-1.0.1.zip",
       "sha256": "6bda73e3924f5390c0609da0fe56a425644f901c7064a68d3f9fd4dd4fa9687a",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "solid-state",
@@ -1105,7 +1105,7 @@
       "sha256": "8a13aa89edebfd35830e95dad180223ae4ddd6417526a92964e1a9da720981a4",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "spectral",
@@ -1128,14 +1128,14 @@
       "sha256": "fa680510c3f6d1d86cfdfc048f3a8ff6211b24c81a4d842f224bbac04a258b3e",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "stellar",
       "name": "Stellar",
       "description": "Stellar — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1146,12 +1146,12 @@
       "inspiredBy": "HTML5 UP Stellar",
       "demoUrl": "https://themes.getdune.org/stellar",
       "screenshotUrl": "https://themes.getdune.org/stellar/themes/stellar/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-stellar@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/stellar-v1.0.0/stellar-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-stellar@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/stellar-v1.0.1/stellar-1.0.1.zip",
       "sha256": "fad511a91fbac0171f55430495fcd79dfff352c0a2e14ea5006b705c8ba6fa4f",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "story",
@@ -1174,7 +1174,7 @@
       "sha256": "54a9e6cf6c12f6da3081587c7975961b55cad7ec84883aca0c973e5ef6c932b9",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "strata",
@@ -1197,7 +1197,7 @@
       "sha256": "ee1e3c389e19c096cb25ca2c4af33207884a1f778a98aa603ae144d67539fc51",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "striped",
@@ -1220,14 +1220,14 @@
       "sha256": "8550daf03b6ec6502ede2e81050664ba65372b0bb32378e8fdab634402a06549",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "strongly-typed",
       "name": "Strongly Typed",
       "description": "Strongly Typed — responsive site theme adapted from HTML5 UP for Dune. Typography blog.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1238,19 +1238,19 @@
       "inspiredBy": "HTML5 UP Strongly Typed",
       "demoUrl": "https://themes.getdune.org/strongly-typed",
       "screenshotUrl": "https://themes.getdune.org/strongly-typed/themes/strongly-typed/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-strongly-typed@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strongly-typed-v1.0.0/strongly-typed-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-strongly-typed@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strongly-typed-v1.0.1/strongly-typed-1.0.1.zip",
       "sha256": "012ad5b14d7d6697f0790bac29e7844d1bf1d95de2515b7e9893f020963a4c59",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "telephasic",
       "name": "Telephasic",
       "description": "Telephasic — responsive site theme adapted from HTML5 UP for Dune. Business site.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1261,19 +1261,19 @@
       "inspiredBy": "HTML5 UP Telephasic",
       "demoUrl": "https://themes.getdune.org/telephasic",
       "screenshotUrl": "https://themes.getdune.org/telephasic/themes/telephasic/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-telephasic@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/telephasic-v1.0.0/telephasic-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-telephasic@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/telephasic-v1.0.1/telephasic-1.0.1.zip",
       "sha256": "ad6ecdc6ce8141310df96294073c5cc081eac620d38d442d9e738e7f21c68957",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "tessellate",
       "name": "Tessellate",
       "description": "Tessellate — responsive site theme adapted from HTML5 UP for Dune. Grid landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1284,12 +1284,12 @@
       "inspiredBy": "HTML5 UP Tessellate",
       "demoUrl": "https://themes.getdune.org/tessellate",
       "screenshotUrl": "https://themes.getdune.org/tessellate/themes/tessellate/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-tessellate@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/tessellate-v1.0.0/tessellate-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-tessellate@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/tessellate-v1.0.1/tessellate-1.0.1.zip",
       "sha256": "4681287b7949281bee1b9333bd9ab91896a6a684084cb7d990824399d479302c",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "twenty",
@@ -1312,7 +1312,7 @@
       "sha256": "7393d3c4b3a1b8f374d7f5b1d47521eeba5a5d58d40a5a578d15a27a62485fb3",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "txt",
@@ -1335,14 +1335,14 @@
       "sha256": "9d5e7a8d3c9a4fc89ac309e27537c6758978ecb49e622e8a00a9da94e3799e61",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "verti",
       "name": "Verti",
       "description": "Verti — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1353,19 +1353,19 @@
       "inspiredBy": "HTML5 UP Verti",
       "demoUrl": "https://themes.getdune.org/verti",
       "screenshotUrl": "https://themes.getdune.org/verti/themes/verti/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-verti@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/verti-v1.0.0/verti-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-verti@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/verti-v1.0.1/verti-1.0.1.zip",
       "sha256": "46de5264ab28fc1a8c56f0815e595d53632b3447325a1fc653b44479fca76dfb",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "zerofour",
       "name": "Zerofour",
       "description": "Zerofour — responsive site theme adapted from HTML5 UP for Dune. 404 / minimal page.",
       "author": "Dune Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1376,12 +1376,12 @@
       "inspiredBy": "HTML5 UP Zerofour",
       "demoUrl": "https://themes.getdune.org/zerofour",
       "screenshotUrl": "https://themes.getdune.org/zerofour/themes/zerofour/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-zerofour@1.0.0",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/zerofour-v1.0.0/zerofour-1.0.0.zip",
+      "jsr": "jsr:@dune/theme-zerofour@1.0.1",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/zerofour-v1.0.1/zerofour-1.0.1.zip",
       "sha256": "e2a129aaa01417a5ae44d1408e5d4df276fb4670a90d7c5549e778397e9e08e5",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     },
     {
       "slug": "dune-minimal",
@@ -1403,7 +1403,7 @@
       "sha256": "f6cdded0eb662dc5f5ace2b87e09f618cafba87bf29dc2c123968b7eeb173463",
       "verified": true,
       "downloads": 0,
-      "compatibleWith": "^0.28.0"
+      "compatibleWith": "^0.31.0"
     }
   ]
 }

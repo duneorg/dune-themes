@@ -3,10 +3,14 @@ title: Elements — Highlights typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Highlights’s post chrome.
+summary: Headings, lists, quotes, and code inside Highlights’ inner-page shell.
 taxonomy:
   tag: [elements, typography, highlights]
 ---
+
+Home is three fullscreen special sections deep. This post exists so `/blog`
+links land on something that exercises the compact major-header inner layout
+instead of another section caption.
 
 ## Headings
 
@@ -14,22 +18,28 @@ taxonomy:
 
 ### Subsection (h3)
 
-Highlights’s landing chrome (highlight bands) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Highlights’ landing already uses `header.major` treatments on every section —
+keep in-post hierarchy shallow so it doesn’t compete with that. A fourth level
+usually means the post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Goto-next cues, icons grids, and fullscreen images belong on home; posts read
+  as plain markdown
+- Nested lists indent without borrowing a heading’s type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan in the inner content column
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a pulled quote, not a header tagline.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: highlights`, and a fence:
 
 ```ts
-export const demo = "Highlights";
+const flow = ["#header", "#one", "#two", "#three", "#footer"];
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, return to [Home](/) and confirm Begin still scrolls into
+`#one` before you walk the icons grid again.

@@ -3,20 +3,28 @@ title: Escape Velocity chrome on Dune
 date: 2026-03-15
 template: post
 published: true
-summary: Theme-specific fidelity notes for Escape Velocity — not a generic clone.
+summary: How Escape Velocity’s intro, features, and highlights map onto Dune.
 taxonomy:
   tag: [chrome, escape-velocity, fidelity]
 ---
 
-Upstream Escape Velocity is known for **sidebar columns**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
-
-Sidebar + featured content columns.
+Upstream Escape Velocity wraps the site in `#page-wrapper`. `#header.wrapper` holds
+`#logo` (site title + tagline) and an inline `#nav`. Home then stacks four titled sections:
+`#intro.wrapper.style1`, `#main.wrapper.style2` with `#features`, `#highlights.wrapper.style3`
+(three `.highlight` cards), and `#footer.wrapper` with `#copyright`. Inner pages switch the
+body to `no-sidebar` and render a single `#main.wrapper.style2` article. On this Dune port
+that shell lives across `components/layout.tsx` and `templates/default.tsx`, styled by the
+vendored `static/html5up/` CSS.
 
 Compare side-by-side with [html5up.net/escape-velocity](https://html5up.net/escape-velocity):
 
-- Hero / banner / first viewport should feel like the same family
-- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
-- Footer credit stays visible when `show_html5up_credit` is on
+- `#intro` carries the seeded `intro_title` and a Get Started button aimed at `/blog`
+- `#features` documents Blog, responsive shell, Search/Archives, and credit in a four-cell
+  list with About as a secondary action
+- `#highlights` cards spotlight Blog, Search, and Archives with featured images
+- `#nav` marks the active route with `.current` (trailing-slash safe)
 
-Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
-
+Honest Dune deviations: upstream’s multi-page HTML becomes ordinary posts under `/blog`;
+search is server-side `/api/search`, not a static filter; the closing CTA has no mail
+backend. No dark mode — Escape Velocity upstream is one design; a Dune lift may land later
+as an enhancement, not as fidelity.

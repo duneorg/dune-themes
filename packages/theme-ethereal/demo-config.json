@@ -1,5 +1,7 @@
 {
-  "tagline": "Ethereal for Dune",
+  "tagline": "Panels and spotlights for Dune",
   "banner_title": "Welcome to Ethereal",
-  "show_html5up_credit": true
+  "show_banner": true,
+  "show_html5up_credit": true,
+  "footer_text": "Ethereal Demo"
 }

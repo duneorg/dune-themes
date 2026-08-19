@@ -1,4 +1,7 @@
 {
+  "show_banner": true,
   "banner_title": "Welcome to Dopetrope",
-  "show_html5up_credit": true
+  "banner_subtitle": "Magazine columns for Dune",
+  "show_html5up_credit": true,
+  "footer_text": "Dopetrope Demo"
 }

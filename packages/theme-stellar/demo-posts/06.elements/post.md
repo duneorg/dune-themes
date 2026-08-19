@@ -3,10 +3,14 @@ title: Elements — Stellar typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Stellar’s post chrome.
+summary: Headings, lists, quotes, and code inside Stellar’s inner content section.
 taxonomy:
   tag: [elements, typography, stellar]
 ---
+
+Home is a spotlight plus features, statistics, and CTA sections. This post
+exists so `/blog` links land on something that exercises the plain
+`#content.main` inner layout instead of another spotlight caption.
 
 ## Headings
 
@@ -14,22 +18,28 @@ taxonomy:
 
 ### Subsection (h3)
 
-Stellar’s landing chrome (scrolly sections) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Stellar’s landing already uses `header.major` on every band — keep in-post
+hierarchy shallow so it doesn’t compete with that. A fourth level usually means
+the post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Spotlights, icon features, and statistics belong on home; posts read as plain
+  markdown
+- Nested lists indent without borrowing a heading’s type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan in `#content`
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a pulled quote, not a CTA slogan.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: stellar`, and a fence:
 
 ```ts
-export const demo = "Stellar";
+const sections = ["intro", "first", "second", "cta", "footer"];
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, return to [Home](/) and confirm the alt header logo still
+sits above `#nav` before you scroll the spotlight again.

@@ -3,10 +3,14 @@ title: Elements — Halcyonic typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Halcyonic’s post chrome.
+summary: Headings, lists, quotes, and code inside Halcyonic’s inner-page content column.
 taxonomy:
   tag: [elements, typography, halcyonic]
 ---
+
+The home route is a banner plus four bordered feature cards. This post exists
+so `/blog` links land on something that exercises the plain `#content`
+inner-page layout instead of another feature caption.
 
 ## Headings
 
@@ -14,22 +18,28 @@ taxonomy:
 
 ### Subsection (h3)
 
-Halcyonic’s landing chrome (halcyon header) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Halcyonic’s banner and feature headings already carry a business-landing
+weight on home — keep in-post hierarchy shallow so it doesn’t compete with
+that. A fourth level usually means the post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Banner image, feature thumbnails, and the large CTA belong on home; posts
+  read as plain markdown
+- Nested lists indent without borrowing a heading’s type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan in the single-column wrapper
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a short client note, not a banner slogan.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: halcyonic`, and a fence:
 
 ```ts
-export const demo = "Halcyonic";
+const banner = { textKey: "banner_text", imageKey: "banner_image", cta: "/blog" };
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, return to [Home](/) and confirm the banner image still sits
+beside the copy before you scroll into the four feature cards.

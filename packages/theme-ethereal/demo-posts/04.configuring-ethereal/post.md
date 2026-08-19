@@ -8,28 +8,37 @@ taxonomy:
   tag: [config, ethereal]
 ---
 
-Ethereal keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
-
-## `tagline`
-
-Branding line in the chrome visitors see on every page. This demo sets a short Ethereal-specific string via `demo-config.json` when present so the hero/sidebar doesn’t fall back to empty defaults. Change it when the demo should read as your product.
+Ethereal’s config surface brands the banner panel and copyright line — spotlight panels and
+the icon grid are fixed markup in `templates/default.tsx`.
 
 ## `banner_title`
 
-Home banner headline. Empty uses the theme’s upstream-style default. Seed a concrete line in the demo so side-by-side QA against html5up.net/ethereal isn’t comparing against a placeholder.
+Name spliced into the banner’s “Hello, my name is …” `<h1 class="major">` on the home
+landing. This demo sets **"Welcome to Ethereal"**. Empty falls back to the site title.
+
+## `tagline`
+
+Paragraph under that major heading in `section.panel.banner`. This demo sets **"Panels and
+spotlights for Dune"** so the banner doesn’t fall back to a long site description. Empty
+uses the site description, then a built-in default.
 
 ## `show_banner`
 
-When on, the landing shows the banner block before tiles/sections. Turn off only if you’re deliberately testing a bannerless home — most fidelity checks want it on.
+When on (default), the landing renders the `panel.banner.right` block (copy + filtered
+image + Next circle button). Flip it off and home starts at the first spotlight panel with
+no intro banner. Inner pages never show the banner either way.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On in this demo. Gates the visible HTML5 UP credit (CC BY) inside `.copyright` at the foot
+of `#wrapper`. Leave it on unless you hold a separate Pixelarity license — the toggle
+should hide every credit surface together.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name shown as `&copy; {year} {footer_text}`. This demo sets **"Ethereal Demo"**
+so the credit line reads as a short demo label instead of falling back to a long site
+title. Empty falls back to the site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Ethereal is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+There is no dark mode or color-scheme preset in this port; a Dune lift may land later as
+an enhancement, not as fidelity.

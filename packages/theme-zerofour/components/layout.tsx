@@ -7,7 +7,7 @@ interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
   t?: (key: string, fallback?: string) => string;
-  /** When true, show the homepage banner shell only (no content panel). */
+  /** When true, show the homepage banner (content panel still renders children). */
   landing?: boolean;
 }
 
@@ -122,7 +122,7 @@ export default function Layout({
             </div>
           </div>
 
-          {!isLanding && children && (
+          {children && (
             <div id="main-wrapper">
               <div class="wrapper style2">
                 <div class="inner">

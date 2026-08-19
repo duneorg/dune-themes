@@ -3,10 +3,14 @@ title: Telephasic
 template: default
 published: true
 description: >
-  Telephasic adapted from HTML5 UP for Dune — landing banner/sections from upstream, with CTAs pointed at Dune fixtures.
-  Single upstream design; no dark mode or color-scheme presets in this port.
+  Telephasic adapted from HTML5 UP for Dune — centered logo-over-nav hero,
+  paired feature rows, and a promo band. Single upstream design; no dark mode
+  or color-scheme presets in this port.
 ---
 
-A faithful-adjacent port of [HTML5 UP Telephasic](https://html5up.net/telephasic) for Dune.
-Home chrome stays template-driven; Blog / About / Search / Archives exist so
-upstream-style CTAs resolve to real Dune routes.
+Upstream [Telephasic](https://html5up.net/telephasic) opens inside
+`#header-wrapper`: a centered `#logo` over `#nav` (middle item gets `.break`),
+then `#hero` with headline, subtitle, and primary button. Feature rows pair
+bordered images with copy, a `#promo-wrapper` band interrupts with one CTA, and
+a second feature trio closes before `#footer-wrapper`. This Dune port keeps that
+sequence but repoints every action at Blog, Search, Archives, or About.

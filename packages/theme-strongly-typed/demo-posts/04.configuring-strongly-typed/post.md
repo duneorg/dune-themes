@@ -3,33 +3,46 @@ title: Configuring Strongly Typed
 date: 2026-03-08
 template: post
 published: true
-summary: What each option changes on the live Strongly Typed demo.
+summary: What this config surface actually controls on the live demo.
 taxonomy:
   tag: [config, strongly-typed]
 ---
 
-Strongly Typed keeps a small config surface — enough to brand the chrome without inventing schemes upstream never had. Here’s what this demo actually shows.
+Strongly Typed’s schema brands the header, the optional home banner, and the
+copyright strip. Post column layout is fixed in the templates, so there is no
+“type scale” knob to seed here.
 
 ## `header_tagline`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Strongly Typed’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Paragraph under the logo in `#header`. This demo sets a concrete
+typography-forward line via `demo-config.json` so the chrome doesn’t fall back
+to an empty description. Empty uses the site description, then the layout’s
+upstream-style default.
 
 ## `show_banner`
 
-When on, the landing shows the banner block before tiles/sections. Turn off only if you’re deliberately testing a bannerless home — most fidelity checks want it on.
+When on (and the route is home), the landing shows the `#banner` strip before
+`#main`. This demo leaves it on. Turn off only if you’re deliberately testing a
+bannerless home — most fidelity checks want it visible.
 
 ## `banner_text`
 
-See `theme.yaml` for the schema default. On this demo, leave it at a value that makes Strongly Typed’s upstream chrome visible — don’t ship a demo that hides the design you’re trying to show.
+Copy inside the home banner strip. This demo seeds an introduction line via
+`demo-config.json`. Empty keeps the layout’s “profound thoughts” default.
 
 ## `show_html5up_credit`
 
-On in this demo. Gates the visible HTML5 UP credit (CC BY). Leave it on unless you hold a Pixelarity license — the toggle should hide every credit surface together, not orphan one in the footer.
+On in this demo. Gates the visible HTML5 UP credit (CC BY) inside `#copyright`
+under `#main`. Leave it on unless you hold a separate Pixelarity license — the
+toggle should hide every credit surface together.
 
 ## `footer_text`
 
-Copyright name. Empty falls back to the site title. Prefer a short demo name when the title is long.
+Copyright name shown as `&copy; {year} {footer_text}`. This demo sets
+**“Strongly Typed Demo”** via `demo-config.json` so the row reads as a short
+demo label instead of falling back to a long site title. Empty falls back to
+the site title.
 
-
-There is **no** dark mode or color-scheme preset in this port. Upstream Strongly Typed is a single design; a Dune lift may land later as an enhancement, not as fidelity.
-
+Because the schema stops there, Strongly Typed’s fidelity comes from the fixed
+header/banner markup — see this demo’s chrome post for what that markup
+actually renders.

@@ -3,20 +3,26 @@ title: Read Only chrome on Dune
 date: 2026-03-15
 template: post
 published: true
-summary: Theme-specific fidelity notes for Read Only — not a generic clone.
+summary: How Read Only’s resume sidebar and titleBar map onto Dune.
 taxonomy:
   tag: [chrome, read-only, fidelity]
 ---
 
-Upstream Read Only is known for **resume sidebar**. On Dune that chrome is template-driven over vendored `static/html5up/` assets — this post exists so the demo explains what you’re seeing instead of shipping a generic clone.
-
-Resume/profile sidebar + content column.
+Upstream Read Only is known for its resume sidebar: avatar, identity, nav, and
+copyright in `#header`, with `#titleBar` toggling that panel on small screens.
+On this Dune port that chrome lives in `components/layout.tsx` over vendored
+`static/html5up/` CSS — this post exists so the demo explains what you’re
+seeing instead of shipping a generic clone.
 
 Compare side-by-side with [html5up.net/read-only](https://html5up.net/read-only):
 
-- Hero / banner / first viewport should feel like the same family
-- Nav, `#menu`, titleBar, or modal close behavior must work on mobile width
-- Footer credit stays visible when `show_html5up_credit` is on
+- Sidebar shows `avatar_url` (or the default avatar), site title, and
+  `sidebar_tagline`
+- `#nav` items resolve to Dune fixtures; active state is trailing-slash safe
+- `#titleBar .toggle` opens/closes the sidebar on mobile width — check both
+- Sidebar copyright/credit stays visible whenever `show_html5up_credit` is on
 
-Honest Dune deviations: multi-page HTML becomes `/blog`, `/search`, `/archives`, `/about`; search is server-side `/api/search`; contact forms have no mail backend. No dark mode — one upstream design.
-
+Honest Dune deviations: upstream’s multi-page HTML becomes ordinary routes
+under `/blog`; search is server-side `/api/search`, not a sidebar filter; there
+is no contact form mail backend behind the chrome. A Dune lift may land later
+as an enhancement, not as fidelity.

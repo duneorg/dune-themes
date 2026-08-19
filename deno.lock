@@ -5,13 +5,12 @@
     "jsr:@deno/esbuild-plugin@^1.2.0": "1.2.1",
     "jsr:@deno/loader@~0.3.10": "0.3.14",
     "jsr:@denosaurs/plug@1": "1.1.0",
-    "jsr:@dune/core@0.27": "0.27.0",
-    "jsr:@dune/core@0.28": "0.28.3",
-    "jsr:@dune/plugin-admin@1": "1.0.1",
+    "jsr:@dune/core@0.31": "0.31.7",
     "jsr:@fresh/build-id@1": "1.0.1",
     "jsr:@fresh/core@2": "2.3.3",
     "jsr:@std/assert@0.217": "0.217.0",
     "jsr:@std/bytes@^1.0.6": "1.0.6",
+    "jsr:@std/crypto@1": "1.0.5",
     "jsr:@std/encoding@1": "1.0.11",
     "jsr:@std/encoding@^1.0.10": "1.0.11",
     "jsr:@std/encoding@^1.0.11": "1.0.11",
@@ -25,6 +24,7 @@
     "jsr:@std/jsonc@^1.0.2": "1.0.2",
     "jsr:@std/media-types@^1.1.0": "1.1.0",
     "jsr:@std/net@^1.0.6": "1.0.6",
+    "jsr:@std/path@*": "1.1.6",
     "jsr:@std/path@0.217": "0.217.0",
     "jsr:@std/path@1": "1.1.6",
     "jsr:@std/path@^1.1.1": "1.1.6",
@@ -34,26 +34,25 @@
     "jsr:@std/semver@^1.0.6": "1.0.8",
     "jsr:@std/uuid@^1.0.9": "1.1.1",
     "jsr:@std/yaml@1": "1.1.2",
-    "jsr:@zip-js/zip-js@2": "2.8.26",
     "npm:@mdx-js/mdx@3": "3.1.1",
     "npm:@opentelemetry/api@^1.9.0": "1.9.1",
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:gray-matter@4": "4.0.3",
-    "npm:ioredis@5": "5.11.1",
     "npm:marked@15": "15.0.12",
     "npm:nodemailer@6": "6.10.1",
     "npm:playwright-core@1.49.0": "1.49.0",
     "npm:playwright@1.45": "1.45.0",
     "npm:playwright@1.45.0": "1.45.0",
     "npm:playwright@^1.45.0": "1.45.0",
-    "npm:polizy@0.2": "0.2.0",
+    "npm:polizy@0.6": "0.6.0",
     "npm:postgres@^3.4.0": "3.4.9",
     "npm:preact-render-to-string@6": "6.7.0_preact@10.29.7",
     "npm:preact-render-to-string@^6.6.3": "6.7.0_preact@10.29.7",
     "npm:preact@10": "10.29.7_preact-render-to-string@6.7.0",
     "npm:preact@^10.28.2": "10.29.7_preact-render-to-string@6.7.0",
     "npm:preact@^10.29.1": "10.29.7_preact-render-to-string@6.7.0",
+    "npm:remark-gfm@4": "4.0.1",
     "npm:sharp@0.33": "0.33.5"
   },
   "jsr": {
@@ -83,22 +82,12 @@
         "jsr:@std/path@1"
       ]
     },
-    "@dune/core@0.27.0": {
-      "integrity": "89a0ee5a5d33c680ee87b426c3171075cd23866e0dbfac3ede913eebf32d24f3",
-      "dependencies": [
-        "jsr:@std/encoding@1",
-        "jsr:@std/fs@1",
-        "jsr:@std/path@^1.1.4",
-        "jsr:@std/yaml",
-        "npm:ioredis",
-        "npm:polizy"
-      ]
-    },
-    "@dune/core@0.28.3": {
-      "integrity": "39968ce1ae6e7a7df09855febf0ac3bfa652845b8cf9e2bb9f496ed8ebee0444",
+    "@dune/core@0.31.7": {
+      "integrity": "56aca5528fcf6103830140f66943413b809e1e96ad1617398e46bdd69b9f7516",
       "dependencies": [
         "jsr:@db/sqlite",
         "jsr:@fresh/core",
+        "jsr:@std/crypto",
         "jsr:@std/encoding@1",
         "jsr:@std/fs@1",
         "jsr:@std/path@^1.1.4",
@@ -111,21 +100,8 @@
         "npm:postgres",
         "npm:preact-render-to-string@6",
         "npm:preact@10",
+        "npm:remark-gfm",
         "npm:sharp"
-      ]
-    },
-    "@dune/plugin-admin@1.0.1": {
-      "integrity": "9b6e7fec83e27fd35282ded973aedbb8846ed041db24aeaf0a5ad9283e39df7f",
-      "dependencies": [
-        "jsr:@dune/core@0.27",
-        "jsr:@std/encoding@1",
-        "jsr:@std/path@^1.1.4",
-        "jsr:@std/yaml",
-        "jsr:@zip-js/zip-js",
-        "npm:marked",
-        "npm:nodemailer",
-        "npm:preact-render-to-string@6",
-        "npm:preact@10"
       ]
     },
     "@fresh/build-id@1.0.1": {
@@ -163,6 +139,9 @@
     },
     "@std/bytes@1.0.6": {
       "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
+    },
+    "@std/crypto@1.0.5": {
+      "integrity": "0dcfbb319fe0bba1bd3af904ceb4f948cde1b92979ec1614528380ed308a3b40"
     },
     "@std/encoding@1.0.11": {
       "integrity": "e7cef2f0b3153bccc17431e7c864a1de03a4b6d9647389c43e08aaa775d37385"
@@ -221,9 +200,6 @@
     },
     "@std/yaml@1.1.2": {
       "integrity": "de612653c036749ba2044165e316f52412b0f0698afffb7ee80b5331d6d2abae"
-    },
-    "@zip-js/zip-js@2.8.26": {
-      "integrity": "2b78bfa2c5d43766c9a487fc0274981d45732de41bb5b82433d29d235be67191"
     }
   },
   "npm": {
@@ -484,9 +460,6 @@
       "os": ["win32"],
       "cpu": ["x64"]
     },
-    "@ioredis/commands@1.10.0": {
-      "integrity": "sha512-UmeW7z4LfctwoQ5wkhVzgq8tXkreED2xZGpX+Bg+zA+WJFZCT6c062AfCK/Dfk81xZnnwdhJCUMkitihRaoC2Q=="
-    },
     "@mdx-js/mdx@3.1.1": {
       "integrity": "sha512-f6ZO2ifpwAQIpzGWaBQT2TXxPv6z3RBzQKpVftEWN78Vl/YweF1uwussDx8ECAXVtr3Rs89fKyG9YlzUs9DyGQ==",
       "dependencies": [
@@ -535,8 +508,8 @@
     "@types/estree@1.0.9": {
       "integrity": "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg=="
     },
-    "@types/hast@3.0.4": {
-      "integrity": "sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==",
+    "@types/hast@3.0.5": {
+      "integrity": "sha512-rp/ezSWaD1m44dPKICGhiskI13nVr7qTloFwDa/IYkhhf5nzwP+zIQcIJh3WIFSBOy/H1PzB40jPjMDksN4F+g==",
       "dependencies": [
         "@types/unist@3.0.3"
       ]
@@ -559,8 +532,8 @@
     "@types/unist@3.0.3": {
       "integrity": "sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q=="
     },
-    "@ungap/structured-clone@1.3.2": {
-      "integrity": "sha512-5jsZFwgR5rTdKwidH9Qmat75RKwqfpKlWWB1frDkljN127mwqBu8K0PYo7/hFpF03IEJpfVPpCQDY/eDx3iHvA=="
+    "@ungap/structured-clone@1.3.3": {
+      "integrity": "sha512-60YRaenCQcVjYEKOcG824+DRGGIQ3VKErcBoAEDJZz5bKIs2ZG+X/H9Nk+Q6EVkwJk5QNApxbrc5QtBSwtrXAg=="
     },
     "acorn-jsx@5.3.2_acorn@8.17.0": {
       "integrity": "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==",
@@ -599,9 +572,6 @@
     },
     "character-reference-invalid@2.0.1": {
       "integrity": "sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw=="
-    },
-    "cluster-key-slot@1.1.1": {
-      "integrity": "sha512-rwHwUfXL40Chm1r08yrhU3qpUvdVlgkKNeyeGPOxnW8/SyVDvgRaed/Uz54AqWNaTCAThlj6QAs3TZcKI0xDEw=="
     },
     "collapse-white-space@2.1.0": {
       "integrity": "sha512-loKTxY1zCOuG4j9f6EPnuyyYkf58RnhhWTvRoZEokgB+WbdXehfjFviyOVYkqzEWz1Q5kRiZdBYS5SwxbQYwzw=="
@@ -643,9 +613,6 @@
       "dependencies": [
         "character-entities"
       ]
-    },
-    "denque@2.1.0": {
-      "integrity": "sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw=="
     },
     "dequal@2.0.3": {
       "integrity": "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA=="
@@ -714,6 +681,9 @@
       "scripts": true,
       "bin": true
     },
+    "escape-string-regexp@5.0.0": {
+      "integrity": "sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw=="
+    },
     "esprima@4.0.1": {
       "integrity": "sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==",
       "bin": true
@@ -773,8 +743,8 @@
     "extend@3.0.2": {
       "integrity": "sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g=="
     },
-    "fast-equals@5.4.0": {
-      "integrity": "sha512-jt2DW/aNFNwke7AUd+Z+e6pz39KO5rzdbbFCg2sGafS4mk13MI7Z8O5z9cADNn5lhGODIgLwug6TZO2ctf7kcw=="
+    "fast-equals@5.4.1": {
+      "integrity": "sha512-DjlFSM5Pk9cGcL0q5QXl66eGzx0N6szNgaswwc5ZphlBohjTVJSnGgI+rJVOgOi65qUoQnDZN4nDqi33udtydQ=="
     },
     "fsevents@2.3.2": {
       "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==",
@@ -840,18 +810,6 @@
     "inline-style-parser@0.2.7": {
       "integrity": "sha512-Nb2ctOyNR8DqQoR0OwRG95uNWIC0C1lCgf5Naz5H6Ji72KZ8OcFZLz2P5sNgwlyoJ8Yif11oMuYs5pBQa86csA=="
     },
-    "ioredis@5.11.1": {
-      "integrity": "sha512-ehuGcf94bQXhfagULNXrJdfnWO38v070jxSx/qE87Kjzmu2fU7ro5EFAb+OPituLqgfyuQaym5DlrNydW2sJ9A==",
-      "dependencies": [
-        "@ioredis/commands",
-        "cluster-key-slot",
-        "debug",
-        "denque",
-        "redis-errors",
-        "redis-parser",
-        "standard-as-callback"
-      ]
-    },
     "is-alphabetical@2.0.1": {
       "integrity": "sha512-FWyyY60MeTNyeSRpkM2Iry0G9hpr7/9kD40mD/cGQEuilcZYS4okz8SN2Q6rLCJ8gbCt6fN+rC+6tMGS99LaxQ=="
     },
@@ -894,9 +852,21 @@
     "markdown-extensions@2.0.0": {
       "integrity": "sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q=="
     },
+    "markdown-table@3.0.4": {
+      "integrity": "sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw=="
+    },
     "marked@15.0.12": {
       "integrity": "sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==",
       "bin": true
+    },
+    "mdast-util-find-and-replace@3.0.2": {
+      "integrity": "sha512-Tmd1Vg/m3Xz43afeNxDIhWRtFZgM2VLyaf4vSTYwudTyeuTneoL3qtWMA5jeLyz/O1vDJmmV4QuScFCA2tBPwg==",
+      "dependencies": [
+        "@types/mdast",
+        "escape-string-regexp",
+        "unist-util-is",
+        "unist-util-visit-parents"
+      ]
     },
     "mdast-util-from-markdown@2.0.3": {
       "integrity": "sha512-W4mAWTvSlKvf8L6J+VN9yLSqQ9AOAAvHuoDAmPkz4dHf553m5gVj2ejadHJhoJmcmxEnOv6Pa8XJhpxE93kb8Q==",
@@ -913,6 +883,65 @@
         "micromark-util-symbol",
         "micromark-util-types",
         "unist-util-stringify-position"
+      ]
+    },
+    "mdast-util-gfm-autolink-literal@2.0.1": {
+      "integrity": "sha512-5HVP2MKaP6L+G6YaxPNjuL0BPrq9orG3TsrZ9YXbA3vDw/ACI4MEsnoDpn6ZNm7GnZgtAcONJyPhOP8tNJQavQ==",
+      "dependencies": [
+        "@types/mdast",
+        "ccount",
+        "devlop",
+        "mdast-util-find-and-replace",
+        "micromark-util-character"
+      ]
+    },
+    "mdast-util-gfm-footnote@2.1.0": {
+      "integrity": "sha512-sqpDWlsHn7Ac9GNZQMeUzPQSMzR6Wv0WKRNvQRg0KqHh02fpTz69Qc1QSseNX29bhz1ROIyNyxExfawVKTm1GQ==",
+      "dependencies": [
+        "@types/mdast",
+        "devlop",
+        "mdast-util-from-markdown",
+        "mdast-util-to-markdown",
+        "micromark-util-normalize-identifier"
+      ]
+    },
+    "mdast-util-gfm-strikethrough@2.0.0": {
+      "integrity": "sha512-mKKb915TF+OC5ptj5bJ7WFRPdYtuHv0yTRxK2tJvi+BDqbkiG7h7u/9SI89nRAYcmap2xHQL9D+QG/6wSrTtXg==",
+      "dependencies": [
+        "@types/mdast",
+        "mdast-util-from-markdown",
+        "mdast-util-to-markdown"
+      ]
+    },
+    "mdast-util-gfm-table@2.0.0": {
+      "integrity": "sha512-78UEvebzz/rJIxLvE7ZtDd/vIQ0RHv+3Mh5DR96p7cS7HsBhYIICDBCu8csTNWNO6tBWfqXPWekRuj2FNOGOZg==",
+      "dependencies": [
+        "@types/mdast",
+        "devlop",
+        "markdown-table",
+        "mdast-util-from-markdown",
+        "mdast-util-to-markdown"
+      ]
+    },
+    "mdast-util-gfm-task-list-item@2.0.0": {
+      "integrity": "sha512-IrtvNvjxC1o06taBAVJznEnkiHxLFTzgonUdy8hzFVeDun0uTjxxrRGVaNFqkU1wJR3RBPEfsxmU6jDWPofrTQ==",
+      "dependencies": [
+        "@types/mdast",
+        "devlop",
+        "mdast-util-from-markdown",
+        "mdast-util-to-markdown"
+      ]
+    },
+    "mdast-util-gfm@3.1.0": {
+      "integrity": "sha512-0ulfdQOM3ysHhCJ1p06l0b0VKlhU0wuQs3thxZQagjcjPrlFRqY215uZGHHJan9GEAXd9MbfPjFJz+qMkVR6zQ==",
+      "dependencies": [
+        "mdast-util-from-markdown",
+        "mdast-util-gfm-autolink-literal",
+        "mdast-util-gfm-footnote",
+        "mdast-util-gfm-strikethrough",
+        "mdast-util-gfm-table",
+        "mdast-util-gfm-task-list-item",
+        "mdast-util-to-markdown"
       ]
     },
     "mdast-util-mdx-expression@2.0.1": {
@@ -1023,6 +1052,78 @@
         "micromark-util-resolve-all",
         "micromark-util-subtokenize",
         "micromark-util-symbol",
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm-autolink-literal@2.1.0": {
+      "integrity": "sha512-oOg7knzhicgQ3t4QCjCWgTmfNhvQbDDnJeVu9v81r7NltNCVmhPy1fJRX27pISafdjL+SVc4d3l48Gb6pbRypw==",
+      "dependencies": [
+        "micromark-util-character",
+        "micromark-util-sanitize-uri",
+        "micromark-util-symbol",
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm-footnote@2.1.0": {
+      "integrity": "sha512-/yPhxI1ntnDNsiHtzLKYnE3vf9JZ6cAisqVDauhp4CEHxlb4uoOTxOCJ+9s51bIB8U1N1FJ1RXOKTIlD5B/gqw==",
+      "dependencies": [
+        "devlop",
+        "micromark-core-commonmark",
+        "micromark-factory-space",
+        "micromark-util-character",
+        "micromark-util-normalize-identifier",
+        "micromark-util-sanitize-uri",
+        "micromark-util-symbol",
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm-strikethrough@2.1.0": {
+      "integrity": "sha512-ADVjpOOkjz1hhkZLlBiYA9cR2Anf8F4HqZUO6e5eDcPQd0Txw5fxLzzxnEkSkfnD0wziSGiv7sYhk/ktvbf1uw==",
+      "dependencies": [
+        "devlop",
+        "micromark-util-chunked",
+        "micromark-util-classify-character",
+        "micromark-util-resolve-all",
+        "micromark-util-symbol",
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm-table@2.1.1": {
+      "integrity": "sha512-t2OU/dXXioARrC6yWfJ4hqB7rct14e8f7m0cbI5hUmDyyIlwv5vEtooptH8INkbLzOatzKuVbQmAYcbWoyz6Dg==",
+      "dependencies": [
+        "devlop",
+        "micromark-factory-space",
+        "micromark-util-character",
+        "micromark-util-symbol",
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm-tagfilter@2.0.0": {
+      "integrity": "sha512-xHlTOmuCSotIA8TW1mDIM6X2O1SiX5P9IuDtqGonFhEK0qgRI4yeC6vMxEV2dgyr2TiD+2PQ10o+cOhdVAcwfg==",
+      "dependencies": [
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm-task-list-item@2.1.0": {
+      "integrity": "sha512-qIBZhqxqI6fjLDYFTBIa4eivDMnP+OZqsNwmQ3xNLE4Cxwc+zfQEfbs6tzAo2Hjq+bh6q5F+Z8/cksrLFYWQQw==",
+      "dependencies": [
+        "devlop",
+        "micromark-factory-space",
+        "micromark-util-character",
+        "micromark-util-symbol",
+        "micromark-util-types"
+      ]
+    },
+    "micromark-extension-gfm@3.0.0": {
+      "integrity": "sha512-vsKArQsicm7t0z2GugkCKtZehqUm31oeGBV/KVSorWSy8ZlNAv7ytjFhvaryUiCUJYqs+NoE6AFhpQvBTM6Q4w==",
+      "dependencies": [
+        "micromark-extension-gfm-autolink-literal",
+        "micromark-extension-gfm-footnote",
+        "micromark-extension-gfm-strikethrough",
+        "micromark-extension-gfm-table",
+        "micromark-extension-gfm-tagfilter",
+        "micromark-extension-gfm-task-list-item",
+        "micromark-util-combine-extensions",
         "micromark-util-types"
       ]
     },
@@ -1297,8 +1398,8 @@
       ],
       "bin": true
     },
-    "polizy@0.2.0": {
-      "integrity": "sha512-x7GHOHazLr3LikH/UErFzISsFSNkKZNAtJJ3Kkk7fuYOiNdITD9DSmr4feDPdHqoK79aQC2o94jkFdvhRdvXTQ==",
+    "polizy@0.6.0": {
+      "integrity": "sha512-yoTY8wmuydsMOXdDb7RntkecXQAT9kjxr/0XXpnzEJe2hgjrGo1QqEg4WG7skfzK80fbY2TeQB+z9pblgzm7cw==",
       "dependencies": [
         "fast-equals",
         "tslib"
@@ -1362,21 +1463,23 @@
         "vfile"
       ]
     },
-    "redis-errors@1.2.0": {
-      "integrity": "sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w=="
-    },
-    "redis-parser@3.0.0": {
-      "integrity": "sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==",
-      "dependencies": [
-        "redis-errors"
-      ]
-    },
     "rehype-recma@1.0.0": {
       "integrity": "sha512-lqA4rGUf1JmacCNWWZx0Wv1dHqMwxzsDWYMTowuplHF3xH0N/MmrZ/G3BDZnzAkRmxDadujCjaKM2hqYdCBOGw==",
       "dependencies": [
         "@types/estree",
         "@types/hast",
         "hast-util-to-estree"
+      ]
+    },
+    "remark-gfm@4.0.1": {
+      "integrity": "sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==",
+      "dependencies": [
+        "@types/mdast",
+        "mdast-util-gfm",
+        "micromark-extension-gfm",
+        "remark-parse",
+        "remark-stringify",
+        "unified"
       ]
     },
     "remark-mdx@3.1.1": {
@@ -1403,6 +1506,14 @@
         "mdast-util-to-hast",
         "unified",
         "vfile"
+      ]
+    },
+    "remark-stringify@11.0.0": {
+      "integrity": "sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==",
+      "dependencies": [
+        "@types/mdast",
+        "mdast-util-to-markdown",
+        "unified"
       ]
     },
     "section-matter@1.0.0": {
@@ -1460,9 +1571,6 @@
     },
     "sprintf-js@1.0.3": {
       "integrity": "sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g=="
-    },
-    "standard-as-callback@2.1.0": {
-      "integrity": "sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A=="
     },
     "stringify-entities@4.0.4": {
       "integrity": "sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==",
@@ -1607,795 +1715,794 @@
     "members": {
       "demos/aerial": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/alpha": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/arcana": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/astral": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/big-picture": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/blox": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/book": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/caravan": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/dimension": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/directive": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/dopetrope": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/dune-minimal": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/editorial": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/escape-velocity": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/ethereal": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/eventually": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/fennec": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/forty": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/fractal": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/future-imperfect": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/gale": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/halcyonic": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/helios": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/herald": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/highlights": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/hyperspace": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/ink": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/landed": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/lens": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/lucid": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/manual": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/massively": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/minimaxing": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/miniport": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/multiverse": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/nightfall": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/oasis": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/papermod": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/paradigm-shift": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/parallelism": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/phantom": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/photon": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/prologue": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/read-only": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/salon": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/sirocco": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/solid-state": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/spectral": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/starlight": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/stellar": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/story": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/strata": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/striped": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/strongly-typed": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/syntax": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/telephasic": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/tessellate": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/twenty": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/txt": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/verti": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "demos/zerofour": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact-render-to-string@6",
           "npm:preact@10"
         ]
       },
       "packages/theme-aerial": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-alpha": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-arcana": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-astral": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-big-picture": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-blox": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
-          "jsr:@std/yaml@1",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-book": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-caravan": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-dimension": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-directive": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-dopetrope": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-dune-minimal": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-editorial": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-escape-velocity": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-ethereal": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-eventually": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-fennec": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-forty": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-fractal": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-future-imperfect": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-gale": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-halcyonic": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-helios": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-herald": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-highlights": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-hyperspace": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-ink": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-landed": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-lens": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-lucid": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-manual": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-massively": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-minimaxing": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-miniport": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-multiverse": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-nightfall": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-oasis": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-papermod": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-paradigm-shift": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-parallelism": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-phantom": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-photon": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-prologue": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-read-only": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-salon": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-sirocco": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-solid-state": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-spectral": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-starlight": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-stellar": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-story": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-strata": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-striped": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-strongly-typed": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-syntax": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-telephasic": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-tessellate": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-twenty": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-txt": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-verti": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       },
       "packages/theme-zerofour": {
         "dependencies": [
-          "jsr:@dune/core@0.28",
+          "jsr:@dune/core@0.31",
           "npm:preact@10"
         ]
       }

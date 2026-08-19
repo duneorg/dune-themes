@@ -1,12 +1,16 @@
 ---
-title: Elements — Ethereal typography
+title: Elements — Ethereal panel typography
 date: 2026-03-18
 template: post
 published: true
-summary: Headings, lists, quotes, and code in Ethereal’s post chrome.
+summary: Headings, lists, quotes, and code inside Ethereal’s inner panel.
 taxonomy:
   tag: [elements, typography, ethereal]
 ---
+
+The home route is a stack of panels with `major` headings. This post exists so `/blog`
+links land on something that exercises the plain `section.panel > .inner` layout instead of
+another spotlight caption.
 
 ## Headings
 
@@ -14,22 +18,29 @@ taxonomy:
 
 ### Subsection (h3)
 
-Ethereal’s landing chrome (ethereal panels) is louder than post bodies. This Elements leaf lives under `/blog` so CTAs stay real — it checks that inner articles still get a readable type scale.
+Ethereal’s banner and spotlight panels already carry heavy `major` treatment on home —
+keep in-post hierarchy shallow so it doesn’t compete. A fourth level usually means the
+post should split in two.
 
-## Lists
+## Lists and quotes
 
-- Buttons, icons, and tiles belong on home; posts use ordinary markdown
-- Nested lists should indent without inventing a fourth heading level
-  - Like this
+- Filtered images, grid icons, and circle actions belong on home; posts read as plain
+  markdown inside the panel
+- Nested lists indent without borrowing a heading’s type size
+  - Like this nested item
+1. Ordered lists share the same rhythm as unordered ones
+2. Keep them short enough to scan in the single-column inner pane
 
-1. Ordered lists share the same rhythm
-2. Keep them short
+> A blockquote here should read like a quiet aside in a portfolio note, not a second
+> banner tagline.
 
-> Blockquotes should read as citation, not promo stickers.
+## Code
+
+Inline `theme.name: ethereal`, and a fence:
 
 ```ts
-export const demo = "Ethereal";
+const panels = ["banner", "spotlight", "color1", "spotlight"];
 ```
 
-When you’re done, return to [Blog](/blog) or [Home](/) and confirm active nav still highlights correctly (trailing-slash safe).
-
+When you’re done, return to [Home](/) and confirm the icon grid still resolves Blog /
+Search / Archives / About before you scroll back through the spotlights.
