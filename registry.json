@@ -619,7 +619,7 @@
       "screenshotUrl": "https://themes.getdune.org/ethereal/themes/ethereal/static/screenshot.png",
       "jsr": "jsr:@dune/theme-ethereal@1.0.1",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ethereal-v1.0.1/ethereal-1.0.1.zip",
-      "sha256": "7e8b19295407f3f3c4dffdb5436f5cd93fc3e1a2d527c8261f1a58225d320748",
+      "sha256": "cd2e511c7e4b8c9305fe8d5b5ca1ab35af0ab6f2e7807d923f4beed81d87fde4",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
