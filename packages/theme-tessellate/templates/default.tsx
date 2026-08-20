@@ -56,7 +56,7 @@ export default function DefaultTemplate(props: TemplateProps & {
         <section id="first" class="main">
           <header>
             <div class="container">
-              <h2>Tessellate for Dune</h2>
+              <h2>What's inside</h2>
               <p>
                 Full-screen sections, icon features, image grids, and contact footer —
                 adapted from HTML5 UP with blog, search, and archives templates.
