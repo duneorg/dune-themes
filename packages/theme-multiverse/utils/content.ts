@@ -16,7 +16,7 @@ export function themeImage(themeName: string, file: string): string {
 
 /** Demo gallery thumbs for the landing grid (01–12). */
 export const GALLERY_ITEMS = [
-  { full: "fulls/01.jpg", thumb: "thumbs/01.jpg", title: "Magna feugiat lorem", text: "Blog posts, search, and archives for Dune CMS." },
+  { full: "fulls/01.jpg", thumb: "thumbs/01.jpg", title: "Welcome to Multiverse", text: "Blog posts, search, and archives for Dune CMS." },
   { full: "fulls/02.jpg", thumb: "thumbs/02.jpg", title: "Read the blog", text: "Collection-driven listing at /blog with dated posts." },
   { full: "fulls/03.jpg", thumb: "thumbs/03.jpg", title: "Search", text: "Query demo pages through Dune's search template." },
   { full: "fulls/04.jpg", thumb: "thumbs/04.jpg", title: "Archives", text: "Browse all posts grouped by year." },
