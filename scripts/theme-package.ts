@@ -19,6 +19,18 @@ const JSR_PACKAGE_NAME_OVERRIDES: Record<string, string> = {
   "future-imperfect": "theme-future-imp",
 };
 
+/**
+ * Extra `imports` entries a theme's own source needs beyond the standard
+ * core/preact set below — e.g. blox's `blocks-docs.tsx` uses `@std/yaml`.
+ * Without this, `sync:manifests` regenerates deno.json from the template
+ * and silently drops any import added by hand, breaking that theme for
+ * every real (non-workspace) JSR consumer even though it type-checks fine
+ * here (the workspace root's own deno.json quietly covers the gap).
+ */
+const EXTRA_IMPORTS: Record<string, Record<string, string>> = {
+  blox: { "@std/yaml": "jsr:@std/yaml@^1" },
+};
+
 /** JSR package name without scope (e.g. `theme-striped`). */
 export function jsrPackageName(slug: string): string {
   return JSR_PACKAGE_NAME_OVERRIDES[slug] ?? `theme-${slug}`;
@@ -44,6 +56,7 @@ export function themeDenoJson(options: ThemePackageManifestOptions): string {
       "preact/hooks": "npm:preact@^10/hooks",
       "preact/jsx-runtime": "npm:preact@^10/jsx-runtime",
       "preact/jsx-dev-runtime": "npm:preact@^10/jsx-dev-runtime",
+      ...EXTRA_IMPORTS[slug],
     },
     compilerOptions: {
       jsx: "react-jsx",

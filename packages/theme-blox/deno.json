@@ -1,6 +1,6 @@
 {
   "name": "@dune/theme-blox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "exports": "./mod.ts",
   "imports": {
@@ -9,7 +9,8 @@
     "preact": "npm:preact@^10",
     "preact/hooks": "npm:preact@^10/hooks",
     "preact/jsx-runtime": "npm:preact@^10/jsx-runtime",
-    "preact/jsx-dev-runtime": "npm:preact@^10/jsx-dev-runtime"
+    "preact/jsx-dev-runtime": "npm:preact@^10/jsx-dev-runtime",
+    "@std/yaml": "jsr:@std/yaml@^1"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

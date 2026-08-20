@@ -4,7 +4,7 @@ description: >
   Faithful port of Hugo Blox (hugoblox.com), the Tailwind-based block
   framework behind the Academic CV template. Block-based landing pages,
   publication/citation views, resume timelines, dark mode, and modal search.
-version: 1.0.1
+version: 1.0.2
 author: Hugo Blox contributors (port by Dune)
 license: MIT
 source: https://github.com/duneorg/dune-themes/tree/main/packages/theme-blox

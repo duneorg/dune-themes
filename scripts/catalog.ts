@@ -208,7 +208,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Faithful port of Hugo Blox for Dune.",
     inspiredBy: "Hugo Blox",
     tags: ["landing", "academic", "faithful"],
-    version: "1.0.1",
+    version: "1.0.2",
   },
   // HTML5 UP (CC BY 3.0) — all 44 free templates
   ...html5UpCatalogEntries(),
