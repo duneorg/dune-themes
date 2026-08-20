@@ -78,6 +78,13 @@ jobs:
           git add registry.json
           git diff --staged --quiet && exit 0
           git commit -m "Update registry sha256 for ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}"
+          # Earlier steps (pack, sync:manifests) can leave deno.lock or other
+          # tracked files touched as a side effect without staging them —
+          # only registry.json's change is meant to land here, and a leftover
+          # dirty file blocks `git rebase` below with "cannot rebase: you have
+          # unstaged changes", failing the whole retry loop outright. Discard
+          # anything that isn't part of the commit we just made.
+          git checkout -- .
           # Tag push checks out a detached HEAD, not a branch — push explicitly to main.
           # The concurrency group above means this should always be a
           # fast-forward, but retry with a rebase instead of silently
