@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-08-19",
+  "updatedAt": "2026-08-20",
   "themes": [
     {
       "slug": "sirocco",
@@ -527,7 +527,7 @@
       "screenshotUrl": "https://themes.getdune.org/directive/themes/directive/static/screenshot.png",
       "jsr": "jsr:@dune/theme-directive@1.0.1",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/directive-v1.0.1/directive-1.0.1.zip",
-      "sha256": "2837cec45f8b1cc29af9795fe7339b6bae45f1b215b4d97720d9828e6bcdf70a",
+      "sha256": "34011fc7959ac00613b697955f16d6ca2c52786aec96014d3e3f8b7ac1655bc0",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
