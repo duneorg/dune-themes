@@ -41,7 +41,7 @@ export default function DefaultTemplate(props: TemplateProps & {
           <section id="intro" class="main">
             <div class="spotlight">
               <div class="content">
-                <header class="major"><h2>Ipsum sed adipiscing</h2></header>
+                <header class="major"><h2>Welcome to Stellar</h2></header>
                 <p>
                   {page.frontmatter.title ?? "Stellar for Dune"} — adapted from{" "}
                   <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>{" "}
@@ -55,7 +55,7 @@ export default function DefaultTemplate(props: TemplateProps & {
           </section>
 
           <section id="first" class="main special">
-            <header class="major"><h2>Magna veroeros</h2></header>
+            <header class="major"><h2>What's inside</h2></header>
             <ul class="features">
               <li>
                 <span class="icon solid major style1 fa-code"></span>
@@ -80,7 +80,7 @@ export default function DefaultTemplate(props: TemplateProps & {
 
           <section id="second" class="main special">
             <header class="major">
-              <h2>Ipsum consequat</h2>
+              <h2>Stellar for Dune</h2>
               <p>Upstream Stellar CSS with logo header, nav, spotlight sections, and statistics grid.</p>
             </header>
             <ul class="statistics">
@@ -96,7 +96,7 @@ export default function DefaultTemplate(props: TemplateProps & {
 
           <section id="cta" class="main special">
             <header class="major">
-              <h2>Congue imperdiet</h2>
+              <h2>Get started</h2>
               <p>Start with the blog or browse the about page for more on this demo site.</p>
             </header>
             <footer class="major">
@@ -110,7 +110,7 @@ export default function DefaultTemplate(props: TemplateProps & {
 
         <footer id="footer">
           <section>
-            <h2>Aliquam sed mauris</h2>
+            <h2>About</h2>
             <p>Design by HTML5 UP (CC BY 3.0). Keep visible attribution on live sites.</p>
             <ul class="actions"><li><a href={withBase(basePath, "/blog")} class="button">{tr("cta.learn_more", "Learn More")}</a></li></ul>
           </section>
