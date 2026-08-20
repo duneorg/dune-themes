@@ -1355,7 +1355,7 @@
       "screenshotUrl": "https://themes.getdune.org/verti/themes/verti/static/screenshot.png",
       "jsr": "jsr:@dune/theme-verti@1.0.1",
       "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/verti-v1.0.1/verti-1.0.1.zip",
-      "sha256": "46de5264ab28fc1a8c56f0815e595d53632b3447325a1fc653b44479fca76dfb",
+      "sha256": "0986934ffdeca021e0a086ac22bdffed3a40fb6eb316bd246151413da115fcd6",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
