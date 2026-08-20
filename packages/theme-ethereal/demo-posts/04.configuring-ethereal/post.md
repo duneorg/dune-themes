@@ -14,7 +14,7 @@ the icon grid are fixed markup in `templates/default.tsx`.
 ## `banner_title`
 
 Name spliced into the banner’s “Hello, my name is …” `<h1 class="major">` on the home
-landing. This demo sets **"Welcome to Ethereal"**. Empty falls back to the site title.
+landing. This demo sets **"Ethereal"**. Empty falls back to the site title.
 
 ## `tagline`
 
