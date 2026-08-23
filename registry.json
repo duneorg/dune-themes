@@ -468,7 +468,7 @@
       "name": "Big Picture",
       "description": "Big Picture — responsive site theme adapted from HTML5 UP for Dune. Scroll-driven gallery.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -479,9 +479,9 @@
       "inspiredBy": "HTML5 UP Big Picture",
       "demoUrl": "https://themes.getdune.org/big-picture",
       "screenshotUrl": "https://themes.getdune.org/big-picture/themes/big-picture/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-big-picture@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/big-picture-v1.0.2/big-picture-1.0.2.zip",
-      "sha256": "0ade1196719b53c05cbe9ff748a6acba9fc59acb3afbfec0ebc217bb4d31dce5",
+      "jsr": "jsr:@dune/theme-big-picture@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/big-picture-v1.0.3/big-picture-1.0.3.zip",
+      "sha256": "66802ff7e181b129cc841cc590494bae002b026598ef1097afa77b02072ef64e",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
