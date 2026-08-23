@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-08-20",
+  "updatedAt": "2026-08-23",
   "themes": [
     {
       "slug": "sirocco",
@@ -376,7 +376,7 @@
       "name": "Aerial",
       "description": "Aerial — responsive site theme adapted from HTML5 UP for Dune. Fullscreen landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -387,9 +387,9 @@
       "inspiredBy": "HTML5 UP Aerial",
       "demoUrl": "https://themes.getdune.org/aerial",
       "screenshotUrl": "https://themes.getdune.org/aerial/themes/aerial/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-aerial@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/aerial-v1.0.2/aerial-1.0.2.zip",
-      "sha256": "b656cead531d900e5fb8cf58ecbf407f6d90445befd9dfec315cbf8e7333d0a1",
+      "jsr": "jsr:@dune/theme-aerial@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/aerial-v1.0.3/aerial-1.0.3.zip",
+      "sha256": "fd91924a1fdea84aaeabcd4c8802c3185b8ce996595d456d74947e5a2e6372a4",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
