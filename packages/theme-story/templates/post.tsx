@@ -35,7 +35,7 @@ export default function PostTemplate(props: TemplateProps & {
       {showCredit && (
         <footer class="wrapper style1 align-center">
           <div class="inner">
-            <p>Design: <a href="https://html5up.net/story">HTML5 UP</a></p>
+            <p>Powered by <a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. Design: <a href="https://html5up.net/story">HTML5 UP</a></p>
           </div>
         </footer>
       )}

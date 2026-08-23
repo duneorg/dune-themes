@@ -55,7 +55,7 @@ function StoryFooter({
           &copy; {new Date().getFullYear()} {copyrightName}.
           {showCredit && (
             <>
-              {" "}{tr("credit.design", "Design")}:{" "}
+              {" "}{tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
               <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
             </>
           )}
@@ -169,7 +169,7 @@ export default function DefaultTemplate(props: TemplateProps & {
 
         <section class="wrapper style1 align-center">
           <div class="inner">
-            <h2>{tr("home.gallery_title", "Massa sed condimentum")}</h2>
+            <h2>{tr("home.gallery_title", "Gallery")}</h2>
             <p>
               Upstream Story CSS with divided wrapper, fullscreen banner, spotlight sections, and
               gallery grid preserved.

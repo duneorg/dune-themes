@@ -56,7 +56,7 @@ export default function ArchivesTemplate(props: TemplateProps & {
       </section>
       {showCredit && (
         <footer class="wrapper style1 align-center">
-          <div class="inner"><p>Design: <a href="https://html5up.net/story">HTML5 UP</a></p></div>
+          <div class="inner"><p>Powered by <a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. Design: <a href="https://html5up.net/story">HTML5 UP</a></p></div>
         </footer>
       )}
     </LayoutComponent>
