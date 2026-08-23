@@ -12,7 +12,6 @@ import {
 interface LayoutProps extends TemplateProps {
   children?: unknown;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string, fallback?: string) => string;
 }
 
 function stripSlash(p: string) {

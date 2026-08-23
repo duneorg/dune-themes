@@ -6,7 +6,6 @@ import { safeHref } from "../utils/safe-url.ts";
 interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string, fallback?: string) => string;
   /** When true, show the homepage banner (content panel still renders children). */
   landing?: boolean;
 }
@@ -145,7 +144,7 @@ export default function Layout({
                       </li>
                       {showCredit && (
                         <li>
-                          {tr("credit.design", "Design")}:{" "}
+                          {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
                           <a href={creditHref} target="_blank" rel="noopener noreferrer">
                             HTML5 UP
                           </a>

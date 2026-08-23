@@ -2,6 +2,7 @@
   "nav.main": "Site",
   "nav.menu": "Menu",
   "credit.design": "Design",
+  "footer.powered": "Powered by",
   "cta.get_started": "Get Started",
   "home.get_started_sub": "Start with the blog or browse sample posts from the shared demo content.",
   "pagination.newer": "Newer",

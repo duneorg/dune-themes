@@ -6,7 +6,6 @@ import { safeHref } from "../utils/safe-url.ts";
 interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string, fallback?: string) => string;
   /** When true, index body + alt header; landing template owns the footer. */
   landing?: boolean;
 }
@@ -111,7 +110,7 @@ export default function Layout({
                 <li>&copy; {new Date().getFullYear()} {copyrightName}</li>
                 {showCredit && (
                   <li>
-                    {tr("credit.design", "Design")}:{" "}
+                    {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
                     <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
                   </li>
                 )}

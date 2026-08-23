@@ -5,7 +5,6 @@ import type { TemplateProps } from "@dune/core/content/types";
 interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
-  t?: (key: string, fallback?: string) => string;
   landing?: boolean;
 }
 

@@ -8,7 +8,6 @@ interface LayoutProps extends TemplateProps {
   children?: ComponentChildren;
   themeConfig?: Record<string, unknown>;
   recentPosts?: Array<{ route: string; title: string }>;
-  t?: (key: string, fallback?: string) => string;
 }
 
 function stripSlash(p: string) {
@@ -115,7 +114,8 @@ export default function Layout({
                 <strong>{site?.title ?? "Striped"}:</strong> {tagline}
                 {showCredit && (
                   <>
-                    . {tr("credit.design_by", "Design by")}{" "}
+                    . {tr("footer.powered", "Powered by")}{" "}
+                    <a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design_by", "Design by")}{" "}
                     <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
                   </>
                 )}
@@ -143,7 +143,7 @@ export default function Layout({
             <li>&copy; {new Date().getFullYear()} {copyrightName}.</li>
             {showCredit && (
               <li>
-                {tr("credit.design", "Design")}:{" "}
+                {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
                 <a href={creditHomeHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
               </li>
             )}
