@@ -1296,7 +1296,7 @@
       "name": "Twenty",
       "description": "Twenty — responsive site theme adapted from HTML5 UP for Dune. Multipurpose landing.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1307,9 +1307,9 @@
       "inspiredBy": "HTML5 UP Twenty",
       "demoUrl": "https://themes.getdune.org/twenty",
       "screenshotUrl": "https://themes.getdune.org/twenty/themes/twenty/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-twenty@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/twenty-v1.0.1/twenty-1.0.1.zip",
-      "sha256": "7393d3c4b3a1b8f374d7f5b1d47521eeba5a5d58d40a5a578d15a27a62485fb3",
+      "jsr": "jsr:@dune/theme-twenty@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/twenty-v1.0.2/twenty-1.0.2.zip",
+      "sha256": "fea21e3ec6a8f917da190de24dc28b0fb39001c5cab394bb33de9b9d159e9754",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
