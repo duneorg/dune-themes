@@ -1365,7 +1365,7 @@
       "name": "Zerofour",
       "description": "Zerofour — responsive site theme adapted from HTML5 UP for Dune. 404 / minimal page.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1376,9 +1376,9 @@
       "inspiredBy": "HTML5 UP Zerofour",
       "demoUrl": "https://themes.getdune.org/zerofour",
       "screenshotUrl": "https://themes.getdune.org/zerofour/themes/zerofour/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-zerofour@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/zerofour-v1.0.1/zerofour-1.0.1.zip",
-      "sha256": "ae94f98388b7d46009e6e6d46fb4f8245f4a561ccf3a8a8c9100bf107f51efd5",
+      "jsr": "jsr:@dune/theme-zerofour@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/zerofour-v1.0.2/zerofour-1.0.2.zip",
+      "sha256": "c6380cb31c93847770ab11e161882f74c82e28914279c026f198724c44de509c",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
