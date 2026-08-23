@@ -1181,7 +1181,7 @@
       "name": "Strata",
       "description": "Strata — responsive site theme adapted from HTML5 UP for Dune. Portfolio + contact.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1192,9 +1192,9 @@
       "inspiredBy": "HTML5 UP Strata",
       "demoUrl": "https://themes.getdune.org/strata",
       "screenshotUrl": "https://themes.getdune.org/strata/themes/strata/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-strata@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strata-v1.0.1/strata-1.0.1.zip",
-      "sha256": "ee1e3c389e19c096cb25ca2c4af33207884a1f778a98aa603ae144d67539fc51",
+      "jsr": "jsr:@dune/theme-strata@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strata-v1.0.2/strata-1.0.2.zip",
+      "sha256": "f1a11b70e7fc7a76a8b346b8f4f3957326fcd7c70d309a34bedc3911418e4b62",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
