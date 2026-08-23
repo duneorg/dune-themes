@@ -1043,7 +1043,7 @@
       "name": "Prologue",
       "description": "Prologue — responsive site theme adapted from HTML5 UP for Dune. Intro landing.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1054,9 +1054,9 @@
       "inspiredBy": "HTML5 UP Prologue",
       "demoUrl": "https://themes.getdune.org/prologue",
       "screenshotUrl": "https://themes.getdune.org/prologue/themes/prologue/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-prologue@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/prologue-v1.0.1/prologue-1.0.1.zip",
-      "sha256": "3a3252a4bb50d4bf93047ca66959b6de43efa9cd5cb5847549f0e4d0def93b71",
+      "jsr": "jsr:@dune/theme-prologue@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/prologue-v1.0.2/prologue-1.0.2.zip",
+      "sha256": "d022dc3492a0e46be2a45f45c8798fe0a05f20ab65be8e22b7cb8f572045cc22",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
