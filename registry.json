@@ -905,7 +905,7 @@
       "name": "Miniport",
       "description": "Miniport — responsive site theme adapted from HTML5 UP for Dune. Minimal portfolio.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -916,9 +916,9 @@
       "inspiredBy": "HTML5 UP Miniport",
       "demoUrl": "https://themes.getdune.org/miniport",
       "screenshotUrl": "https://themes.getdune.org/miniport/themes/miniport/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-miniport@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/miniport-v1.0.1/miniport-1.0.1.zip",
-      "sha256": "2950f401ed6382ef9cffcc74f70f964e4a24fa06743dbebf42363c8f1b67cb9a",
+      "jsr": "jsr:@dune/theme-miniport@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/miniport-v1.0.2/miniport-1.0.2.zip",
+      "sha256": "402e57f3b89146c0fdf1ab3efb51654df0a71dbd0b0370cf42d7e71007ed028b",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
