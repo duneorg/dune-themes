@@ -491,7 +491,7 @@
       "name": "Dimension",
       "description": "Dimension — responsive site theme adapted from HTML5 UP for Dune. Modal panel navigation.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -502,9 +502,9 @@
       "inspiredBy": "HTML5 UP Dimension",
       "demoUrl": "https://themes.getdune.org/dimension",
       "screenshotUrl": "https://themes.getdune.org/dimension/themes/dimension/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-dimension@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dimension-v1.0.2/dimension-1.0.2.zip",
-      "sha256": "39eca88eaa714194fe12979ea6f236fef1650d73a6bfe8729abe2e8f1a2d9ded",
+      "jsr": "jsr:@dune/theme-dimension@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dimension-v1.0.3/dimension-1.0.3.zip",
+      "sha256": "620e4ab34fca6b184b624a3edb32df0aae36e0790be65ce853eb25fa852c0907",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
