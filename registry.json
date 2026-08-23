@@ -721,7 +721,7 @@
       "name": "Halcyonic",
       "description": "Halcyonic — responsive site theme adapted from HTML5 UP for Dune. Business layout.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -732,9 +732,9 @@
       "inspiredBy": "HTML5 UP Halcyonic",
       "demoUrl": "https://themes.getdune.org/halcyonic",
       "screenshotUrl": "https://themes.getdune.org/halcyonic/themes/halcyonic/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-halcyonic@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/halcyonic-v1.0.1/halcyonic-1.0.1.zip",
-      "sha256": "8a4636a75a0b895468767b11f197b84dbfabc1ede8dc2556f5dbd9a0286f1703",
+      "jsr": "jsr:@dune/theme-halcyonic@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/halcyonic-v1.0.2/halcyonic-1.0.2.zip",
+      "sha256": "38f05bc3e888098c4b541709a5f24bbf949204fd0ab32ac82b6cf4c50cdfa912",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
