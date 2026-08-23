@@ -126,7 +126,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Landing and blog theme inspired by AstroWind — Dune-native, not a port.",
     inspiredBy: "AstroWind",
     tags: ["landing", "business", "inspired"],
-    version: "1.0.1",
+    version: "1.0.2",
   },
   {
     slug: "salon",
