@@ -1,4 +1,8 @@
 #!/usr/bin/env -S deno run -A
+/// <reference lib="dom" />
+// The page.evaluate()/waitForFunction callbacks below run inside the
+// browser, not this Deno process — this reference only teaches the type
+// checker their shape locally, it doesn't add real DOM globals here.
 /**
  * Light-only desktop+mobile click-through for HTML5 UP demos.
  *

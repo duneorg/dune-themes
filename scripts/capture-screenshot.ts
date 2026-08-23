@@ -1,4 +1,8 @@
 #!/usr/bin/env -S deno run -A
+/// <reference lib="dom" />
+// The waitForFunction callback below runs inside the browser, not this Deno
+// process — this reference only teaches the type checker its shape locally,
+// it doesn't change what globals actually exist when this script itself runs.
 /**
  * Capture a marketplace screenshot for a theme demo.
  *
