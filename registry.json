@@ -445,7 +445,7 @@
       "name": "Astral",
       "description": "Astral — responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -456,9 +456,9 @@
       "inspiredBy": "HTML5 UP Astral",
       "demoUrl": "https://themes.getdune.org/astral",
       "screenshotUrl": "https://themes.getdune.org/astral/themes/astral/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-astral@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/astral-v1.0.2/astral-1.0.2.zip",
-      "sha256": "345713de796d2b9d5f0ccc880446dc7e2058a42503edcc5e435b9ad186358111",
+      "jsr": "jsr:@dune/theme-astral@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/astral-v1.0.3/astral-1.0.3.zip",
+      "sha256": "18d14754a26761fbaf8018703b7528d8b34c409e6af7a4e00a9219f5bbfa12a3",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
