@@ -1273,7 +1273,7 @@
       "name": "Tessellate",
       "description": "Tessellate — responsive site theme adapted from HTML5 UP for Dune. Grid landing.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1284,9 +1284,9 @@
       "inspiredBy": "HTML5 UP Tessellate",
       "demoUrl": "https://themes.getdune.org/tessellate",
       "screenshotUrl": "https://themes.getdune.org/tessellate/themes/tessellate/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-tessellate@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/tessellate-v1.0.1/tessellate-1.0.1.zip",
-      "sha256": "c699ddfc782544b922e28a893bc41527fab16fc2b567eb3ea8ebabdd174f77d4",
+      "jsr": "jsr:@dune/theme-tessellate@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/tessellate-v1.0.2/tessellate-1.0.2.zip",
+      "sha256": "1b801a439d7381295e5081a15732ba601885d06520a3286480e5146fce4ffad8",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
