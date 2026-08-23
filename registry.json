@@ -675,7 +675,7 @@
       "name": "Fractal",
       "description": "Fractal — responsive site theme adapted from HTML5 UP for Dune. Portfolio showcase.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -686,9 +686,9 @@
       "inspiredBy": "HTML5 UP Fractal",
       "demoUrl": "https://themes.getdune.org/fractal",
       "screenshotUrl": "https://themes.getdune.org/fractal/themes/fractal/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-fractal@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fractal-v1.0.1/fractal-1.0.1.zip",
-      "sha256": "e6fe2a340c7ce4ba3522262ebe1b9435414792829efc4f7a773cfbd338ef4309",
+      "jsr": "jsr:@dune/theme-fractal@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/fractal-v1.0.2/fractal-1.0.2.zip",
+      "sha256": "729b5291361fd5cd28405a9abbfbdfd16f7586d753ed2c2d00b8b3b2860c3a02",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
