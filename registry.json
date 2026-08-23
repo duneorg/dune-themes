@@ -1250,7 +1250,7 @@
       "name": "Telephasic",
       "description": "Telephasic — responsive site theme adapted from HTML5 UP for Dune. Business site.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1261,9 +1261,9 @@
       "inspiredBy": "HTML5 UP Telephasic",
       "demoUrl": "https://themes.getdune.org/telephasic",
       "screenshotUrl": "https://themes.getdune.org/telephasic/themes/telephasic/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-telephasic@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/telephasic-v1.0.1/telephasic-1.0.1.zip",
-      "sha256": "07b824e6eaa919d6d7c8411e2bb7c9ad7d1f753c91ceb1894d01cd886e8212af",
+      "jsr": "jsr:@dune/theme-telephasic@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/telephasic-v1.0.2/telephasic-1.0.2.zip",
+      "sha256": "b5a7a4edc7a9b03222bde1ee023c9f2114c4d5e674e6071115ed549ce2fe1915",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
