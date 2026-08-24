@@ -215,7 +215,7 @@
       "name": "Herald",
       "description": "Publication-style blog inspired by Ghost Casper — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "blog",
@@ -226,9 +226,9 @@
       "inspiredBy": "Casper",
       "demoUrl": "https://themes.getdune.org/herald",
       "screenshotUrl": "https://themes.getdune.org/herald/themes/herald/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-herald@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/herald-v1.0.1/herald-1.0.1.zip",
-      "sha256": "3066819a8710ddd3d22abf8fa3de796902462da6029a716f95f5c3b2fc3b7a36",
+      "jsr": "jsr:@dune/theme-herald@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/herald-v1.0.2/herald-1.0.2.zip",
+      "sha256": "f987e591ff443c80e2bd33332b92a59f4cccff4f45d36082736fc73efd7a1132",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
