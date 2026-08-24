@@ -169,7 +169,7 @@
       "name": "Salon",
       "description": "Magazine-style blog inspired by Ghost Liebling — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "blog",
@@ -180,9 +180,9 @@
       "inspiredBy": "Liebling",
       "demoUrl": "https://themes.getdune.org/salon",
       "screenshotUrl": "https://themes.getdune.org/salon/themes/salon/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-salon@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/salon-v1.0.1/salon-1.0.1.zip",
-      "sha256": "53fd83514e86ba9a67f8aa196c536e6475ef2a1d657e05edbd54484a61d346f5",
+      "jsr": "jsr:@dune/theme-salon@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/salon-v1.0.2/salon-1.0.2.zip",
+      "sha256": "6c441cd9646dc0e6ac603b42c21787cbed1fb688b43feb6d83f1f15dfb38b09e",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
