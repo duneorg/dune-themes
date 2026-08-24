@@ -560,7 +560,7 @@
       "name": "Editorial",
       "description": "Editorial — responsive site theme adapted from HTML5 UP for Dune. Editorial magazine.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -571,9 +571,9 @@
       "inspiredBy": "HTML5 UP Editorial",
       "demoUrl": "https://themes.getdune.org/editorial",
       "screenshotUrl": "https://themes.getdune.org/editorial/themes/editorial/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-editorial@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/editorial-v1.0.2/editorial-1.0.2.zip",
-      "sha256": "5b87480d2a5e670b012ae6f1e804cf2de00ebd40c1013087a18d8f86431633e9",
+      "jsr": "jsr:@dune/theme-editorial@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/editorial-v1.0.3/editorial-1.0.3.zip",
+      "sha256": "62069aced9a611270b4668db3b348e85358b46dd8237bc02196e125184995eb7",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
