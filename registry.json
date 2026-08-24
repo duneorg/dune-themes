@@ -1227,7 +1227,7 @@
       "name": "Strongly Typed",
       "description": "Strongly Typed — responsive site theme adapted from HTML5 UP for Dune. Typography blog.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1238,9 +1238,9 @@
       "inspiredBy": "HTML5 UP Strongly Typed",
       "demoUrl": "https://themes.getdune.org/strongly-typed",
       "screenshotUrl": "https://themes.getdune.org/strongly-typed/themes/strongly-typed/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-strongly-typed@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strongly-typed-v1.0.2/strongly-typed-1.0.2.zip",
-      "sha256": "a2c4ff54e85061c5339272785f8883b8ff76031e9c8b96e36c1d822b96f7d7f9",
+      "jsr": "jsr:@dune/theme-strongly-typed@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/strongly-typed-v1.0.3/strongly-typed-1.0.3.zip",
+      "sha256": "8ee40625a19519698d470d3f21f9ddb678f4a6f4421dc33ad4e149f65b66798f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
