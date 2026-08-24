@@ -238,7 +238,7 @@
       "name": "Lucid",
       "description": "Modern docs theme inspired by Hugo Hextra — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "docs",
@@ -249,9 +249,9 @@
       "inspiredBy": "Hextra",
       "demoUrl": "https://themes.getdune.org/lucid",
       "screenshotUrl": "https://themes.getdune.org/lucid/themes/lucid/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-lucid@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lucid-v1.0.1/lucid-1.0.1.zip",
-      "sha256": "de3affe3f6ca9c6037beebfd03915f71a3a96eef2728a4cfa73c679e869beb1f",
+      "jsr": "jsr:@dune/theme-lucid@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/lucid-v1.0.2/lucid-1.0.2.zip",
+      "sha256": "4898c6dce7f64d108aaf35a9203d8699481c6aad6550df83990d09bf7c8f0805",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
