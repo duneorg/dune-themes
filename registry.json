@@ -1089,7 +1089,7 @@
       "name": "Solid State",
       "description": "Solid State — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1100,9 +1100,9 @@
       "inspiredBy": "HTML5 UP Solid State",
       "demoUrl": "https://themes.getdune.org/solid-state",
       "screenshotUrl": "https://themes.getdune.org/solid-state/themes/solid-state/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-solid-state@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/solid-state-v1.0.2/solid-state-1.0.2.zip",
-      "sha256": "441fce3e337e46087e77af8b23d0306c2d7249cf5168447493236a58f5bd38c4",
+      "jsr": "jsr:@dune/theme-solid-state@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/solid-state-v1.0.3/solid-state-1.0.3.zip",
+      "sha256": "7484d59ae16eb56774a0b47be0df78fafc53d96914f48d9573a2b43847f26707",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
