@@ -76,7 +76,7 @@
       "name": "Nightfall",
       "description": "Dark-first documentation theme inspired by Astro Starlight — Dune-native, not a port.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "docs",
@@ -87,9 +87,9 @@
       "inspiredBy": "Starlight",
       "demoUrl": "https://themes.getdune.org/nightfall",
       "screenshotUrl": "https://themes.getdune.org/nightfall/themes/nightfall/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-nightfall@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/nightfall-v1.0.1/nightfall-1.0.1.zip",
-      "sha256": "2cab47f61889cb3e7210f38dd702cbc9ba1a482476244f990dc5c216a2b3de3d",
+      "jsr": "jsr:@dune/theme-nightfall@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/nightfall-v1.0.2/nightfall-1.0.2.zip",
+      "sha256": "cc8621fa7cb839347fb9218502a447f7a28e0f8a64c4f586d6549bd079b3d817",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
