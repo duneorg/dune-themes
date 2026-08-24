@@ -399,7 +399,7 @@
       "name": "Alpha",
       "description": "Alpha — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -410,9 +410,9 @@
       "inspiredBy": "HTML5 UP Alpha",
       "demoUrl": "https://themes.getdune.org/alpha",
       "screenshotUrl": "https://themes.getdune.org/alpha/themes/alpha/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-alpha@1.0.3",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/alpha-v1.0.3/alpha-1.0.3.zip",
-      "sha256": "269b040e0e80dbcf1d0c990ee4ebd6de32df2cf29cd3f2a8cfefdea5de1e2351",
+      "jsr": "jsr:@dune/theme-alpha@1.0.4",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/alpha-v1.0.4/alpha-1.0.4.zip",
+      "sha256": "502fae6e8963bd9c782f500cb1808aa1d0f292d0f38f26bad140356f3e9093be",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
