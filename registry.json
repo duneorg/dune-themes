@@ -951,7 +951,7 @@
       "name": "Paradigm Shift",
       "description": "Paradigm Shift — responsive site theme adapted from HTML5 UP for Dune. Split layout landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -962,9 +962,9 @@
       "inspiredBy": "HTML5 UP Paradigm Shift",
       "demoUrl": "https://themes.getdune.org/paradigm-shift",
       "screenshotUrl": "https://themes.getdune.org/paradigm-shift/themes/paradigm-shift/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-paradigm-shift@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/paradigm-shift-v1.0.2/paradigm-shift-1.0.2.zip",
-      "sha256": "93ab3d04d0d0cecc1b9a2583e8916a1ef9c74755511f6bec797a2f42237a3c88",
+      "jsr": "jsr:@dune/theme-paradigm-shift@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/paradigm-shift-v1.0.3/paradigm-shift-1.0.3.zip",
+      "sha256": "87efbe7845b0195d2183db38a46bbf17bf1b2a3f27c6bb2155af098d11f74c1f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
