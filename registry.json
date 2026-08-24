@@ -1319,7 +1319,7 @@
       "name": "TXT",
       "description": "TXT — responsive site theme adapted from HTML5 UP for Dune. Text-forward portfolio.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1330,9 +1330,9 @@
       "inspiredBy": "HTML5 UP TXT",
       "demoUrl": "https://themes.getdune.org/txt",
       "screenshotUrl": "https://themes.getdune.org/txt/themes/txt/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-txt@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/txt-v1.0.2/txt-1.0.2.zip",
-      "sha256": "2c7be81cba31d381a51da7dd45b33a13989a5db2c4d4a4ea8271ef1abd13d715",
+      "jsr": "jsr:@dune/theme-txt@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/txt-v1.0.3/txt-1.0.3.zip",
+      "sha256": "9a90ccbec1d6247780951cc86358d377a1f2b354636270fa57489a6a7af57dd5",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
