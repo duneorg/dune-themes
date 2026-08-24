@@ -1342,7 +1342,7 @@
       "name": "Verti",
       "description": "Verti — responsive site theme adapted from HTML5 UP for Dune. Business landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1353,9 +1353,9 @@
       "inspiredBy": "HTML5 UP Verti",
       "demoUrl": "https://themes.getdune.org/verti",
       "screenshotUrl": "https://themes.getdune.org/verti/themes/verti/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-verti@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/verti-v1.0.2/verti-1.0.2.zip",
-      "sha256": "ec13e14333b02cedbd6c96399e9bfe3945059878c438ff1270ace50833d3d18a",
+      "jsr": "jsr:@dune/theme-verti@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/verti-v1.0.3/verti-1.0.3.zip",
+      "sha256": "a95c92309bc856d0bb905c7c7399b0a779ee13daf9f7c05a57c0f37e7754033f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
