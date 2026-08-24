@@ -974,7 +974,7 @@
       "name": "Parallelism",
       "description": "Parallelism — responsive site theme adapted from HTML5 UP for Dune. Portfolio grid.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -985,9 +985,9 @@
       "inspiredBy": "HTML5 UP Parallelism",
       "demoUrl": "https://themes.getdune.org/parallelism",
       "screenshotUrl": "https://themes.getdune.org/parallelism/themes/parallelism/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-parallelism@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/parallelism-v1.0.2/parallelism-1.0.2.zip",
-      "sha256": "b3c4307406fb6660f6d24eff78e3d7bc65287703214a512efd61e31bd8b9c1ac",
+      "jsr": "jsr:@dune/theme-parallelism@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/parallelism-v1.0.3/parallelism-1.0.3.zip",
+      "sha256": "b8f011875949987f110884789ddc1fb5fe7d4eaef5246d6af29e7349e108075f",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
