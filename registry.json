@@ -1066,7 +1066,7 @@
       "name": "Read Only",
       "description": "Read Only — responsive site theme adapted from HTML5 UP for Dune. Read-only blog.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -1077,9 +1077,9 @@
       "inspiredBy": "HTML5 UP Read Only",
       "demoUrl": "https://themes.getdune.org/read-only",
       "screenshotUrl": "https://themes.getdune.org/read-only/themes/read-only/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-read-only@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/read-only-v1.0.2/read-only-1.0.2.zip",
-      "sha256": "bcbbf31b3c935470c20937e53cf0461e7befccb8de4f8c8039a68b0e170271c3",
+      "jsr": "jsr:@dune/theme-read-only@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/read-only-v1.0.3/read-only-1.0.3.zip",
+      "sha256": "06b94c9a7881de3dc9b4f2a699b1f01fa8cc9b75e13e6dd6f9064cd0d4cbf492",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
