@@ -813,7 +813,7 @@
       "name": "Landed",
       "description": "Landed — responsive site theme adapted from HTML5 UP for Dune. Product landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -824,9 +824,9 @@
       "inspiredBy": "HTML5 UP Landed",
       "demoUrl": "https://themes.getdune.org/landed",
       "screenshotUrl": "https://themes.getdune.org/landed/themes/landed/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-landed@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/landed-v1.0.2/landed-1.0.2.zip",
-      "sha256": "7da24603478e8dd578db745a04bda23f256dbabdb06ef04b61ae26db95d935c2",
+      "jsr": "jsr:@dune/theme-landed@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/landed-v1.0.3/landed-1.0.3.zip",
+      "sha256": "e281599fb8db7a0017342644a1c89a703522929647aadfb66cbe6be4fc27d283",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
