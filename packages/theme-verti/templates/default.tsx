@@ -102,7 +102,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                     <h2>So what&apos;s this all about?</h2>
                     <p>
                       <strong>Verti</strong> is a business landing theme adapted from{" "}
-                      <a href={creditHref}>HTML5 UP</a> for Dune CMS — banner,
+                      <a href={creditHref}>HTML5&nbsp;UP</a> for Dune CMS — banner,
                       feature boxes, sidebar thumbnails, and widget footer preserved from upstream.
                     </p>
                     <p>

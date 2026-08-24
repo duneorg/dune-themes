@@ -163,7 +163,7 @@ export default function DefaultTemplate(props: TemplateProps & {
           <div class="content">
             <p>
               {tr("credit.design", "Design")} by{" "}
-              <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>{" "}
+              <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>{" "}
               (CC BY 3.0).
             </p>
           </div>
@@ -194,7 +194,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               {showCredit && (
                 <>
                   {" "}{tr("footer.powered", "Powered by")}{" "}<a href={duneHref} target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>
                 </>
               )}
             </p>

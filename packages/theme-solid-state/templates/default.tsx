@@ -54,7 +54,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             <h2>{String(fm.title ?? "Solid State")}</h2>
             <p>
               Responsive site template adapted from{" "}
-              <a href={creditHref}>HTML5 UP</a> for Dune CMS.
+              <a href={creditHref}>HTML5&nbsp;UP</a> for Dune CMS.
             </p>
           </div>
         </section>
@@ -150,7 +150,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               {showCredit && (
                 <li>
                   {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>
                 </li>
               )}
             </ul>

@@ -44,7 +44,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                 <header class="major"><h2>Welcome to Stellar</h2></header>
                 <p>
                   {page.frontmatter.title ?? "Stellar for Dune"} — adapted from{" "}
-                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>{" "}
+                  <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>{" "}
                   with blog, search, and archives.
                 </p>
                 {children && <div data-dune-body>{children}</div>}
@@ -127,7 +127,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             {showCredit && (
               <>
                 . {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>.
               </>
             )}
             {!showCredit && "."}

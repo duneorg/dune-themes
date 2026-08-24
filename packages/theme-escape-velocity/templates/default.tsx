@@ -55,7 +55,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             <p class="style1">So in case you were wondering what this is all about …</p>
             <p class="style2">
               {String(fm.title ?? "Escape Velocity")} for Dune<br class="mobile-hide" />
-              — adapted from <a href={creditHref} class="nobr">HTML5 UP</a>
+              — adapted from <a href={creditHref} class="nobr">HTML5&nbsp;UP</a>
             </p>
             {children && (
               <div class="style3" data-dune-body>{children}</div>
@@ -181,7 +181,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                 {showCredit && (
                   <li>
                     {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>
                   </li>
                 )}
               </ul>

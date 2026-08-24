@@ -53,7 +53,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             <h2>{String(fm.title ?? "Spectral")}</h2>
             <p>
               Responsive site template adapted from{" "}
-              <a href={creditHref}>HTML5 UP</a><br />
+              <a href={creditHref}>HTML5&nbsp;UP</a><br />
               for Dune CMS — blog, search, and archives included.
             </p>
             <ul class="actions special">
@@ -182,7 +182,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             {showCredit && (
               <li>
                 {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>
               </li>
             )}
           </ul>

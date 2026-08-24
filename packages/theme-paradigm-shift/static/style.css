@@ -9,3 +9,26 @@
 .search-results li { padding: 0.75rem 0; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
 .pagination { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 2rem; }
 .feature-icons a { color: inherit; text-decoration: none; }
+/* Upstream's `left: 50vw` on a `position: relative` box is an offset from
+   the element's own static-flow position, not an anchor to the viewport —
+   the intent is to visually relocate the copyright line from its native
+   spot (inside <footer>, which occupies only the left/teal half of each
+   two-pane section) into the right/white content pane. Because the static
+   position already carries the footer's own padding, the 50vw shift
+   overshoots and the box's right edge renders past the section (and often
+   the viewport itself) at widths above the 1152px breakpoint, silently
+   clipping the text with no scrollbar and no wrap to catch it. Switching to
+   `position: absolute` anchored to the section (the nearest positioned
+   ancestor spanning both panes) places it flush against the section's true
+   right edge — i.e. the right/white pane — instead of guessing a relative
+   offset. Scoped to the same range so the mobile layout (already correct,
+   full-width, in normal flow) is untouched. */
+@media screen and (min-width: 1153px) {
+  #wrapper .copyright {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    text-align: right;
+  }
+}

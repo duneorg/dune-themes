@@ -42,7 +42,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                   <h2>Welcome to {site?.title ?? "Minimaxing"}!</h2>
                   <p>
                     This is <strong>Minimaxing</strong> for Dune — adapted from{" "}
-                    <a href="https://html5up.net/minimaxing">HTML5 UP</a> with blog posts, search,
+                    <a href="https://html5up.net/minimaxing">HTML5&nbsp;UP</a> with blog posts, search,
                     archives, and responsive column layouts.
                   </p>
                   {children && <div data-dune-body>{children}</div>}
@@ -81,7 +81,7 @@ export default function DefaultTemplate(props: TemplateProps & {
                     </div>
                     <div class="col-6 col-12-small">
                       <ul class="link-list">
-                        <li><a href="https://html5up.net/minimaxing">HTML5 UP</a></li>
+                        <li><a href="https://html5up.net/minimaxing">HTML5&nbsp;UP</a></li>
                         <li><a href="https://getdune.org">Dune CMS</a></li>
                         <li><a href="https://github.com/duneorg/dune-themes">Source</a></li>
                       </ul>

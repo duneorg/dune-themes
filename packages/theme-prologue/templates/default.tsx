@@ -42,7 +42,7 @@ export default function DefaultTemplate(props: TemplateProps & {
               <h2 class="alt">
                 Hi! I&apos;m <strong>{siteTitle}</strong>, a responsive<br />
                 site template adapted from{" "}
-                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>.
               </h2>
               <p>
                 {page.frontmatter.title ?? "Prologue for Dune"} — blog posts, search, archives,<br />

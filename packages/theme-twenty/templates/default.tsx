@@ -60,7 +60,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             <p>
               This is <strong>Twenty</strong> for Dune<br />
               a responsive landing theme<br />
-              adapted from <a href={creditHref}>HTML5 UP</a>.
+              adapted from <a href={creditHref}>HTML5&nbsp;UP</a>.
             </p>
             <footer>
               <ul class="buttons stacked">
@@ -229,7 +229,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             {showCredit && (
               <li>
                 {tr("footer.powered", "Powered by")}{" "}<a href={duneHref} target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>
               </li>
             )}
           </ul>

@@ -116,7 +116,7 @@ export default function Layout({
                   <>
                     . {tr("footer.powered", "Powered by")}{" "}
                     <a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design_by", "Design by")}{" "}
-                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+                    <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>.
                   </>
                 )}
                 {!showCredit && "."}
@@ -144,7 +144,7 @@ export default function Layout({
             {showCredit && (
               <li>
                 {tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-                <a href={creditHomeHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>
+                <a href={creditHomeHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>
               </li>
             )}
           </ul>

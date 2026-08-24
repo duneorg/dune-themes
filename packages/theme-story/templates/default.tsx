@@ -56,7 +56,7 @@ function StoryFooter({
           {showCredit && (
             <>
               {" "}{tr("footer.powered", "Powered by")}{" "}<a href="https://getdune.org" target="_blank" rel="noopener noreferrer">Dune</a>. {tr("credit.design", "Design")}:{" "}
-              <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a>.
+              <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a>.
             </>
           )}
         </p>
@@ -110,7 +110,7 @@ export default function DefaultTemplate(props: TemplateProps & {
             <h1>{page.frontmatter.title ?? "Story"}</h1>
             <p class="major">
               A responsive one-page template adapted from{" "}
-              <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5 UP</a> for Dune
+              <a href={creditHref} target="_blank" rel="noopener noreferrer">HTML5&nbsp;UP</a> for Dune
               CMS — blog, search, and archives included.
             </p>
             {children && <div data-dune-body>{children}</div>}
