@@ -514,7 +514,7 @@
       "name": "Directive",
       "description": "Directive — responsive site theme adapted from HTML5 UP for Dune. Simple landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -525,9 +525,9 @@
       "inspiredBy": "HTML5 UP Directive",
       "demoUrl": "https://themes.getdune.org/directive",
       "screenshotUrl": "https://themes.getdune.org/directive/themes/directive/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-directive@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/directive-v1.0.2/directive-1.0.2.zip",
-      "sha256": "ba545b856c0133b2b0ae381f41e5a275411b613369acca656c6ab5b74c6b11f9",
+      "jsr": "jsr:@dune/theme-directive@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/directive-v1.0.3/directive-1.0.3.zip",
+      "sha256": "4a575beb94d1456335ce9d06585971a9869d692622c5bb2bc93bc44dd372401e",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
