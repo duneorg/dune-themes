@@ -698,7 +698,7 @@
       "name": "Future Imperfect",
       "description": "Future Imperfect — responsive site theme adapted from HTML5 UP for Dune. Blog with sidebar.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -709,9 +709,9 @@
       "inspiredBy": "HTML5 UP Future Imperfect",
       "demoUrl": "https://themes.getdune.org/future-imperfect",
       "screenshotUrl": "https://themes.getdune.org/future-imperfect/themes/future-imperfect/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-future-imp@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/future-imperfect-v1.0.2/future-imperfect-1.0.2.zip",
-      "sha256": "5e5ff93af14932494b23ae7e2c7810fe03f170aac15bea6f8379c82b4afa2cee",
+      "jsr": "jsr:@dune/theme-future-imp@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/future-imperfect-v1.0.3/future-imperfect-1.0.3.zip",
+      "sha256": "2da854aa8f971770d859fa2d373f1099323a90ae2d2d024b74e313aaa386616a",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
