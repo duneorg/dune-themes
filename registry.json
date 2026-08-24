@@ -629,7 +629,7 @@
       "name": "Eventually",
       "description": "Eventually — responsive site theme adapted from HTML5 UP for Dune. Coming soon.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -640,9 +640,9 @@
       "inspiredBy": "HTML5 UP Eventually",
       "demoUrl": "https://themes.getdune.org/eventually",
       "screenshotUrl": "https://themes.getdune.org/eventually/themes/eventually/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-eventually@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/eventually-v1.0.2/eventually-1.0.2.zip",
-      "sha256": "2d80273fa39826b5f598d6f9e1e75ee030472bc1bb22bc87b389636607238806",
+      "jsr": "jsr:@dune/theme-eventually@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/eventually-v1.0.3/eventually-1.0.3.zip",
+      "sha256": "d59f45914df95d0e29676a40dcc7de27683479802abfbcd096a7f8376942b2d2",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
