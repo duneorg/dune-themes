@@ -606,7 +606,7 @@
       "name": "Ethereal",
       "description": "Ethereal — responsive site theme adapted from HTML5 UP for Dune. Elegant landing.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -617,9 +617,9 @@
       "inspiredBy": "HTML5 UP Ethereal",
       "demoUrl": "https://themes.getdune.org/ethereal",
       "screenshotUrl": "https://themes.getdune.org/ethereal/themes/ethereal/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-ethereal@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ethereal-v1.0.2/ethereal-1.0.2.zip",
-      "sha256": "d911f95d950e67a1cb27096f221b1cb954bc6972b4efe68560e709b57dc2242b",
+      "jsr": "jsr:@dune/theme-ethereal@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/ethereal-v1.0.3/ethereal-1.0.3.zip",
+      "sha256": "089bb51135439e8b4df7d86294ebbabf7270ad2c5811bfb1589bc376aa144fdc",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
