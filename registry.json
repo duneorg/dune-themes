@@ -583,7 +583,7 @@
       "name": "Escape Velocity",
       "description": "Escape Velocity — responsive site theme adapted from HTML5 UP for Dune. Marketing site.",
       "author": "Dune Themes",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -594,9 +594,9 @@
       "inspiredBy": "HTML5 UP Escape Velocity",
       "demoUrl": "https://themes.getdune.org/escape-velocity",
       "screenshotUrl": "https://themes.getdune.org/escape-velocity/themes/escape-velocity/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-escape-vel@1.0.3",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/escape-velocity-v1.0.3/escape-velocity-1.0.3.zip",
-      "sha256": "25730cb4fc6925d28c9c725214c2a00baf0da87fb1a8927ab33e7b70e0e16529",
+      "jsr": "jsr:@dune/theme-escape-vel@1.0.4",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/escape-velocity-v1.0.4/escape-velocity-1.0.4.zip",
+      "sha256": "394606b9e188024b96aaa4aa53a3e72e48f7f403ddb7927ee54b70c9daec6c59",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
