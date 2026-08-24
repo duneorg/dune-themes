@@ -859,7 +859,7 @@
       "name": "Massively",
       "description": "Massively — responsive site theme adapted from HTML5 UP for Dune. Hero blog.",
       "author": "Dune Themes",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "license": "MIT",
       "tags": [
         "html5up",
@@ -870,9 +870,9 @@
       "inspiredBy": "HTML5 UP Massively",
       "demoUrl": "https://themes.getdune.org/massively",
       "screenshotUrl": "https://themes.getdune.org/massively/themes/massively/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-massively@1.0.2",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/massively-v1.0.2/massively-1.0.2.zip",
-      "sha256": "0ae63c0f5410b65264126a5d81c65e9931be49b82f2273819886eb4819d9cca5",
+      "jsr": "jsr:@dune/theme-massively@1.0.3",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/massively-v1.0.3/massively-1.0.3.zip",
+      "sha256": "e13185faba629dcc9c2c1f9116dbbd77d08a6a3c39b1509a3144b74471b4ede6",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
