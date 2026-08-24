@@ -4,7 +4,7 @@ description: >
   Faithful port of hugo-book (https://github.com/alex-shpak/hugo-book) —
   a clean documentation theme with sidebar filetree menu, table of contents
   and live search. MIT © Alex Shpak.
-version: "1.0.1"
+version: "1.0.2"
 author: Alex Shpak (upstream), ported for Dune
 
 config_schema:

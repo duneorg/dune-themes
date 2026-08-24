@@ -6,7 +6,7 @@ description: >
   dark/light/auto theme picker, search modal and the full set of doc
   components (asides, cards, tabs, steps, file tree). MIT © Astro
   contributors.
-version: "1.0.1"
+version: "1.0.2"
 author: Astro contributors (upstream), ported for Dune
 
 config_schema:
