@@ -1388,7 +1388,7 @@
       "name": "Dune Minimal",
       "description": "Minimal, semantic base theme for Dune — usable standalone, or inherit via parent: dune-minimal.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "base",
@@ -1398,9 +1398,9 @@
       "tier": "base",
       "demoUrl": "https://themes.getdune.org/dune-minimal",
       "screenshotUrl": "https://themes.getdune.org/dune-minimal/themes/dune-minimal/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-dune-minimal@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dune-minimal-v1.0.1/dune-minimal-1.0.1.zip",
-      "sha256": "f6cdded0eb662dc5f5ace2b87e09f618cafba87bf29dc2c123968b7eeb173463",
+      "jsr": "jsr:@dune/theme-dune-minimal@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/dune-minimal-v1.0.2/dune-minimal-1.0.2.zip",
+      "sha256": "732d0fe9905c55149123136f9a454c92f7e82af185b89b462e62154eb29b5c95",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
