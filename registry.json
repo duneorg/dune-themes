@@ -330,7 +330,7 @@
       "name": "Starlight for Dune",
       "description": "Faithful port of Astro Starlight for Dune.",
       "author": "Dune Themes",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "tags": [
         "docs",
@@ -341,9 +341,9 @@
       "inspiredBy": "Starlight",
       "demoUrl": "https://themes.getdune.org/starlight",
       "screenshotUrl": "https://themes.getdune.org/starlight/themes/starlight/static/screenshot.png",
-      "jsr": "jsr:@dune/theme-starlight@1.0.1",
-      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/starlight-v1.0.1/starlight-1.0.1.zip",
-      "sha256": "297e041a53261e8eeeadc7caa7030034c91b9e331146cc14ae26124fa3b82c8d",
+      "jsr": "jsr:@dune/theme-starlight@1.0.2",
+      "downloadUrl": "https://github.com/duneorg/dune-themes/releases/download/starlight-v1.0.2/starlight-1.0.2.zip",
+      "sha256": "cc7e9c6648bba192f0854913ccdf986cea91c428f348e82d4bdaa80b8b9e7b8c",
       "verified": true,
       "downloads": 0,
       "compatibleWith": "^0.31.0"
