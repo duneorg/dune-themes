@@ -23,6 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write  # JSR OIDC
+    outputs:
+      slug: ${{ steps.tag.outputs.slug }}
+      version: ${{ steps.tag.outputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +44,19 @@ jobs:
             exit 1
           fi
           echo "slug=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
+          echo "version=${BASH_REMATCH[2]}" >> "$GITHUB_OUTPUT"
 
       - name: Publish to JSR
         working-directory: packages/theme-${{ steps.tag.outputs.slug }}
         run: deno publish
+
+  comment-issues:
+    needs: publish
+    uses: duneorg/dune/.github/workflows/comment-released-issues.yml@main
+    with:
+      tag: ${{ inputs.tag }}
+      tag-pattern: "${{ needs.publish.outputs.slug }}-v*"
+      version: ${{ needs.publish.outputs.version }}
+    permissions:
+      contents: read
+      issues: write
