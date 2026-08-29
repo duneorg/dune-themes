@@ -44,7 +44,7 @@ jobs:
 
       - run: deno task pack ${{ steps.tag.outputs.slug }}
 
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ steps.tag.outputs.slug }} v${{ steps.tag.outputs.version }}
