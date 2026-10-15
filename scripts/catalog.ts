@@ -190,7 +190,7 @@ export const CATALOG: CatalogEntry[] = [
     description: "Faithful port of hugo-book for Dune.",
     inspiredBy: "hugo-book",
     tags: ["docs", "sidebar", "faithful"],
-    version: "1.0.2",
+    version: "1.0.3",
   },
   {
     slug: "starlight",
