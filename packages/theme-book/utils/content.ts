@@ -33,6 +33,23 @@ export function addHeadingIds(html: string): string {
   );
 }
 
+/**
+ * Strip tags from heading HTML for use as plain TOC text. `buildToc` splices
+ * this into raw HTML, so it must not leave markup behind. Stripping complete
+ * tags is not enough: an unclosed `<` (e.g. `x <img src=x onerror=…` with no
+ * `>`) survives `/<[^>]+>/g` and becomes a live tag once the TOC wraps it in
+ * `<a>…</a>`. Escape any bracket left over. Existing entities (`&amp;`) are
+ * kept as-is: the input is already-rendered HTML, so re-escaping `&` would
+ * double-encode.
+ */
+export function headingText(html: string): string {
+  return html
+    .replace(/<[^>]+>/g, "")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .trim();
+}
+
 /** Extract heading list from HTML that already carries ids. */
 export function extractHeadings(html: string): Heading[] {
   const headings: Heading[] = [];
@@ -42,7 +59,7 @@ export function extractHeadings(html: string): Heading[] {
     headings.push({
       level: Number(m[1]),
       id: m[2],
-      text: m[3].replace(/<[^>]+>/g, "").trim(),
+      text: headingText(m[3]),
     });
   }
   return headings;
