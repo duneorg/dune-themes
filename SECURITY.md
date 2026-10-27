@@ -2,8 +2,8 @@
 
 ## Reporting a vulnerability
 
-Please report security problems in the Dune themes **privately**, not through a public
-issue, pull request, discussion or branch.
+Please report security problems in the Dune themes **privately**, not through a
+public issue, pull request, discussion or branch.
 
 Use GitHub's private reporting: open this repository's **Security** tab and
 choose **Report a vulnerability**. That opens a confidential advisory that only
@@ -28,7 +28,8 @@ want that.
 
 ## Supported versions
 
-Security fixes go into the latest release of the affected theme; older versions are not patched, so update to the newest version of the theme first.
+Security fixes go into the latest release of the affected theme; older versions
+are not patched, so update to the newest version of the theme first.
 
 ## Not security issues
 
